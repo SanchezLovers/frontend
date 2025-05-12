@@ -2,3 +2,15 @@
 /*
     Aca va el CSS personalizado de la aplicacion (si hiciera falta)
 */
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-sm {
+    margin: 0 2px;
+}
+
+.nav-link {
+    color: white !important;
+}

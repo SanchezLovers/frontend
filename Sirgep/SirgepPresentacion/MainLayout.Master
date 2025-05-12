@@ -4,7 +4,9 @@
 <html lang="es">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
 
     <!-- Bootstrap CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
@@ -16,16 +18,39 @@
 <body>
     <form id="form1" runat="server">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="Default.aspx">SIRGEP</a>
+        <nav class="navbar navbar-expand-lg" style="background-color: #f10909;">
+
+            <div class="d-flex align-items-center justify-content-start py-2 px-4">
+                <!-- Imagen del escudo -->
+                <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
+                <!-- Texto del Gobierno Regional -->
+                <div class="text-white me-3">
+                    <strong>Gobierno Regional de Lima</strong>
+                </div>
+                <!-- Separador -->
+                <div class="vr bg-white mx-3" style="height: 40px; width: 2px;"></div>
+                <!-- Nombre del sistema -->
+                <div class="text-white me-3">
+                    <strong>SIRGEP</strong>
+                </div>
+            </div>
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="Default.aspx">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="About.aspx">Acerca de</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Contact.aspx">Contacto</a></li>
+                    <!-- Menú desplegable para el usuario administrador -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+                            <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
+                            <li><a class="dropdown-item" href="ListaEspacios.aspx">Espacios</a></li>
+                            <li><a class="dropdown-item" href="Eventos.aspx">Eventos</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </nav>
