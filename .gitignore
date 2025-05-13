@@ -1,2 +1,4 @@
 .vs/
-*.json
+# Nunca subir esto
+Sirgep/SirgepPresentacion/DriveAuth/credentials.json
+
