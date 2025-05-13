@@ -22,13 +22,15 @@ namespace SirgepPresentacion
             // Simulación de datos. Reemplaza esto con tu lógica para obtener los datos desde la base de datos.
             var espacios = new List<dynamic>
     {
-        new { Id = 1, Nombre = "Espacio A", Descripcion = "Descripción del Espacio A" },
-        new { Id = 2, Nombre = "Espacio B", Descripcion = "Descripción del Espacio B" }
+        new { Id = 1, Codigo = "ESP001", Categoria = "Cancha de Grass", EspacioReservado = "C.D. Tupac Amaru", LinkDetalle = "DetalleEspacio.aspx?id=1" },
+        new { Id = 2, Codigo = "ESP002", Categoria = "Cancha de Cemento", EspacioReservado = "C.D. Mama Ocllo", LinkDetalle = "DetalleEspacio.aspx?id=2" }
     };
 
             rptEspacios.DataSource = espacios;
             rptEspacios.DataBind();
         }
+
+
 
         protected void btnAgregarEspacio_Click(object sender, EventArgs e)
         {
@@ -53,5 +55,9 @@ namespace SirgepPresentacion
             CargarEspacios(); // Recargar la lista después de eliminar
         }
 
+        protected void btnConsultar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
