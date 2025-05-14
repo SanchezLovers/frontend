@@ -64,4 +64,9 @@
         <script src="Scripts/bootstrap.bundle.min.js"></script>
     </form>
 </body>
+<!-- Pie de página -->
+<footer class="footer text-center text-white py-2 mt-5" style="background-color: #f10909;">
+    <small>2024 © Grupo 1 - 1INF49. Todos los derechos reservados</small>
+</footer>
+
 </html>
