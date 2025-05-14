@@ -60,6 +60,141 @@
     <div class="text-end mt-3">
         <asp:Button ID="btnAgregarEspacio" runat="server" CssClass="btn btn-dark fw-bold" Text="Añadir" OnClick="btnAgregarEspacio_Click" />
     </div>
+    <!-- Modal Paso 1: Datos del Espacio -->
+<div class="modal fade" id="modalPaso1" tabindex="-1" aria-labelledby="modalPaso1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="modalPaso1Label">Registrar Espacio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Nombre del espacio:</label>
+                    <asp:TextBox ID="txtNombreEspacio" runat="server" CssClass="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label>Tipo de espacio:</label>
+                    <asp:DropDownList ID="ddlTipoEspacio" runat="server" CssClass="form-select">
+                    </asp:DropDownList>
+                </div>
+                <div class="mb-3">
+                    <label>Ubicación (Dirección):</label>
+                    <asp:TextBox ID="txtUbicacion" runat="server" CssClass="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label>Superficie (m²):</label>
+                    <asp:TextBox ID="txtSuperficie" runat="server" CssClass="form-control" TextMode="Number" />
+                </div>
+                <div class="mb-3">
+                    <label>Precio de reserva (S/):</label>
+                    <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" TextMode="Number" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-dark" onclick="abrirPaso2()">Siguiente</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    
+<!-- Modal Paso 2: Horario -->
+<div class="modal fade" id="modalPaso2" tabindex="-1" aria-labelledby="modalPaso2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="modalPaso2Label">Horario del Espacio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label>Nombre del espacio:</label>
+                    <asp:TextBox ID="txtNombreEspacioResumen" runat="server" CssClass="form-control" Enabled="false" />
+                </div>
+
+                <div class="row g-2 align-items-end mb-3">
+                    <div class="col-md-4">
+                        <label>Día:</label>
+                        <asp:DropDownList ID="ddlDiaSemana" runat="server" CssClass="form-select">
+                            <asp:ListItem Text="Lunes" Value="Lunes" />
+                            <asp:ListItem Text="Martes" Value="Martes" />
+                            <asp:ListItem Text="Miércoles" Value="Miércoles" />
+                            <asp:ListItem Text="Jueves" Value="Jueves" />
+                            <asp:ListItem Text="Viernes" Value="Viernes" />
+                            <asp:ListItem Text="Sábado" Value="Sábado" />
+                            <asp:ListItem Text="Domingo" Value="Domingo" />
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Inicio:</label>
+                        <asp:TextBox ID="txtHoraInicio" runat="server" CssClass="form-control" TextMode="Time" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Fin:</label>
+                        <asp:TextBox ID="txtHoraFin" runat="server" CssClass="form-control" TextMode="Time" />
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <asp:Button ID="btnAgregarHorario" runat="server" CssClass="btn btn-success w-100" Text="Añadir" OnClick="btnAgregarHorario_Click" />
+                    </div>
+                </div>
+
+                <!-- Listado horarios añadidos -->
+                <asp:Repeater ID="rptHorarios" runat="server">
+                    <HeaderTemplate>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Día</th>
+                                    <th>Hora Inicio</th>
+                                    <th>Hora Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td><%# Eval("Dia") %></td>
+                            <td><%# Eval("HoraInicio") %></td>
+                            <td><%# Eval("HoraFin") %></td>
+                        </tr>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                            </tbody>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="abrirPaso1()">Regresar</button>
+                <asp:Button ID="btnGuardarEspacio" runat="server" CssClass="btn btn-dark" Text="Aceptar" OnClick="btnGuardarEspacio_Click" />
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        function abrirPaso1() {
+            // Oculta el modal actual (paso 2)
+            var modal2 = bootstrap.Modal.getInstance(document.getElementById('modalPaso2'));
+            if (modal2) modal2.hide();
+
+            // Muestra el modal del paso anterior (paso 1)
+            var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1'));
+            modal1.show();
+        }
+
+
+
+    function abrirPaso2() {
+        // copiar nombre al segundo modal
+        document.getElementById('<%= txtNombreEspacioResumen.ClientID %>').value = document.getElementById('<%= txtNombreEspacio.ClientID %>').value;
+        var modal1 = bootstrap.Modal.getInstance(document.getElementById('modalPaso1'));
+        modal1.hide();
+
+        var modal2 = new bootstrap.Modal(document.getElementById('modalPaso2'));
+        modal2.show();
+    }
+    </script>
+
 </asp:Content>
