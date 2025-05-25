@@ -82,6 +82,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
     <Content Include="ListaEspacios.aspx" />
+    <Content Include="ListaEventos.aspx" />
+    <Content Include="PrincipalAdministrador.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -99,12 +101,26 @@
     <Compile Include="ListaEspacios.aspx.designer.cs">
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListaEventos.aspx.cs">
+      <DependentUpon>ListaEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaEventos.aspx.designer.cs">
+      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="PrincipalAdministrador.aspx.cs">
+      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrincipalAdministrador.aspx.designer.cs">
+      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PaginaInicial.aspx.cs">

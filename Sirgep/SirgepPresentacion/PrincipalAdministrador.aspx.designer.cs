@@ -11,52 +11,43 @@ namespace SirgepPresentacion
 {
 
 
-    public partial class MainLayout
+    public partial class PrincipalAdministrador
     {
 
         /// <summary>
-        /// Control TitleContent.
+        /// Control btnManejarEspacios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder TitleContent;
+        protected global::System.Web.UI.WebControls.Button btnManejarEspacios;
 
         /// <summary>
-        /// Control Encabezado.
+        /// Control btnConsultarReservas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Encabezado;
+        protected global::System.Web.UI.WebControls.Button btnConsultarReservas;
 
         /// <summary>
-        /// Control form1.
+        /// Control btnManejarEventos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button btnManejarEventos;
 
         /// <summary>
-        /// Control HeaderLinkContent.
+        /// Control btnConsultarEntradas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderLinkContent;
-
-        /// <summary>
-        /// Control Contenido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Contenido;
+        protected global::System.Web.UI.WebControls.Button btnConsultarEntradas;
     }
 }

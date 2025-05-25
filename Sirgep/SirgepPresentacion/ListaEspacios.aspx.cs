@@ -145,6 +145,10 @@ namespace SirgepPresentacion
                 "alert('Espacio eliminado exitosamente');", true);
         }
 
+        protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -15,18 +15,21 @@
 
     <asp:ContentPlaceHolder ID="Encabezado" runat="server" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <form id="form1" runat="server" style="flex: 1;">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg" style="background-color: #f10909;">
 
             <div class="d-flex align-items-center justify-content-start py-2 px-4">
-                <!-- Imagen del escudo -->
-                <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
-                <!-- Texto del Gobierno Regional -->
-                <div class="text-white me-3">
-                    <strong>Gobierno Regional de Lima</strong>
-                </div>
+                <asp:ContentPlaceHolder ID="HeaderLinkContent" runat="server">
+                    <!-- Imagen y texto por defecto si no se sobreescribe -->
+                    <div class="d-flex align-items-center me-3">
+                        <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
+                        <div class="text-white">
+                            <strong>Gobierno Regional de Lima</strong>
+                        </div>
+                    </div>
+                </asp:ContentPlaceHolder>
                 <!-- Separador -->
                 <div class="vr bg-white mx-3" style="height: 40px; width: 2px;"></div>
                 <!-- Nombre del sistema -->
@@ -64,41 +67,41 @@
         <script src="Scripts/bootstrap.bundle.min.js"></script>
 
         <!-- Modal de Confirmación -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-header modal-header-rojo text-white">
-        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
-      <div class="modal-body d-flex align-items-center modal-body-confirmacion">
-        <div class="icono-confirmacion me-3">
-          <div class="icono-circulo">
-            <span class="icono-texto">i</span>
-          </div>
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <span class="icono-texto">i</span>
+                            </div>
+                        </div>
+                        <div id="modalConfirmacionBody" class="fs-5">
+                            ¿Está seguro que desea realizar esta acción?
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+                        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div id="modalConfirmacionBody" class="fs-5">
-          ¿Está seguro que desea realizar esta acción?
-        </div>
-      </div>
-
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
-        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
     </form>
 </body>
 <!-- Pie de página -->
 <footer class="footer text-center text-white py-2 mt-5" style="background-color: #f10909;">
-    <small>2024 © Grupo 1 - 1INF49. Todos los derechos reservados</small>
+    <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
 </footer>
 
 </html>

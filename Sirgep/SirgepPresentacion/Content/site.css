@@ -75,3 +75,14 @@ html, body {
     color: #333;
     font-weight: bold;
 }
+
+.header-link {
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+    .header-link:hover {
+        background: rgba(255,255,255,0.12);
+        text-decoration: none;
+    }
