@@ -24,5 +24,10 @@ namespace SirgepPresentacion
 
         }
 
+        protected void btnMostrarModalAgregarEvento_Click(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
+        "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
+        }
     }
 }

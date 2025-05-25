@@ -82,7 +82,7 @@ html, body {
     transition: background 0.2s;
 }
 
-    .header-link:hover {
-        background: rgba(255,255,255,0.12);
-        text-decoration: none;
-    }
+.header-link:hover {
+    background: rgba(255,255,255,0.12);
+    text-decoration: none;
+}
