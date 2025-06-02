@@ -86,3 +86,62 @@ html, body {
     background: rgba(255,255,255,0.12);
     text-decoration: none;
 }
+
+/* SirgepPresentacion/Content/site.css */
+.modal-header-rojo {
+    background: #f10909 !important;
+    color: #fff !important;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+    .modal-header-rojo .modal-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+    }
+
+    .modal-header-rojo .btn-close {
+        filter: invert(1) grayscale(1) brightness(2);
+    }
+
+.icono-confirmacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-circulo {
+    width: 56px;
+    height: 56px;
+    background: #ffc107;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono-texto {
+    color: #222;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.modal-body-confirmacion {
+    font-size: 1.25rem;
+    color: #222;
+}
+
+.modal-footer .btn {
+    min-width: 90px;
+    font-style: italic;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    background: #232426;
+    border: none;
+}
+
+    .modal-footer .btn:focus, .modal-footer .btn:active {
+        box-shadow: none;
+    }

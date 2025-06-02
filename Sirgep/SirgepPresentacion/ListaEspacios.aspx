@@ -17,6 +17,15 @@
     <!-- Título principal -->
     <h2 class="fw-bold mb-4">Municipalidad &gt; Espacios</h2>
 
+    <!-- BOTONES DE PRUEBA PARA MODALS (ELIMINAR LUEGO) -->
+    <!-- INICIO CÓDIGO DE PRUEBA -->
+    <div class="mb-3">
+        <button type="button" class="btn btn-success me-2" onclick="mostrarModalExito()">Probar Modal Éxito</button>
+        <button type="button" class="btn btn-danger me-2" onclick="mostrarModalError()">Probar Modal Error</button>
+        <button type="button" class="btn btn-primary" onclick="mostrarModalCalificacion()">Probar Modal Calificación</button>
+    </div>
+    <!-- FIN CÓDIGO DE PRUEBA -->
+
     <!-- Búsqueda -->
     <div class="row mb-3">
         <div class="col-12 col-md-6">
@@ -196,36 +205,6 @@
         </div>
     </div>
 
-    <!-- Modal de Confirmación -->
-    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="modal-header modal-header-rojo text-white">
-                    <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-
-                <div class="modal-body d-flex align-items-center modal-body-confirmacion">
-                    <div class="icono-confirmacion me-3">
-                        <div class="icono-circulo">
-                            <span class="icono-texto">i</span>
-                        </div>
-                    </div>
-                    <div id="modalConfirmacionBody" class="fs-5">
-                        ¿Está seguro que desea realizar esta acción?
-                    </div>
-                </div>
-
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
-                    <asp:Button ID="btnConfirmarAccion" runat="server" CssClass="btn btn-dark px-4" Text="Sí" OnClick="btnConfirmarAccion_Click" />
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
 
 
@@ -265,6 +244,22 @@
             modal.show();
         }
     </script>
-
+    <script type="text/javascript">
+        // FUNCIONES DE PRUEBA PARA MODALS (ELIMINAR LUEGO)
+        function mostrarModalExito() {
+            var modal = new bootstrap.Modal(document.getElementById('modalExito'));
+            document.getElementById('modalExitoBody').innerText = "La acción se realizó correctamente.";
+            modal.show();
+        }
+        function mostrarModalError() {
+            var modal = new bootstrap.Modal(document.getElementById('modalError'));
+            document.getElementById('modalErrorBody').innerText = "Ha ocurrido un error inesperado.";
+            modal.show();
+        }
+        function mostrarModalCalificacion() {
+            var modal = new bootstrap.Modal(document.getElementById('modalCalificacion'));
+            modal.show();
+        }
+</script>
 
 </asp:Content>
