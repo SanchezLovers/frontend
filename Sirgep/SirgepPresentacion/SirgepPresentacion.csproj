@@ -64,6 +64,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
+	
   </ItemGroup>
   <ItemGroup>
     <Content Include="Compras\EleccionDistrito.aspx" />
