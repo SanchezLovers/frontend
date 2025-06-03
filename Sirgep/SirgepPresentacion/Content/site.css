@@ -86,3 +86,28 @@ html, body {
     background: rgba(255,255,255,0.12);
     text-decoration: none;
 }
+/* Centrado vertical y horizontal del contenido principal */
+.principal-invitado-wrapper {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Título grande y centrado */
+.principal-invitado-title {
+    font-size: 2.7rem;
+    font-weight: bold;
+}
+
+/* Subtítulo más grande */
+.principal-invitado-subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* Botones grandes */
+.principal-invitado-btn {
+    font-size: 1.2rem;
+    padding: 0.75rem 0;
+}

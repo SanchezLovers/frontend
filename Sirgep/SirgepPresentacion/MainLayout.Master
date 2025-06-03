@@ -44,17 +44,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Menú desplegable para el usuario administrador -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
-                            <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
-                            <li><a class="dropdown-item" href="ListaEspacios.aspx">Espacios</a></li>
-                            <li><a class="dropdown-item" href="Eventos.aspx">Eventos</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <!-- Menú Administrador -->
+    <li id="liAdminMenu" runat="server" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
+            <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
+            <li><a class="dropdown-item" href="ListaEspacios.aspx">Espacios</a></li>
+            <li><a class="dropdown-item" href="ListaEventos.aspx">Eventos</a></li>
+        </ul>
+    </li>
+    <!-- Menú Usuario -->
+    <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="usuarioMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="usuarioMenu">
+            <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
+            <li><a class="dropdown-item" href="ListaReservas.aspx">Reservas</a></li>
+            <li><a class="dropdown-item" href="ListaEntradas.aspx">Entradas</a></li>
+        </ul>
+    </li>
+    <!-- Botón Ingresar -->
+    <li id="liIngresar" runat="server" class="nav-item d-flex align-items-center me-4">
+    <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-dark fw-bold principal-invitado-btn ms-3" Text="Ingresar" OnClick="btnIngresar_Click" />
+</li>
+</ul>
             </div>
         </nav>
 

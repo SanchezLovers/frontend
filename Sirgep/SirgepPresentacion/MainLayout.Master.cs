@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion
 {
@@ -11,7 +7,32 @@ namespace SirgepPresentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Se usa el ToLower para evitar problemas con mayúsculas y minúsculas en la comparación
+            string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
 
+            if (page == "principalinvitado.aspx")
+            {
+                liAdminMenu.Visible = false;
+                liIngresar.Visible = true;
+                liUsuarioMenu.Visible = false;
+            }
+            else if (page == "paginainicial.aspx")
+            {
+                liAdminMenu.Visible = false;
+                liIngresar.Visible = false;
+                liUsuarioMenu.Visible = false;
+            }
+            else
+            {
+                liAdminMenu.Visible = true;
+                liIngresar.Visible = false;
+                liUsuarioMenu.Visible = false;
+            }
+        }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/PaginaInicial.aspx");
         }
     }
 }
