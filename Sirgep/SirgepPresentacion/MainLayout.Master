@@ -62,6 +62,38 @@
 
         <!-- Bootstrap JS (opcional) -->
         <script src="Scripts/bootstrap.bundle.min.js"></script>
+
+        <!-- Modal de Confirmación -->
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <div class="modal-header modal-header-rojo text-white">
+        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+        <div class="icono-confirmacion me-3">
+          <div class="icono-circulo">
+            <span class="icono-texto">i</span>
+          </div>
+        </div>
+        <div id="modalConfirmacionBody" class="fs-5">
+          ¿Está seguro que desea realizar esta acción?
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
     </form>
 </body>
 <!-- Pie de página -->

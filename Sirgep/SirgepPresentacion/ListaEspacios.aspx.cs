@@ -131,6 +131,20 @@ namespace SirgepPresentacion
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alertSuccess",
                 "alert('Espacio guardado exitosamente');", true);
         }
+        protected void btnConfirmarAccion_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hdnIdAEliminar.Value);
+
+            // Aquí va la lógica para eliminar el espacio
+            // Ejemplo: EliminarEspacioPorId(id);
+
+            CargarEspacios(); // Refresca la tabla
+
+            // Opcional: Mostrar mensaje de éxito
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
+                "alert('Espacio eliminado exitosamente');", true);
+        }
 
     }
+
 }
