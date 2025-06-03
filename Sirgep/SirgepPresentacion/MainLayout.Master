@@ -10,6 +10,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap icons -->
+    <link href="Content/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <!-- Estilos propios -->
     <link href="Content/site.css" rel="stylesheet" />
 
@@ -91,11 +93,12 @@
                     <div class="modal-body d-flex align-items-center modal-body-confirmacion">
                         <div class="icono-confirmacion me-3">
                             <div class="icono-circulo">
-                                <span class="icono-texto">i</span>
+                                <i class="bi bi-info-lg fs-1"></i>
                             </div>
                         </div>
                         <div id="modalConfirmacionBody" class="fs-5">
-                            ¿Está seguro que desea realizar esta acción?
+                            ¿Está seguro que desea eliminar este registro?
+               
                         </div>
                     </div>
 
@@ -108,6 +111,99 @@
             </div>
         </div>
 
+        <!-- Modal de Error -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalErrorLabel">Error</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-exclamation-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalErrorBody" class="fs-5">
+                            Ha ocurrido un error inesperado.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Regresar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Acción Exitosa -->
+        <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalExitoLabel">¡Éxito!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-check-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalExitoBody" class="fs-5">
+                            La acción se realizó correctamente.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Calificación con Estrellas -->
+        <div class="modal fade" id="modalCalificacion" tabindex="-1" aria-labelledby="modalCalificacionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalCalificacionLabel">Califica tu experiencia</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body text-center modal-body-confirmacion">
+                        <div id="estrellasCalificacion" class="mb-3">
+                            <span class="estrella" data-valor="1" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrella" data-valor="2" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrella" data-valor="3" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrella" data-valor="4" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrella" data-valor="5" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                        </div>
+
+                        <div id="comentarioContainer" class="mb-3">
+                            <textarea id="inputComentario" class="form-control" rows="1" placeholder="Escribe tu comentario..." style="resize: none; overflow: hidden;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" id="btnEnviarCalificacion" class="btn btn-dark px-4"><em>Enviar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
 
     </form>
 </body>
@@ -116,4 +212,47 @@
     <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
 </footer>
 
+<script>
+    // Lógica para estrellas
+    let calificacionSeleccionada = 0;
+    document.querySelectorAll('#estrellasCalificacion .estrella').forEach(function (estrella) {
+        estrella.addEventListener('mouseenter', function () {
+            pintarEstrellas(this.getAttribute('data-valor'));
+        });
+        estrella.addEventListener('mouseleave', function () {
+            pintarEstrellas(calificacionSeleccionada);
+        });
+        estrella.addEventListener('click', function () {
+            calificacionSeleccionada = this.getAttribute('data-valor');
+            pintarEstrellas(calificacionSeleccionada);
+        });
+    });
+
+    function pintarEstrellas(valor) {
+        document.querySelectorAll('#estrellasCalificacion .estrella').forEach(function (estrella) {
+            if (estrella.getAttribute('data-valor') <= valor) {
+                estrella.innerHTML = '&#9733;'; // estrella llena
+            } else {
+                estrella.innerHTML = '&#9734;'; // estrella vacía
+            }
+        });
+    }
+
+    // Mostrar/ocultar comentario
+    document.getElementById('btnAgregarComentario').addEventListener('click', function () {
+        document.getElementById('comentarioContainer').style.display = 'block';
+        this.style.display = 'none';
+    });
+
+    // Botón enviar (puedes personalizar la lógica)
+    document.getElementById('btnEnviarCalificacion').addEventListener('click', function () {
+        const estrellas = calificacionSeleccionada;
+        const comentario = document.getElementById('inputComentario').value;
+        // Aquí puedes enviar la calificación y comentario por AJAX o como prefieras
+        // Ejemplo: alert('Calificación: ' + estrellas + '\nComentario: ' + comentario);
+        // Cierra el modal
+        var modal = bootstrap.Modal.getInstance(document.getElementById('modalCalificacion'));
+        modal.hide();
+    });
+</script>
 </html>

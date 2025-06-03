@@ -159,15 +159,6 @@ namespace SirgepPresentacion
         protected global::System.Web.UI.WebControls.Button btnGuardarEspacio;
 
         /// <summary>
-        /// Control btnConfirmarAccion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirmarAccion;
-
-        /// <summary>
         /// Control hdnIdAEliminar.
         /// </summary>
         /// <remarks>
