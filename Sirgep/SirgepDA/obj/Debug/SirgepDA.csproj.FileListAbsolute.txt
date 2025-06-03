@@ -1,0 +1,6 @@
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\bin\Debug\SirgepDA.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\bin\Debug\SirgepDA.pdb
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.csproj.CoreCompileInputs.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.pdb
