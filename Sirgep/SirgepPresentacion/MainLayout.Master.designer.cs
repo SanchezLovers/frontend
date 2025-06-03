@@ -42,13 +42,13 @@ namespace SirgepPresentacion
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control HeaderLinkContent.
+        /// Control lnkLogo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeaderLinkContent;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLogo;
 
         /// <summary>
         /// Control liAdminMenu.

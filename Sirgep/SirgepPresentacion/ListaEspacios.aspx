@@ -1,14 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListaEspacios.aspx.cs" Inherits="SirgepPresentacion.ListaEspacios" MasterPageFile="~/MainLayout.Master" %>
 
-<asp:Content ID="HeaderLinkContent1" ContentPlaceHolderID="HeaderLinkContent" runat="server">
-    <a href="PrincipalAdministrador.aspx" class="d-flex align-items-center me-3 text-decoration-none header-link">
-        <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
-        <div class="text-white">
-            <strong>Gobierno Regional de Lima</strong>
-        </div>
-    </a>
-</asp:Content>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Municipalidad > Espacios
 </asp:Content>

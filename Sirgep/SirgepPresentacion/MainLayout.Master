@@ -23,15 +23,15 @@
         <nav class="navbar navbar-expand-lg" style="background-color: #f10909;">
 
             <div class="d-flex align-items-center justify-content-start py-2 px-4">
-                <asp:ContentPlaceHolder ID="HeaderLinkContent" runat="server">
-                    <!-- Imagen y texto por defecto si no se sobreescribe -->
+                <asp:LinkButton ID="lnkLogo" runat="server" OnClick="lnkLogo_Click" CssClass="text-decoration-none">
                     <div class="d-flex align-items-center me-3">
                         <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
                         <div class="text-white">
                             <strong>Gobierno Regional de Lima</strong>
                         </div>
                     </div>
-                </asp:ContentPlaceHolder>
+                </asp:LinkButton>
+
                 <!-- Separador -->
                 <div class="vr bg-white mx-3" style="height: 40px; width: 2px;"></div>
                 <!-- Nombre del sistema -->
@@ -53,6 +53,7 @@
             <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
             <li><a class="dropdown-item" href="ListaEspacios.aspx">Espacios</a></li>
             <li><a class="dropdown-item" href="ListaEventos.aspx">Eventos</a></li>
+            <li><a class="dropdown-item" href="PrincipalInvitado.aspx">Cerrar Sesión</a></li>
         </ul>
     </li>
     <!-- Menú Usuario -->
@@ -62,6 +63,7 @@
             <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
             <li><a class="dropdown-item" href="ListaReservas.aspx">Reservas</a></li>
             <li><a class="dropdown-item" href="ListaEntradas.aspx">Entradas</a></li>
+            <li><a class="dropdown-item" href="PrincipalInvitado.aspx">Cerrar Sesión</a></li>
         </ul>
     </li>
     <!-- Botón Ingresar -->

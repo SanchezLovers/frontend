@@ -8,6 +8,7 @@ namespace SirgepPresentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             // Lógica al cargar la página (si es necesario)
+            Session["tipoUsuario"] = "administrador";
         }
 
         protected void btnManejarEspacios_Click(object sender, EventArgs e)

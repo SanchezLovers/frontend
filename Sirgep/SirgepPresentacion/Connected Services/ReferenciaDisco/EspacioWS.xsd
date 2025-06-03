@@ -8,6 +8,8 @@
   <xs:element name="eliminarLogicoResponse" type="tns:eliminarLogicoResponse" />
   <xs:element name="insertarEspacio" type="tns:insertarEspacio" />
   <xs:element name="insertarEspacioResponse" type="tns:insertarEspacioResponse" />
+  <xs:element name="listarEspacio" type="tns:listarEspacio" />
+  <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
   <xs:complexType name="insertarEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
@@ -131,6 +133,14 @@
   <xs:complexType name="insertarEspacioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEspacio">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEspacioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarEspacio">

@@ -40,12 +40,7 @@
                         <a href="#" class="text-decoration-none">Olvidé mi contraseña</a>
                     </div>
 
-<<<<<<< HEAD
                     <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-danger w-100 fw-bold" OnClick="btnLogin_Click" />
-=======
-                    <!-- boton de validacion de usuario-->
-                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-danger w-100 fw-bold" />
->>>>>>> 886e020d90dfbee7eb7980bbf377434816c5d09b
 
                     <small class="d-block mt-2 text-muted">*Campo Requerido</small>
 

@@ -7,32 +7,72 @@ namespace SirgepPresentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Se usa el ToLower para evitar problemas con mayúsculas y minúsculas en la comparación
-            string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
+            string tipoUsuario = Session["tipoUsuario"] as string;
 
-            if (page == "principalinvitado.aspx")
+            if (tipoUsuario == null)
             {
-                liAdminMenu.Visible = false;
-                liIngresar.Visible = true;
-                liUsuarioMenu.Visible = false;
+                // No ha iniciado sesión, es invitado por defecto
+                tipoUsuario = "invitado";
+                Session["tipoUsuario"] = "invitado"; // puedes asignarlo si deseas
             }
-            else if (page == "paginainicial.aspx")
+
+            switch (tipoUsuario.ToLower())
             {
-                liAdminMenu.Visible = false;
-                liIngresar.Visible = false;
-                liUsuarioMenu.Visible = false;
-            }
-            else
-            {
-                liAdminMenu.Visible = true;
-                liIngresar.Visible = false;
-                liUsuarioMenu.Visible = false;
+                case "administrador":
+                    liAdminMenu.Visible = true;
+                    liUsuarioMenu.Visible = false;
+                    liIngresar.Visible = false;
+                    break;
+
+                case "comprador":
+                    liAdminMenu.Visible = false;
+                    liUsuarioMenu.Visible = true;
+                    liIngresar.Visible = false;
+                    break;
+
+                case "invitado":
+                    liAdminMenu.Visible = false;
+                    liUsuarioMenu.Visible = false;
+                    liIngresar.Visible = true;
+                    string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
+                    if (page == "paginainicial.aspx")
+                        liIngresar.Visible = false; // Si estás en la página de invitado, no mostrar el botón de ingresar
+                    
+                    break;
+                default:
+                    liAdminMenu.Visible = false;
+                    liUsuarioMenu.Visible = false;
+                    liIngresar.Visible = false;
+                    break;
             }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/PaginaInicial.aspx");
+        }
+
+        protected void lnkLogo_Click(object sender, EventArgs e)
+        {
+            string tipoUsuario = Session["tipoUsuario"] as string;
+
+            switch (tipoUsuario.ToLower())
+            {
+                case "administrador":
+                    Response.Redirect("~/PrincipalAdministrador.aspx");
+                    break;
+
+                case "comprador":
+                    Response.Redirect("~/PrincipalComprador.aspx");
+                    break;
+
+                case "invitado":
+                    Response.Redirect("~/PrincipalInvitado.aspx");
+                    break;
+                default:
+                    Console.WriteLine("Tipo de usuario no reconocido: " + tipoUsuario);
+                    break;
+            }
         }
     }
 }
