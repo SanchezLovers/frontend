@@ -23,14 +23,14 @@
                     <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" />
 
                     <div class="mb-3">
-                        <label for="txtEmail" class="form-label">Correo de su cuenta</label>
+                        <label for="txtEmail" class="form-label">*Correo de su cuenta</label>
                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="admin@sirgep.com.pe"></asp:TextBox>
                     </div>
 
                     <div class="mb-3 position-relative">
                         <label for="txtPassword" class="form-label">*Contraseña:</label>
                         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su Contraseña"></asp:TextBox>
-                        <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;" onclick="togglePassword()">👁</span>
+                        <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;" onclick="togglePassword()"></span>
                     </div>
 
                     <div class="mb-3 d-flex justify-content-between align-items-center">
@@ -40,7 +40,12 @@
                         <a href="#" class="text-decoration-none">Olvidé mi contraseña</a>
                     </div>
 
+<<<<<<< HEAD
                     <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-danger w-100 fw-bold" OnClick="btnLogin_Click" />
+=======
+                    <!-- boton de validacion de usuario-->
+                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-danger w-100 fw-bold" />
+>>>>>>> 886e020d90dfbee7eb7980bbf377434816c5d09b
 
                     <small class="d-block mt-2 text-muted">*Campo Requerido</small>
 

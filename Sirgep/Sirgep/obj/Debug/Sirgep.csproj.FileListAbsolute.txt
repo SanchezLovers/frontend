@@ -2,3 +2,5 @@ C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Laborato
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Laboratorios\TA\frontend\Sirgep\Sirgep\obj\Debug\Sirgep.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\Sirgep\obj\Debug\Sirgep.csproj.AssemblyReference.cache
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\Sirgep\obj\Debug\Sirgep.csproj.CoreCompileInputs.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\Sirgep\obj\Debug\Sirgep.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\Sirgep\obj\Debug\Sirgep.csproj.CoreCompileInputs.cache

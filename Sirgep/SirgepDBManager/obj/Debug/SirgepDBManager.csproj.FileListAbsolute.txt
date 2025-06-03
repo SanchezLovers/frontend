@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.dll
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.pdb
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.AssemblyReference.cache
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.CoreCompileInputs.cache
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.dll
 C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.pdb
+=======
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.pdb
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.CoreCompileInputs.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.pdb
+>>>>>>> 886e020d90dfbee7eb7980bbf377434816c5d09b
