@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\bin\Debug\SirgepDBManager.pdb
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDBManager\obj\Debug\SirgepDBManager.pdb

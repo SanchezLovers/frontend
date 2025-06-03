@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\bin\Debug\SirgepDomain.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\bin\Debug\SirgepDomain.pdb
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.pdb

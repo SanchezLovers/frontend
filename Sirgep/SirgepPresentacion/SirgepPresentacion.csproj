@@ -2246,14 +2246,10 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-<<<<<<< HEAD
-=======
-    <Content Include="DriveAuth\credentials.json" />
     <Content Include="Content\bootstrap-icons\bootstrap-icons.json" />
     <Content Include="Content\bootstrap-icons\bootstrap-icons.scss" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff2" />
->>>>>>> 5f952e16124456546311b2b23042f40bc738cc30
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

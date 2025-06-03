@@ -1,0 +1,6 @@
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\bin\Debug\SirgepDA.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\bin\Debug\SirgepDA.pdb
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.dll
+C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepDA\obj\Debug\SirgepDA.pdb
