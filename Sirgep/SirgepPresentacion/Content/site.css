@@ -63,15 +63,22 @@ html, body {
 .icono-confirmacion .icono-circulo {
     width: 60px;
     height: 60px;
-    background-color: #ffc107;
+    background-color: #ffc107 !important; /* amarillo Bootstrap */
     border-radius: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 
 .icono-confirmacion .icono-texto {
-    font-size: 1.8rem;
-    color: #333;
+    color: white !important;
     font-weight: bold;
+    font-size: 50px;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+.modal-body-confirmacion {
+    font-size: 1.25rem;
 }

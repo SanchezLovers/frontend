@@ -10,13 +10,21 @@
 
     <!-- Búsqueda -->
     <div class="mb-3">
-        <input type="text" class="form-control" placeholder="🔍 Buscar" />
+        <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true"/>
     </div>
 
     <!-- Filtros -->
     <div class="mb-4">
         <label class="fw-bold">Filtros:</label>
         <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select w-25 d-inline-block mx-2">
+                <asp:ListItem Text="Seleccione una categoría" Value="" />
+                <asp:ListItem Text="Teatros" Value="TEATRO" />
+                <asp:ListItem Text="Canchas" Value="CANCHA" />
+                <asp:ListItem Text="Salones" Value="SALON" />
+                <asp:ListItem Text="Parques" Value="PARQUE" />
+        </asp:DropDownList>
+        <asp:DropDownList ID="ddlDistrito" runat="server" CssClass="form-select w-25 d-inline-block mx-2">
+                <asp:ListItem Text="Seleccione un distrito" Value="" />
         </asp:DropDownList>
         <asp:Button ID="btnConsultar" runat="server" Text="Consultar" CssClass="btn btn-dark" OnClick="btnConsultar_Click" />
     </div>
@@ -36,21 +44,21 @@
             <tbody>
                 <asp:Repeater ID="rptEspacios" runat="server">
                     <ItemTemplate>
+                        
                         <tr>
-                            <td>
-                                <a href='<%# Eval("LinkDetalle") %>'>
+                            <td>            
+                                <a href="ListaEspacios.aspx">
                                     <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
                                 </a>
                             </td>
-                            <td><%# Eval("Codigo") %></td>
-                            <td><%# Eval("Categoria") %></td>
-                            <td><%# Eval("EspacioReservado") %></td>
+                            <td><%# Eval("IdEspacio") %></td>
+                            <td><%# Eval("TipoEspacio") %></td>
+                            <td><%# Eval("Nombre") %></td>
                             <td>
-                                <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" />
+                                <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("IdEspacio") %>' OnClick="btnEditar_Click" />
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
-    Text="Eliminar" CommandArgument='<%# Eval("Id") %>'
-    OnClientClick='<%# $"mostrarModalConfirmacion({Eval("Id")}); return false;" %>' />
-
+                                Text="Eliminar" CommandArgument='<%# Eval("IdEspacio") %>'
+                                OnClientClick='<%# $"mostrarModalConfirmacion({Eval("IdEspacio")}); return false;" %>' />
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -63,125 +71,307 @@
     <div class="text-end mt-3">
         <asp:Button ID="btnAgregarEspacio" runat="server" CssClass="btn btn-dark fw-bold" Text="Añadir" OnClick="btnAgregarEspacio_Click" />
     </div>
-    <!-- Modal Paso 1: Datos del Espacio -->
-<div class="modal fade" id="modalPaso1" tabindex="-1" aria-labelledby="modalPaso1Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="modalPaso1Label">Registrar Espacio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label>Nombre del espacio:</label>
-                    <asp:TextBox ID="txtNombreEspacio" runat="server" CssClass="form-control" />
+    <!-- Modal Paso 1: Datos del Espacio [ AGREGAR UN ESPACIO ] -->
+    <div class="modal fade" id="modalPaso1" tabindex="-1" aria-labelledby="modalPaso1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f10909;">
+                    <h2 class="modal-title" id="modalPaso1Label" style="color: white">Añadir - Espacio</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-                <div class="mb-3">
-                    <label>Tipo de espacio:</label>
-                    <asp:DropDownList ID="ddlTipoEspacio" runat="server" CssClass="form-select">
-                    </asp:DropDownList>
+
+                <!--Cuerpo del modal [ AGREGAR UN ESPACIO ] -->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Nombre del espacio</label>
+                            <asp:TextBox ID="txtNombreEspacioAgregar" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Tipo de espacio</label>
+                            <asp:DropDownList ID="ddlTipoEspacioAgregar" runat="server" CssClass="form-select">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Ubicación</label>
+                            <asp:TextBox ID="txtUbicacionAgregar" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Departamento</label>
+                            <asp:DropDownList ID="ddlDepartamentoAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
+                                OnSelectedIndexChanged="ddlDepartamentoAgregar_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Superficie (m²)</label>
+                            <asp:TextBox ID="txtSuperficieAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Provincia</label>
+                            <asp:DropDownList ID="ddlProvinciaAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
+                                OnSelectedIndexChanged="ddlProvinciaAgregar_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Precio de reserva por hora</label>
+                            <asp:TextBox ID="txtPrecioReservaAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Distrito</label>
+                            <asp:DropDownList ID="ddlDistritoAgregar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistritoAgregar_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Añadir horario de atención</h6>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-2">
+                            <label>Hora Inicio</label>
+                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+
+                        </div>
+                        <div class="mb-3 col-md-2">
+                            <label>Hora Fin</label>
+                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Añadir días de atención</h6>
+                    </div>
+
+                    <!-- Caja de los Días de Atención -->
+                    <div class="card p-3 mb-3">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lunes">
+                                    <label class="form-check-label" for="lunes">Lunes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="martes">
+                                    <label class="form-check-label" for="martes">Martes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="miercoles">
+                                    <label class="form-check-label" for="miercoles">Miércoles</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="jueves">
+                                    <label class="form-check-label" for="jueves">Jueves</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="viernes">
+                                    <label class="form-check-label" for="viernes">Viernes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sabado">
+                                    <label class="form-check-label" for="sabado">Sábado</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="domingo">
+                                    <label class="form-check-label" for="domingo">Domingo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN DE Caja de los Días de Atención -->
+
                 </div>
-                <div class="mb-3">
-                    <label>Ubicación (Dirección):</label>
-                    <asp:TextBox ID="txtUbicacion" runat="server" CssClass="form-control" />
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button CssClass="active" ID="btnGuardarInsertado" runat="server" Text="Guardar" OnClick="btnGuardarInsertado_Click"/>
                 </div>
-                <div class="mb-3">
-                    <label>Superficie (m²):</label>
-                    <asp:TextBox ID="txtSuperficie" runat="server" CssClass="form-control" TextMode="Number" />
-                </div>
-                <div class="mb-3">
-                    <label>Precio de reserva (S/):</label>
-                    <asp:TextBox ID="txtPrecio" runat="server" CssClass="form-control" TextMode="Number" />
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-dark" onclick="abrirPaso2()">Siguiente</button>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Modal Paso 2: Horario -->
-<div class="modal fade" id="modalPaso2" tabindex="-1" aria-labelledby="modalPaso2Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="modalPaso2Label">Horario del Espacio</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label>Nombre del espacio:</label>
-                    <asp:TextBox ID="txtNombreEspacioResumen" runat="server" CssClass="form-control" Enabled="false" />
+                
+    <!------------------------------------- Modal de Edición de Espacios ---------------------------------------------------------------------------------->
+
+    <!-- Datos del Espacio [ EDICION ESPACIO ] -->
+    <div class="modal fade" id="modalEdicionEspacio" tabindex="-1" aria-labelledby="modalEdicionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f10909;">
+                    <h2 class="modal-title" id="modalEdicionLabel" style="color: white">Editar - Espacio</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 
-                <div class="row g-2 align-items-end mb-3">
-                    <div class="col-md-4">
-                        <label>Día:</label>
-                        <asp:DropDownList ID="ddlDiaSemana" runat="server" CssClass="form-select">
-                            <asp:ListItem Text="Lunes" Value="Lunes" />
-                            <asp:ListItem Text="Martes" Value="Martes" />
-                            <asp:ListItem Text="Miércoles" Value="Miércoles" />
-                            <asp:ListItem Text="Jueves" Value="Jueves" />
-                            <asp:ListItem Text="Viernes" Value="Viernes" />
-                            <asp:ListItem Text="Sábado" Value="Sábado" />
-                            <asp:ListItem Text="Domingo" Value="Domingo" />
-                        </asp:DropDownList>
+                
+
+                <!--Cuerpo del modal [ EDICION ESPACIO ] -->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Nombre del espacio</label>
+                            <asp:TextBox ID="txtNombreEdit" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Tipo de espacio</label>
+                            <asp:DropDownList ID="ddlTipoEspacioEdit" runat="server" CssClass="form-select">
+                            </asp:DropDownList>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <label>Inicio:</label>
-                        <asp:TextBox ID="txtHoraInicio" runat="server" CssClass="form-control" TextMode="Time" />
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Ubicación</label>
+                            <asp:TextBox ID="txtUbicacionEdit" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Departamento</label>
+                            <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select" AutoPostBack="true"
+                                OnSelectedIndexChanged="ddlDepartamentoAgregar_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
                     </div>
-                    <div class="col-md-3">
-                        <label>Fin:</label>
-                        <asp:TextBox ID="txtHoraFin" runat="server" CssClass="form-control" TextMode="Time" />
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Superficie (m²)</label>
+                            <asp:TextBox ID="txtSuperficieEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Provincia</label>
+                            <asp:DropDownList ID="ddlProvinciaEdit" runat="server" CssClass="form-select" AutoPostBack="true"
+                                OnSelectedIndexChanged="ddlProvinciaAgregar_SelectedIndexChanged">
+                            </asp:DropDownList>
+                        </div>
                     </div>
-                    <div class="col-md-2 text-end">
-                        <asp:Button ID="btnAgregarHorario" runat="server" CssClass="btn btn-success w-100" Text="Añadir" OnClick="btnAgregarHorario_Click" />
+
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label>Precio de reserva por hora</label>
+                            <asp:TextBox ID="txtPrecioEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                            <label>Distrito</label>
+                            <asp:DropDownList ID="ddlDistritoEdit" runat="server" CssClass="form-select">
+                            </asp:DropDownList>
+                        </div>
                     </div>
+
+                    <div>
+                        <h6>Añadir horario de atención</h6>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-2">
+                            <label>Hora Inicio</label>
+                            <asp:TextBox ID="txtHoraInicioEdit" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+
+                        </div>
+                        <div class="mb-3 col-md-2">
+                            <label>Hora Fin</label>
+                            <asp:TextBox ID="txtHoraFinEdit" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Añadir días de atención</h6>
+                    </div>
+
+                    <!-- Caja de los Días de Atención -->
+                    <div class="card p-3 mb-3">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="lunesEdit">
+                                    <label class="form-check-label" for="lunes">Lunes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="martesEdit">
+                                    <label class="form-check-label" for="martes">Martes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="miercolesEdit">
+                                    <label class="form-check-label" for="miercoles">Miércoles</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="juevesEdit">
+                                    <label class="form-check-label" for="jueves">Jueves</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="viernesEdit">
+                                    <label class="form-check-label" for="viernes">Viernes</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sabadoEdit">
+                                    <label class="form-check-label" for="sabado">Sábado</label>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="domingoEdit">
+                                    <label class="form-check-label" for="domingo">Domingo</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN DE Caja de los Días de Atención -->
+
+                    <asp:HiddenField ID="hiddenIdEspacio" runat="server" />
+                    <asp:HiddenField ID="hiddenIdDistrito" runat="server" />
+
                 </div>
 
-                <!-- Listado horarios añadidos -->
-                <asp:Repeater ID="rptHorarios" runat="server">
-                    <HeaderTemplate>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Día</th>
-                                    <th>Hora Inicio</th>
-                                    <th>Hora Fin</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td><%# Eval("Dia") %></td>
-                            <td><%# Eval("HoraInicio") %></td>
-                            <td><%# Eval("HoraFin") %></td>
-                        </tr>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                            </tbody>
-                        </table>
-                    </FooterTemplate>
-                </asp:Repeater>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" onclick="abrirPaso1()">Regresar</button>
-                <asp:Button ID="btnGuardarEspacio" runat="server" CssClass="btn btn-dark" Text="Aceptar" OnClick="btnGuardarEspacio_Click" />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button CssClass="alert-success" ID="btnActualizarEspacioEdit" runat="server" Text="Actualizar" OnClick="btnActualizarEspacioEdit_Click" CommandArgument='<%# Eval("idEspacio") %>'/>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!---------------------------- FIN DE EDICION MODAL  --------------------------------------------->
+
 
     <!-- Modal de Confirmación -->
 <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
-      <div class="modal-header modal-header-rojo text-white">
+      <div class="modal-header modal-header-rojo text-white" style="background-color: #f10909;">
         <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
@@ -193,7 +383,7 @@
           </div>
         </div>
         <div id="modalConfirmacionBody" class="fs-5">
-          ¿Está seguro que desea realizar esta acción?
+          ¿Está seguro que quiere eliminar este espacio?
         </div>
       </div>
 
@@ -220,23 +410,19 @@
             modal1.show();
         }
 
-
-
-    function abrirPaso2() {
-        // copiar nombre al segundo modal
-        document.getElementById('<%= txtNombreEspacioResumen.ClientID %>').value = document.getElementById('<%= txtNombreEspacio.ClientID %>').value;
-        var modal1 = bootstrap.Modal.getInstance(document.getElementById('modalPaso1'));
-        modal1.hide();
-
-        var modal2 = new bootstrap.Modal(document.getElementById('modalPaso2'));
-        modal2.show();
-    }
     </script>
+
+    <!-- Abrir modal de Edición -->
+    <script type="text/javascript">
+        function abrirModalEdicion() {
+            var modalEdicion = bootstrap.Modal.getInstance(document.getElementById('modalEdicionEspacio'));
+            modalEdicion.show();
+        }
+    </script>
+
     <script type="text/javascript">
         function mostrarModalConfirmacion(id) {
-            // Actualizar mensaje si deseas personalizarlo dinámicamente
-            document.getElementById('modalConfirmacionBody').innerText = "¿Está seguro que desea eliminar este espacio?";
-
+            
             // Guardar el ID en campo oculto
             document.getElementById('<%= hdnIdAEliminar.ClientID %>').value = id;
 
@@ -244,6 +430,22 @@
             var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
             modal.show();
         }
+    </script>
+
+    <script type="text/javascript">
+        const inicio = document.getElementById("inpHoraInicio");
+        const fin = document.getElementById("inpHoraFin");
+
+        inicio.addEventListener("change", () => {
+            fin.min = inicio.value;
+        });
+
+        fin.addEventListener("change", () => {
+            if (fin.value <= inicio.value) {
+                alert("La hora de fin debe ser mayor que la de inicio");
+                fin.value = "";
+            }
+        });
     </script>
 
 

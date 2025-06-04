@@ -15,15 +15,6 @@ namespace SirgepPresentacion
     {
 
         /// <summary>
-        /// Control txtBusqueda.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
-
-        /// <summary>
         /// Control ddlCategoria.
         /// </summary>
         /// <remarks>
@@ -69,220 +60,193 @@ namespace SirgepPresentacion
         protected global::System.Web.UI.WebControls.Button btnAgregarEspacio;
 
         /// <summary>
-        /// Control txtNombreEspacioAgregar.
+        /// Control txtNombreEspacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreEspacioAgregar;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreEspacio;
 
         /// <summary>
-        /// Control ddlTipoEspacioAgregar.
+        /// Control ddlTipoEspacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEspacioAgregar;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEspacio;
 
         /// <summary>
-        /// Control txtUbicacionAgregar.
+        /// Control txtUbicacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUbicacionAgregar;
+        protected global::System.Web.UI.WebControls.TextBox txtUbicacion;
 
         /// <summary>
-        /// Control ddlDepartamentoAgregar.
+        /// Control lblDepartamento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepartamentoAgregar;
+        protected global::System.Web.UI.WebControls.DropDownList lblDepartamento;
 
         /// <summary>
-        /// Control txtSuperficieAgregar.
+        /// Control txtSuperficie.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuperficieAgregar;
+        protected global::System.Web.UI.WebControls.TextBox txtSuperficie;
 
         /// <summary>
-        /// Control ddlProvinciaAgregar.
+        /// Control lblRegion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvinciaAgregar;
+        protected global::System.Web.UI.WebControls.DropDownList lblRegion;
 
         /// <summary>
-        /// Control txtPrecioReservaAgregar.
+        /// Control txtPrecioReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecioReservaAgregar;
+        protected global::System.Web.UI.WebControls.TextBox txtPrecioReserva;
 
         /// <summary>
-        /// Control ddlDistritoAgregar.
+        /// Control lblDistrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDistritoAgregar;
+        protected global::System.Web.UI.WebControls.DropDownList lblDistrito;
 
         /// <summary>
-        /// Control txtHoraInicioInsert.
+        /// Control DropDownList1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraInicioInsert;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
-        /// Control txtHoraFinInsert.
+        /// Control lblHoraFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFinInsert;
+        protected global::System.Web.UI.WebControls.DropDownList lblHoraFin;
 
         /// <summary>
-        /// Control btnGuardarInsertado.
+        /// Control txtNombreEspacioResumen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarInsertado;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreEspacioResumen;
 
         /// <summary>
-        /// Control txtNombreEdit.
+        /// Control ddlDiaSemana.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDiaSemana;
 
         /// <summary>
-        /// Control ddlTipoEspacioEdit.
+        /// Control txtHoraInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEspacioEdit;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraInicio;
 
         /// <summary>
-        /// Control txtUbicacionEdit.
+        /// Control txtHoraFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUbicacionEdit;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraFin;
 
         /// <summary>
-        /// Control ddlDepartamentoEdit.
+        /// Control btnAgregarHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDepartamentoEdit;
+        protected global::System.Web.UI.WebControls.Button btnAgregarHorario;
 
         /// <summary>
-        /// Control txtSuperficieEdit.
+        /// Control rptHorarios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSuperficieEdit;
+        protected global::System.Web.UI.WebControls.Repeater rptHorarios;
 
         /// <summary>
-        /// Control ddlProvinciaEdit.
+        /// Control btnGuardarEspacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProvinciaEdit;
+        protected global::System.Web.UI.WebControls.Button btnGuardarEspacio;
 
         /// <summary>
-        /// Control txtPrecioEdit.
+        /// Control lblNombreEspacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrecioEdit;
+        protected global::System.Web.UI.WebControls.TextBox lblNombreEspacio;
 
         /// <summary>
-        /// Control ddlDistritoEdit.
+        /// Control TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlDistritoEdit;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// Control txtHoraInicioEdit.
+        /// Control TextBox2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraInicioEdit;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
 
         /// <summary>
-        /// Control txtHoraFinEdit.
+        /// Control TextBox3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFinEdit;
-
-        /// <summary>
-        /// Control hiddenIdEspacio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hiddenIdEspacio;
-
-        /// <summary>
-        /// Control hiddenIdDistrito.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hiddenIdDistrito;
-
-        /// <summary>
-        /// Control btnActualizarEspacioEdit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActualizarEspacioEdit;
+        protected global::System.Web.UI.WebControls.TextBox TextBox3;
 
         /// <summary>
         /// Control btnConfirmarAccion.

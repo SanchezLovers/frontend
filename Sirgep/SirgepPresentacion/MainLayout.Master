@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainLayout.master.cs" Inherits="SirgepPresentacion.MainLayout" %>
-
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
@@ -9,24 +8,31 @@
     </title>
 
     <!-- Bootstrap CSS -->
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap icons -->
+    <link href="/Content/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
     <!-- Estilos propios -->
-    <link href="Content/site.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+    <!-- Bootstrap JS (opcional) -->
+    <script src="/Scripts/bootstrap.bundle.min.js"></script>
 
     <asp:ContentPlaceHolder ID="Encabezado" runat="server" />
 </head>
-<body>
-    <form id="form1" runat="server">
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <form id="form1" runat="server" style="flex: 1;">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg" style="background-color: #f10909;">
 
             <div class="d-flex align-items-center justify-content-start py-2 px-4">
-                <!-- Imagen del escudo -->
-                <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
-                <!-- Texto del Gobierno Regional -->
-                <div class="text-white me-3">
-                    <strong>Gobierno Regional de Lima</strong>
-                </div>
+                <asp:LinkButton ID="lnkLogo" runat="server" OnClick="lnkLogo_Click" CssClass="text-decoration-none">
+                    <div class="d-flex align-items-center me-3">
+                        <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Escudo Región Lima" class="navbar-brand-img me-3" style="height: 40px;" />
+                        <div class="text-white">
+                            <strong>Gobierno Regional de Lima</strong>
+                        </div>
+                    </div>
+                </asp:LinkButton>
+
                 <!-- Separador -->
                 <div class="vr bg-white mx-3" style="height: 40px; width: 2px;"></div>
                 <!-- Nombre del sistema -->
@@ -41,15 +47,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <!-- Menú desplegable para el usuario administrador -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminMenu">
-                            <li><a class="dropdown-item" href="Perfil.aspx">Perfil</a></li>
-                            <li><a class="dropdown-item" href="ListaEspacios.aspx">Espacios</a></li>
-                            <li><a class="dropdown-item" href="Eventos.aspx">Eventos</a></li>
+                    <!-- Menú Administrador -->
+                    <li id="liAdminMenu" runat="server" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/Usuario/Perfil.aspx">Perfil</a></li>
+                            <li><a class="dropdown-item" href="/Usuario/Admin/ListaEspacios.aspx">Espacios</a></li>
+                            <li><a class="dropdown-item" href="/Usuario/Admin/ListaEventos.aspx">Eventos</a></li>
+                            <li><a class="dropdown-item" href="/Inicio/PrincipalInvitado.aspx">Cerrar Sesión</a></li>
                         </ul>
+                    </li>
+                    <!-- Menú Usuario -->
+                    <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/Usuario/Perfil.aspx">Perfil</a></li>
+                            <li><a class="dropdown-item" href="/Usuario/Comprador/ListaReservas.aspx">Reservas</a></li>
+                            <li><a class="dropdown-item" href="/Usuario/Comprador/ListaEntradas.aspx">Entradas</a></li>
+                            <li><a class="dropdown-item" href="/Inicio/PrincipalInvitado.aspx">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                    <!-- Botón Ingresar -->
+                    <li id="liIngresar" runat="server" class="nav-item d-flex align-items-center me-4">
+                        <asp:Button ID="btnIngresar" runat="server" CssClass="btn btn-dark fw-bold principal-invitado-btn ms-3" Text="Ingresar" OnClick="btnIngresar_Click" />
                     </li>
                 </ul>
             </div>
@@ -60,45 +80,196 @@
             <asp:ContentPlaceHolder ID="Contenido" runat="server" />
         </div>
 
-        <!-- Bootstrap JS (opcional) -->
-        <script src="Scripts/bootstrap.bundle.min.js"></script>
 
         <!-- Modal de Confirmación -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-header modal-header-rojo text-white">
-        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
-      <div class="modal-body d-flex align-items-center modal-body-confirmacion">
-        <div class="icono-confirmacion me-3">
-          <div class="icono-circulo">
-            <span class="icono-texto">i</span>
-          </div>
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-info-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalConfirmacionBody" class="fs-5">
+                            ¿Está seguro que desea eliminar este registro?
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+                        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <div id="modalConfirmacionBody" class="fs-5">
-          ¿Está seguro que desea realizar esta acción?
+
+        <!-- Modal de Error -->
+        <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalErrorLabel">Error</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-exclamation-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalErrorBody" class="fs-5">
+                            Ha ocurrido un error inesperado.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Regresar</em></button>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
-        <button type="button" id="btnConfirmarAccion" class="btn btn-dark px-4"><em>Sí</em></button>
-      </div>
+        <!-- Modal de Acción Exitosa -->
+        <div class="modal fade" id="modalExito" tabindex="-1" aria-labelledby="modalExitoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
 
-    </div>
-  </div>
-</div>
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalExitoLabel">¡Éxito!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                        <div class="icono-confirmacion me-3">
+                            <div class="icono-circulo">
+                                <i class="bi bi-check-lg fs-1"></i>
+                            </div>
+                        </div>
+                        <div id="modalExitoBody" class="fs-5">
+                            La acción se realizó correctamente.
+               
+                        </div>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+                        <!-- Modal de Feedback -->
+        <div class="modal fade" id="modalFeedback" tabindex="-1" aria-labelledby="modalFeedbackLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-rojo text-white">
+                        <h5 class="modal-title" id="modalFeedbackLabel">Feedback</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <!-- Aquí puedes agregar campos para el feedback, como estrellas de calificación y un textarea -->
+                        <p>Por favor, califica tu experiencia:</p>
+                        <div id="estrellasFeedback" class="mb-3">
+                            <span class="estrellaFeedback" data-valor="1" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="2" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="3" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="4" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <span class="estrellaFeedback" data-valor="5" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="txtComentarioFeedback" rows="1" placeholder="Escribe tu comentario (opcional)" style="resize: none; overflow: hidden;"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
+                        <button type="button" id="btnEnviarFeedback" class="btn btn-dark px-4"><em>Enviar</em></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
     </form>
 </body>
 <!-- Pie de página -->
-<footer class="footer text-center text-white py-2 mt-5" style="background-color: #f10909;">
-    <small>2024 © Grupo 1 - 1INF49. Todos los derechos reservados</small>
+<footer class="footer text-center text-white py-2 mt-auto" style="background-color: #f10909;">
+    <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
 </footer>
 
+    <script>
+        // Lógica para mostrar el modal de feedback
+        function mostrarModalFeedback() {
+            var modalFeedback = new bootstrap.Modal(document.getElementById('modalFeedback'));
+            modalFeedback.show();
+        }
+
+        // Lógica para estrellas de feedback
+        let calificacionFeedback = 0;
+        document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
+            estrella.addEventListener('mouseenter', function () {
+                pintarEstrellasFeedback(this.getAttribute('data-valor'));
+            });
+            estrella.addEventListener('mouseleave', function () {
+                pintarEstrellasFeedback(calificacionFeedback);
+            });
+            estrella.addEventListener('click', function () {
+                calificacionFeedback = this.getAttribute('data-valor');
+                pintarEstrellasFeedback(calificacionFeedback);
+            });
+        });
+
+        function pintarEstrellasFeedback(valor) {
+            document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
+                if (estrella.getAttribute('data-valor') <= valor) {
+                    estrella.innerHTML = '&#9733;'; // estrella llena
+                } else {
+                    estrella.innerHTML = '&#9734;'; // estrella vacía
+                }
+            });
+        }
+
+        // Lógica para enviar el feedback y redirigir
+        document.getElementById('btnEnviarFeedback').addEventListener('click', function () {
+            const comentario = document.getElementById('txtComentarioFeedback').value;
+            // Aquí puedes enviar la calificación y comentario por AJAX o como prefieras
+            // Después de enviar el feedback, redirige
+            redirigirPaginaPrincipal();
+        });
+
+        // Función para redirigir a la página principal según el tipo de usuario
+        function redirigirPaginaPrincipal() {
+            var tipoUsuario = '<%= Session["tipoUsuario"] %>';
+            switch (tipoUsuario) {
+                case 'administrador':
+                    window.location.href = '/Inicio/PrincipalAdministrador.aspx';
+                    break;
+                case 'comprador':
+                    window.location.href = '/Inicio/PrincipalComprador.aspx';
+                    break;
+                default:
+                    window.location.href = '/Inicio/PrincipalInvitado.aspx';
+                    break;
+            }
+        }
+
+        // Lógica para cerrar el modal y redirigir
+        document.getElementById('modalFeedback').addEventListener('hidden.bs.modal', function () {
+            redirigirPaginaPrincipal();
+        });
+    </script>
 </html>
