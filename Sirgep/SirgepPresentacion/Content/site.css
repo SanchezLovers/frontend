@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
     Aca va el CSS personalizado de la aplicacion (si hiciera falta)
 */
 .table th, .table td {
@@ -15,6 +14,7 @@
     color: white !important;
 }
 
+/* Asegura que el body ocupe toda la altura de la ventana */
 html, body {
     height: 100%;
     margin: 0;
@@ -24,18 +24,6 @@ html, body {
 
 body {
     flex: 1;
-}
-
-.footer {
-    margin-top: auto;
-    background-color: #d10b0b;
-}
-/* Asegura que el body ocupe toda la altura de la ventana */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
 }
 
 /* El contenedor principal debe crecer dinámicamente */
@@ -82,10 +70,10 @@ html, body {
     transition: background 0.2s;
 }
 
-.header-link:hover {
-    background: rgba(255,255,255,0.12);
-    text-decoration: none;
-}
+    .header-link:hover {
+        background: rgba(255,255,255,0.12);
+        text-decoration: none;
+    }
 /* Centrado vertical y horizontal del contenido principal */
 .principal-wrapper {
     margin: 0 auto;

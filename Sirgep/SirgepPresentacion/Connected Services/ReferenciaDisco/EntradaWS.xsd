@@ -140,14 +140,6 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarVentas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarVentasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarFisicoEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -156,6 +148,14 @@
   <xs:complexType name="eliminarFisicoEntradaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarVentasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarEntrada">
@@ -168,16 +168,6 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEntrada">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="entrada" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarEntradaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarLogicoEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -186,6 +176,16 @@
   <xs:complexType name="eliminarLogicoEntradaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEntrada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:entrada" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEntradaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">

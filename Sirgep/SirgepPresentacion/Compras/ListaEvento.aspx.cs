@@ -208,10 +208,7 @@ namespace SirgepPresentacion.Compras
         //Este seria el boton de compra de eventos que deberia de dirigir a la pantalla de compra
         protected void btnComprar_Click(object sender, EventArgs e)
         {
-            // Aquí puedes agregar la lógica para procesar la compra del evento seleccionado.
-            // Por ejemplo, podrías obtener el ID del evento con:
-            // var btn = (Button)sender;
-            // string idEvento = btn.CommandArgument;
+            Response.Redirect("/Compras/DetalleDelEvento.aspx?idEvento=" + ((Button)sender).CommandArgument);
         }
 
         protected void btnRegresar_Click(object sender, EventArgs e)

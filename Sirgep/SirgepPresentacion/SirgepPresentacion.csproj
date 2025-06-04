@@ -69,6 +69,7 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Compras\DetalleDelEvento.aspx" />
     <Content Include="Compras\EleccionDistrito.aspx" />
     <None Include="Connected Services\ReferenciaDisco\DistritoWS.xsd">
       <SubType>Designer</SubType>
@@ -2209,6 +2210,13 @@
     <Content Include="Inicio\LogIn.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compras\DetalleDelEvento.aspx.cs">
+      <DependentUpon>DetalleDelEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Compras\DetalleDelEvento.aspx.designer.cs">
+      <DependentUpon>DetalleDelEvento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Compras\EleccionDistrito.aspx.cs">
       <DependentUpon>EleccionDistrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainLayout.master.cs" Inherits="SirgepPresentacion.MainLayout" %>
-
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
@@ -210,7 +209,7 @@
     </form>
 </body>
 <!-- Pie de página -->
-<footer class="footer text-center text-white py-2 mt-5" style="background-color: #f10909;">
+<footer class="footer text-center text-white py-2 mt-auto" style="background-color: #f10909;">
     <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
 </footer>
 
