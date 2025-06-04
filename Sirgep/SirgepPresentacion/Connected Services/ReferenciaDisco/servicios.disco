@@ -5,6 +5,7 @@
   <contractRef ref="http://localhost:8080/SirgepWS/DepartamentoWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/SirgepWS/ProvinciaWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/SirgepWS/DistritoWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <contractRef ref="http://localhost:8080/SirgepWS/EventoWSAnaG?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/SirgepWS/EventoWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/SirgepWS/CompraWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/SirgepWS/EventoWSAnaG?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
 </discovery>

@@ -30,7 +30,9 @@ namespace SirgepPresentacion.Usuario.Comprador
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Inicio/PrincipalInvitado.aspx");
+            // Mostrar el modal de feedback
+            string script = "mostrarModalFeedback();";
+            ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
         }
 
         protected void btnDescargar_Click(object sender, EventArgs e)

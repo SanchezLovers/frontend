@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="listarEvento" type="tns:listarEvento" />
+  <xs:element name="listarEspacio" type="tns:listarEspacio" />
+  <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
+  <xs:element name="listarEvento" nillable="true" type="tns:listarEspacio" />
   <xs:element name="listarEventoPorDistrito" type="tns:listarEventoPorDistrito" />
   <xs:element name="listarEventoPorDistritoResponse" type="tns:listarEventoPorDistritoResponse" />
-  <xs:element name="listarEventoResponse" type="tns:listarEventoResponse" />
+  <xs:element name="listarEventoResponse" nillable="true" type="tns:listarEspacioResponse" />
   <xs:complexType name="listarEventoPorDistrito">
     <xs:sequence>
       <xs:element name="Id" type="xs:int" />
@@ -132,12 +134,12 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEvento">
+  <xs:complexType name="listarEspacio">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarEventoResponse">
+  <xs:complexType name="listarEspacioResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">

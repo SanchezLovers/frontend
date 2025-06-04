@@ -82,11 +82,8 @@ namespace SirgepPresentacion.Compras
         }
         protected void btnComprar_Click(object sender, EventArgs e)
         {
-            if (ViewState["FuncionSeleccionada"] != null)
-            {
-                int idFuncion = (int)ViewState["FuncionSeleccionada"];
-                //Response.Redirect($"DetalleDeCompra.aspx?idFuncion={idFuncion}");
-            }
+            string idFuncion = ddlFunciones.SelectedValue;
+            Response.Redirect($"DetalleDeCompra.aspx?idFuncion={idFuncion}");
         }
     }
 }

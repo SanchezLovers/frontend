@@ -13,7 +13,7 @@
     <div class="mb-3">
         <button type="button" class="btn btn-success me-2" onclick="mostrarModalExito()">Probar Modal Éxito</button>
         <button type="button" class="btn btn-danger me-2" onclick="mostrarModalError()">Probar Modal Error</button>
-        <button type="button" class="btn btn-primary" onclick="mostrarModalCalificacion()">Probar Modal Calificación</button>
+        <button type="button" class="btn btn-primary" onclick="mostrarModalFeedback()">Probar Modal Calificación</button>
     </div>
     <!-- FIN CÓDIGO DE PRUEBA -->
 
