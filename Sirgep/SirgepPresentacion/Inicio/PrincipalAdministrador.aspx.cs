@@ -13,22 +13,22 @@ namespace SirgepPresentacion
 
         protected void btnManejarEspacios_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListaEspacios.aspx");
+            Response.Redirect("/Usuario/Admin/ListaEspacios.aspx");
         }
 
         protected void btnConsultarReservas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListaReservas.aspx"); // Ajusta la ruta si es diferente
+            Response.Redirect("/Usuario/Admin/ListaReservas.aspx"); // Ajusta la ruta si es diferente
         }
 
         protected void btnManejarEventos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListaEventos.aspx");
+            Response.Redirect("/Usuario/Admin/ListaEventos.aspx");
         }
 
         protected void btnConsultarEntradas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListaEntradas.aspx"); // Ajusta la ruta si es diferente
+            Response.Redirect("/Usuario/Admin/ListaEntradas.aspx"); // Ajusta la ruta si es diferente
         }
     }
 }

@@ -11,7 +11,7 @@ namespace SirgepPresentacion
 {
 
 
-    public partial class PaginaInicial
+    public partial class LogIn
     {
 
         /// <summary>

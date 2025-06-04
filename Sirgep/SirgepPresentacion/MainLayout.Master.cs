@@ -35,7 +35,7 @@ namespace SirgepPresentacion
                     liUsuarioMenu.Visible = false;
                     liIngresar.Visible = true;
                     string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
-                    if (page == "paginainicial.aspx")
+                    if (page == "login.aspx")
                         liIngresar.Visible = false; // Si estás en la página de invitado, no mostrar el botón de ingresar
                     
                     break;
@@ -49,7 +49,7 @@ namespace SirgepPresentacion
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PaginaInicial.aspx");
+            Response.Redirect("/Inicio/LogIn.aspx");
         }
 
         protected void lnkLogo_Click(object sender, EventArgs e)
@@ -59,20 +59,25 @@ namespace SirgepPresentacion
             switch (tipoUsuario.ToLower())
             {
                 case "administrador":
-                    Response.Redirect("~/PrincipalAdministrador.aspx");
+                    Response.Redirect("/Inicio/PrincipalAdministrador.aspx");
                     break;
 
                 case "comprador":
-                    Response.Redirect("~/PrincipalComprador.aspx");
+                    Response.Redirect("/Inicio/PrincipalComprador.aspx");
                     break;
 
                 case "invitado":
-                    Response.Redirect("~/PrincipalInvitado.aspx");
+                    Response.Redirect("/Inicio/PrincipalInvitado.aspx");
                     break;
                 default:
                     Console.WriteLine("Tipo de usuario no reconocido: " + tipoUsuario);
                     break;
             }
+        }
+
+        protected void btnPerfil_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Usuario/Perfil.aspx");
         }
     }
 }

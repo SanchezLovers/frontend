@@ -31,8 +31,13 @@
                 </asp:DropDownList>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" Visible="false"></asp:Label>
+            </div>
+        </div>
         <div class="text-end">
-                <asp:Button ID="btnAceptar" runat="server" Text="Buscar Eventos" CssClass="btn btn-primary mt-3" />
+                <asp:Button ID="btnAceptar" runat="server" Text="Buscar Eventos" CssClass="btn btn-primary mt-3" OnClick="btnAceptar_Click" />
             </div>
         </div>
 </asp:Content>

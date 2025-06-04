@@ -21,7 +21,7 @@ namespace SirgepPresentacion
 
         protected void btnVerEventos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Compras/EleccionDistrito.aspx");
+            Response.Redirect("/Compras/EleccionDistrito.aspx");
         }
     }
 }

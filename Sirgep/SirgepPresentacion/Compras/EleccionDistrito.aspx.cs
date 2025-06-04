@@ -73,5 +73,35 @@ namespace SirgepPresentacion.Compras
                 ddlDistrito.Enabled = false;
             }
         }
+
+        protected void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if(!(ddlDepartamento.SelectedIndex > 0))
+            {
+                // Mostrar un mensaje de error si no se ha seleccionado un distrito
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione un departamento.";
+            }
+            else if(!(ddlProvincia.SelectedIndex > 0))
+            {
+                // Mostrar un mensaje de error si no se ha seleccionado un distrito
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione una provincia.";
+            }
+            else if(!(ddlDistrito.SelectedIndex > 0))
+            {
+                // Mostrar un mensaje de error si no se ha seleccionado un distrito
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione un distrito.";
+            }
+            else
+            {
+                // Guardar el distrito seleccionado en la sesión
+                Session["IdDistrito"] = ddlDistrito.SelectedValue;
+                Session["NombreDistrito"] = ddlDistrito.SelectedItem.Text;
+                // Redirigir a la página de compras
+                Response.Redirect("ListaEventos.aspx");
+            }
+        }
     }
 }

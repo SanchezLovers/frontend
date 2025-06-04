@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Iniciar Sesion" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="PaginaInicial.aspx.cs" Inherits="SirgepPresentacion.PaginaInicial" %>
+﻿<%@ Page Title="Iniciar Sesion" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="SirgepPresentacion.LogIn" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Iniciar Sesión

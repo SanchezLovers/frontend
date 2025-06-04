@@ -17,7 +17,7 @@
             </div>
             <!-- Columna derecha: imagen -->
             <div class="col-md-6 d-flex justify-content-center align-items-center">
-                <img src="Images/principal/lima_evento.jpg" class="img-fluid rounded" alt="Evento Lima" style="max-width: 90%;" />
+                <img src="/Images/principal/lima_evento.jpg" class="img-fluid rounded" alt="Evento Lima" style="max-width: 90%;" />
             </div>
         </div>
     </div>
