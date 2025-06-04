@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="Principal Administrador" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="PrincipalAdministrador.aspx.cs" Inherits="SirgepPresentacion.PrincipalAdministrador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Contenido" runat="server">
-    <div class="container">
-        <h2 class="mb-3 fw-bold">Bienvenido al Espacio Administrativo</h2>
-        <p class="fw-semibold">Municipalidad XXXXXXXXX</p>
+    <div class="container principal-wrapper">
+        
 
-        <div class="row mt-4 align-items-start">
+        <div class="row w-100 align-items-center">
             <!-- Columna izquierda: bloques de gestión -->
             <div class="col-md-6">
+            <h2 class="mb-3 principal-title">Bienvenido al Espacio Administrativo !!</h2>
                 <h5 class="fw-semibold mb-3">Gestionar Espacios</h5>
                 <div class="row mb-4">
                     <div class="col-6 mb-2">

@@ -7,7 +7,7 @@
     <!--esto es el encabezado-->
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
-    <div class ="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
         <div class="col-md-10 shadow-lg rounded p-5 bg-white">
             <div class="row">
                 <!--izquierda-->
@@ -17,7 +17,7 @@
                     <p class="mt-3">Verdad, Firmeza y Lealtad</p>
                 </div>
                 <!--derecha-->
-                <divv class ="col-md-6 px-4">
+                <divv class="col-md-6 px-4">
                     <h4 class="text-center mb-4 fw-bold">Sistema Integral de Reservas y Gestión de Espacios Públicos</h4>
 
                     <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" />
@@ -29,18 +29,24 @@
 
                     <div class="mb-3 position-relative">
                         <label for="txtPassword" class="form-label">*Contraseña:</label>
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su Contraseña"></asp:TextBox>
-                        <span class="position-absolute top-50 end-0 translate-middle-y me-3" style="cursor:pointer;" onclick="togglePassword()"></span>
+                        <div class="input-group">
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su Contraseña"></asp:TextBox>
+                            <span class="input-group-text" onclick="togglePassword()">
+                                <i id="togglePasswordIcon" class="bi bi-eye-slash"></i>
+                            </span>
+                        </div>
                     </div>
+
+
 
                     <div class="mb-3 d-flex justify-content-between align-items-center">
                         <div>
-                            <asp:CheckBox ID="chkRemember" runat="server" Text="Recordar" />
+                            <!--<asp:CheckBox ID="chkRemember" runat="server" Text="Recordar" />-->
                         </div>
                         <a href="#" class="text-decoration-none">Olvidé mi contraseña</a>
                     </div>
 
-                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-danger w-100 fw-bold" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-dark w-100" OnClick="btnLogin_Click" />
 
                     <small class="d-block mt-2 text-muted">*Campo Requerido</small>
 
@@ -51,4 +57,19 @@
             </div>
         </div>
     </div>
+    <script>
+        function togglePassword() {
+            var passwordInput = document.getElementById('<%= txtPassword.ClientID %>');
+            var toggleIcon = document.getElementById('togglePasswordIcon');
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            }
+        }
+</script>
 </asp:Content>

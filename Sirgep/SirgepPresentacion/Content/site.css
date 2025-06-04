@@ -86,11 +86,13 @@ html, body {
     background: rgba(255,255,255,0.12);
     text-decoration: none;
 }
-<<<<<<< HEAD
 /* Centrado vertical y horizontal del contenido principal */
-.principal-invitado-wrapper {
-    min-height: 75vh;
-=======
+.principal-wrapper {
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 1.2rem;
+    padding: 2.5rem 2rem;
+}
 
 /* SirgepPresentacion/Content/site.css */
 .modal-header-rojo {
@@ -112,31 +114,23 @@ html, body {
     }
 
 .icono-confirmacion {
->>>>>>> 5f952e16124456546311b2b23042f40bc738cc30
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-<<<<<<< HEAD
 /* Título grande y centrado */
-.principal-invitado-title {
+.principal-title {
     font-size: 2.7rem;
     font-weight: bold;
 }
 
 /* Subtítulo más grande */
-.principal-invitado-subtitle {
+.principal-subtitle {
     font-size: 1.3rem;
     font-weight: 500;
 }
 
-/* Botones grandes */
-.principal-invitado-btn {
-    font-size: 1.2rem;
-    padding: 0.75rem 0;
-}
-=======
 .icono-circulo {
     width: 56px;
     height: 56px;
@@ -170,4 +164,3 @@ html, body {
     .modal-footer .btn:focus, .modal-footer .btn:active {
         box-shadow: none;
     }
->>>>>>> 5f952e16124456546311b2b23042f40bc738cc30
