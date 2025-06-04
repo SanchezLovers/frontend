@@ -15,7 +15,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
+<<<<<<< HEAD
           <StartPageUrl>Inicio/PrincipalInvitado.aspx</StartPageUrl>
+=======
+          <StartPageUrl>DetalleEntrada.aspx</StartPageUrl>
+>>>>>>> d3b0a31af9b347ba81ecf88f5e93eb752a73f656
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <SilverlightDebugging>False</SilverlightDebugging>
