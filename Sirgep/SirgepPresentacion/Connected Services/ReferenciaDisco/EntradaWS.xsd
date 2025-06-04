@@ -45,21 +45,23 @@
   </xs:complexType>
   <xs:complexType name="funcion">
     <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
-      <xs:element minOccurs="0" name="horaFin" type="tns:localTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="tns:localTime" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivo" type="xs:base64Binary" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="funciones" nillable="true" type="tns:funcion" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
       <xs:element name="idEvento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element name="precioEntrada" type="xs:double" />
@@ -137,14 +139,6 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarVentas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarVentasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarFisicoEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -153,6 +147,14 @@
   <xs:complexType name="eliminarFisicoEntradaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarVentasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarEntrada">
@@ -165,16 +167,6 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEntrada">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="entrada" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarEntradaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarLogicoEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -183,6 +175,16 @@
   <xs:complexType name="eliminarLogicoEntradaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEntrada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="entrada" type="tns:entrada" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEntradaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">

@@ -60,11 +60,6 @@ C:\Users\Usuario\Desktop\Italo\TA_PROG3\frontend\Sirgep\SirgepPresentacion\obj\D
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
-D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
-D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
-D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
-D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
-D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe.config
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.rsp
@@ -96,3 +91,13 @@ D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\fr
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.rsp
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\NodaTime.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\NodaTime.pdb
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\NodaTime.xml
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
+D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb

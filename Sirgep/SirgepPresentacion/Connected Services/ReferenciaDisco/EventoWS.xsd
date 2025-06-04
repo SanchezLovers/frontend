@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="listarDistritosFiltrados" type="tns:listarDistritosFiltrados" />
-  <xs:element name="listarDistritosFiltradosResponse" type="tns:listarDistritosFiltradosResponse" />
-  <xs:complexType name="listarDistritosFiltrados">
+  <xs:element name="listarEvento" type="tns:listarEvento" />
+  <xs:element name="listarEventoResponse" type="tns:listarEventoResponse" />
+  <xs:complexType name="listarEvento">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEventoResponse">
     <xs:sequence>
-      <xs:element name="Id" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarDistritosFiltradosResponse">
+  <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:distrito" />
+      <xs:element name="cantEntradasDispo" type="xs:int" />
+      <xs:element name="cantEntradasVendidas" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
+      <xs:element name="idEvento" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element name="precioEntrada" type="xs:double" />
+      <xs:element minOccurs="0" name="referencia" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="distrito">
@@ -98,21 +111,6 @@
       <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
       <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
       <xs:element name="idFuncion" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="evento">
-    <xs:sequence>
-      <xs:element name="cantEntradasDispo" type="xs:int" />
-      <xs:element name="cantEntradasVendidas" type="xs:int" />
-      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
-      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
-      <xs:element name="idEvento" type="xs:int" />
-      <xs:element minOccurs="0" name="nombre" type="xs:string" />
-      <xs:element name="precioEntrada" type="xs:double" />
-      <xs:element minOccurs="0" name="referencia" type="xs:string" />
-      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="provincia">

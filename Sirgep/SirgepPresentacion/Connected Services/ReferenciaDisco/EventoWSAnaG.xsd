@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="listarDistritosFiltrados" type="tns:listarDistritosFiltrados" />
-  <xs:element name="listarDistritosFiltradosResponse" type="tns:listarDistritosFiltradosResponse" />
-  <xs:complexType name="listarDistritosFiltrados">
+  <xs:element name="buscarPorID" type="tns:buscarPorID" />
+  <xs:element name="buscarPorIDResponse" type="tns:buscarPorIDResponse" />
+  <xs:element name="cantEntradasDisponibles" type="tns:cantEntradasDisponibles" />
+  <xs:element name="cantEntradasDisponiblesResponse" type="tns:cantEntradasDisponiblesResponse" />
+  <xs:element name="listarEventos" type="tns:listarEventos" />
+  <xs:element name="listarEventosResponse" type="tns:listarEventosResponse" />
+  <xs:element name="listarFuncionesDeEvento" type="tns:listarFuncionesDeEvento" />
+  <xs:element name="listarFuncionesDeEventoResponse" type="tns:listarFuncionesDeEventoResponse" />
+  <xs:complexType name="listarEventos">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEventosResponse">
     <xs:sequence>
-      <xs:element name="Id" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarDistritosFiltradosResponse">
+  <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:distrito" />
+      <xs:element name="cantEntradasDispo" type="xs:int" />
+      <xs:element name="cantEntradasVendidas" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
+      <xs:element name="idEvento" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element name="precioEntrada" type="xs:double" />
+      <xs:element minOccurs="0" name="referencia" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="distrito">
@@ -100,21 +119,6 @@
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="evento">
-    <xs:sequence>
-      <xs:element name="cantEntradasDispo" type="xs:int" />
-      <xs:element name="cantEntradasVendidas" type="xs:int" />
-      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
-      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
-      <xs:element name="idEvento" type="xs:int" />
-      <xs:element minOccurs="0" name="nombre" type="xs:string" />
-      <xs:element name="precioEntrada" type="xs:double" />
-      <xs:element minOccurs="0" name="referencia" type="xs:string" />
-      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="provincia">
     <xs:sequence>
       <xs:element minOccurs="0" name="departamento" type="tns:departamento" />
@@ -127,6 +131,37 @@
     <xs:sequence>
       <xs:element name="idDepartamento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarPorID">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarPorIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEvento">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEventoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cantEntradasDisponibles">
+    <xs:sequence>
+      <xs:element name="IdFuncion" type="xs:int" />
+      <xs:element name="cantExFuncion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cantEntradasDisponiblesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">
