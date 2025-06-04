@@ -1,172 +1,82 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DetalleEntrada.aspx.cs" Inherits="SirgepPresentacion.Usuario.Comprador.DetalleEntrada" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleEntrada.aspx.cs" Inherits="SirgepPresentacion.Usuario.Comprador.DetalleEntrada" %>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Entradas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f2f2f2;
-        }
-        .barra-superior {
-            background-color: #f10909; /* rojo nuevo */
-            height: 60px;
-        }
-        .contenido {
-            padding: 20px;
-        }
-        .titulo {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-        .seccion {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .seccion h2 {
-            margin-top: 0;
-        }
-        .info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .campo {
-            flex: 1 1 200px;
-        }
-        .campo strong {
-            display: block;
-            margin-bottom: 5px;
-        }
-        .botones {
-            text-align: center;
-        }
-        .boton {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #f10909; /* rojo nuevo */
-            color: #fff;
-        }
-        .boton:hover {
-            background-color: #c10707; /* un poco más oscuro */
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-        }
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 22px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover {
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="barra-superior"></div>
+<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
+    Detalle de Entrada
+</asp:Content>
 
-        <div class="contenido">
-            <div class="titulo">Entradas #<asp:Label ID="lblNumEntrada" runat="server" Text="000" /></div>
+<asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <div class="container">
+        <h1 class="mb-4">
+            Detalle de Entrada #<asp:Label ID="lblNumEntrada" runat="server" Text="000" />
+        </h1>
 
-            <div class="seccion">
-                <h2>Datos del evento</h2>
-                <div class="info">
-                    <div class="campo"><strong>Nombre:</strong> <asp:Label ID="lblEvento" runat="server" /></div>
-                    <div class="campo"><strong>Ubicación:</strong> <asp:Label ID="lblUbicacion" runat="server" /></div>
-                    <div class="campo"><strong>Horario:</strong> <asp:Label ID="lblHorario" runat="server" /></div>
-                    <div class="campo"><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" /></div>
-                </div>
+        <div class="card mb-3">
+            <div class="card-header modal-header-rojo text-white">
+                Datos del Evento
             </div>
-
-            <div class="seccion">
-                <h2>Datos del comprador</h2>
-                <div class="info">
-                    <div class="campo"><strong>Nombres:</strong> <asp:Label ID="lblNombres" runat="server" /></div>
-                    <div class="campo"><strong>Apellidos:</strong> <asp:Label ID="lblApellidos" runat="server" /></div>
-                    <div class="campo"><strong>DNI:</strong> <asp:Label ID="lblDNI" runat="server" /></div>
-                    <div class="campo"><strong>Teléfono:</strong> <asp:Label ID="lblTelefono" runat="server" /></div>
-                    <div class="campo"><strong>Correo:</strong> <asp:Label ID="lblCorreo" runat="server" /></div>
-                </div>
-            </div>
-
-            <div class="seccion">
-                <h2>Datos del pago</h2>
-                <div class="info">
-                    <div class="campo"><strong>Método de pago:</strong> <asp:Label ID="lblMetodoPago" runat="server" /></div>
-                    <div class="campo"><strong>Número de pago:</strong> <asp:Label ID="lblNumeroPago" runat="server" /></div>
-                </div>
-            </div>
-
-            <div class="botones">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="boton" OnClick="btnVolver_Click" />
-                <asp:Button ID="btnDescargar" runat="server" Text="Descargar" CssClass="boton" OnClick="btnDescargar_Click" UseSubmitBehavior="false" />
+            <div class="card-body">
+                <div class="mb-2"><strong>Nombre:</strong> <asp:Label ID="lblEvento" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Ubicación:</strong> <asp:Label ID="lblUbicacion" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Horario:</strong> <asp:Label ID="lblHorario" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" Text="" CssClass="ms-2" /></div>
             </div>
         </div>
 
-        <div id="miModal" class="modal">
+        <div class="card mb-3">
+            <div class="card-header modal-header-rojo text-white">
+                Datos del Comprador
+            </div>
+            <div class="card-body">
+                <div class="mb-2"><strong>Nombres:</strong> <asp:Label ID="lblNombres" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Apellidos:</strong> <asp:Label ID="lblApellidos" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>DNI:</strong> <asp:Label ID="lblDNI" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Teléfono:</strong> <asp:Label ID="lblTelefono" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Correo:</strong> <asp:Label ID="lblCorreo" runat="server" Text="" CssClass="ms-2" /></div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header modal-header-rojo text-white">
+                Datos del Pago
+            </div>
+            <div class="card-body">
+                <div class="mb-2"><strong>Método de pago:</strong> <asp:Label ID="lblMetodoPago" runat="server" Text="" CssClass="ms-2" /></div>
+                <div class="mb-2"><strong>Número de pago:</strong> <asp:Label ID="lblNumeroPago" runat="server" Text="" CssClass="ms-2" /></div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-dark" OnClick="btnVolver_Click" />
+            <asp:Button ID="btnDescargar" runat="server" Text="Descargar" CssClass="btn btn-dark" OnClick="btnDescargar_Click" UseSubmitBehavior="false" />
+        </div>
+    </div>
+
+    <!-- Modal de Descarga Completada -->
+    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <span class="close" onclick="cerrarModal()">&times;</span>
-                <h2>Descarga Completada Correctamente</h2>
-                <button class="boton" type="button" onclick="cerrarModal()">Cerrar</button>
+                <div class="modal-header modal-header-rojo text-white">
+                    <h5 class="modal-title" id="miModalLabel">Descarga Completada</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    Descarga completada correctamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            function mostrarModal() {
-                document.getElementById("miModal").style.display = "block";
-            }
-
-            function cerrarModal() {
-                document.getElementById("miModal").style.display = "none";
-            }
-
-            window.onclick = function (event) {
-                var modal = document.getElementById("miModal");
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            // Cambia el <title> usando el contenido del Label cuando la página termine de cargar
-            window.onload = function () {
-                var lbl = document.getElementById("<%= lblNumEntrada.ClientID %>");
-                if (lbl) {
-                    document.title = "Entradas #" + lbl.innerText;
-                }
-            };
-        </script>
-    </form>
-</body>
-</html>
+    <script>
+        function mostrarModalFeedback() {
+            var modal = new bootstrap.Modal(document.getElementById('modalFeedback'));
+            modal.show();
+        }
+        function mostrarModal() {
+            var modal = new bootstrap.Modal(document.getElementById('miModal'));
+            modal.show();
+        }
+    </script>
+</asp:Content>

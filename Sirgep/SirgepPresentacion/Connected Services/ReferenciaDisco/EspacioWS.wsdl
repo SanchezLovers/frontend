@@ -11,17 +11,17 @@
   <message name="listarEspacioResponse">
     <part name="parameters" element="tns:listarEspacioResponse" />
   </message>
-  <message name="buscarEspacio">
-    <part name="parameters" element="tns:buscarEspacio" />
-  </message>
-  <message name="buscarEspacioResponse">
-    <part name="parameters" element="tns:buscarEspacioResponse" />
-  </message>
   <message name="actualizarEspacio">
     <part name="parameters" element="tns:actualizarEspacio" />
   </message>
   <message name="actualizarEspacioResponse">
     <part name="parameters" element="tns:actualizarEspacioResponse" />
+  </message>
+  <message name="buscarEspacio">
+    <part name="parameters" element="tns:buscarEspacio" />
+  </message>
+  <message name="buscarEspacioResponse">
+    <part name="parameters" element="tns:buscarEspacioResponse" />
   </message>
   <message name="insertarEspacio">
     <part name="parameters" element="tns:insertarEspacio" />
@@ -40,13 +40,13 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest" message="tns:listarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse" message="tns:listarEspacioResponse" />
     </operation>
-    <operation name="buscarEspacio">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest" message="tns:buscarEspacio" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse" message="tns:buscarEspacioResponse" />
-    </operation>
     <operation name="actualizarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest" message="tns:actualizarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse" message="tns:actualizarEspacioResponse" />
+    </operation>
+    <operation name="buscarEspacio">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest" message="tns:buscarEspacio" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse" message="tns:buscarEspacioResponse" />
     </operation>
     <operation name="insertarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest" message="tns:insertarEspacio" />
@@ -68,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarEspacio">
+    <operation name="actualizarEspacio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,7 +77,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="actualizarEspacio">
+    <operation name="buscarEspacio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
