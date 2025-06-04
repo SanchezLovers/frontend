@@ -2204,18 +2204,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
-<<<<<<< HEAD
     <Content Include="Usuario\Admin\ListaEspacios.aspx" />
     <Content Include="Usuario\Admin\ListaEventos.aspx" />
     <Content Include="Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Inicio\PrincipalInvitado.aspx" />
-=======
-    <Content Include="DetalleEntrada.aspx" />
-    <Content Include="ListaEspacios.aspx" />
-    <Content Include="ListaEventos.aspx" />
-    <Content Include="PrincipalAdministrador.aspx" />
-    <Content Include="PrincipalInvitado.aspx" />
->>>>>>> d3b0a31af9b347ba81ecf88f5e93eb752a73f656
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2238,23 +2230,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Usuario\Admin\ListaEspacios.aspx.cs">
-=======
-    <Compile Include="Connected Services\SirgepWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="DetalleEntrada.aspx.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="DetalleEntrada.aspx.designer.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ListaEspacios.aspx.cs">
->>>>>>> d3b0a31af9b347ba81ecf88f5e93eb752a73f656
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

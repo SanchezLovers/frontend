@@ -116,3 +116,43 @@ D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe.config
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.rsp
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.exe
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.exe.config
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.rsp
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Buffers.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Memory.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.exe
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.exe.config
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.rsp
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
+C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
