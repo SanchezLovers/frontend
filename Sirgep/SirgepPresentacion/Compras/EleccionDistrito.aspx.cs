@@ -96,11 +96,15 @@ namespace SirgepPresentacion.Compras
             }
             else
             {
-                // Guardar el distrito seleccionado en la sesión
-                Session["IdDistrito"] = ddlDistrito.SelectedValue;
-                Session["NombreDistrito"] = ddlDistrito.SelectedItem.Text;
+                // Obtener el valor seleccionado del DropDownList
+                string idDistrito = ddlDistrito.SelectedValue;
+                string nombreDistrito = ddlDistrito.SelectedItem.Text;
+
+                // Construir la URL con el parámetro idDistrito
+                string url = $"/Compras/ListaEvento.aspx?idDistrito={idDistrito}&nombreDistrito={nombreDistrito}";
+
                 // Redirigir a la página de compras
-                Response.Redirect("ListaEventos.aspx");
+                Response.Redirect(url);
             }
         }
     }
