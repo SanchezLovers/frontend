@@ -89,6 +89,23 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\SirgepWS\DistritoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SirgepWS\EntradaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SirgepWS\EspacioWS.wsdl" />
+    <None Include="Connected Services\SirgepWS\ProvinciaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SirgepWS\servicios.disco" />
+    <None Include="Connected Services\SirgepWS\configuration91.svcinfo" />
+    <None Include="Connected Services\SirgepWS\configuration.svcinfo" />
+    <None Include="Connected Services\SirgepWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2187,6 +2204,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="DetalleEntrada.aspx" />
     <Content Include="ListaEspacios.aspx" />
     <Content Include="ListaEventos.aspx" />
     <Content Include="PrincipalAdministrador.aspx" />
@@ -2212,6 +2230,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SirgepWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DetalleEntrada.aspx.cs">
+      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetalleEntrada.aspx.designer.cs">
+      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaEspacios.aspx.cs">
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
@@ -2378,6 +2408,73 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\SirgepWS\DepartamentoWS.wsdl" />
+    <None Include="Connected Services\SirgepWS\DepartamentoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SirgepWS\DistritoWS.wsdl" />
+    <None Include="Connected Services\SirgepWS\EntradaWS.wsdl" />
+    <None Include="Connected Services\SirgepWS\EspacioWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SirgepWS\ProvinciaWS.wsdl" />
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.actualizarEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.actualizarEspacioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.buscarEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.buscarEspacioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.departamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.distrito.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.eliminarFisicoEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.eliminarLogicoEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.eliminarLogicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.entrada.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.espacio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.insertarEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.insertarEspacioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.listarDepasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.listarDistritosFiltradosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.listarEspacioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.listarProvinciaPorDepaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.listarVentasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SirgepWS\SirgepPresentacion.SirgepWS.provincia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2391,6 +2488,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ReferenciaDisco\" />
+    <WCFMetadataStorage Include="Connected Services\SirgepWS\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
