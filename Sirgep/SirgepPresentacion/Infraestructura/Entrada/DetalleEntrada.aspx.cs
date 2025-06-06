@@ -11,7 +11,7 @@ using System.IO;
 
 
 
-namespace SirgepPresentacion.Usuario.Comprador
+namespace SirgepPresentacion.Infraestructura.Entrada
 {
     public partial class DetalleEntrada : System.Web.UI.Page
     {

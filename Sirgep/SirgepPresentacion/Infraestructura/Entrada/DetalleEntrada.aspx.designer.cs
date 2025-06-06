@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SirgepPresentacion.Infraestructura
+namespace SirgepPresentacion.Infraestructura.Entrada
 {
 
 
