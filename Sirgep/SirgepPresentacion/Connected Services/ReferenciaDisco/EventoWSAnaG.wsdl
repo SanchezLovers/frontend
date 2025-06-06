@@ -5,6 +5,18 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EventoWSAnaG?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
+  <message name="listarFuncionesDeEvento">
+    <part name="parameters" element="tns:listarFuncionesDeEvento" />
+  </message>
+  <message name="listarFuncionesDeEventoResponse">
+    <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
+  </message>
+  <message name="cantEntradasDisponibles">
+    <part name="parameters" element="tns:cantEntradasDisponibles" />
+  </message>
+  <message name="cantEntradasDisponiblesResponse">
+    <part name="parameters" element="tns:cantEntradasDisponiblesResponse" />
+  </message>
   <message name="listarEventos">
     <part name="parameters" element="tns:listarEventos" />
   </message>
@@ -17,19 +29,15 @@
   <message name="buscarPorIDResponse">
     <part name="parameters" element="tns:buscarPorIDResponse" />
   </message>
-  <message name="cantEntradasDisponibles">
-    <part name="parameters" element="tns:cantEntradasDisponibles" />
-  </message>
-  <message name="cantEntradasDisponiblesResponse">
-    <part name="parameters" element="tns:cantEntradasDisponiblesResponse" />
-  </message>
-  <message name="listarFuncionesDeEvento">
-    <part name="parameters" element="tns:listarFuncionesDeEvento" />
-  </message>
-  <message name="listarFuncionesDeEventoResponse">
-    <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
-  </message>
   <portType name="EventoWSAnaG">
+    <operation name="listarFuncionesDeEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
+    </operation>
+    <operation name="cantEntradasDisponibles">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/cantEntradasDisponiblesRequest" message="tns:cantEntradasDisponibles" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/cantEntradasDisponiblesResponse" message="tns:cantEntradasDisponiblesResponse" />
+    </operation>
     <operation name="listarEventos">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarEventosRequest" message="tns:listarEventos" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarEventosResponse" message="tns:listarEventosResponse" />
@@ -38,17 +46,27 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/buscarPorIDRequest" message="tns:buscarPorID" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/buscarPorIDResponse" message="tns:buscarPorIDResponse" />
     </operation>
-    <operation name="cantEntradasDisponibles">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/cantEntradasDisponiblesRequest" message="tns:cantEntradasDisponibles" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/cantEntradasDisponiblesResponse" message="tns:cantEntradasDisponiblesResponse" />
-    </operation>
-    <operation name="listarFuncionesDeEvento">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWSAnaG/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
-    </operation>
   </portType>
   <binding name="EventoWSAnaGPortBinding" type="tns:EventoWSAnaG">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarFuncionesDeEvento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="cantEntradasDisponibles">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarEventos">
       <soap:operation soapAction="" />
       <input>
@@ -59,24 +77,6 @@
       </output>
     </operation>
     <operation name="buscarPorID">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="cantEntradasDisponibles">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarFuncionesDeEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

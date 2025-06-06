@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="buscarEvento" type="tns:buscarEvento" />
+  <xs:element name="buscarEventoResponse" type="tns:buscarEventoResponse" />
   <xs:element name="listarEspacio" type="tns:listarEspacio" />
   <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
   <xs:element name="listarEvento" nillable="true" type="tns:listarEspacio" />
@@ -18,7 +20,6 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -111,12 +112,11 @@
   </xs:complexType>
   <xs:complexType name="funcion">
     <xs:sequence>
-      <xs:element name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
       <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaFin" type="tns:localTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="tns:localTime" />
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -132,6 +132,16 @@
     <xs:sequence>
       <xs:element name="idDepartamento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEvento">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEventoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarEspacio">

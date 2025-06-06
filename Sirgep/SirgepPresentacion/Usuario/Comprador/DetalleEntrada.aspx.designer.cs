@@ -42,22 +42,49 @@ namespace SirgepPresentacion.Usuario.Comprador
         protected global::System.Web.UI.WebControls.Label lblUbicacion;
 
         /// <summary>
-        /// Control lblHorario.
+        /// Control lblDistrito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHorario;
+        protected global::System.Web.UI.WebControls.Label lblDistrito;
 
         /// <summary>
-        /// Control lblFecha.
+        /// Control lblReferencias.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecha;
+        protected global::System.Web.UI.WebControls.Label lblReferencias;
+
+        /// <summary>
+        /// Control lblFechaFuncion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaFuncion;
+
+        /// <summary>
+        /// Control lblHoraInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHoraInicio;
+
+        /// <summary>
+        /// Control lblHoraFin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHoraFin;
 
         /// <summary>
         /// Control lblNombres.
@@ -78,22 +105,22 @@ namespace SirgepPresentacion.Usuario.Comprador
         protected global::System.Web.UI.WebControls.Label lblApellidos;
 
         /// <summary>
-        /// Control lblDNI.
+        /// Control lblTipoDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDNI;
+        protected global::System.Web.UI.WebControls.Label lblTipoDocumento;
 
         /// <summary>
-        /// Control lblTelefono.
+        /// Control lblTNumDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTelefono;
+        protected global::System.Web.UI.WebControls.Label lblTNumDocumento;
 
         /// <summary>
         /// Control lblCorreo.
@@ -105,6 +132,15 @@ namespace SirgepPresentacion.Usuario.Comprador
         protected global::System.Web.UI.WebControls.Label lblCorreo;
 
         /// <summary>
+        /// Control lblFechaConstancia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaConstancia;
+
+        /// <summary>
         /// Control lblMetodoPago.
         /// </summary>
         /// <remarks>
@@ -114,13 +150,22 @@ namespace SirgepPresentacion.Usuario.Comprador
         protected global::System.Web.UI.WebControls.Label lblMetodoPago;
 
         /// <summary>
-        /// Control lblNumeroPago.
+        /// Control lblTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroPago;
+        protected global::System.Web.UI.WebControls.Label lblTotal;
+
+        /// <summary>
+        /// Control lblDetallePago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDetallePago;
 
         /// <summary>
         /// Control btnVolver.

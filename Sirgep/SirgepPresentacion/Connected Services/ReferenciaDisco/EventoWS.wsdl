@@ -11,6 +11,12 @@
   <message name="listarEventoPorDistritoResponse">
     <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
   </message>
+  <message name="buscarEvento">
+    <part name="parameters" element="tns:buscarEvento" />
+  </message>
+  <message name="buscarEventoResponse">
+    <part name="parameters" element="tns:buscarEventoResponse" />
+  </message>
   <message name="listarEvento">
     <part name="parameters" element="tns:listarEvento" />
   </message>
@@ -22,6 +28,10 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
     </operation>
+    <operation name="buscarEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoRequest" message="tns:buscarEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoResponse" message="tns:buscarEventoResponse" />
+    </operation>
     <operation name="listarEvento">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
@@ -30,6 +40,15 @@
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="listarEventoPorDistrito">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

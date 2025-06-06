@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/DistritoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
+  <message name="buscarDistrito">
+    <part name="parameters" element="tns:buscarDistrito" />
+  </message>
+  <message name="buscarDistritoResponse">
+    <part name="parameters" element="tns:buscarDistritoResponse" />
+  </message>
   <message name="listarDistritosFiltrados">
     <part name="parameters" element="tns:listarDistritosFiltrados" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:listarDistritosFiltradosResponse" />
   </message>
   <portType name="DistritoWS">
+    <operation name="buscarDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistritoRequest" message="tns:buscarDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistritoResponse" message="tns:buscarDistritoResponse" />
+    </operation>
     <operation name="listarDistritosFiltrados">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest" message="tns:listarDistritosFiltrados" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse" message="tns:listarDistritosFiltradosResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="DistritoWSPortBinding" type="tns:DistritoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="buscarDistrito">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDistritosFiltrados">
       <soap:operation soapAction="" />
       <input>

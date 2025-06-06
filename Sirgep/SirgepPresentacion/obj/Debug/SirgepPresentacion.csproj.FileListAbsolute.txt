@@ -117,8 +117,6 @@ C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaci
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
-D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
-D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
@@ -154,6 +152,8 @@ D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.rsp
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
+D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
