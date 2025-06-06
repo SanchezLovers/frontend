@@ -2221,7 +2221,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Usuario\Comprador\DetalleEntrada.aspx" />
+    <Content Include="Infraestructura\DetalleEntrada.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio\LogIn.aspx" />
   </ItemGroup>
@@ -2307,11 +2307,11 @@
     <Compile Include="Inicio\LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuario\Comprador\DetalleEntrada.aspx.cs">
+    <Compile Include="Infraestructura\DetalleEntrada.aspx.cs">
       <DependentUpon>DetalleEntrada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuario\Comprador\DetalleEntrada.aspx.designer.cs">
+    <Compile Include="Infraestructura\DetalleEntrada.aspx.designer.cs">
       <DependentUpon>DetalleEntrada.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -2492,6 +2492,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Usuario\Comprador\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

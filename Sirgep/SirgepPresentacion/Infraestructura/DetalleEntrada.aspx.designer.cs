@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SirgepPresentacion.Usuario.Comprador
+namespace SirgepPresentacion.Infraestructura
 {
 
 
