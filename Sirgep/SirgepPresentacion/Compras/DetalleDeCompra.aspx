@@ -57,9 +57,7 @@
                 </button>
                 <asp:HiddenField ID="hfMetodoPago" runat="server" />
             </div>
-            
-            
-            <asp:Button ID="btnPagar" runat="server" CssClass="btn btn-danger mt-3" Text="Pagar" OnClick="btnPagar_Click" />
+            <asp:Button ID="btnPagar" runat="server" CssClass="btn btn-danger mt-3" Text="Pagar" CommandArgument='<%# Eval("idConstancia") %>' OnClick="btnPagar_Click" />
         </div>
     </div>
     <script type="text/javascript">

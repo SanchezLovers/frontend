@@ -21,7 +21,7 @@
                 <div class="card h-100 shadow-sm">
                     <div class="row g-0">
                         <div class="col-4 d-flex align-items-center">
-                            <img src='<%# Eval("archivoImagen") %>' alt="Imagen Evento" class="img-fluid rounded-start img-evento" style="max-height: 120px; object-fit: cover;" />
+
                         </div>
                         <div class="col-8">
                             <div class="card-body">

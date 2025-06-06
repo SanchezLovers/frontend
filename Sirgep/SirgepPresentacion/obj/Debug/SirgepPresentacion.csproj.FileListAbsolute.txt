@@ -157,3 +157,10 @@ D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
+D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.Properties.Resources.resources
+D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.GenerateResource.cache
+D:\Local\frontend\Sirgep\SirgepPresentacion\bin\BouncyCastle.Cryptography.dll
+D:\Local\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.dll
+D:\Local\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xmlworker.dll
+D:\Local\frontend\Sirgep\SirgepPresentacion\bin\BouncyCastle.Cryptography.xml
+D:\Local\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xml

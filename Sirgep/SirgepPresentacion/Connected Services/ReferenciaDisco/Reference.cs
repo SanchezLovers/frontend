@@ -1087,9 +1087,9 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
     public partial class localTime : object, System.ComponentModel.INotifyPropertyChanged {
-        public int Hour;
-        public int Minute;
-        public int Second;
+        public int Hour { set; get; }
+        public int Minute { set; get; }
+        public int Second{ set; get; }
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
