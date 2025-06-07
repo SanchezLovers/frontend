@@ -98,10 +98,10 @@ namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
             {
                 // Obtener el valor seleccionado del DropDownList
                 string idDistrito = ddlDistrito.SelectedValue;
-                string nombreDistrito = ddlDistrito.SelectedItem.Text;
+                string nombreDistrito = ddlDistrito.SelectedItem.Text;  
 
                 // Construir la URL con el parámetro idDistrito
-                string url = "/Presentacion/Infraestructura/Evento/ListaEvento.aspx?idDistrito={idDistrito}&nombreDistrito={nombreDistrito}";
+                string url = $"/Presentacion/Infraestructura/Evento/ListaEvento.aspx?idDistrito={idDistrito}&nombreDistrito={nombreDistrito}";
 
                 // Redirigir a la página de compras
                 Response.Redirect(url);
