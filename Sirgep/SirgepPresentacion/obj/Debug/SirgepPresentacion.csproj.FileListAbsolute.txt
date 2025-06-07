@@ -151,7 +151,6 @@ D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.exe.config
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.rsp
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe
 D:\Local\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
-D:\Local\frontend\Sirgep\SirgepPresentacion\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
 D:\Local\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
