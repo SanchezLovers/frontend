@@ -49,7 +49,7 @@ namespace SirgepPresentacion
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Inicio/LogIn.aspx");
+            Response.Redirect("/Presentacion/Inicio/LogIn.aspx");
         }
 
         protected void lnkLogo_Click(object sender, EventArgs e)
@@ -59,15 +59,15 @@ namespace SirgepPresentacion
             switch (tipoUsuario.ToLower())
             {
                 case "administrador":
-                    Response.Redirect("/Inicio/PrincipalAdministrador.aspx");
+                    Response.Redirect("/Presentacion/Inicio/PrincipalAdministrador.aspx");
                     break;
 
                 case "comprador":
-                    Response.Redirect("/Inicio/PrincipalComprador.aspx");
+                    Response.Redirect("/Presentacion/Inicio/PrincipalComprador.aspx");
                     break;
 
                 case "invitado":
-                    Response.Redirect("/Inicio/PrincipalInvitado.aspx");
+                    Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
                 default:
                     Console.WriteLine("Tipo de usuario no reconocido: " + tipoUsuario);
@@ -77,7 +77,7 @@ namespace SirgepPresentacion
 
         protected void btnPerfil_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Usuario/Perfil.aspx");
+            Response.Redirect("/Presentacion/Usuarios/Perfil.aspx");
         }
     }
 }

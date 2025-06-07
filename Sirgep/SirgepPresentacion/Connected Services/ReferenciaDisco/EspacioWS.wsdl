@@ -5,29 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EspacioWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="listarEspacioPorCategoria">
-    <part name="parameters" element="tns:listarEspacioPorCategoria" />
+  <message name="eliminarLogico">
+    <part name="parameters" element="tns:eliminarLogico" />
   </message>
-  <message name="listarEspacioPorCategoriaResponse">
-    <part name="parameters" element="tns:listarEspacioPorCategoriaResponse" />
+  <message name="eliminarLogicoResponse">
+    <part name="parameters" element="tns:eliminarLogicoResponse" />
   </message>
-  <message name="listarEspacioPorDistrito">
-    <part name="parameters" element="tns:listarEspacioPorDistrito" />
+  <message name="listarEspacio">
+    <part name="parameters" element="tns:listarEspacio" />
   </message>
-  <message name="listarEspacioPorDistritoResponse">
-    <part name="parameters" element="tns:listarEspacioPorDistritoResponse" />
-  </message>
-  <message name="buscarEspacioPorTexto">
-    <part name="parameters" element="tns:buscarEspacioPorTexto" />
-  </message>
-  <message name="buscarEspacioPorTextoResponse">
-    <part name="parameters" element="tns:buscarEspacioPorTextoResponse" />
-  </message>
-  <message name="listarEspacioDistyCat">
-    <part name="parameters" element="tns:listarEspacioDistyCat" />
-  </message>
-  <message name="listarEspacioDistyCatResponse">
-    <part name="parameters" element="tns:listarEspacioDistyCatResponse" />
+  <message name="listarEspacioResponse">
+    <part name="parameters" element="tns:listarEspacioResponse" />
   </message>
   <message name="insertarEspacio">
     <part name="parameters" element="tns:insertarEspacio" />
@@ -41,40 +29,44 @@
   <message name="buscarEspacioResponse">
     <part name="parameters" element="tns:buscarEspacioResponse" />
   </message>
-  <message name="listarEspacio">
-    <part name="parameters" element="tns:listarEspacio" />
-  </message>
-  <message name="listarEspacioResponse">
-    <part name="parameters" element="tns:listarEspacioResponse" />
-  </message>
   <message name="actualizarEspacio">
     <part name="parameters" element="tns:actualizarEspacio" />
   </message>
   <message name="actualizarEspacioResponse">
     <part name="parameters" element="tns:actualizarEspacioResponse" />
   </message>
-  <message name="eliminarLogico">
-    <part name="parameters" element="tns:eliminarLogico" />
+  <message name="buscarEspacioPorTexto">
+    <part name="parameters" element="tns:buscarEspacioPorTexto" />
   </message>
-  <message name="eliminarLogicoResponse">
-    <part name="parameters" element="tns:eliminarLogicoResponse" />
+  <message name="buscarEspacioPorTextoResponse">
+    <part name="parameters" element="tns:buscarEspacioPorTextoResponse" />
+  </message>
+  <message name="listarEspacioPorCategoria">
+    <part name="parameters" element="tns:listarEspacioPorCategoria" />
+  </message>
+  <message name="listarEspacioPorCategoriaResponse">
+    <part name="parameters" element="tns:listarEspacioPorCategoriaResponse" />
+  </message>
+  <message name="listarEspacioPorDistrito">
+    <part name="parameters" element="tns:listarEspacioPorDistrito" />
+  </message>
+  <message name="listarEspacioPorDistritoResponse">
+    <part name="parameters" element="tns:listarEspacioPorDistritoResponse" />
+  </message>
+  <message name="listarEspacioDistyCat">
+    <part name="parameters" element="tns:listarEspacioDistyCat" />
+  </message>
+  <message name="listarEspacioDistyCatResponse">
+    <part name="parameters" element="tns:listarEspacioDistyCatResponse" />
   </message>
   <portType name="EspacioWS">
-    <operation name="listarEspacioPorCategoria">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest" message="tns:listarEspacioPorCategoria" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse" message="tns:listarEspacioPorCategoriaResponse" />
+    <operation name="eliminarLogico">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
     </operation>
-    <operation name="listarEspacioPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoRequest" message="tns:listarEspacioPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoResponse" message="tns:listarEspacioPorDistritoResponse" />
-    </operation>
-    <operation name="buscarEspacioPorTexto">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoRequest" message="tns:buscarEspacioPorTexto" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoResponse" message="tns:buscarEspacioPorTextoResponse" />
-    </operation>
-    <operation name="listarEspacioDistyCat">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatRequest" message="tns:listarEspacioDistyCat" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatResponse" message="tns:listarEspacioDistyCatResponse" />
+    <operation name="listarEspacio">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest" message="tns:listarEspacio" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse" message="tns:listarEspacioResponse" />
     </operation>
     <operation name="insertarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest" message="tns:insertarEspacio" />
@@ -84,22 +76,30 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest" message="tns:buscarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse" message="tns:buscarEspacioResponse" />
     </operation>
-    <operation name="listarEspacio">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest" message="tns:listarEspacio" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse" message="tns:listarEspacioResponse" />
-    </operation>
     <operation name="actualizarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest" message="tns:actualizarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse" message="tns:actualizarEspacioResponse" />
     </operation>
-    <operation name="eliminarLogico">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
+    <operation name="buscarEspacioPorTexto">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoRequest" message="tns:buscarEspacioPorTexto" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoResponse" message="tns:buscarEspacioPorTextoResponse" />
+    </operation>
+    <operation name="listarEspacioPorCategoria">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest" message="tns:listarEspacioPorCategoria" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse" message="tns:listarEspacioPorCategoriaResponse" />
+    </operation>
+    <operation name="listarEspacioPorDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoRequest" message="tns:listarEspacioPorDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoResponse" message="tns:listarEspacioPorDistritoResponse" />
+    </operation>
+    <operation name="listarEspacioDistyCat">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatRequest" message="tns:listarEspacioDistyCat" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatResponse" message="tns:listarEspacioDistyCatResponse" />
     </operation>
   </portType>
   <binding name="EspacioWSPortBinding" type="tns:EspacioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarEspacioPorCategoria">
+    <operation name="eliminarLogico">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -108,25 +108,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEspacioPorDistrito">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarEspacioPorTexto">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarEspacioDistyCat">
+    <operation name="listarEspacio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -153,15 +135,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEspacio">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="actualizarEspacio">
       <soap:operation soapAction="" />
       <input>
@@ -171,7 +144,34 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarLogico">
+    <operation name="buscarEspacioPorTexto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEspacioPorCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEspacioPorDistrito">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEspacioDistyCat">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

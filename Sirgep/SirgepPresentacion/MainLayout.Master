@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainLayout.master.cs" Inherits="SirgepPresentacion.MainLayout" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
