@@ -1,13 +1,6 @@
 .vs/
 # Nunca subir esto
 Sirgep/SirgepPresentacion/DriveAuth/credentials.json
-# Ignorar binarios y carpetas de compilacion
-*.dll
-*.pdb
-*.cache
-*.exe
-/bin/
-/obj/
 # Archivos binarios y temporales
 **/bin/
 **/obj/

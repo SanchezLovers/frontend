@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="pe.edu.pucp.sirgep" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="DepartamentoWS" targetNamespace="pe.edu.pucp.sirgep" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/SirgepWS/DepartamentoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
+    </xsd:schema>
+  </types>
+  <message name="listarDepas">
+    <part name="parameters" element="tns:listarDepas" />
+  </message>
+  <message name="listarDepasResponse">
+    <part name="parameters" element="tns:listarDepasResponse" />
+  </message>
+  <portType name="DepartamentoWS">
+    <operation name="listarDepas">
+      <input wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasRequest" message="tns:listarDepas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasResponse" message="tns:listarDepasResponse" />
+    </operation>
+  </portType>
+  <binding name="DepartamentoWSPortBinding" type="tns:DepartamentoWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarDepas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="DepartamentoWS">
+    <port name="DepartamentoWSPort" binding="tns:DepartamentoWSPortBinding">
+      <soap:address location="http://localhost:8080/SirgepWS/DepartamentoWS" />
+    </port>
+  </service>
+</definitions>
