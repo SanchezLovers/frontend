@@ -11,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
 {
 
 
-    public partial class EleccionDistrito
+    public partial class EligeDistrito
     {
 
         /// <summary>

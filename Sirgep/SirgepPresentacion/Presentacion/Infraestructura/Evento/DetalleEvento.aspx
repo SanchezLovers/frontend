@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleEvento.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Infraestructura.Evento.DetalleDelEvento" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleEvento.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Infraestructura.Evento.DetalleEvento" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>

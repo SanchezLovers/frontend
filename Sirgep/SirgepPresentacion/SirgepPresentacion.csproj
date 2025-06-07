@@ -2210,6 +2210,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
     <Content Include="Resources\Pdfs\PlantillaEntrada.html" />
     <Content Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\ListaEventos.aspx" />
@@ -2258,6 +2259,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.cs">
+      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.designer.cs">
+      <DependentUpon>DetalleReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
