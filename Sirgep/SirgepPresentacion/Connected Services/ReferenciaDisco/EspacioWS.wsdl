@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EspacioWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="actualizarEspacio">
-    <part name="parameters" element="tns:actualizarEspacio" />
+  <message name="eliminarLogico">
+    <part name="parameters" element="tns:eliminarLogico" />
   </message>
-  <message name="actualizarEspacioResponse">
-    <part name="parameters" element="tns:actualizarEspacioResponse" />
+  <message name="eliminarLogicoResponse">
+    <part name="parameters" element="tns:eliminarLogicoResponse" />
   </message>
   <message name="buscarEspacio">
     <part name="parameters" element="tns:buscarEspacio" />
@@ -17,17 +17,11 @@
   <message name="buscarEspacioResponse">
     <part name="parameters" element="tns:buscarEspacioResponse" />
   </message>
-  <message name="eliminarLogico">
-    <part name="parameters" element="tns:eliminarLogico" />
+  <message name="actualizarEspacio">
+    <part name="parameters" element="tns:actualizarEspacio" />
   </message>
-  <message name="eliminarLogicoResponse">
-    <part name="parameters" element="tns:eliminarLogicoResponse" />
-  </message>
-  <message name="insertarEspacio">
-    <part name="parameters" element="tns:insertarEspacio" />
-  </message>
-  <message name="insertarEspacioResponse">
-    <part name="parameters" element="tns:insertarEspacioResponse" />
+  <message name="actualizarEspacioResponse">
+    <part name="parameters" element="tns:actualizarEspacioResponse" />
   </message>
   <message name="listarEspacio">
     <part name="parameters" element="tns:listarEspacio" />
@@ -35,31 +29,37 @@
   <message name="listarEspacioResponse">
     <part name="parameters" element="tns:listarEspacioResponse" />
   </message>
+  <message name="insertarEspacio">
+    <part name="parameters" element="tns:insertarEspacio" />
+  </message>
+  <message name="insertarEspacioResponse">
+    <part name="parameters" element="tns:insertarEspacioResponse" />
+  </message>
   <portType name="EspacioWS">
-    <operation name="actualizarEspacio">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest" message="tns:actualizarEspacio" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse" message="tns:actualizarEspacioResponse" />
+    <operation name="eliminarLogico">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
     </operation>
     <operation name="buscarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest" message="tns:buscarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse" message="tns:buscarEspacioResponse" />
     </operation>
-    <operation name="eliminarLogico">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
-    </operation>
-    <operation name="insertarEspacio">
-      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest" message="tns:insertarEspacio" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse" message="tns:insertarEspacioResponse" />
+    <operation name="actualizarEspacio">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest" message="tns:actualizarEspacio" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse" message="tns:actualizarEspacioResponse" />
     </operation>
     <operation name="listarEspacio">
       <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest" message="tns:listarEspacio" />
       <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse" message="tns:listarEspacioResponse" />
     </operation>
+    <operation name="insertarEspacio">
+      <input wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest" message="tns:insertarEspacio" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse" message="tns:insertarEspacioResponse" />
+    </operation>
   </portType>
   <binding name="EspacioWSPortBinding" type="tns:EspacioWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="actualizarEspacio">
+    <operation name="eliminarLogico">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,16 +77,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarLogico">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarEspacio">
+    <operation name="actualizarEspacio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -96,6 +87,15 @@
       </output>
     </operation>
     <operation name="listarEspacio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarEspacio">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
