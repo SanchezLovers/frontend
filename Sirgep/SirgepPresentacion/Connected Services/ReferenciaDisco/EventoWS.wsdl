@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EventoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="listarEvento">
-    <part name="parameters" element="tns:listarEvento" />
+  <message name="listarEventoPorDistrito">
+    <part name="parameters" element="tns:listarEventoPorDistrito" />
   </message>
-  <message name="listarEventoResponse">
-    <part name="parameters" element="tns:listarEventoResponse" />
+  <message name="listarEventoPorDistritoResponse">
+    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
   </message>
   <message name="buscarEvento">
     <part name="parameters" element="tns:buscarEvento" />
@@ -17,29 +17,29 @@
   <message name="buscarEventoResponse">
     <part name="parameters" element="tns:buscarEventoResponse" />
   </message>
-  <message name="listarEventoPorDistrito">
-    <part name="parameters" element="tns:listarEventoPorDistrito" />
+  <message name="listarEvento">
+    <part name="parameters" element="tns:listarEvento" />
   </message>
-  <message name="listarEventoPorDistritoResponse">
-    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
+  <message name="listarEventoResponse">
+    <part name="parameters" element="tns:listarEventoResponse" />
   </message>
   <portType name="EventoWS">
-    <operation name="listarEvento">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
+    <operation name="listarEventoPorDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
     </operation>
     <operation name="buscarEvento">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoRequest" message="tns:buscarEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoResponse" message="tns:buscarEventoResponse" />
     </operation>
-    <operation name="listarEventoPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
+    <operation name="listarEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
     </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarEvento">
+    <operation name="listarEventoPorDistrito">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -57,7 +57,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEventoPorDistrito">
+    <operation name="listarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

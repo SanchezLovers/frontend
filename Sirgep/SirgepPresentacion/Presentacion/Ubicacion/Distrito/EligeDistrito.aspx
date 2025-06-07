@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="EligeDistrito.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ubicacion.Distrito.EleccionDistrito" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="EligeDistrito.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ubicacion.Distrito.EligeDistrito" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     ¿De donde Buscamos?

@@ -11,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
 
 
-    public partial class DetalleDelEvento
+    public partial class DetalleEvento
     {
 
         /// <summary>
