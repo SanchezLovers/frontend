@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
-    public partial class DetalleDelEvento : System.Web.UI.Page
+    public partial class DetalleEvento : System.Web.UI.Page
     {
         protected EventoWSAnaGClient eventoWS;
 

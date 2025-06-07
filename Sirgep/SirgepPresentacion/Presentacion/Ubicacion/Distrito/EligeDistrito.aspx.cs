@@ -9,7 +9,7 @@ using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
 {
-    public partial class EleccionDistrito : System.Web.UI.Page
+    public partial class EligeDistrito : System.Web.UI.Page
     {
         protected DepartamentoWSClient departamentoWS;
         protected ProvinciaWSClient provinciaWS;

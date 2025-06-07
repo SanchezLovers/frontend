@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 {
-    public partial class DetalleDeCompra : System.Web.UI.Page
+    public partial class CompraEntrada : System.Web.UI.Page
     {
         CompraWSClient compraService;
         protected void Page_Init(object sender, EventArgs e)
