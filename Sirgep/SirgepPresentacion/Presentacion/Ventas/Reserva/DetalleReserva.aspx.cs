@@ -15,6 +15,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
     public partial class DetalleEntrada : System.Web.UI.Page
     {
+        /*
         private EntradaWSClient entradaWS;
         //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
@@ -113,5 +114,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 Response.End();
             }
         }
+        */
     }
 }
