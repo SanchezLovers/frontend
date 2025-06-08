@@ -32,7 +32,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 // Datos del espacio
                 lblEspacio.Text = espacioDomain.nombre;
                 lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
-                lblSuperficie.Text = espacioDomain.superficie.ToString();
+                lblSuperficie.Text = espacioDomain.superficie.ToString()+ " m²";
                 lblUbicacion.Text = espacioDomain.ubicacion; 
                 lblDistrito.Text = distritoDomain.nombre;
                 // Datos de la Reserva
@@ -47,7 +47,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
                 lblCorreo.Text = compradorDomain.correo;
                 // Datos de la constancia del pago
-                lblFechaConstancia.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
+                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
                 lblDetallePago.Text = reservaDomain.detallePago;
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
@@ -70,6 +70,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             // Datos del Espacio
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_ESPACIO}", lblEspacio.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{TIPO_ESPACIO}", lblTipoEspacio.Text);
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{SUPERFICIE}", lblSuperficie.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{UBICACION}", lblUbicacion.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{DISTRITO}", lblDistrito.Text);
             // Datos de la Reserva
