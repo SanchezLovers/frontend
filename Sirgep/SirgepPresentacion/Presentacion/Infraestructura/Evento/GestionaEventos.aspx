@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListaEventos.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Infraestructura.Evento.ListaEventos" MasterPageFile="~/MainLayout.Master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GestionaEventos.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Infraestructura.Evento.GestionaEventos" MasterPageFile="~/MainLayout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Municipalidad &gt; Eventos

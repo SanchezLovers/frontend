@@ -47,7 +47,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
                 lblCorreo.Text = compradorDomain.correo;
                 // Datos de la constancia del pago
-                lblFechaConstancia.Text = entradaDomain.fecha.ToString("dd/MM/yyyy");
+                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
                 lblDetallePago.Text = entradaDomain.detallePago.ToString();
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");

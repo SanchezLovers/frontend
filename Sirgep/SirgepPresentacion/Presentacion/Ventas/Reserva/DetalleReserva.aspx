@@ -16,7 +16,7 @@
                 <div class="col-12 col-md-4">
                     <strong>Tipo Espacio:</strong> <asp:Label ID="lblTipoEspacio" runat="server" CssClass="ms-2" />
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-4">
                     <strong>Superficie:</strong> <asp:Label ID="lblSuperficie" runat="server" CssClass="ms-2" />
                 </div>
                 <div class="col-12 col-md-4">

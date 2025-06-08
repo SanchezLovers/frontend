@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
-    public partial class ListaEventos : System.Web.UI.Page
+    public partial class GestionaEventos : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
