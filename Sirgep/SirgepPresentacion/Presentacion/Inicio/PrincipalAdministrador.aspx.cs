@@ -23,7 +23,7 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnManejarEventos_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Infraestructura/Evento/ListaEventos.aspx");
+            Response.Redirect("/Presentacion/Infraestructura/Evento/GestionaEventos.aspx");
         }
 
         protected void btnConsultarEntradas_Click(object sender, EventArgs e)
