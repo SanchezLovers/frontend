@@ -2205,6 +2205,20 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
+    <Content Include="Images\grl\Escudo_Región_Lima.png" />
+    <Content Include="Images\grl\Escudo_Región_Lima_recortado.PNG" />
+    <Content Include="Images\grl\logo_grl.png" />
+    <Content Include="Images\icons\open-link.png" />
+    <Content Include="Images\img\undraw_posting_photo.svg" />
+    <Content Include="Images\img\undraw_profile.svg" />
+    <Content Include="Images\img\undraw_profile_1.svg" />
+    <Content Include="Images\img\undraw_profile_2.svg" />
+    <Content Include="Images\img\undraw_profile_3.svg" />
+    <Content Include="Images\img\undraw_rocket.svg" />
+    <Content Include="Images\metodosDePago\Plin.png" />
+    <Content Include="Images\metodosDePago\Tarjeta.png" />
+    <Content Include="Images\metodosDePago\Yape.png" />
+    <Content Include="Images\principal\lima_evento.jpg" />
     <Content Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx" />
@@ -2216,6 +2230,8 @@
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
+    <Content Include="Resources\Pdfs\EntradaPdf.html" />
+    <Content Include="Resources\Pdfs\ReservaPdf.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2315,6 +2331,11 @@
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainLayout.Master" />
@@ -2530,6 +2551,12 @@
   <ItemGroup>
     <Folder Include="Presentacion\Infraestructura\Funcion\" />
     <Folder Include="Presentacion\Usuarios\Administrador\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
