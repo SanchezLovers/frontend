@@ -2222,7 +2222,7 @@
     <Content Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx" />
-    <Content Include="Presentacion\Infraestructura\Evento\ListaEventos.aspx" />
+    <Content Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx" />
     <Content Include="Presentacion\Inicio\LogIn.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
@@ -2267,12 +2267,12 @@
     <Compile Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx.designer.cs">
       <DependentUpon>ListaEvento.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Infraestructura\Evento\ListaEventos.aspx.cs">
-      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    <Compile Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx.cs">
+      <DependentUpon>GestionaEventos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Infraestructura\Evento\ListaEventos.aspx.designer.cs">
-      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    <Compile Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx.designer.cs">
+      <DependentUpon>GestionaEventos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Inicio\LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
