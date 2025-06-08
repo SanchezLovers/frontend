@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="actualizarReserva" type="tns:actualizarReserva" />
+  <xs:element name="actualizarReservaResponse" type="tns:actualizarReservaResponse" />
+  <xs:element name="buscarCompradorDeReserva" type="tns:buscarCompradorDeReserva" />
+  <xs:element name="buscarCompradorDeReservaResponse" type="tns:buscarCompradorDeReservaResponse" />
+  <xs:element name="buscarDistritoDeReserva" type="tns:buscarDistritoDeReserva" />
+  <xs:element name="buscarDistritoDeReservaResponse" type="tns:buscarDistritoDeReservaResponse" />
+  <xs:element name="buscarEspacioDeReserva" type="tns:buscarEspacioDeReserva" />
+  <xs:element name="buscarEspacioDeReservaResponse" type="tns:buscarEspacioDeReservaResponse" />
+  <xs:element name="buscarReserva" type="tns:buscarReserva" />
+  <xs:element name="buscarReservaResponse" type="tns:buscarReservaResponse" />
+  <xs:element name="eliminarFisicoReserva" type="tns:eliminarFisicoReserva" />
+  <xs:element name="eliminarFisicoReservaResponse" type="tns:eliminarFisicoReservaResponse" />
+  <xs:element name="eliminarLogicoReserva" type="tns:eliminarLogicoReserva" />
+  <xs:element name="eliminarLogicoReservaResponse" type="tns:eliminarLogicoReservaResponse" />
+  <xs:element name="insertarReserva" type="tns:insertarReserva" />
+  <xs:element name="insertarReservaResponse" type="tns:insertarReservaResponse" />
+  <xs:element name="listarVentas" type="tns:listarVentas" />
+  <xs:element name="listarVentasResponse" type="tns:listarVentasResponse" />
+  <xs:complexType name="buscarCompradorDeReserva">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarCompradorDeReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:comprador" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="comprador">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:persona">
+        <xs:sequence>
+          <xs:element name="monto" type="xs:double" />
+          <xs:element name="registrado" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="persona">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contrasenia" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
+      <xs:element name="idPersona" type="xs:int" />
+      <xs:element minOccurs="0" name="nombres" type="xs:string" />
+      <xs:element minOccurs="0" name="numDocumento" type="xs:string" />
+      <xs:element minOccurs="0" name="primerApellido" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="reservas" nillable="true" type="tns:reserva" />
+      <xs:element minOccurs="0" name="segundoApellido" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoDocumento" type="tns:eTipoDocumento" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="entrada">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:constancia">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="funcion" type="tns:funcion" />
+          <xs:element name="numEntrada" type="xs:int" />
+          <xs:element minOccurs="0" name="persona" type="tns:persona" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="constancia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="detallePago" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element name="idConstancia" type="xs:int" />
+      <xs:element name="igv" type="xs:double" />
+      <xs:element minOccurs="0" name="metodoPago" type="tns:eMetodoPago" />
+      <xs:element name="total" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="funcion">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
+      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element name="idFuncion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="evento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
+      <xs:element name="cantEntradasDispo" type="xs:int" />
+      <xs:element name="cantEntradasVendidas" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
+      <xs:element name="idEvento" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element name="precioEntrada" type="xs:double" />
+      <xs:element minOccurs="0" name="referencia" type="xs:string" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="distrito">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="espacios" nillable="true" type="tns:espacio" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="eventos" nillable="true" type="tns:evento" />
+      <xs:element name="idDistrito" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="provincia" type="tns:provincia" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="espacio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
+      <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
+      <xs:element name="idEspacio" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="listaDiasAtencion" nillable="true" type="tns:eDiaSemana" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element name="precioReserva" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="reservas" nillable="true" type="tns:reserva" />
+      <xs:element name="superficie" type="xs:double" />
+      <xs:element minOccurs="0" name="tipoEspacio" type="tns:eTipoEspacio" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reserva">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:constancia">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
+          <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="horarioFin" type="tns:localTime" />
+          <xs:element minOccurs="0" name="horarioIni" type="tns:localTime" />
+          <xs:element name="numReserva" type="xs:int" />
+          <xs:element minOccurs="0" name="persona" type="tns:persona" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="localTime" final="extension restriction">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="provincia">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="departamento" type="tns:departamento" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="distritos" nillable="true" type="tns:distrito" />
+      <xs:element name="idProvincia" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="departamento">
+    <xs:sequence>
+      <xs:element name="idDepartamento" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reserva" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarVentasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarFisicoReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarFisicoReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reserva" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEspacioDeReserva">
+    <xs:sequence>
+      <xs:element name="idEspacio" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEspacioDeReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:espacio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarDistritoDeReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarDistritoDeReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:distrito" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="eDiaSemana">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LUNES" />
+      <xs:enumeration value="MARTES" />
+      <xs:enumeration value="MIERCOLES" />
+      <xs:enumeration value="JUEVES" />
+      <xs:enumeration value="VIERNES" />
+      <xs:enumeration value="SABADO" />
+      <xs:enumeration value="DOMINGO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eMetodoPago">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TARJETA" />
+      <xs:enumeration value="YAPE" />
+      <xs:enumeration value="PLIN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eTipoEspacio">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SALON" />
+      <xs:enumeration value="CANCHA" />
+      <xs:enumeration value="PARQUE" />
+      <xs:enumeration value="TEATRO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="eTipoDocumento">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DNI" />
+      <xs:enumeration value="CARNETEXTRANJERIA" />
+      <xs:enumeration value="PASAPORTE" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="buscarPorID" type="tns:buscarPorID" />
+  <xs:element name="buscarPorIDResponse" type="tns:buscarPorIDResponse" />
+  <xs:element name="cantEntradasDisponibles" type="tns:cantEntradasDisponibles" />
+  <xs:element name="cantEntradasDisponiblesResponse" type="tns:cantEntradasDisponiblesResponse" />
   <xs:element name="listarEspacio" type="tns:listarEspacio" />
   <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
   <xs:element name="listarEvento" nillable="true" type="tns:listarEspacio" />
   <xs:element name="listarEventoPorDistrito" type="tns:listarEventoPorDistrito" />
   <xs:element name="listarEventoPorDistritoResponse" type="tns:listarEventoPorDistritoResponse" />
   <xs:element name="listarEventoResponse" nillable="true" type="tns:listarEspacioResponse" />
+  <xs:element name="listarFuncionesDeEvento" type="tns:listarFuncionesDeEvento" />
+  <xs:element name="listarFuncionesDeEventoResponse" type="tns:listarFuncionesDeEventoResponse" />
   <xs:complexType name="listarEventoPorDistrito">
     <xs:sequence>
       <xs:element name="Id" type="xs:int" />
@@ -134,12 +140,43 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEvento">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEventoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cantEntradasDisponibles">
+    <xs:sequence>
+      <xs:element name="IdFuncion" type="xs:int" />
+      <xs:element name="cantExFuncion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cantEntradasDisponiblesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarEspacio">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarEspacioResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarPorID">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarPorIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">

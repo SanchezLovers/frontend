@@ -14,34 +14,32 @@ using System.IO;
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
     public partial class DetalleReserva : System.Web.UI.Page
-    {/*
-        private ReservaWSClient entradaWS;
+    {
+        private ReservaWSClient reservaWS;
         //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                entradaWS = new EntradaWSClient();
-                int idEntrada = 2;
+                reservaWS = new ReservaWSClient();
+                int idReserva = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
-                System.Console.WriteLine(entradaDomain.persona.idPersona);
-                comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
-                funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
-                evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
-                distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
+                reserva reservaDomain = reservaWS.buscarReserva(idReserva);
+                System.Console.WriteLine(reservaDomain.persona.idPersona);
+                comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
+                espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
+                distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
                 // Datos del espacio
-                lblEspacio.Text = eventoDomain.nombre;
-                lblTipoEspacio.Text = eventoDomain.referencia;
-                lblSuperficie.Text = eventoDomain.referencia;
-                lblUbicacion.Text = eventoDomain.ubicacion; 
+                lblEspacio.Text = espacioDomain.nombre;
+                lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
+                lblSuperficie.Text = espacioDomain.superficie.ToString();
+                lblUbicacion.Text = espacioDomain.ubicacion; 
                 lblDistrito.Text = distritoDomain.nombre;
                 // Datos de la Reserva
-                lblNumReserva.Text = entradaDomain.numEntrada.ToString();
-                // Datos de la funcion
-                lblFechaReserva.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
-                lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
-                lblHoraFin.Text = funcionDomain.horaFin.ToString();
+                lblNumReserva.Text = reservaDomain.numReserva.ToString();
+                lblFechaReserva.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
+                lblHoraInicio.Text = reservaDomain.horarioIni.ToString();
+                lblHoraFin.Text = reservaDomain.horarioFin.ToString();
                 //Datos del comprador
                 lblNombres.Text = compradorDomain.nombres;
                 lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
@@ -49,11 +47,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
                 lblCorreo.Text = compradorDomain.correo;
                 // Datos de la constancia del pago
-                lblFechaConstancia.Text = entradaDomain.fecha.ToString("dd/MM/yyyy");
-                lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
-                lblDetallePago.Text = entradaDomain.detallePago.ToString();
+                lblFechaConstancia.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
+                lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
+                lblDetallePago.Text = reservaDomain.detallePago;
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+entradaDomain.total.ToString();
+                lblTotal.Text = "S/. "+ reservaDomain.total.ToString();
             }
         }
 
@@ -114,6 +112,5 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 Response.End();
             }
         }
-        */
     }
 }
