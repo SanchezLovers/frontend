@@ -29,17 +29,41 @@
   <message name="actualizarEntradaResponse">
     <part name="parameters" element="tns:actualizarEntradaResponse" />
   </message>
-  <message name="eliminarFisicoEntrada">
-    <part name="parameters" element="tns:eliminarFisicoEntrada" />
+  <message name="buscarCompradorDeEntrada">
+    <part name="parameters" element="tns:buscarCompradorDeEntrada" />
   </message>
-  <message name="eliminarFisicoEntradaResponse">
-    <part name="parameters" element="tns:eliminarFisicoEntradaResponse" />
+  <message name="buscarCompradorDeEntradaResponse">
+    <part name="parameters" element="tns:buscarCompradorDeEntradaResponse" />
+  </message>
+  <message name="buscarEventoDeEntrada">
+    <part name="parameters" element="tns:buscarEventoDeEntrada" />
+  </message>
+  <message name="buscarEventoDeEntradaResponse">
+    <part name="parameters" element="tns:buscarEventoDeEntradaResponse" />
+  </message>
+  <message name="buscarDistritoDeEntrada">
+    <part name="parameters" element="tns:buscarDistritoDeEntrada" />
+  </message>
+  <message name="buscarDistritoDeEntradaResponse">
+    <part name="parameters" element="tns:buscarDistritoDeEntradaResponse" />
   </message>
   <message name="eliminarLogicoEntrada">
     <part name="parameters" element="tns:eliminarLogicoEntrada" />
   </message>
   <message name="eliminarLogicoEntradaResponse">
     <part name="parameters" element="tns:eliminarLogicoEntradaResponse" />
+  </message>
+  <message name="eliminarFisicoEntrada">
+    <part name="parameters" element="tns:eliminarFisicoEntrada" />
+  </message>
+  <message name="eliminarFisicoEntradaResponse">
+    <part name="parameters" element="tns:eliminarFisicoEntradaResponse" />
+  </message>
+  <message name="buscarFuncionDeEntrada">
+    <part name="parameters" element="tns:buscarFuncionDeEntrada" />
+  </message>
+  <message name="buscarFuncionDeEntradaResponse">
+    <part name="parameters" element="tns:buscarFuncionDeEntradaResponse" />
   </message>
   <portType name="EntradaWS">
     <operation name="buscarEntrada">
@@ -58,13 +82,29 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest" message="tns:actualizarEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse" message="tns:actualizarEntradaResponse" />
     </operation>
-    <operation name="eliminarFisicoEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaRequest" message="tns:eliminarFisicoEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaResponse" message="tns:eliminarFisicoEntradaResponse" />
+    <operation name="buscarCompradorDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest" message="tns:buscarCompradorDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse" message="tns:buscarCompradorDeEntradaResponse" />
+    </operation>
+    <operation name="buscarEventoDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest" message="tns:buscarEventoDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse" message="tns:buscarEventoDeEntradaResponse" />
+    </operation>
+    <operation name="buscarDistritoDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaRequest" message="tns:buscarDistritoDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaResponse" message="tns:buscarDistritoDeEntradaResponse" />
     </operation>
     <operation name="eliminarLogicoEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest" message="tns:eliminarLogicoEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse" message="tns:eliminarLogicoEntradaResponse" />
+    </operation>
+    <operation name="eliminarFisicoEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaRequest" message="tns:eliminarFisicoEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaResponse" message="tns:eliminarFisicoEntradaResponse" />
+    </operation>
+    <operation name="buscarFuncionDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest" message="tns:buscarFuncionDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse" message="tns:buscarFuncionDeEntradaResponse" />
     </operation>
   </portType>
   <binding name="EntradaWSPortBinding" type="tns:EntradaWS">
@@ -105,7 +145,25 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarFisicoEntrada">
+    <operation name="buscarCompradorDeEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEventoDeEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarDistritoDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -115,6 +173,24 @@
       </output>
     </operation>
     <operation name="eliminarLogicoEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarFisicoEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarFuncionDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

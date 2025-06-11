@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/DepartamentoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
+  <message name="buscarDepaPorId">
+    <part name="parameters" element="tns:buscarDepaPorId" />
+  </message>
+  <message name="buscarDepaPorIdResponse">
+    <part name="parameters" element="tns:buscarDepaPorIdResponse" />
+  </message>
   <message name="listarDepas">
     <part name="parameters" element="tns:listarDepas" />
   </message>
@@ -12,6 +18,10 @@
     <part name="parameters" element="tns:listarDepasResponse" />
   </message>
   <portType name="DepartamentoWS">
+    <operation name="buscarDepaPorId">
+      <input wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdRequest" message="tns:buscarDepaPorId" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdResponse" message="tns:buscarDepaPorIdResponse" />
+    </operation>
     <operation name="listarDepas">
       <input wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasRequest" message="tns:listarDepas" />
       <output wsam:Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasResponse" message="tns:listarDepasResponse" />
@@ -19,6 +29,15 @@
   </portType>
   <binding name="DepartamentoWSPortBinding" type="tns:DepartamentoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="buscarDepaPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDepas">
       <soap:operation soapAction="" />
       <input>
