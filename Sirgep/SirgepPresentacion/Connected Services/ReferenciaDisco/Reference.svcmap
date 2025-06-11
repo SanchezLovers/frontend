@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="0cb31b10-cb99-4b5b-8369-55b97eda10c4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="b9954b7e-c1b8-4beb-8318-d40a20261fa6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,17 +22,23 @@
     <MetadataSource Address="http://localhost:8080/SirgepWS/servicios.disco" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ProvinciaWS.wsdl" MetadataType="Wsdl" ID="262f5d57-150e-4769-9c95-9493391bd5df" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/ProvinciaWS?wsdl" />
-    <MetadataFile FileName="DepartamentoWS.xsd" MetadataType="Schema" ID="4fa0d95d-1cc7-48c3-b745-e6a97ca71ad3" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DepartamentoWS?xsd=1" />
-    <MetadataFile FileName="EspacioWS.xsd" MetadataType="Schema" ID="8210119a-1960-46c7-a43a-248f574a1362" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EspacioWS?xsd=1" />
-    <MetadataFile FileName="DepartamentoWS.wsdl" MetadataType="Wsdl" ID="2dde0021-653a-4b97-a150-d979e70c6e75" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DepartamentoWS?wsdl" />
-    <MetadataFile FileName="EntradaWS.wsdl" MetadataType="Wsdl" ID="6ccabef8-6c3c-42ec-9d04-48eb507bf865" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EntradaWS?wsdl" />
-    <MetadataFile FileName="DistritoWS.wsdl" MetadataType="Wsdl" ID="db5fc179-0f2b-46b5-b7f6-a244d9b1b552" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DistritoWS?wsdl" />
-    <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="7f1bc650-922d-406a-ab72-4f2e4d702606" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/servicios.disco" />
-    <MetadataFile FileName="ProvinciaWS.xsd" MetadataType="Schema" ID="2c4a5c6c-dd95-45fa-a540-dad6ebac568e" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/ProvinciaWS?xsd=1" />
-    <MetadataFile FileName="EspacioWS.wsdl" MetadataType="Wsdl" ID="479396ea-fc5a-4ea2-8805-41872fb48c8a" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EspacioWS?wsdl" />
-    <MetadataFile FileName="DistritoWS.xsd" MetadataType="Schema" ID="472b9bbe-dd45-4a84-a96c-361837fdba9c" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DistritoWS?xsd=1" />
-    <MetadataFile FileName="EntradaWS.xsd" MetadataType="Schema" ID="0edd71af-3941-4d10-a174-3df3d023e72a" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EntradaWS?xsd=1" />
+    <MetadataFile FileName="DistritoWS.xsd" MetadataType="Schema" ID="212ec6ed-d639-4a22-8b1c-81f6bc4d8354" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DistritoWS?xsd=1" />
+    <MetadataFile FileName="DepartamentoWS.wsdl" MetadataType="Wsdl" ID="b46e2008-f99c-474c-93f3-ac5b64a8b663" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DepartamentoWS?wsdl" />
+    <MetadataFile FileName="EntradaWS.wsdl" MetadataType="Wsdl" ID="1d3be934-96bb-4391-b7dc-e51c7417a2a6" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EntradaWS?wsdl" />
+    <MetadataFile FileName="EspacioWS.xsd" MetadataType="Schema" ID="da78a9b5-cb9a-419d-ac49-f752e5003962" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EspacioWS?xsd=1" />
+    <MetadataFile FileName="DistritoWS.wsdl" MetadataType="Wsdl" ID="c083cc22-5204-4e53-b967-f8c8dd5606cd" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DistritoWS?wsdl" />
+    <MetadataFile FileName="CompraWS.wsdl" MetadataType="Wsdl" ID="fbb69d90-d284-40fd-bf1e-59e064ceffcf" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/CompraWS?wsdl" />
+    <MetadataFile FileName="EventoWSAnaG.xsd" MetadataType="Schema" ID="ba71358e-5fa4-493e-b5c2-595bd11d8b93" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EventoWSAnaG?xsd=1" />
+    <MetadataFile FileName="DepartamentoWS.xsd" MetadataType="Schema" ID="8a7d8c82-afb8-4260-934c-dd540df5d890" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/DepartamentoWS?xsd=1" />
+    <MetadataFile FileName="EventoWS.wsdl" MetadataType="Wsdl" ID="359eb5a6-36e4-464c-8a67-9413301801cb" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EventoWS?wsdl" />
+    <MetadataFile FileName="EspacioWS.wsdl" MetadataType="Wsdl" ID="1d5c727a-2759-4162-b268-66b7f2691ddf" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EspacioWS?wsdl" />
+    <MetadataFile FileName="ProvinciaWS.xsd" MetadataType="Schema" ID="57035564-df8a-4d40-ad6d-cd8fdf9f5964" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/ProvinciaWS?xsd=1" />
+    <MetadataFile FileName="EventoWS.xsd" MetadataType="Schema" ID="7e6b3a80-d692-4d02-b60a-8908eedb9b40" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EventoWS?xsd=1" />
+    <MetadataFile FileName="CompraWS.xsd" MetadataType="Schema" ID="efd8cc70-27ce-410c-abf7-3589a1cb138b" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/CompraWS?xsd=1" />
+    <MetadataFile FileName="EntradaWS.xsd" MetadataType="Schema" ID="e9e41a31-8b84-424d-b55c-1784c66e1bbd" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EntradaWS?xsd=1" />
+    <MetadataFile FileName="EventoWSAnaG.wsdl" MetadataType="Wsdl" ID="3b494c94-f9eb-4012-86e3-688853781915" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/EventoWSAnaG?wsdl" />
+    <MetadataFile FileName="ProvinciaWS.wsdl" MetadataType="Wsdl" ID="e6b77426-77bd-4a51-9fa0-d37779b8f211" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/ProvinciaWS?wsdl" />
+    <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="3b78b103-7ef0-4021-81f5-d5ce42180197" SourceId="1" SourceUrl="http://localhost:8080/SirgepWS/servicios.disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

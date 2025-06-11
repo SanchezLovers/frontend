@@ -4,3 +4,9 @@ D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\fr
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.csproj.CoreCompileInputs.cache
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.dll
 D:\PUCP\Estudios PUCP\25-1\Programación 3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.pdb
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\bin\Debug\SirgepDomain.dll
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\bin\Debug\SirgepDomain.pdb
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.csproj.AssemblyReference.cache
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.csproj.CoreCompileInputs.cache
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.dll
+C:\Program3\TareaAcademica\frontend\Sirgep\SirgepDomain\obj\Debug\SirgepDomain.pdb
