@@ -155,10 +155,17 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             };
 
-            compraService.insertarConstancia(nueva);
+            int idConstancia=compraService.insertarConstancia(nueva);
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "alert",
-                "alert('Pago realizado con éxito.');", true);
+            string script = @"
+                alert('Pago realizado con éxito.');
+                setTimeout(function() {
+                    window.location.href = '/Usuario/Comprador/DetalleEntrada.aspx?idConstancia=" + idConstancia + @"';
+                }, 1000); // 1000 milisegundos = 1 segundo
+            ";
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertAndRedirect", script, true);
+
+            Response.Redirect("/Presentacion/Ventas/Entrada/DetalleEntrada.aspx?idConstancia=" + idConstancia);
         }
     }
 }
