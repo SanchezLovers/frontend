@@ -158,14 +158,6 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="crearLibroExcelReservas">
-    <xs:sequence>
-      <xs:element name="idComprador" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="crearLibroExcelReservasResponse">
-    <xs:sequence />
-  </xs:complexType>
   <xs:complexType name="buscarReserva">
     <xs:sequence>
       <xs:element name="idReserva" type="xs:int" />
@@ -175,6 +167,14 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:reserva" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservas">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservasResponse">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="actualizarReserva">
     <xs:sequence>

@@ -5,24 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EventoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="listarEventoPorDistrito">
-    <part name="parameters" element="tns:listarEventoPorDistrito" />
-  </message>
-  <message name="listarEventoPorDistritoResponse">
-    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
-  </message>
-  <message name="cantEntradasDisponibles">
-    <part name="parameters" element="tns:cantEntradasDisponibles" />
-  </message>
-  <message name="cantEntradasDisponiblesResponse">
-    <part name="parameters" element="tns:cantEntradasDisponiblesResponse" />
-  </message>
-  <message name="listarFuncionesDeEvento">
-    <part name="parameters" element="tns:listarFuncionesDeEvento" />
-  </message>
-  <message name="listarFuncionesDeEventoResponse">
-    <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
-  </message>
   <message name="listarEvento">
     <part name="parameters" element="tns:listarEvento" />
   </message>
@@ -35,19 +17,25 @@
   <message name="buscarPorIDResponse">
     <part name="parameters" element="tns:buscarPorIDResponse" />
   </message>
+  <message name="listarFuncionesDeEvento">
+    <part name="parameters" element="tns:listarFuncionesDeEvento" />
+  </message>
+  <message name="listarFuncionesDeEventoResponse">
+    <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
+  </message>
+  <message name="cantEntradasDisponibles">
+    <part name="parameters" element="tns:cantEntradasDisponibles" />
+  </message>
+  <message name="cantEntradasDisponiblesResponse">
+    <part name="parameters" element="tns:cantEntradasDisponiblesResponse" />
+  </message>
+  <message name="listarEventoPorDistrito">
+    <part name="parameters" element="tns:listarEventoPorDistrito" />
+  </message>
+  <message name="listarEventoPorDistritoResponse">
+    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
+  </message>
   <portType name="EventoWS">
-    <operation name="listarEventoPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
-    </operation>
-    <operation name="cantEntradasDisponibles">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/cantEntradasDisponiblesRequest" message="tns:cantEntradasDisponibles" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/cantEntradasDisponiblesResponse" message="tns:cantEntradasDisponiblesResponse" />
-    </operation>
-    <operation name="listarFuncionesDeEvento">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
-    </operation>
     <operation name="listarEvento">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
@@ -56,10 +44,22 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDRequest" message="tns:buscarPorID" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDResponse" message="tns:buscarPorIDResponse" />
     </operation>
+    <operation name="listarFuncionesDeEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
+    </operation>
+    <operation name="cantEntradasDisponibles">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/cantEntradasDisponiblesRequest" message="tns:cantEntradasDisponibles" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/cantEntradasDisponiblesResponse" message="tns:cantEntradasDisponiblesResponse" />
+    </operation>
+    <operation name="listarEventoPorDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
+    </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarEventoPorDistrito">
+    <operation name="listarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -68,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="cantEntradasDisponibles">
+    <operation name="buscarPorID">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -86,7 +86,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEvento">
+    <operation name="cantEntradasDisponibles">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +95,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarPorID">
+    <operation name="listarEventoPorDistrito">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
