@@ -114,7 +114,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
                     tipoDocumentoSpecified = true,
-                    registrado = 1,
+                    registrado = 0,
                 };
                 compraService.insertarComprador(nuevo);
             }
