@@ -41,9 +41,9 @@
         </FooterTemplate>
     </asp:Repeater>
     <!-- Cambio de paginado -->
-    <!-- <asp:Panel ID="pnlPaginacion" runat="server" CssClass="d-flex justify-content-center my-3">
+    <asp:Panel ID="pnlPaginacion" runat="server" CssClass="d-flex justify-content-center my-3">
         <asp:Button ID="btnAnterior" runat="server" Text="Anterior" CssClass="btn btn-outline-dark mx-1" OnClick="btnAnterior_Click" />
         <asp:Label ID="lblPagina" runat="server" CssClass="align-self-center mx-2" />
         <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark mx-1" OnClick="btnSiguiente_Click" />
-    </asp:Panel>-->
+    </asp:Panel>
 </asp:Content>

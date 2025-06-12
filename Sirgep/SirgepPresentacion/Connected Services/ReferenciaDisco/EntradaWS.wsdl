@@ -5,17 +5,35 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EntradaWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
+  <message name="insertarEntrada">
+    <part name="parameters" element="tns:insertarEntrada" />
+  </message>
+  <message name="insertarEntradaResponse">
+    <part name="parameters" element="tns:insertarEntradaResponse" />
+  </message>
+  <message name="listarVentas">
+    <part name="parameters" element="tns:listarVentas" />
+  </message>
+  <message name="listarVentasResponse">
+    <part name="parameters" element="tns:listarVentasResponse" />
+  </message>
+  <message name="buscarEntrada">
+    <part name="parameters" element="tns:buscarEntrada" />
+  </message>
+  <message name="buscarEntradaResponse">
+    <part name="parameters" element="tns:buscarEntradaResponse" />
+  </message>
+  <message name="actualizarEntrada">
+    <part name="parameters" element="tns:actualizarEntrada" />
+  </message>
+  <message name="actualizarEntradaResponse">
+    <part name="parameters" element="tns:actualizarEntradaResponse" />
+  </message>
   <message name="buscarCompradorDeEntrada">
     <part name="parameters" element="tns:buscarCompradorDeEntrada" />
   </message>
   <message name="buscarCompradorDeEntradaResponse">
     <part name="parameters" element="tns:buscarCompradorDeEntradaResponse" />
-  </message>
-  <message name="buscarFuncionDeEntrada">
-    <part name="parameters" element="tns:buscarFuncionDeEntrada" />
-  </message>
-  <message name="buscarFuncionDeEntradaResponse">
-    <part name="parameters" element="tns:buscarFuncionDeEntradaResponse" />
   </message>
   <message name="buscarEventoDeEntrada">
     <part name="parameters" element="tns:buscarEventoDeEntrada" />
@@ -47,38 +65,32 @@
   <message name="eliminarFisicoEntradaResponse">
     <part name="parameters" element="tns:eliminarFisicoEntradaResponse" />
   </message>
-  <message name="actualizarEntrada">
-    <part name="parameters" element="tns:actualizarEntrada" />
+  <message name="buscarFuncionDeEntrada">
+    <part name="parameters" element="tns:buscarFuncionDeEntrada" />
   </message>
-  <message name="actualizarEntradaResponse">
-    <part name="parameters" element="tns:actualizarEntradaResponse" />
-  </message>
-  <message name="insertarEntrada">
-    <part name="parameters" element="tns:insertarEntrada" />
-  </message>
-  <message name="insertarEntradaResponse">
-    <part name="parameters" element="tns:insertarEntradaResponse" />
-  </message>
-  <message name="listarVentas">
-    <part name="parameters" element="tns:listarVentas" />
-  </message>
-  <message name="listarVentasResponse">
-    <part name="parameters" element="tns:listarVentasResponse" />
-  </message>
-  <message name="buscarEntrada">
-    <part name="parameters" element="tns:buscarEntrada" />
-  </message>
-  <message name="buscarEntradaResponse">
-    <part name="parameters" element="tns:buscarEntradaResponse" />
+  <message name="buscarFuncionDeEntradaResponse">
+    <part name="parameters" element="tns:buscarFuncionDeEntradaResponse" />
   </message>
   <portType name="EntradaWS">
+    <operation name="insertarEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest" message="tns:insertarEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse" message="tns:insertarEntradaResponse" />
+    </operation>
+    <operation name="listarVentas">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarVentasRequest" message="tns:listarVentas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarVentasResponse" message="tns:listarVentasResponse" />
+    </operation>
+    <operation name="buscarEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest" message="tns:buscarEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse" message="tns:buscarEntradaResponse" />
+    </operation>
+    <operation name="actualizarEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest" message="tns:actualizarEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse" message="tns:actualizarEntradaResponse" />
+    </operation>
     <operation name="buscarCompradorDeEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest" message="tns:buscarCompradorDeEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse" message="tns:buscarCompradorDeEntradaResponse" />
-    </operation>
-    <operation name="buscarFuncionDeEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest" message="tns:buscarFuncionDeEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse" message="tns:buscarFuncionDeEntradaResponse" />
     </operation>
     <operation name="buscarEventoDeEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest" message="tns:buscarEventoDeEntrada" />
@@ -100,26 +112,14 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaRequest" message="tns:eliminarFisicoEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaResponse" message="tns:eliminarFisicoEntradaResponse" />
     </operation>
-    <operation name="actualizarEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest" message="tns:actualizarEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse" message="tns:actualizarEntradaResponse" />
-    </operation>
-    <operation name="insertarEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest" message="tns:insertarEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse" message="tns:insertarEntradaResponse" />
-    </operation>
-    <operation name="listarVentas">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarVentasRequest" message="tns:listarVentas" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarVentasResponse" message="tns:listarVentasResponse" />
-    </operation>
-    <operation name="buscarEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest" message="tns:buscarEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse" message="tns:buscarEntradaResponse" />
+    <operation name="buscarFuncionDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest" message="tns:buscarFuncionDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse" message="tns:buscarFuncionDeEntradaResponse" />
     </operation>
   </portType>
   <binding name="EntradaWSPortBinding" type="tns:EntradaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="buscarCompradorDeEntrada">
+    <operation name="insertarEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -128,7 +128,34 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarFuncionDeEntrada">
+    <operation name="listarVentas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarCompradorDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -182,34 +209,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="actualizarEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="insertarEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarVentas">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarEntrada">
+    <operation name="buscarFuncionDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
