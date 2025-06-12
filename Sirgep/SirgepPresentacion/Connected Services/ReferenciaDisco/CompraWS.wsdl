@@ -11,12 +11,6 @@
   <message name="buscarCompradorResponse">
     <part name="parameters" element="tns:buscarCompradorResponse" />
   </message>
-  <message name="insertarConstancia">
-    <part name="parameters" element="tns:insertarConstancia" />
-  </message>
-  <message name="insertarConstanciaResponse">
-    <part name="parameters" element="tns:insertarConstanciaResponse" />
-  </message>
   <message name="buscarEventos">
     <part name="parameters" element="tns:buscarEventos" />
   </message>
@@ -28,6 +22,12 @@
   </message>
   <message name="insertarCompradorResponse">
     <part name="parameters" element="tns:insertarCompradorResponse" />
+  </message>
+  <message name="insertarConstancia">
+    <part name="parameters" element="tns:insertarConstancia" />
+  </message>
+  <message name="insertarConstanciaResponse">
+    <part name="parameters" element="tns:insertarConstanciaResponse" />
   </message>
   <message name="buscarCompradorPorDni">
     <part name="parameters" element="tns:buscarCompradorPorDni" />
@@ -46,10 +46,6 @@
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorRequest" message="tns:buscarComprador" />
       <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorResponse" message="tns:buscarCompradorResponse" />
     </operation>
-    <operation name="insertarConstancia">
-      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest" message="tns:insertarConstancia" />
-      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse" message="tns:insertarConstanciaResponse" />
-    </operation>
     <operation name="buscarEventos">
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest" message="tns:buscarEventos" />
       <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse" message="tns:buscarEventosResponse" />
@@ -57,6 +53,10 @@
     <operation name="insertarComprador">
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorRequest" message="tns:insertarComprador" />
       <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorResponse" message="tns:insertarCompradorResponse" />
+    </operation>
+    <operation name="insertarConstancia">
+      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest" message="tns:insertarConstancia" />
+      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse" message="tns:insertarConstanciaResponse" />
     </operation>
     <operation name="buscarCompradorPorDni">
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniRequest" message="tns:buscarCompradorPorDni" />
@@ -78,15 +78,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarConstancia">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="buscarEventos">
       <soap:operation soapAction="" />
       <input>
@@ -97,6 +88,15 @@
       </output>
     </operation>
     <operation name="insertarComprador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarConstancia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

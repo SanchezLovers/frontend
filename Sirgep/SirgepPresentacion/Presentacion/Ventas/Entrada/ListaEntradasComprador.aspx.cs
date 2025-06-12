@@ -14,26 +14,39 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void Page_Init(object sender, EventArgs e)
         {
             entradaWS = new EntradaWSClient();
+            CargarDatos();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
+                CargarDatos();
             }
         }
-
-        protected void btnVolver_Click(object sender, EventArgs e)
+        protected void GvListaEntradasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            // Mostrar el modal de feedback
-            string script = "mostrarModalFeedback();";
-            ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            GvListaEntradasComprador.PageIndex = e.NewPageIndex;
+            GvListaEntradasComprador.DataBind();
         }
-
+        protected void CargarDatos()
+        {
+            int idComprador = 2;
+            GvListaEntradasComprador.DataSource = entradaWS.listarDetalleEntradasPorComprador(idComprador);
+            detalleEntrada detalleEntradaDTO = new detalleEntrada();
+            
+            GvListaEntradasComprador.DataBind();
+        }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
             int idComprador = 2;
             entradaWS.crearLibroExcelEntradas(idComprador);
+        }
+
+        protected void BtnAbrir_Click(object sender, EventArgs e)
+        {
+            int numEntrada = 2;
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?NumEntrada=" + numEntrada);
         }
     }
 }

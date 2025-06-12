@@ -13,7 +13,7 @@ using System.IO;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 {
-    public partial class DetalleEntrada : System.Web.UI.Page
+    public partial class ConstanciaEntrada : System.Web.UI.Page
     {
         private EntradaWSClient entradaWS;
         //private CompradorWSClient compradorWS;

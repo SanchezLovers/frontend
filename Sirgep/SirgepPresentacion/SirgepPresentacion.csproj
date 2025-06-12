@@ -2232,7 +2232,7 @@
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
-    <Content Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
@@ -2315,15 +2315,16 @@
     <Compile Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx.designer.cs">
       <DependentUpon>CompraEntrada.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx.designer.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.designer.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.cs">
       <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.designer.cs">
       <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
@@ -2344,6 +2345,7 @@
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.designer.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
@@ -2562,6 +2564,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleEntrada.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
