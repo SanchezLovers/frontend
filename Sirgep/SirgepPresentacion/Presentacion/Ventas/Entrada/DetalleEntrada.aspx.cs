@@ -22,10 +22,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                int idEntrada = 2;
+                int idEntrada = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
                 entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
-                System.Console.WriteLine(entradaDomain.persona.idPersona);
                 comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
                 funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
                 evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
@@ -48,7 +47,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
                 lblCorreo.Text = compradorDomain.correo;
                 // Datos de la constancia del pago
-                lblFechaConstancia.Text = entradaDomain.fecha.ToString("dd/MM/yyyy");
+                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
                 lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
                 lblDetallePago.Text = entradaDomain.detallePago.ToString();
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
@@ -65,7 +64,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            string rutaHtml = Server.MapPath("~/Resources/Pdfs/PlantillaEntrada.html");
+            string rutaHtml = Server.MapPath("~/Resources/Pdfs/EntradaPdf.html");
             string paginaHTML_Texto = File.ReadAllText(rutaHtml);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NUMERO_ENTRADA}", lblNumEntrada.Text);
             // Datos de la entrada

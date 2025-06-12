@@ -11,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
 
 
-    public partial class ListaEventos
+    public partial class GestionaEventos
     {
 
         /// <summary>

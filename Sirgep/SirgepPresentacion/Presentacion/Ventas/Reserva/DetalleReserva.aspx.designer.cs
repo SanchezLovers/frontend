@@ -15,13 +15,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
     {
 
         /// <summary>
-        /// Control lblNumEntrada.
+        /// Control lblNumReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumEntrada;
+        protected global::System.Web.UI.WebControls.Label lblNumReserva;
 
         /// <summary>
         /// Control lblEspacio.

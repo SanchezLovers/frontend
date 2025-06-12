@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
         <h1 class="mb-4">
-            Detalle de Reserva #<asp:Label ID="lblNumEntrada" runat="server" Text="000" />
+            Detalle de Reserva #<asp:Label ID="lblNumReserva" runat="server" Text="000" />
         </h1>
         
         <!-- DATOS DEL ESPACIO -->
@@ -16,7 +16,7 @@
                 <div class="col-12 col-md-4">
                     <strong>Tipo Espacio:</strong> <asp:Label ID="lblTipoEspacio" runat="server" CssClass="ms-2" />
                 </div>
-                <div class="col-12">
+                <div class="col-12 col-md-4">
                     <strong>Superficie:</strong> <asp:Label ID="lblSuperficie" runat="server" CssClass="ms-2" />
                 </div>
                 <div class="col-12 col-md-4">

@@ -40,12 +40,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 string fecha = "20/06/2025";
                 string horaIni = "15:00";
                 string horaFin = "17:00";
-                string cantidad = "2";
+                string cantidad = "1";
 
 
                 lblHorario.Text = $"{horaIni} - {horaFin}";
                 lblFecha.Text = DateTime.Parse(fecha).ToString("dd/MM/yyyy");
                 lblCantidad.Text = cantidad;
+                lblTotal.Text = evento.precioEntrada.ToString();
 
                 // Guardar en ViewState si lo vas a usar en el botón pagar
                 //ViewState["IdEvento"] = idEvento;
@@ -60,10 +61,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void btnPagar_Click(object sender, EventArgs e)
         {
             // Validar campos obligatorios
+            //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtDNI.Text))
+                string.IsNullOrWhiteSpace(txtDNI.Text) ||
+                 string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);
                 return;
@@ -85,11 +88,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             // ---------- Datos que necesitas ----------
             //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
-            int cantidad = 2;
+            int cantidad = 1;
 
 
             double precio = compraService.buscarEventos(1).precioEntrada;
-            double totalAPagar = precio * cantidad;
+            double totalAPagar = precio;
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
@@ -105,9 +108,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 comprador nuevo = new comprador
                 {
                     nombres = txtNombres.Text.Trim(),
-                    primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),
-                    numDocumento = dni,
+                    primerApellido = txtApellidoPaterno.Text.Trim(),//aqui
+                    segundoApellido = txtApellidoMaterno.Text.Trim(),//aqui
+                    numDocumento = txtDNI.Text.Trim(),
+                    correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
                     tipoDocumentoSpecified = true,
                     registrado = 1,
@@ -146,22 +150,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 metodoPago = mp,
                 metodoPagoSpecified = true,
                 igv = 0.18,
-                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
+                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",//aqui
                 total = totalAPagar,
 
             };
 
-            int idConstancia = compraService.insertarConstancia(nueva);
+            compraService.insertarConstancia(nueva);
 
-            string script = @"
-                alert('Pago realizado con éxito.');
-                setTimeout(function() {
-                    window.location.href = '/Usuario/Comprador/DetalleEntrada.aspx?idConstancia=" + idConstancia + @"';
-                }, 1000); // 1000 milisegundos = 1 segundo
-            ";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertAndRedirect", script, true);
-
-            Response.Redirect("/Presentacion/Ventas/Entrada/DetalleEntrada.aspx?idConstancia=" + idConstancia);
+            ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                "alert('Pago realizado con éxito.');", true);
         }
     }
 }

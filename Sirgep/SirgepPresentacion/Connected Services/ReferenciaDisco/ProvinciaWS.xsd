@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="buscarProvinciaPorId" type="tns:buscarProvinciaPorId" />
+  <xs:element name="buscarProvinciaPorIdResponse" type="tns:buscarProvinciaPorIdResponse" />
   <xs:element name="listarProvinciaPorDepa" type="tns:listarProvinciaPorDepa" />
   <xs:element name="listarProvinciaPorDepaResponse" type="tns:listarProvinciaPorDepaResponse" />
   <xs:complexType name="listarProvinciaPorDepa">
@@ -38,8 +40,8 @@
   <xs:complexType name="espacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="horarioFinAtencion" type="tns:localTime" />
-      <xs:element minOccurs="0" name="horarioInicioAtencion" type="tns:localTime" />
+      <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
+      <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
       <xs:element name="idEspacio" type="xs:int" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="listaDiasAtencion" nillable="true" type="tns:eDiaSemana" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
@@ -49,9 +51,6 @@
       <xs:element minOccurs="0" name="tipoEspacio" type="tns:eTipoEspacio" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="localTime" final="extension restriction">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="reserva">
     <xs:complexContent mixed="false">
@@ -76,6 +75,9 @@
       <xs:element minOccurs="0" name="metodoPago" type="tns:eMetodoPago" />
       <xs:element name="total" type="xs:double" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="localTime" final="extension restriction">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="persona">
     <xs:sequence>
@@ -105,16 +107,18 @@
   </xs:complexType>
   <xs:complexType name="funcion">
     <xs:sequence>
+      <xs:element name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
       <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaFin" type="tns:localTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="tns:localTime" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -126,6 +130,16 @@
       <xs:element name="precioEntrada" type="xs:double" />
       <xs:element minOccurs="0" name="referencia" type="xs:string" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarProvinciaPorId">
+    <xs:sequence>
+      <xs:element name="idProvincia" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarProvinciaPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:provincia" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">

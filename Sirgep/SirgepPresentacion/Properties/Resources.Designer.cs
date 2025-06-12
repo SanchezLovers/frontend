@@ -59,5 +59,71 @@ namespace SirgepPresentacion.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;title&gt;Detalle de Entrada&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 20px;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        h1 {
+        ///            color: #f10909;
+        ///        }
+        ///
+        ///        .section {
+        ///            margin-bottom: 20px;
+        ///            border: none;
+        ///        }
+        ///
+        ///        .section-header {
+        ///            background-color: #f10909;
+        ///            color: white;
+        ///            padd [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string EntradaPdf {
+            get {
+                return ResourceManager.GetString("EntradaPdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+        ///    &lt;title&gt;Detalle de Entrada&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 20px;
+        ///            color: #333;
+        ///        }
+        ///
+        ///        h1 {
+        ///            color: #f10909;
+        ///        }
+        ///
+        ///        .section {
+        ///            margin-bottom: 20px;
+        ///            border: none;
+        ///        }
+        ///
+        ///        .section-header {
+        ///            background-color: #f10909;
+        ///            color: white;
+        ///            padd [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string ReservaPdf {
+            get {
+                return ResourceManager.GetString("ReservaPdf", resourceCulture);
+            }
+        }
     }
 }

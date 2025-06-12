@@ -13,35 +13,33 @@ using System.IO;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
-    public partial class DetalleEntrada : System.Web.UI.Page
+    public partial class DetalleReserva : System.Web.UI.Page
     {
-        /*
-        private EntradaWSClient entradaWS;
+        private ReservaWSClient reservaWS;
         //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                entradaWS = new EntradaWSClient();
-                int idEntrada = 2;
+                reservaWS = new ReservaWSClient();
+                int idReserva = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
-                System.Console.WriteLine(entradaDomain.persona.idPersona);
-                comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
-                funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
-                evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
-                distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
-                // Datos de la entrada
-                lblNumEntrada.Text = entradaDomain.numEntrada.ToString();
-                // Datos del evento
-                lblEvento.Text = eventoDomain.nombre;
-                lblUbicacion.Text = eventoDomain.ubicacion;
-                lblReferencias.Text = eventoDomain.referencia;
+                reserva reservaDomain = reservaWS.buscarReserva(idReserva);
+                System.Console.WriteLine(reservaDomain.persona.idPersona);
+                comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
+                espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
+                distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
+                // Datos del espacio
+                lblEspacio.Text = espacioDomain.nombre;
+                lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
+                lblSuperficie.Text = espacioDomain.superficie.ToString()+ " m²";
+                lblUbicacion.Text = espacioDomain.ubicacion; 
                 lblDistrito.Text = distritoDomain.nombre;
-                // Datos de la funcion
-                lblFechaFuncion.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
-                lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
-                lblHoraFin.Text = funcionDomain.horaFin.ToString();
+                // Datos de la Reserva
+                lblNumReserva.Text = reservaDomain.numReserva.ToString();
+                lblFechaReserva.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
+                lblHoraInicio.Text = reservaDomain.horarioIni.ToString();
+                lblHoraFin.Text = reservaDomain.horarioFin.ToString();
                 //Datos del comprador
                 lblNombres.Text = compradorDomain.nombres;
                 lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
@@ -49,11 +47,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
                 lblCorreo.Text = compradorDomain.correo;
                 // Datos de la constancia del pago
-                lblFechaConstancia.Text = entradaDomain.fecha.ToString("dd/MM/yyyy");
-                lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
-                lblDetallePago.Text = entradaDomain.detallePago.ToString();
+                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
+                lblDetallePago.Text = reservaDomain.detallePago;
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+entradaDomain.total.ToString();
+                lblTotal.Text = "S/. "+ reservaDomain.total.ToString();
             }
         }
 
@@ -66,16 +64,17 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            string rutaHtml = Server.MapPath("~/Resources/Pdfs/PlantillaEntrada.html");
+            string rutaHtml = Server.MapPath("~/Resources/Pdfs/ReservaPdf.html");
             string paginaHTML_Texto = File.ReadAllText(rutaHtml);
-            paginaHTML_Texto = paginaHTML_Texto.Replace("{NUMERO_ENTRADA}", lblNumEntrada.Text);
-            // Datos de la entrada
-            paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_EVENTO}", lblEvento.Text);
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{NUMERO_RESERVA}", lblNumReserva.Text);
+            // Datos del Espacio
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_ESPACIO}", lblEspacio.Text);
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{TIPO_ESPACIO}", lblTipoEspacio.Text);
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{SUPERFICIE}", lblSuperficie.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{UBICACION}", lblUbicacion.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{DISTRITO}", lblDistrito.Text);
-            paginaHTML_Texto = paginaHTML_Texto.Replace("{REFERENCIAS}", lblReferencias.Text);
-            // Datos del evento
-            paginaHTML_Texto = paginaHTML_Texto.Replace("{FECHA_FUNCION}", lblFechaFuncion.Text);
+            // Datos de la Reserva
+            paginaHTML_Texto = paginaHTML_Texto.Replace("{FECHA_RESERVA}", lblFechaReserva.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{HORA_INICIO}", lblHoraInicio.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{HORA_FIN}", lblHoraFin.Text);
             // Datos del comprador
@@ -107,13 +106,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 Response.Clear();
                 Response.ContentType = "application/pdf";
                 string fechaFormato = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string nombreArchivo = $"Constancia_Entrada_{lblNumEntrada.Text}_{lblNombres.Text}_{fechaFormato}.pdf";
+                string nombreArchivo = $"Constancia_Reserva_{lblNumReserva.Text}_{lblNombres.Text}_{fechaFormato}.pdf";
                 Response.AddHeader("Content-Disposition", $"attachment; filename={nombreArchivo}");
                 Response.OutputStream.Write(bytes, 0, bytes.Length);
                 Response.Flush();
                 Response.End();
             }
         }
-        */
     }
 }

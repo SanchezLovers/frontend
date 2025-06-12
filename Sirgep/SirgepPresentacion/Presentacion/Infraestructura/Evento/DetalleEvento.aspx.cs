@@ -10,14 +10,14 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
     public partial class DetalleEvento : System.Web.UI.Page
     {
-        protected EventoWSAnaGClient eventoWS;
+        protected EventoWSClient eventoWS;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 //                int idEvento = int.Parse(Request.QueryString["idEvento"]);
-                eventoWS = new EventoWSAnaGClient();
+                eventoWS = new EventoWSClient();
                 int idEvento = 1; // Simulación de ID de evento, reemplazar con el ID real obtenido de la URL o base de datos
                 CargarDatosEvento(idEvento);
                 CargarFunciones(idEvento);
@@ -70,7 +70,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             if (int.TryParse(ddlFunciones.SelectedValue, out int idFuncion))
             {
                 int cantEF = int.Parse(cantFuncionInvisible.Value);
-                eventoWS = new EventoWSAnaGClient();
+                eventoWS = new EventoWSClient();
                 int disponibilidad = eventoWS.cantEntradasDisponibles(idFuncion, cantEF);
                 if (disponibilidad > 0)
                 {
