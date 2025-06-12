@@ -10,6 +10,8 @@
   <xs:element name="buscarEspacioDeReservaResponse" type="tns:buscarEspacioDeReservaResponse" />
   <xs:element name="buscarReserva" type="tns:buscarReserva" />
   <xs:element name="buscarReservaResponse" type="tns:buscarReservaResponse" />
+  <xs:element name="crearLibroExcelReservas" type="tns:crearLibroExcelReservas" />
+  <xs:element name="crearLibroExcelReservasResponse" type="tns:crearLibroExcelReservasResponse" />
   <xs:element name="eliminarFisicoReserva" type="tns:eliminarFisicoReserva" />
   <xs:element name="eliminarFisicoReservaResponse" type="tns:eliminarFisicoReservaResponse" />
   <xs:element name="eliminarLogicoReserva" type="tns:eliminarLogicoReserva" />
@@ -155,6 +157,14 @@
       <xs:element name="idDepartamento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservas">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservasResponse">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="buscarReserva">
     <xs:sequence>

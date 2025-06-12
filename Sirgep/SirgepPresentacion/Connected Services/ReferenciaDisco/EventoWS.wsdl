@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EventoWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="buscarPorID">
-    <part name="parameters" element="tns:buscarPorID" />
+  <message name="listarEventoPorDistrito">
+    <part name="parameters" element="tns:listarEventoPorDistrito" />
   </message>
-  <message name="buscarPorIDResponse">
-    <part name="parameters" element="tns:buscarPorIDResponse" />
+  <message name="listarEventoPorDistritoResponse">
+    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
   </message>
   <message name="cantEntradasDisponibles">
     <part name="parameters" element="tns:cantEntradasDisponibles" />
@@ -23,22 +23,22 @@
   <message name="listarFuncionesDeEventoResponse">
     <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
   </message>
-  <message name="listarEventoPorDistrito">
-    <part name="parameters" element="tns:listarEventoPorDistrito" />
-  </message>
-  <message name="listarEventoPorDistritoResponse">
-    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
-  </message>
   <message name="listarEvento">
     <part name="parameters" element="tns:listarEvento" />
   </message>
   <message name="listarEventoResponse">
     <part name="parameters" element="tns:listarEventoResponse" />
   </message>
+  <message name="buscarPorID">
+    <part name="parameters" element="tns:buscarPorID" />
+  </message>
+  <message name="buscarPorIDResponse">
+    <part name="parameters" element="tns:buscarPorIDResponse" />
+  </message>
   <portType name="EventoWS">
-    <operation name="buscarPorID">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDRequest" message="tns:buscarPorID" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDResponse" message="tns:buscarPorIDResponse" />
+    <operation name="listarEventoPorDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
     </operation>
     <operation name="cantEntradasDisponibles">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/cantEntradasDisponiblesRequest" message="tns:cantEntradasDisponibles" />
@@ -48,18 +48,18 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
     </operation>
-    <operation name="listarEventoPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
-    </operation>
     <operation name="listarEvento">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
     </operation>
+    <operation name="buscarPorID">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDRequest" message="tns:buscarPorID" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarPorIDResponse" message="tns:buscarPorIDResponse" />
+    </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="buscarPorID">
+    <operation name="listarEventoPorDistrito">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -86,7 +86,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEventoPorDistrito">
+    <operation name="listarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +95,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEvento">
+    <operation name="buscarPorID">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
