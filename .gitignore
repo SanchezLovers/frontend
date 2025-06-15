@@ -44,3 +44,5 @@ msbuild.wrn
 Sirgep/packages/
 
 *.datasource
+UpgradeLog*.htm
+
