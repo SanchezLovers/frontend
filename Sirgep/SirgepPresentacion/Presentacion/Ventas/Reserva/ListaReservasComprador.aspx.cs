@@ -1,4 +1,5 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
+﻿using SirgepPresentacion.Presentacion.Ventas.Entrada;
+using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,26 +15,39 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void Page_Init(object sender, EventArgs e)
         {
             reservaWS = new ReservaWSClient();
+            CargarDatos();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                reservaWS = new ReservaWSClient();
             }
         }
-
-        protected void btnVolver_Click(object sender, EventArgs e)
+        protected void GvListaReservasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            // Mostrar el modal de feedback
-            string script = "mostrarModalFeedback();";
-            ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            GvListaReservasComprador.PageIndex = e.NewPageIndex;
+            CargarDatos();
+            //GvListaEntradasComprador.DataBind();
+        }
+        protected void CargarDatos()
+        {
+            int idComprador = 2;
+            GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
+
+            GvListaReservasComprador.DataBind();
         }
 
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
             int idComprador = 2;
             reservaWS.crearLibroExcelReservas(idComprador);
+        }
+        protected void BtnAbrir_Click(object sender, EventArgs e)
+        {
+            //LinkButton btn = (LinkButton)sender;
+            //string numEntrada = btn.CommandArgument;
+            string numReserva = "2";
+            Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?NumReserva=" + numReserva);
         }
     }
 }

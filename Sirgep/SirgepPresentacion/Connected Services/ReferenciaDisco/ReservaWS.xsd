@@ -18,6 +18,8 @@
   <xs:element name="eliminarLogicoReservaResponse" type="tns:eliminarLogicoReservaResponse" />
   <xs:element name="insertarReserva" type="tns:insertarReserva" />
   <xs:element name="insertarReservaResponse" type="tns:insertarReservaResponse" />
+  <xs:element name="listarDetalleReservasPorComprador" type="tns:listarDetalleReservasPorComprador" />
+  <xs:element name="listarDetalleReservasPorCompradorResponse" type="tns:listarDetalleReservasPorCompradorResponse" />
   <xs:element name="listarVentas" type="tns:listarVentas" />
   <xs:element name="listarVentasResponse" type="tns:listarVentasResponse" />
   <xs:complexType name="buscarCompradorDeReserva">
@@ -192,6 +194,28 @@
   <xs:complexType name="listarVentasResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDetalleReservasPorComprador">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDetalleReservasPorCompradorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleReserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="detalleReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoria" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="nombreDistrito" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreEspacio" type="xs:string" />
+      <xs:element name="numReserva" type="xs:int" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarFisicoReserva">

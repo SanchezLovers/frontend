@@ -2234,7 +2234,7 @@
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
-    <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
     <Content Include="Resources\Pdfs\ReservaPdf.html" />
@@ -2329,12 +2329,12 @@
     <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.designer.cs">
       <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.cs">
-      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx.cs">
+      <DependentUpon>ConstanciaReserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.designer.cs">
-      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx.designer.cs">
+      <DependentUpon>ConstanciaReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
@@ -2573,6 +2573,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleReserva.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
