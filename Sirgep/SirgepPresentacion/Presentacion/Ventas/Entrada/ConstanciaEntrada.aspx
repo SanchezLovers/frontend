@@ -3,7 +3,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
         <h1 class="mb-4">
-            Detalle de Entrada #<asp:Label ID="lblNumEntrada" runat="server" Text="000" />
+            Constancia de Entrada #<asp:Label ID="lblNumEntrada" runat="server" Text="000" />
         </h1>
 
         <!-- DATOS DEL EVENTO -->

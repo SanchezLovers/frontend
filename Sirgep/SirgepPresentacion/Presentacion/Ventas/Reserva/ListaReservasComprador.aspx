@@ -5,14 +5,44 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
+    <!-- Título principal -->
+    <h2 class="fw-bold mb-4">Reservas</h2>
+
+    <!-- Búsqueda -->
+    
     <div class="container">
         <!-- BOTONES -->
         <div class="d-flex justify-content-between mb-3">
-            <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-dark" OnClick="btnVolver_Click" />
             <asp:Button ID="btnDescargar" runat="server" Text="Descargar" CssClass="btn btn-dark" OnClick="btnDescargar_Click" UseSubmitBehavior="false" />
         </div>
     </div>
 
+    <!-- Tabla -->
+    <asp:GridView ID="GvListaReservasComprador" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true"
+        AllowPaging="true" PageSize="5" OnPageIndexChanging="GvListaReservasComprador_PageIndexChanging"
+        CssClass="table table-striped table-responsive table-hover">
+        <Columns>
+            <asp:BoundField DataField="NumReserva" HeaderText="Nro Reserva" />
+            <asp:BoundField DataField="NombreEspacio" HeaderText="Espacio" />
+            <asp:BoundField DataField="Categoria" HeaderText="Categoria" />
+            <asp:BoundField DataField="Ubicacion" HeaderText="Ubicación" />
+            <asp:BoundField DataField="NombreDistrito" HeaderText="Distrito" />
+            <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+            <asp:BoundField DataField="HoraInicio" HeaderText="Hora Inicio" DataFormatString="{0:HH:mm}" HtmlEncode="false" />
+            <asp:BoundField DataField="HoraFin" HeaderText="Hora Fin" DataFormatString="{0:HH:mm}" HtmlEncode="false" />
+            <asp:TemplateField HeaderText="Abrir">
+                <ItemTemplate>
+                    <asp:LinkButton ID="BtnAbrir" runat="server"
+                        CommandArgument='<%# Eval("NumReserva") %>'
+                        OnClick="BtnAbrir_Click"
+                        CssClass="btn btn-link"
+                        ToolTip="Abrir Reserva">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
     <!-- MODAL -->
     <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

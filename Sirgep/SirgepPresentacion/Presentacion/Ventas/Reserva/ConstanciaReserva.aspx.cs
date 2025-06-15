@@ -13,7 +13,7 @@ using System.IO;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
-    public partial class DetalleReserva : System.Web.UI.Page
+    public partial class ConstanciaReserva : System.Web.UI.Page
     {
         private ReservaWSClient reservaWS;
         //private CompradorWSClient compradorWS;
@@ -22,10 +22,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                int idReserva = 1;
+                int inumReserva = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                reserva reservaDomain = reservaWS.buscarReserva(idReserva);
-                System.Console.WriteLine(reservaDomain.persona.idPersona);
+                reserva reservaDomain = reservaWS.buscarReserva(inumReserva);
                 comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
                 espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
                 distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);

@@ -103,6 +103,15 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> eliminarLogicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
     }
     
     /// <remarks/>
@@ -838,6 +847,178 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string ubicacion {
+            get {
+                return this.ubicacionField;
+            }
+            set {
+                this.ubicacionField = value;
+                this.RaisePropertyChanged("ubicacion");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
+    public partial class detalleReserva : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string categoriaField;
+        
+        private System.DateTime fechaField;
+        
+        private bool fechaFieldSpecified;
+        
+        private System.DateTime horaFinField;
+        
+        private bool horaFinFieldSpecified;
+        
+        private System.DateTime horaInicioField;
+        
+        private bool horaInicioFieldSpecified;
+        
+        private string nombreDistritoField;
+        
+        private string nombreEspacioField;
+        
+        private int numReservaField;
+        
+        private string ubicacionField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string categoria {
+            get {
+                return this.categoriaField;
+            }
+            set {
+                this.categoriaField = value;
+                this.RaisePropertyChanged("categoria");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public System.DateTime fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaSpecified {
+            get {
+                return this.fechaFieldSpecified;
+            }
+            set {
+                this.fechaFieldSpecified = value;
+                this.RaisePropertyChanged("fechaSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public System.DateTime horaFin {
+            get {
+                return this.horaFinField;
+            }
+            set {
+                this.horaFinField = value;
+                this.RaisePropertyChanged("horaFin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool horaFinSpecified {
+            get {
+                return this.horaFinFieldSpecified;
+            }
+            set {
+                this.horaFinFieldSpecified = value;
+                this.RaisePropertyChanged("horaFinSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public System.DateTime horaInicio {
+            get {
+                return this.horaInicioField;
+            }
+            set {
+                this.horaInicioField = value;
+                this.RaisePropertyChanged("horaInicio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool horaInicioSpecified {
+            get {
+                return this.horaInicioFieldSpecified;
+            }
+            set {
+                this.horaInicioFieldSpecified = value;
+                this.RaisePropertyChanged("horaInicioSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string nombreDistrito {
+            get {
+                return this.nombreDistritoField;
+            }
+            set {
+                this.nombreDistritoField = value;
+                this.RaisePropertyChanged("nombreDistrito");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string nombreEspacio {
+            get {
+                return this.nombreEspacioField;
+            }
+            set {
+                this.nombreEspacioField = value;
+                this.RaisePropertyChanged("nombreEspacio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public int numReserva {
+            get {
+                return this.numReservaField;
+            }
+            set {
+                this.numReservaField = value;
+                this.RaisePropertyChanged("numReserva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
         public string ubicacion {
             get {
                 return this.ubicacionField;
@@ -1984,6 +2165,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasPorCompradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idComprador;
+        
+        public listarDetalleReservasPorCompradorRequest() {
+        }
+        
+        public listarDetalleReservasPorCompradorRequest(int idComprador) {
+            this.idComprador = idComprador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasPorCompradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.detalleReserva[] @return;
+        
+        public listarDetalleReservasPorCompradorResponse() {
+        }
+        
+        public listarDetalleReservasPorCompradorResponse(SirgepPresentacion.ReferenciaDisco.detalleReserva[] @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ReservaWSChannel : SirgepPresentacion.ReferenciaDisco.ReservaWS, System.ServiceModel.IClientChannel {
     }
@@ -2236,6 +2453,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
             SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest();
             inValue.idReserva = idReserva;
             return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarLogicoReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasPorComprador(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.detalleReserva[] listarDetalleReservasPorComprador(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorComprador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasPorCompradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorCompradorAsync(inValue);
         }
     }
     

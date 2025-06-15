@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleReserva.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.DetalleReserva" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="ConstanciaReserva.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.ConstanciaReserva" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
         <h1 class="mb-4">
-            Detalle de Reserva #<asp:Label ID="lblNumReserva" runat="server" Text="000" />
+            Constancia de Reserva #<asp:Label ID="lblNumReserva" runat="server" Text="000" />
         </h1>
         
         <!-- DATOS DEL ESPACIO -->

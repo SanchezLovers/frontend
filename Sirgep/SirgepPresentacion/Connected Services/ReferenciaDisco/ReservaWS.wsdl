@@ -65,6 +65,12 @@
   <message name="eliminarLogicoReservaResponse">
     <part name="parameters" element="tns:eliminarLogicoReservaResponse" />
   </message>
+  <message name="listarDetalleReservasPorComprador">
+    <part name="parameters" element="tns:listarDetalleReservasPorComprador" />
+  </message>
+  <message name="listarDetalleReservasPorCompradorResponse">
+    <part name="parameters" element="tns:listarDetalleReservasPorCompradorResponse" />
+  </message>
   <portType name="ReservaWS">
     <operation name="listarVentas">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarVentasRequest" message="tns:listarVentas" />
@@ -105,6 +111,10 @@
     <operation name="eliminarLogicoReserva">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest" message="tns:eliminarLogicoReserva" />
       <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse" message="tns:eliminarLogicoReservaResponse" />
+    </operation>
+    <operation name="listarDetalleReservasPorComprador">
+      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest" message="tns:listarDetalleReservasPorComprador" />
+      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse" message="tns:listarDetalleReservasPorCompradorResponse" />
     </operation>
   </portType>
   <binding name="ReservaWSPortBinding" type="tns:ReservaWS">
@@ -191,6 +201,15 @@
       </output>
     </operation>
     <operation name="eliminarLogicoReserva">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDetalleReservasPorComprador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
