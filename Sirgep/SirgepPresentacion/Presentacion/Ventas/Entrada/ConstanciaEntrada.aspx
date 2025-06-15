@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleEntrada.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Entrada.DetalleEntrada" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="ConstanciaEntrada.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Entrada.ConstanciaEntrada" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">

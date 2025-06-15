@@ -11,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 {
 
 
-    public partial class DetalleEntrada
+    public partial class ConstanciaEntrada
     {
 
         /// <summary>

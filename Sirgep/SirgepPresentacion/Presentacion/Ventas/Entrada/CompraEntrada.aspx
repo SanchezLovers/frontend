@@ -5,6 +5,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
+    <style>
+        .btn-metodo {
+            border: 2px solid #ccc;
+            background: #fff;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .btn-metodo.selected, .btn-metodo:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px #007bff33;
+        }
+
+        .btn-metodo img {
+            display: block;
+            margin: 0 auto 5px auto;
+        }
+    </style>
     <div class="row">
         <!-- Panel de datos del evento -->
         <div class="col-md-6">
@@ -15,7 +37,9 @@
             <p><strong>Horario:</strong> <asp:Label ID="lblHorario" runat="server" /></p>
             <p><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" /></p>
             <p><strong>Cantidad:</strong> <asp:Label ID="lblCantidad" runat="server" /></p>
+            <p><strong>Total:</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>
 
+            <!-- Aqui -->
             <h4>Datos del comprador:</h4>
             <div class="mb-2">
                 <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" placeholder="Nombres" />
@@ -29,6 +53,11 @@
             <div class="mb-2">
                 <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" placeholder="DNI" />
             </div>
+            <div class="mb-2">
+            <asp:TextBox 
+                ID="txtCorreo" runat="server" CssClass="form-control" 
+                placeholder="Correo electrónico" TextMode="Email" />
+        </div>
             
         </div>
 
@@ -57,7 +86,9 @@
                 </button>
                 <asp:HiddenField ID="hfMetodoPago" runat="server" />
             </div>
-            <asp:Button ID="btnPagar" runat="server" CssClass="btn btn-danger mt-3" Text="Pagar" CommandArgument='<%# Eval("idConstancia") %>' OnClick="btnPagar_Click" />
+            
+            
+            <asp:Button ID="btnPagar" runat="server" CssClass="btn btn-danger mt-3" Text="Pagar" OnClick="btnPagar_Click" />
         </div>
     </div>
     <script type="text/javascript">
@@ -72,14 +103,14 @@
     // Restaurar selección después del postback
     window.onload = function () {
         var seleccionado = document.getElementById('<%= hfMetodoPago.ClientID %>').value;
-        if (seleccionado) {
-            document.querySelectorAll('.btn-metodo').forEach(function (btn) {
-                if (btn.getAttribute('data-value') === seleccionado) {
-                    btn.classList.add('selected');
-                }
-            });
+            if (seleccionado) {
+                document.querySelectorAll('.btn-metodo').forEach(function (btn) {
+                    if (btn.getAttribute('data-value') === seleccionado) {
+                        btn.classList.add('selected');
+                    }
+                });
+            }
         }
-    }
 </script>
 
 

@@ -76,19 +76,19 @@ namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            if(!(ddlDepartamento.SelectedIndex > 0))
+            if (!(ddlDepartamento.SelectedIndex > 0))
             {
                 // Mostrar un mensaje de error si no se ha seleccionado un distrito
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione un departamento.";
             }
-            else if(!(ddlProvincia.SelectedIndex > 0))
+            else if (!(ddlProvincia.SelectedIndex > 0))
             {
                 // Mostrar un mensaje de error si no se ha seleccionado un distrito
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione una provincia.";
             }
-            else if(!(ddlDistrito.SelectedIndex > 0))
+            else if (!(ddlDistrito.SelectedIndex > 0))
             {
                 // Mostrar un mensaje de error si no se ha seleccionado un distrito
                 lblError.Visible = true;
@@ -101,7 +101,7 @@ namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
                 string nombreDistrito = ddlDistrito.SelectedItem.Text;
 
                 // Construir la URL con el parámetro idDistrito
-                string url = "/Presentacion/Infraestructura/Evento/ListaEvento.aspx?idDistrito={idDistrito}&nombreDistrito={nombreDistrito}";
+                string url = $"/Presentacion/Infraestructura/Evento/ListaEvento.aspx?idDistrito={idDistrito}&nombreDistrito={nombreDistrito}";
 
                 // Redirigir a la página de compras
                 Response.Redirect(url);

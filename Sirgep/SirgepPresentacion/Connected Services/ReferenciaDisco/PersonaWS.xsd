@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="validarCuenta" type="tns:validarCuenta" />
+  <xs:element name="validarCuentaResponse" type="tns:validarCuentaResponse" />
+  <xs:element name="validarCuentaString" type="tns:validarCuentaString" />
+  <xs:element name="validarCuentaStringResponse" type="tns:validarCuentaStringResponse" />
+  <xs:complexType name="validarCuentaString">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="passcode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validarCuentaStringResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validarCuenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="passcode" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="validarCuentaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

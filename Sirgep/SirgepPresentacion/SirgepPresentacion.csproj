@@ -93,6 +93,10 @@
     <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -2228,8 +2232,10 @@
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
-    <Content Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
     <Content Include="Resources\Pdfs\ReservaPdf.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -2309,12 +2315,19 @@
     <Compile Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx.designer.cs">
       <DependentUpon>CompraEntrada.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Entrada\DetalleEntrada.aspx.designer.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.designer.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.cs">
+      <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.designer.cs">
+      <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.cs">
       <DependentUpon>DetalleReserva.aspx</DependentUpon>
@@ -2329,6 +2342,13 @@
     </Compile>
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
+      <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.designer.cs">
+      <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -2532,6 +2552,27 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reserva.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleEntrada.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

@@ -10,6 +10,8 @@
   <xs:element name="buscarEspacioDeReservaResponse" type="tns:buscarEspacioDeReservaResponse" />
   <xs:element name="buscarReserva" type="tns:buscarReserva" />
   <xs:element name="buscarReservaResponse" type="tns:buscarReservaResponse" />
+  <xs:element name="crearLibroExcelReservas" type="tns:crearLibroExcelReservas" />
+  <xs:element name="crearLibroExcelReservasResponse" type="tns:crearLibroExcelReservasResponse" />
   <xs:element name="eliminarFisicoReserva" type="tns:eliminarFisicoReserva" />
   <xs:element name="eliminarFisicoReservaResponse" type="tns:eliminarFisicoReservaResponse" />
   <xs:element name="eliminarLogicoReserva" type="tns:eliminarLogicoReserva" />
@@ -166,6 +168,14 @@
       <xs:element minOccurs="0" name="return" type="tns:reserva" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservas">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservasResponse">
+    <xs:sequence />
+  </xs:complexType>
   <xs:complexType name="actualizarReserva">
     <xs:sequence>
       <xs:element minOccurs="0" name="reserva" type="tns:reserva" />
@@ -184,22 +194,22 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarLogicoReserva">
-    <xs:sequence>
-      <xs:element name="idReserva" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarLogicoReservaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarFisicoReserva">
     <xs:sequence>
       <xs:element name="idReserva" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarFisicoReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReservaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
