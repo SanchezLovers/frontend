@@ -20,14 +20,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         {
             if (!IsPostBack)
             {
-                entradaWS = new EntradaWSClient();
-                CargarDatos();
             }
         }
         protected void GvListaEntradasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GvListaEntradasComprador.PageIndex = e.NewPageIndex;
-            GvListaEntradasComprador.DataBind();
+            CargarDatos();
+            //GvListaEntradasComprador.DataBind();
         }
         protected void CargarDatos()
         {
@@ -45,7 +44,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
-            int numEntrada = 2;
+            //LinkButton btn = (LinkButton)sender;
+            //string numEntrada = btn.CommandArgument;
+            string numEntrada = "2";
             Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?NumEntrada=" + numEntrada);
         }
     }

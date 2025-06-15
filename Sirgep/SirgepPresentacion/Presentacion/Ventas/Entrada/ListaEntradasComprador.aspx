@@ -36,7 +36,7 @@
                         OnClick="BtnAbrir_Click"
                         CssClass="btn btn-link"
                         ToolTip="Abrir entrada">
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="bi bi-box-arrow-up-right"></i>
                     </asp:LinkButton>
                 </ItemTemplate>
             </asp:TemplateField>
