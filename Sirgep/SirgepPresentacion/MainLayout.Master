@@ -52,20 +52,28 @@
                     <li id="liAdminMenu" runat="server" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><asp:LinkButton ID="lnkPerfilAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkEspaciosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEspaciosAdmin_Click">Espacios</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkEventosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEventosAdmin_Click">Eventos</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkCerrarSesionAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkPerfilAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEspaciosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEspaciosAdmin_Click">Espacios</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEventosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEventosAdmin_Click">Eventos</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCerrarSesionAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
                         </ul>
                     </li>
                     <!-- Menú Usuario -->
                     <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><asp:LinkButton ID="lnkPerfilComprador" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkReservasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkReservasComprador_Click">Reservas</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkEntradasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkEntradasComprador_Click">Entradas</asp:LinkButton></li>
-                            <li><asp:LinkButton ID="lnkCerrarSesionComprador" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkPerfilComprador" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkReservasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkReservasComprador_Click">Reservas</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkEntradasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkEntradasComprador_Click">Entradas</asp:LinkButton></li>
+                            <li>
+                                <asp:LinkButton ID="lnkCerrarSesionComprador" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
                         </ul>
                     </li>
                     <!-- Botón Ingresar -->
@@ -173,7 +181,7 @@
             </div>
         </div>
 
-                        <!-- Modal de Feedback -->
+        <!-- Modal de Feedback -->
         <div class="modal fade" id="modalFeedback" tabindex="-1" aria-labelledby="modalFeedbackLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -190,21 +198,22 @@
                             <span class="estrellaFeedback" data-valor="3" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
                             <span class="estrellaFeedback" data-valor="4" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
                             <span class="estrellaFeedback" data-valor="5" style="cursor: pointer; font-size: 3rem;">&#9734;</span>
+                            <asp:HiddenField ID="calificacionFeedback" runat="server" Value="0" />
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" id="txtComentarioFeedback" rows="1" placeholder="Escribe tu comentario (opcional)" style="resize: none; overflow: hidden;"></textarea>
+                            <asp:TextBox ID="txtComentarioFeedback" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1" placeholder="Escribe tu comentario (opcional)" Style="resize: none; overflow: hidden;" />
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>Cerrar</em></button>
-                        <button type="button" id="btnEnviarFeedback" class="btn btn-dark px-4"><em>Enviar</em></button>
+                        <asp:Button ID="btnEnviarFeedback" runat="server" CssClass="btn btn-dark px-4" Text="Enviar" OnClick="btnEnviarFeedback_Click" />
                     </div>
                 </div>
             </div>
         </div>
 
 
-
+    <asp:HiddenField ID="hdnTipoUsuario" runat="server" />
     </form>
 </body>
 <!-- Pie de página -->
@@ -212,65 +221,50 @@
     <small>2025 © SánchezLovers - Programación 3. Todos los derechos reservados</small>
 </footer>
 
-    <script>
-        // Lógica para mostrar el modal de feedback
-        function mostrarModalFeedback() {
-            var modalFeedback = new bootstrap.Modal(document.getElementById('modalFeedback'));
-            modalFeedback.show();
-        }
 
-        // Lógica para estrellas de feedback
-        let calificacionFeedback = 0;
+<script>
+    // Lógica para mostrar el modal de feedback
+    function mostrarModalFeedback() {
+        var modalFeedback = new bootstrap.Modal(document.getElementById('modalFeedback'));
+        modalFeedback.show();
+    }
+
+    // Lógica para estrellas de feedback
+    let calificacionFeedback = 0;
+    document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
+        estrella.addEventListener('mouseenter', function () {
+            pintarEstrellasFeedback(this.getAttribute('data-valor'));
+        });
+        estrella.addEventListener('mouseleave', function () {
+            pintarEstrellasFeedback(calificacionFeedback);
+        });
+        estrella.addEventListener('click', function () {
+            calificacionFeedback = this.getAttribute('data-valor');
+            pintarEstrellasFeedback(calificacionFeedback);
+            document.getElementById('<%= calificacionFeedback.ClientID %>').value = calificacionFeedback;
+                });
+            });
+
+    function pintarEstrellasFeedback(valor) {
         document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
-            estrella.addEventListener('mouseenter', function () {
-                pintarEstrellasFeedback(this.getAttribute('data-valor'));
-            });
-            estrella.addEventListener('mouseleave', function () {
-                pintarEstrellasFeedback(calificacionFeedback);
-            });
-            estrella.addEventListener('click', function () {
-                calificacionFeedback = this.getAttribute('data-valor');
-                pintarEstrellasFeedback(calificacionFeedback);
-            });
-        });
-
-        function pintarEstrellasFeedback(valor) {
-            document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
-                if (estrella.getAttribute('data-valor') <= valor) {
-                    estrella.innerHTML = '&#9733;'; // estrella llena
-                } else {
-                    estrella.innerHTML = '&#9734;'; // estrella vacía
-                }
-            });
-        }
-
-        // Lógica para enviar el feedback y redirigir
-        document.getElementById('btnEnviarFeedback').addEventListener('click', function () {
-            const comentario = document.getElementById('txtComentarioFeedback').value;
-            const puntaje = calificacionFeedback;
-            
-            redirigirPaginaPrincipal();
-        });
-
-        // Función para redirigir a la página principal según el tipo de usuario
-        function redirigirPaginaPrincipal() {
-            var tipoUsuario = '<%= Session["tipoUsuario"] %>';
-            switch (tipoUsuario) {
-                case 'administrador':
-                    window.location.href = '/Inicio/PrincipalAdministrador.aspx';
-                    break;
-                case 'comprador':
-                    window.location.href = '/Inicio/PrincipalComprador.aspx';
-                    break;
-                default:
-                    window.location.href = '/Inicio/PrincipalInvitado.aspx';
-                    break;
+            if (estrella.getAttribute('data-valor') <= valor) {
+                estrella.innerHTML = '&#9733;'; // estrella llena
+            } else {
+                estrella.innerHTML = '&#9734;'; // estrella vacía
             }
-        }
-
-        // Lógica para cerrar el modal y redirigir
-        document.getElementById('modalFeedback').addEventListener('hidden.bs.modal', function () {
-            redirigirPaginaPrincipal();
         });
+    }
+    function redirigirPaginaPrincipal() {
+        window.location.href = '/Presentacion/Inicio/PrincipalInvitado.aspx';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var modalFeedback = document.getElementById('modalFeedback');
+        if (modalFeedback) {
+            modalFeedback.addEventListener('hidden.bs.modal', function () {
+                redirigirPaginaPrincipal();
+            });
+        }
+    });
+
     </script>
 </html>

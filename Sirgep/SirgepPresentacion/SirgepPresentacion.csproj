@@ -78,6 +78,10 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
       <SubType>Designer</SubType>
@@ -2579,6 +2583,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.calificarServicioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

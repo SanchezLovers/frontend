@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SirgepPresentacion.ReferenciaDisco;
+using System;
 using System.Web.UI;
 
 namespace SirgepPresentacion
@@ -45,6 +46,7 @@ namespace SirgepPresentacion
                     liIngresar.Visible = false;
                     break;
             }
+            hdnTipoUsuario.Value = Session["tipoUsuario"] as string ?? "invitado";
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -53,6 +55,11 @@ namespace SirgepPresentacion
         }
 
         protected void lnkLogo_Click(object sender, EventArgs e)
+        {
+            redirigirInicio();
+        }
+
+        protected void redirigirInicio()
         {
             string tipoUsuario = Session["tipoUsuario"] as string;
 
@@ -105,6 +112,32 @@ namespace SirgepPresentacion
         {
             Response.Redirect("/Presentacion/Usuario/Admin/ListaEventos.aspx");
         }
+        protected void btnEnviarFeedback_Click(object sender, EventArgs e)
+        {
+            string comentario = txtComentarioFeedback.Text.Trim();
+            int puntaje = ObtenerPuntajeFeedback();
 
+            // Llamar al servicio web CalificacionWSCliente
+            CalificacionWSClient calificacionService = new CalificacionWSClient();
+            string tipoServicio = Session["tipoServicio"] as string;
+            calificacionService.calificarServicio(puntaje, comentario, tipoServicio);
+
+            // Cerrar el modal (opcional, si quieres mostrar el cierre visual)
+            string script = "var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalFeedback')); modal.hide();";
+            ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalFeedback", script, true);
+
+            Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
+        }
+
+        private int ObtenerPuntajeFeedback()
+        {
+            // Leer el valor del HiddenField directamente
+            int puntaje = 0;
+            if (int.TryParse(calificacionFeedback.Value, out puntaje))
+            {
+                return puntaje;
+            }
+            return 0; // Valor por defecto si no se seleccionó nada
+        }
     }
 }

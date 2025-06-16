@@ -56,8 +56,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            // Mostrar el modal de feedback
-            string script = "mostrarModalFeedback();";
+            Session["tipoServicio"] = "reserva";
+            string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
             ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
         }
 
