@@ -2235,6 +2235,7 @@
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
     <Content Include="Resources\Pdfs\ReservaPdf.html" />
@@ -2343,6 +2344,13 @@
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx.cs">
+      <DependentUpon>ListaReservasAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx.designer.cs">
+      <DependentUpon>ListaReservasAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2444,9 +2452,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarVentasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.provincia.datasource">
@@ -2615,7 +2620,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Presentacion\Infraestructura\Funcion\" />
-    <Folder Include="Presentacion\Usuarios\Administrador\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -285,16 +285,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="actualizarReserva">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="reserva" type="tns:reserva" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="actualizarReservaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarPorFecha">
     <xs:sequence>
       <xs:element minOccurs="0" name="fecha" type="xs:string" />
@@ -304,6 +294,16 @@
   <xs:complexType name="listarPorFechaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarReserva">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="reserva" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarLogicoReserva">

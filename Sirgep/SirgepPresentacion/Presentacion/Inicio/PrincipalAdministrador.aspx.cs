@@ -18,7 +18,7 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnConsultarReservas_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservas.aspx"); // Ajusta la ruta si es diferente
+            Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservasAdministrador.aspx");
         }
 
         protected void btnManejarEventos_Click(object sender, EventArgs e)
