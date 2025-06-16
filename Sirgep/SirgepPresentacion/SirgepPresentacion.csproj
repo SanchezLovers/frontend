@@ -93,6 +93,10 @@
     <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
@@ -2236,6 +2240,7 @@
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
     <Content Include="Resources\Pdfs\ReservaPdf.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -2349,6 +2354,13 @@
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.designer.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx.cs">
+      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx.designer.cs">
+      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -2579,6 +2591,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.horarioEspacio.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarHorariosDelEspacioYDiaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
