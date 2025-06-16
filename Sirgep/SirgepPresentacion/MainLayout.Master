@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MainLayout.master.cs" Inherits="SirgepPresentacion.MainLayout" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head runat="server">
@@ -246,8 +247,8 @@
         // Lógica para enviar el feedback y redirigir
         document.getElementById('btnEnviarFeedback').addEventListener('click', function () {
             const comentario = document.getElementById('txtComentarioFeedback').value;
-            // Aquí puedes enviar la calificación y comentario por AJAX o como prefieras
-            // Después de enviar el feedback, redirige
+            const puntaje = calificacionFeedback;
+            
             redirigirPaginaPrincipal();
         });
 

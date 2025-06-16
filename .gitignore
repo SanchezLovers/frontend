@@ -1,6 +1,21 @@
 .vs/
 # Nunca subir esto
 Sirgep/SirgepPresentacion/DriveAuth/credentials.json
+*.swp
+*.*~
+project.lock.json
+.DS_store
+*.pyc
+
+#VisualStudio
+.vscode
+
+#userSpecific files
+*.suo
+*.user
+*.userosscache
+*.cln.docstates
+
 # Archivos binarios y temporales
 **/bin/
 **/obj/
@@ -9,8 +24,23 @@ Sirgep/SirgepPresentacion/DriveAuth/credentials.json
 *.cache
 *.exe
 *.txt
+
+#Build
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+msbuild.log
+msbuild.err
+msbuild.wrn
 # Ignorar paquetes NuGet descargados localmente
 /packages/
 /**/packages/
 Sirgep/packages/
 
+*.datasource

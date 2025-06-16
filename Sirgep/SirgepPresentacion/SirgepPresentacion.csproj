@@ -44,6 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.4.0\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.4\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.4, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13.4\lib\net461\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -69,9 +78,6 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Compras\DetalleDeCompra.aspx" />
-    <Content Include="Compras\DetalleDelEvento.aspx" />
-    <Content Include="Compras\EleccionDistrito.aspx" />
     <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
       <SubType>Designer</SubType>
@@ -87,11 +93,15 @@
     <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\EventoWSAnaG.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EventoWSAnaG.xsd">
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
@@ -101,7 +111,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Compras\ListaEvento.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -2200,67 +2209,132 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\site.css" />
-    <Content Include="Usuario\Admin\ListaEspacios.aspx" />
-    <Content Include="Usuario\Admin\ListaEventos.aspx" />
-    <Content Include="Inicio\PrincipalAdministrador.aspx" />
-    <Content Include="Inicio\PrincipalInvitado.aspx" />
+    <Content Include="Images\grl\Escudo_Región_Lima.png" />
+    <Content Include="Images\grl\Escudo_Región_Lima_recortado.PNG" />
+    <Content Include="Images\grl\logo_grl.png" />
+    <Content Include="Images\icons\open-link.png" />
+    <Content Include="Images\img\undraw_posting_photo.svg" />
+    <Content Include="Images\img\undraw_profile.svg" />
+    <Content Include="Images\img\undraw_profile_1.svg" />
+    <Content Include="Images\img\undraw_profile_2.svg" />
+    <Content Include="Images\img\undraw_profile_3.svg" />
+    <Content Include="Images\img\undraw_rocket.svg" />
+    <Content Include="Images\metodosDePago\Plin.png" />
+    <Content Include="Images\metodosDePago\Tarjeta.png" />
+    <Content Include="Images\metodosDePago\Yape.png" />
+    <Content Include="Images\principal\lima_evento.jpg" />
+    <Content Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx" />
+    <Content Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx" />
+    <Content Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx" />
+    <Content Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx" />
+    <Content Include="Presentacion\Inicio\LogIn.aspx" />
+    <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
+    <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
+    <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
+    <Content Include="Resources\Pdfs\EntradaPdf.html" />
+    <Content Include="Resources\Pdfs\ReservaPdf.html" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Usuario\Comprador\DetalleEntrada.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Inicio\LogIn.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compras\DetalleDeCompra.aspx.cs">
-      <DependentUpon>DetalleDeCompra.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\DetalleDeCompra.aspx.designer.cs">
-      <DependentUpon>DetalleDeCompra.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\DetalleDelEvento.aspx.cs">
-      <DependentUpon>DetalleDelEvento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\DetalleDelEvento.aspx.designer.cs">
-      <DependentUpon>DetalleDelEvento.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\EleccionDistrito.aspx.cs">
-      <DependentUpon>EleccionDistrito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\EleccionDistrito.aspx.designer.cs">
-      <DependentUpon>EleccionDistrito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\ListaEvento.aspx.cs">
-      <DependentUpon>ListaEvento.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Compras\ListaEvento.aspx.designer.cs">
-      <DependentUpon>ListaEvento.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ReferenciaDisco\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Usuario\Admin\ListaEspacios.aspx.cs">
+    <Compile Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx.cs">
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuario\Admin\ListaEspacios.aspx.designer.cs">
+    <Compile Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx.designer.cs">
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuario\Admin\ListaEventos.aspx.cs">
-      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    <Compile Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx.cs">
+      <DependentUpon>DetalleEvento.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuario\Admin\ListaEventos.aspx.designer.cs">
-      <DependentUpon>ListaEventos.aspx</DependentUpon>
+    <Compile Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx.designer.cs">
+      <DependentUpon>DetalleEvento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx.cs">
+      <DependentUpon>ListaEvento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx.designer.cs">
+      <DependentUpon>ListaEvento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx.cs">
+      <DependentUpon>GestionaEventos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx.designer.cs">
+      <DependentUpon>GestionaEventos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\PrincipalAdministrador.aspx.cs">
+      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\PrincipalAdministrador.aspx.designer.cs">
+      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\PrincipalInvitado.aspx.cs">
+      <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\PrincipalInvitado.aspx.designer.cs">
+      <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx.cs">
+      <DependentUpon>EligeDistrito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx.designer.cs">
+      <DependentUpon>EligeDistrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx.cs">
+      <DependentUpon>CompraEntrada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx.designer.cs">
+      <DependentUpon>CompraEntrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.designer.cs">
+      <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.cs">
+      <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.designer.cs">
+      <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx.cs">
+      <DependentUpon>ConstanciaReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx.designer.cs">
+      <DependentUpon>ConstanciaReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainLayout.Master.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
@@ -2269,34 +2343,18 @@
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="Inicio\PrincipalAdministrador.aspx.cs">
-      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
+      <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inicio\PrincipalAdministrador.aspx.designer.cs">
-      <DependentUpon>PrincipalAdministrador.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Inicio\PrincipalInvitado.aspx.cs">
-      <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio\PrincipalInvitado.aspx.designer.cs">
-      <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.designer.cs">
+      <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Inicio\LogIn.aspx.cs">
-      <DependentUpon>LogIn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio\LogIn.aspx.designer.cs">
-      <DependentUpon>LogIn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario\Comprador\DetalleEntrada.aspx.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usuario\Comprador\DetalleEntrada.aspx.designer.cs">
-      <DependentUpon>DetalleEntrada.aspx</DependentUpon>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -2409,13 +2467,19 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEventoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEventosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEspacioPorTextoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioPorDistritoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse.datasource">
@@ -2439,6 +2503,84 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarDistritoDeEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.insertarReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reserva.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleEntrada.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleReserva.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2452,6 +2594,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ReferenciaDisco\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presentacion\Infraestructura\Funcion\" />
+    <Folder Include="Presentacion\Usuarios\Administrador\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
