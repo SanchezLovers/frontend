@@ -11,12 +11,12 @@ namespace SirgepPresentacion.Presentacion.Inicio
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["tipoUsuario"] = "invitado"; // Asignar el tipo de usuario como invitado
+
         }
 
         protected void btnReservar_Click(object sender, EventArgs e)
         {
-
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Funcionalidad no implementada aún...');", true);
         }
 
         protected void btnVerEventos_Click(object sender, EventArgs e)

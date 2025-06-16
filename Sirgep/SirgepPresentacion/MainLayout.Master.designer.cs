@@ -60,6 +60,42 @@ namespace SirgepPresentacion
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liAdminMenu;
 
         /// <summary>
+        /// Control lnkPerfilAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkPerfilAdmin;
+
+        /// <summary>
+        /// Control lnkEspaciosAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEspaciosAdmin;
+
+        /// <summary>
+        /// Control lnkEventosAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEventosAdmin;
+
+        /// <summary>
+        /// Control lnkCerrarSesionAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesionAdmin;
+
+        /// <summary>
         /// Control liUsuarioMenu.
         /// </summary>
         /// <remarks>
@@ -67,6 +103,42 @@ namespace SirgepPresentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl liUsuarioMenu;
+
+        /// <summary>
+        /// Control lnkPerfilComprador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkPerfilComprador;
+
+        /// <summary>
+        /// Control lnkReservasComprador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkReservasComprador;
+
+        /// <summary>
+        /// Control lnkEntradasComprador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkEntradasComprador;
+
+        /// <summary>
+        /// Control lnkCerrarSesionComprador.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkCerrarSesionComprador;
 
         /// <summary>
         /// Control liIngresar.

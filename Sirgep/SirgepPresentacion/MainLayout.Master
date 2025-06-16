@@ -52,20 +52,20 @@
                     <li id="liAdminMenu" runat="server" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/Usuario/Perfil.aspx">Perfil</a></li>
-                            <li><a class="dropdown-item" href="/Usuario/Admin/ListaEspacios.aspx">Espacios</a></li>
-                            <li><a class="dropdown-item" href="/Usuario/Admin/ListaEventos.aspx">Eventos</a></li>
-                            <li><a class="dropdown-item" href="/Inicio/PrincipalInvitado.aspx">Cerrar Sesión</a></li>
+                            <li><asp:LinkButton ID="lnkPerfilAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkEspaciosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEspaciosAdmin_Click">Espacios</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkEventosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEventosAdmin_Click">Eventos</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkCerrarSesionAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
                         </ul>
                     </li>
                     <!-- Menú Usuario -->
                     <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="/Usuario/Perfil.aspx">Perfil</a></li>
-                            <li><a class="dropdown-item" href="/Usuario/Comprador/ListaReservas.aspx">Reservas</a></li>
-                            <li><a class="dropdown-item" href="/Usuario/Comprador/ListaEntradas.aspx">Entradas</a></li>
-                            <li><a class="dropdown-item" href="/Inicio/PrincipalInvitado.aspx">Cerrar Sesión</a></li>
+                            <li><asp:LinkButton ID="lnkPerfilComprador" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkReservasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkReservasComprador_Click">Reservas</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkEntradasComprador" runat="server" CssClass="dropdown-item" OnClick="lnkEntradasComprador_Click">Entradas</asp:LinkButton></li>
+                            <li><asp:LinkButton ID="lnkCerrarSesionComprador" runat="server" CssClass="dropdown-item" OnClick="lnkCerrarSesion_Click">Cerrar Sesión</asp:LinkButton></li>
                         </ul>
                     </li>
                     <!-- Botón Ingresar -->

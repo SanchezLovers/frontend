@@ -218,22 +218,22 @@
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarFisicoReserva">
-    <xs:sequence>
-      <xs:element name="idReserva" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarFisicoReservaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarLogicoReserva">
     <xs:sequence>
       <xs:element name="idReserva" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarLogicoReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarFisicoReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarFisicoReservaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>

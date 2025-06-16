@@ -63,7 +63,7 @@ namespace SirgepPresentacion
                     break;
 
                 case "comprador":
-                    Response.Redirect("/Presentacion/Inicio/PrincipalComprador.aspx");
+                    Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
 
                 case "invitado":
@@ -75,9 +75,36 @@ namespace SirgepPresentacion
             }
         }
 
-        protected void btnPerfil_Click(object sender, EventArgs e)
+        protected void lnkPerfil_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuarios/Perfil.aspx");
+            Response.Redirect("/Presentacion/Usuario/Perfil.aspx");
         }
+
+        protected void lnkReservasComprador_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservasComprador.aspx");
+        }
+
+        protected void lnkEntradasComprador_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Ventas/Entrada/ListaEntradasComprador.aspx");
+        }
+
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
+        }
+
+        protected void lnkEspaciosAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuario/Admin/ListaEspacios.aspx");
+        }
+
+        protected void lnkEventosAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuario/Admin/ListaEventos.aspx");
+        }
+
     }
 }
