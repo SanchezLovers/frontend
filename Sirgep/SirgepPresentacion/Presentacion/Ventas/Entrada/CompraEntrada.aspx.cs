@@ -165,7 +165,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             ";
             ScriptManager.RegisterStartupScript(this, GetType(), "alertAndRedirect", script, true);
 
-            Response.Redirect("/Presentacion/Ventas/Entrada/DetalleEntrada.aspx?idConstancia=" + idConstancia);
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
     }
 }
