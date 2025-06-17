@@ -37,7 +37,7 @@
             <p><strong>Horario:</strong> <asp:Label ID="lblHorario" runat="server" /></p>
             <p><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" /></p>
             <p><strong>Cantidad:</strong> <asp:Label ID="lblCantidad" runat="server" /></p>
-            <p><strong>Total:</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>
+            <p><strong>Total: S/</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>
 
             <!-- Aqui -->
             <h4>Datos del comprador:</h4>
