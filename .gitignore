@@ -44,6 +44,4 @@ msbuild.wrn
 Sirgep/packages/
 
 *.datasource
-UpgradeLog*.htm
-
-Sirgep/SirgepPresentacion/obj/Debug/SirgepPresentacion.csproj.AssemblyReference.cache
+*.TMP
