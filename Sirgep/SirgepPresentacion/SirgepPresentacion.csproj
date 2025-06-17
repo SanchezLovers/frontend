@@ -2243,6 +2243,7 @@
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
@@ -2351,6 +2352,13 @@
     </Compile>
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.cs">
+      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.designer.cs">
+      <DependentUpon>DetalleReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
@@ -2607,24 +2615,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarPorFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorEspacioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorHorarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorPersonaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

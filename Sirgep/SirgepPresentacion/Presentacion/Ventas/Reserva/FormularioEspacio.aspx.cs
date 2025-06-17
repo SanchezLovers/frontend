@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.EnterpriseServices;
 using System.Globalization;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using SirgepPresentacion.ReferenciaDisco;
 
@@ -123,8 +123,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-          //  int idCat = int.Parse(ddlCategoria.SelectedValue);
-           // int idDist = int.Parse(ddlDistrito.SelectedValue);
+            //  int idCat = int.Parse(ddlCategoria.SelectedValue);
+            // int idDist = int.Parse(ddlDistrito.SelectedValue);
 
             string filtroCat = ddlCategoria.Text;
             string filtroDist = ddlDistrito.Text;
@@ -164,26 +164,58 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblPrecioTotal.Text = "Precio total seleccionado: S/ 0.00"; // Recalcula con JS si deseas
             }
         }
-
         protected void btnReservar_Click(object sender, EventArgs e)
         {
-            // Aquí llamas al WS para registrar la reserva.
-            // Recorres el Repeater y verificas qué CheckBox están seleccionados.
+            lblError.Visible = false;
 
-            List<Horario> seleccionados = new List<Horario>();
-            foreach (RepeaterItem item in rptHorarios.Items)
+            if (!(ddlEspacio.SelectedIndex > 0))
             {
-                CheckBox chk = (CheckBox)item.FindControl("chkHora");
-                Label lbl = (Label)item.FindControl("Label1"); // si defines un Label para horaInicio
-                if (chk != null && chk.Checked)
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione un Espacio.";
+            }
+            else if (string.IsNullOrEmpty(txtFecha.Text))
+            {
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione una Fecha.";
+            }
+            else
+            {
+                List<TimeSpan> horasSeleccionadas = new List<TimeSpan>();
+                int cant = 0;
+                foreach (RepeaterItem item in rptHorarios.Items)
                 {
-                    DateTime hora = DateTime.ParseExact(chk.ToolTip, "HH:mm", CultureInfo.InvariantCulture);
-                    seleccionados.Add(new Horario { horaInicio = hora });
+                    CheckBox chk = (CheckBox)item.FindControl("chkHorario");
+                    Label lbl = (Label)item.FindControl("lblHora");
+
+                    if (chk.Checked)
+                    {
+                        cant++;
+                        if (TimeSpan.TryParse(lbl.Text, out TimeSpan hora))
+                        {
+                            horasSeleccionadas.Add(hora);
+                        }
+                    }
+                }
+
+                if (horasSeleccionadas.Count == 0)
+                {
+                    lblError.Visible = true;
+                    lblError.Text = "Por favor, seleccione al menos un horario disponible.";
+                }
+                else
+                {
+                    horasSeleccionadas.Sort(); // porsiaca no esten ordenadas
+                    string horaIni = horasSeleccionadas.First().ToString(@"hh\:mm");
+                    string horaFin = horasSeleccionadas.Last().Add(TimeSpan.FromHours(1)).ToString(@"hh\:mm"); // siempre osn de 1 hora
+                    int idEspacio = int.Parse(ddlEspacio.SelectedValue);
+                    string fecha = txtFecha.Text;
+
+                    string url = $"/Presentacion/Ventas/Reserva/DetalleReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cant}";
+
+                    Response.Redirect(url);
                 }
             }
-
         }
 
-      
     }
 }

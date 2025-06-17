@@ -1,13 +1,10 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Drawing.Printing;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
+﻿using System;
+using System.IO;
 //Para generar pdf
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
-using System.IO;
+using SirgepPresentacion.ReferenciaDisco;
 
 
 
@@ -52,7 +49,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
                 lblDetallePago.Text = entradaDomain.detallePago.ToString();
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+entradaDomain.total.ToString();
+                lblTotal.Text = "S/. " + entradaDomain.total.ToString();
             }
         }
 

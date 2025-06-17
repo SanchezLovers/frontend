@@ -5,24 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/ReservaWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="listarReservaPorPersona">
-    <part name="parameters" element="tns:listarReservaPorPersona" />
-  </message>
-  <message name="listarReservaPorPersonaResponse">
-    <part name="parameters" element="tns:listarReservaPorPersonaResponse" />
-  </message>
-  <message name="listarReservaPorHorario">
-    <part name="parameters" element="tns:listarReservaPorHorario" />
-  </message>
-  <message name="listarReservaPorHorarioResponse">
-    <part name="parameters" element="tns:listarReservaPorHorarioResponse" />
-  </message>
-  <message name="listarReservaPorEspacio">
-    <part name="parameters" element="tns:listarReservaPorEspacio" />
-  </message>
-  <message name="listarReservaPorEspacioResponse">
-    <part name="parameters" element="tns:listarReservaPorEspacioResponse" />
-  </message>
   <message name="insertarReserva">
     <part name="parameters" element="tns:insertarReserva" />
   </message>
@@ -41,11 +23,11 @@
   <message name="actualizarReservaResponse">
     <part name="parameters" element="tns:actualizarReservaResponse" />
   </message>
-  <message name="listarReservas">
-    <part name="parameters" element="tns:listarReservas" />
+  <message name="listarVentas">
+    <part name="parameters" element="tns:listarVentas" />
   </message>
-  <message name="listarReservasResponse">
-    <part name="parameters" element="tns:listarReservasResponse" />
+  <message name="listarVentasResponse">
+    <part name="parameters" element="tns:listarVentasResponse" />
   </message>
   <message name="listarDetalleReservasPorComprador">
     <part name="parameters" element="tns:listarDetalleReservasPorComprador" />
@@ -64,12 +46,6 @@
   </message>
   <message name="buscarCompradorDeReservaResponse">
     <part name="parameters" element="tns:buscarCompradorDeReservaResponse" />
-  </message>
-  <message name="listarReservaPorDistrito">
-    <part name="parameters" element="tns:listarReservaPorDistrito" />
-  </message>
-  <message name="listarReservaPorDistritoResponse">
-    <part name="parameters" element="tns:listarReservaPorDistritoResponse" />
   </message>
   <message name="eliminarFisicoReserva">
     <part name="parameters" element="tns:eliminarFisicoReserva" />
@@ -95,25 +71,7 @@
   <message name="eliminarLogicoReservaResponse">
     <part name="parameters" element="tns:eliminarLogicoReservaResponse" />
   </message>
-  <message name="listarPorFecha">
-    <part name="parameters" element="tns:listarPorFecha" />
-  </message>
-  <message name="listarPorFechaResponse">
-    <part name="parameters" element="tns:listarPorFechaResponse" />
-  </message>
   <portType name="ReservaWS">
-    <operation name="listarReservaPorPersona">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorPersonaRequest" message="tns:listarReservaPorPersona" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorPersonaResponse" message="tns:listarReservaPorPersonaResponse" />
-    </operation>
-    <operation name="listarReservaPorHorario">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorHorarioRequest" message="tns:listarReservaPorHorario" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorHorarioResponse" message="tns:listarReservaPorHorarioResponse" />
-    </operation>
-    <operation name="listarReservaPorEspacio">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorEspacioRequest" message="tns:listarReservaPorEspacio" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorEspacioResponse" message="tns:listarReservaPorEspacioResponse" />
-    </operation>
     <operation name="insertarReserva">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaRequest" message="tns:insertarReserva" />
       <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaResponse" message="tns:insertarReservaResponse" />
@@ -126,9 +84,9 @@
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/actualizarReservaRequest" message="tns:actualizarReserva" />
       <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/actualizarReservaResponse" message="tns:actualizarReservaResponse" />
     </operation>
-    <operation name="listarReservas">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasRequest" message="tns:listarReservas" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasResponse" message="tns:listarReservasResponse" />
+    <operation name="listarVentas">
+      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarVentasRequest" message="tns:listarVentas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarVentasResponse" message="tns:listarVentasResponse" />
     </operation>
     <operation name="listarDetalleReservasPorComprador">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest" message="tns:listarDetalleReservasPorComprador" />
@@ -141,10 +99,6 @@
     <operation name="buscarCompradorDeReserva">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaRequest" message="tns:buscarCompradorDeReserva" />
       <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaResponse" message="tns:buscarCompradorDeReservaResponse" />
-    </operation>
-    <operation name="listarReservaPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoRequest" message="tns:listarReservaPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoResponse" message="tns:listarReservaPorDistritoResponse" />
     </operation>
     <operation name="eliminarFisicoReserva">
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaRequest" message="tns:eliminarFisicoReserva" />
@@ -162,40 +116,9 @@
       <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest" message="tns:eliminarLogicoReserva" />
       <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse" message="tns:eliminarLogicoReservaResponse" />
     </operation>
-    <operation name="listarPorFecha">
-      <input wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarPorFechaRequest" message="tns:listarPorFecha" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ReservaWS/listarPorFechaResponse" message="tns:listarPorFechaResponse" />
-    </operation>
   </portType>
   <binding name="ReservaWSPortBinding" type="tns:ReservaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarReservaPorPersona">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarReservaPorHorario">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarReservaPorEspacio">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarReserva">
       <soap:operation soapAction="" />
       <input>
@@ -223,7 +146,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarReservas">
+    <operation name="listarVentas">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -251,15 +174,6 @@
       </output>
     </operation>
     <operation name="buscarCompradorDeReserva">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarReservaPorDistrito">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -296,15 +210,6 @@
       </output>
     </operation>
     <operation name="eliminarLogicoReserva">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarPorFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -1,10 +1,6 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+﻿using System;
 using System.Web.UI.WebControls;
+using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
@@ -18,8 +14,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             {
                 //                int idEvento = int.Parse(Request.QueryString["idEvento"]);
                 eventoWS = new EventoWSClient();
-               // int idEvento = 1; // Simulación de ID de evento, reemplazar con el ID real obtenido de la URL o base de datos
-                int idEvento= int.Parse(Request.QueryString["idEvento"]);
+                // int idEvento = 1; // Simulación de ID de evento, reemplazar con el ID real obtenido de la URL o base de datos
+                int idEvento = int.Parse(Request.QueryString["idEvento"]);
                 CargarDatosEvento(idEvento);
                 CargarFunciones(idEvento);
             }
@@ -54,7 +50,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             int cantFunciones = 0; //para contar las funciones y dividir la cantidad de entradas entre el num de funciones
             var funciones = eventoWS.listarFuncionesDeEvento(idEvento);
 
-            if (funciones!=null)
+            if (funciones != null)
             {
                 foreach (var funcion in funciones)
                 {

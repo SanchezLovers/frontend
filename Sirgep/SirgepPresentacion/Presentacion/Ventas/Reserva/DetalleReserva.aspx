@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="CompraEntrada.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Entrada.CompraEntrada" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleReserva.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.DetalleReserva" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
@@ -30,14 +30,23 @@
     <div class="row">
         <!-- Panel de datos del evento -->
         <div class="col-md-6">
-            <h3>Detalle de Compra</h3>
+           <!-- <h3>Detalle de Compra</h3>
             <p><strong>Evento:</strong> <asp:Label ID="lblEvento" runat="server" /></p>
             <p><strong>Ubicación:</strong> <asp:Label ID="lblUbicacion" runat="server" /></p>
             <p><strong>Referencia:</strong> <asp:Label ID="lblReferencia" runat="server" /></p>
             <p><strong>Horario:</strong> <asp:Label ID="lblHorario" runat="server" /></p>
             <p><strong>Fecha:</strong> <asp:Label ID="lblFecha" runat="server" /></p>
             <p><strong>Cantidad:</strong> <asp:Label ID="lblCantidad" runat="server" /></p>
-            <p><strong>Total: S/</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>
+            <p><strong>Total:</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>  -->
+
+            
+            <h3 style="font-weight: bold; font-size: 2.2rem;">Detalle de Reserva</h3>
+            <p><strong>Espacio:</strong> <asp:Label ID="LblEspacio" runat="server" /></p>
+            <p><strong>Ubicacion:</strong> <asp:Label ID="LblUbicacionReserva" runat="server" /></p>
+            <p><strong>Horario:</strong> <asp:Label ID="LblHorarioReserva" runat="server" /></p>
+            <p><strong>Fecha:</strong> <asp:Label ID="LblFechaReserva" runat="server" /></p>
+            <p><strong>Precio por Hora:</strong> <asp:Label ID="lblPrecioHora" runat="server" /></p>
+            <p><strong>Precio Total:</strong> <asp:Label ID="LblTotalReserva" runat="server" /></p>
 
             <!-- Aqui -->
             <h4>Datos del comprador:</h4>
@@ -106,8 +115,9 @@
                 });
             }
         }
-</script>
+    </script>
 
 
 
 </asp:Content>
+

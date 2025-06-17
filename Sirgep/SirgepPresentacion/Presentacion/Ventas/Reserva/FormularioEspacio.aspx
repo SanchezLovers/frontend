@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <h2 class="fw-bold mb-4">Reserva un espacio</h2>
-    <p class="mb-3">Llena los datos del espacio que quieres reservar</p>
+    <p class="mb-3">Llena los datos del espacio que quieres reservar. Considere que la reserva durará hasta completar la última hora elegida. Por ejemplo, si su última hora es 9, durará hasta las 10.</p>
 
     <!-- Departamento / Provincia / Distrito -->
     <div class="row mb-3">
@@ -47,25 +47,21 @@
     <div class="border rounded p-3">
         <asp:Repeater ID="rptHorarios" runat="server" ClientIDMode="Static">
             <ItemTemplate>
-                 <div class="form-check form-check-inline">
-                    <input type="checkbox"
-                    class="form-check-input horario-check"
-                    data-disponible='<%# Eval("disponible", "{0}") %>'
-                    data-hora='<%# Eval("horaIni", "{0:HH:mm}") %>'
-                    <%# !(bool)Eval("disponible") ? "disabled" : "" %> />
-
-                    <label class="form-check-label">
-                        <%# Eval("horaIni", "{0:HH:mm}") %>
-                    </label>
+                <div class="form-check form-check-inline">
+                    <asp:CheckBox ID="chkHorario" runat="server"
+                        CssClass="form-check-input"
+                        Enabled='<%# Eval("disponible") %>' />
+                    <asp:Label ID="lblHora" runat="server"
+                        CssClass="form-check-label"
+                        Text='<%# Eval("horaIni", "{0:HH\\:mm}") %>' />
                 </div>
             </ItemTemplate>
-
         </asp:Repeater>
     </div>
 
     <asp:Label ID="lblPrecioHora" runat="server" CssClass="d-block mt-3 fw-bold" />
     <asp:Label ID="lblPrecioTotal" runat="server" CssClass="d-block fw-bold" />
-
+    <asp:Label ID="lblError" runat="server" Visible="false" CssClass="d-block fw-bold" />
     <asp:Button ID="btnReservar" runat="server" Text="Reservar" CssClass="btn btn-primary mt-3"
         OnClick="btnReservar_Click" />
 

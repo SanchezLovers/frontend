@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web.UI;
 
 namespace SirgepPresentacion
 {
@@ -37,7 +36,7 @@ namespace SirgepPresentacion
                     string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
                     if (page == "login.aspx")
                         liIngresar.Visible = false; // Si estás en la página de invitado, no mostrar el botón de ingresar
-                    
+
                     break;
                 default:
                     liAdminMenu.Visible = false;

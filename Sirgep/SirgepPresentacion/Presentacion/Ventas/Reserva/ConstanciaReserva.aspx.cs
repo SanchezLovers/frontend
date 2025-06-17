@@ -1,13 +1,10 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Drawing.Printing;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
+﻿using System;
+using System.IO;
 //Para generar pdf
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
-using System.IO;
+using SirgepPresentacion.ReferenciaDisco;
 
 
 
@@ -31,8 +28,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 // Datos del espacio
                 lblEspacio.Text = espacioDomain.nombre;
                 lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
-                lblSuperficie.Text = espacioDomain.superficie.ToString()+ " m²";
-                lblUbicacion.Text = espacioDomain.ubicacion; 
+                lblSuperficie.Text = espacioDomain.superficie.ToString() + " m²";
+                lblUbicacion.Text = espacioDomain.ubicacion;
                 lblDistrito.Text = distritoDomain.nombre;
                 // Datos de la Reserva
                 lblNumReserva.Text = reservaDomain.numReserva.ToString();
@@ -50,7 +47,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
                 lblDetallePago.Text = reservaDomain.detallePago;
                 //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+ reservaDomain.total.ToString();
+                lblTotal.Text = "S/. " + reservaDomain.total.ToString();
             }
         }
 

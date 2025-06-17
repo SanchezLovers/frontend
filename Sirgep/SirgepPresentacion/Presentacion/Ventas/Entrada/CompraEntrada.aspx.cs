@@ -81,14 +81,25 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);
+                //return;
+                string script = "document.getElementById('modalErrorBody').innerText = \"Por favor, complete todos los campos obligatorios.\";" +
+                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
+                "modal.show();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
+
             }
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Debe seleccionar un método de pago.');", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Debe seleccionar un método de pago.');", true);
+                //return;
+                string script = "document.getElementById('modalErrorBody').innerText = \"Debe seleccionar un método de pago.\";" +
+                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
+                "modal.show();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
 
@@ -110,9 +121,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
             {
-                idPersona1 = compradorExistente.idPersona;
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
-                    "alert('Saldo insuficiente.');", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                //  "alert('Saldo insuficiente.');", true);
+                //return;
+                string script = "document.getElementById('modalErrorBody').innerText = \"Saldo insuficiente.\";" +
+                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
+                "modal.show();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
 
@@ -122,8 +137,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 comprador nuevo = new comprador
                 {
                     nombres = txtNombres.Text.Trim(),
-                    primerApellido = txtApellidoPaterno.Text.Trim(),//aqui
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),//aqui
+                    primerApellido = txtApellidoPaterno.Text.Trim(),
+                    segundoApellido = txtApellidoMaterno.Text.Trim(),
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
