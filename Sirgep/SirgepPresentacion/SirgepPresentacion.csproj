@@ -93,6 +93,10 @@
     <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\FuncionWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\FuncionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
@@ -2548,6 +2552,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.insertarEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.insertarFuncionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

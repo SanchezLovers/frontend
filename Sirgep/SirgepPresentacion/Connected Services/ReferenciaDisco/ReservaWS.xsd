@@ -81,9 +81,9 @@
       <xs:element name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:string" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:string" />
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -94,8 +94,8 @@
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:string" />
       <xs:element name="idEvento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element name="precioEntrada" type="xs:double" />
@@ -194,22 +194,22 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarLogicoReserva">
-    <xs:sequence>
-      <xs:element name="idReserva" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarLogicoReservaResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarFisicoReserva">
     <xs:sequence>
       <xs:element name="idReserva" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarFisicoReservaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReserva">
+    <xs:sequence>
+      <xs:element name="idReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarLogicoReservaResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>

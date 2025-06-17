@@ -37,7 +37,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblReferencias.Text = eventoDomain.referencia;
                 lblDistrito.Text = distritoDomain.nombre;
                 // Datos de la funcion
-                lblFechaFuncion.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
+                lblFechaFuncion.Text = funcionDomain.fecha.ToString(); // ahora la fecha es String para insertar correctamente
                 lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
                 lblHoraFin.Text = funcionDomain.horaFin.ToString();
                 //Datos del comprador
