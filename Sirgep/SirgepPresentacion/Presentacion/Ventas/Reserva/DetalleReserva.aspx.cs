@@ -1,65 +1,68 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SirgepPresentacion.ReferenciaDisco;
 
-namespace SirgepPresentacion.Presentacion.Ventas.Entrada
+namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
-    public partial class CompraEntrada : System.Web.UI.Page
+    public partial class DetalleReserva : System.Web.UI.Page
     {
+        EspacioWSClient espacioService;
         CompraWSClient compraService;
+        ReservaWSClient reservaService;
+        
         protected void Page_Init(object sender, EventArgs e)
         {
+            espacioService = new EspacioWSClient();
             compraService = new CompraWSClient();
+            reservaService = new ReservaWSClient();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //if (Request.QueryString["idEvento"] != null)
-                //{
-                int idEvento = 1; // Simular ID elegido
+                int idEspacio = 1; // Simular ID elegido
                                   //int idEvento = int.Parse(Request.QueryString["idEvento"]);
-                evento evento = compraService.buscarEventos(idEvento);
+                espacio espacio = espacioService.buscarEspacio(idEspacio);
+                LblEspacio.Text = espacio.nombre;
+                LblUbicacionReserva.Text = espacio.ubicacion;
 
-                lblEvento.Text = evento.nombre;
-                lblUbicacion.Text = evento.ubicacion;
-                lblReferencia.Text = evento.referencia;
-
-                // Obtener parámetros por URL
-                //string fechaStr = Request.QueryString["fecha"];
-                //string horaIni = Request.QueryString["horaInicio"];
-                //string horaFin = Request.QueryString["horaFin"];
-                //string cantidadStr = Request.QueryString["cantidad"];
-
-
-
-                string fecha = "20/06/2025";
+                string fechaR = "20/06/2025";
                 string horaIni = "15:00";
                 string horaFin = "17:00";
-                string cantidad = "1";
+                //DateTime fecha = DateTime.Parse("20/06/2025");
+               // DateTime horaIni = fecha.Date.AddHours(15); // 15:00
+                //DateTime horaFin = fecha.Date.AddHours(17); // 17:00
 
+                //int cantidadHoras = 2;
 
-                lblHorario.Text = $"{horaIni} - {horaFin}";
-                lblFecha.Text = DateTime.Parse(fecha).ToString("dd/MM/yyyy");
-                lblCantidad.Text = cantidad;
-                lblTotal.Text = evento.precioEntrada.ToString();
+                LblHorarioReserva.Text = $"{horaIni} - {horaFin}";
+                LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
 
-                // Guardar en ViewState si lo vas a usar en el botón pagar
-                //ViewState["IdEvento"] = idEvento;
-                //ViewState["Fecha"] = fechaStr;
-                //ViewState["HoraInicio"] = horaIni;
-                //ViewState["HoraFin"] = horaFin;
-                //ViewState["Cantidad"] = cantidadStr;
-                //}
+                double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
+                
+                lblPrecioHora.Text = espacio.precioReserva.ToString();
+                LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
+
+                 
+
             }
         }
 
         protected void btnPagar_Click(object sender, EventArgs e)
+
         {
+            string fechaR = "20/06/2025";
+            var horaIni = "15:00";
+            var horaFin = "17:00";
+            TimeSpan tIni = TimeSpan.Parse(horaIni);
+            TimeSpan tFin = TimeSpan.Parse(horaFin);
+
+            //TimeSpan horarioIni = TimeSpan.Parse(horaIni);
+            //TimeSpan horarioFin = TimeSpan.Parse(horaFin);
             // Validar campos obligatorios
             //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
@@ -99,11 +102,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             // ---------- Datos que necesitas ----------
             //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
-            int cantidad = 1;
+            int cantidad = 2;
 
 
-            double precio = compraService.buscarEventos(1).precioEntrada;
-            double totalAPagar = precio;
+            double precio = espacioService.buscarEspacio(1).precioReserva;
+            double totalAPagar = precio*cantidad;
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
@@ -119,6 +122,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             }
 
             // ---------- Insertar / actualizar comprador ----------
+
+            comprador compradorFinal = null;
+            int identificadorPersona;
             if (compradorExistente == null)
             {
                 comprador nuevo = new comprador
@@ -132,12 +138,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                     tipoDocumentoSpecified = true,
                     registrado = 0,
                 };
-                compraService.insertarComprador(nuevo);
+                identificadorPersona=compraService.insertarComprador(nuevo);
+                compradorFinal = nuevo; // Guardar el nuevo comprador para usarlo más adelante
             }
             else
             {
                 compradorExistente.monto -= totalAPagar;
                 compraService.actualizarComprador(compradorExistente);
+                compradorFinal = compradorExistente; // Usar el comprador existente
+                identificadorPersona=compradorExistente.idPersona; // Obtener el ID del comprador existente
             }
 
 
@@ -159,8 +168,23 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
 
             // ---------- Insertar constancia ----------
-            constancia nueva = new constancia
+            //constancia nueva = new constancia
+            //{
+            //  fecha = DateTime.Now,
+            //  fechaSpecified = true,
+            //  metodoPago = mp,
+            //  metodoPagoSpecified = true,
+            //   igv = 0.18,
+            //  detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
+            //   total = totalAPagar,
+
+            // };
+
+            // int idConstancia = compraService.insertarConstancia(nueva);
+
+            reserva nuevaReserva = new reserva
             {
+                // Campos heredados de constancia
                 fecha = DateTime.Now,
                 fechaSpecified = true,
                 metodoPago = mp,
@@ -169,21 +193,61 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
                 total = totalAPagar,
 
+                // Campos propios de reserva
+                fechaReserva = DateTime.Parse(fechaR),  // Convertir a DateTime
+                fechaReservaSpecified = true,
+                //horarioIni = new ReferenciaDisco.localTime
+                //{
+                //hour = tIni.Hours,
+                //minute = tIni.Minutes,
+                //second = tIni.Seconds
+
+                //},
+                //horarioFin = new ReferenciaDisco.localTime
+                //{
+                 //   hour = tFin.Hours,
+                 //   minute = tFin.Minutes,
+                 //   second = tFin.Seconds
+                 //},
+
+                //horarioIni = horaIni,
+                //horarioFin = horaFin,
+
+                // Relaciones
+                //horarioIni = reservaService.convertirALocalTime(horaIni), // Convertir a localTime
+               // horarioFin = reservaService.convertirALocalTime(horaFin),
+                iniString = horaIni,
+                finString = horaFin,
+
+
+                persona = new persona
+                {
+                    idPersona = identificadorPersona, // Usar el ID del comprador existente o nuevo
+             
+                }, // el objeto comprador
+                espacio = espacioService.buscarEspacio(1)        // el objeto espacio
             };
 
-            int idConstancia=compraService.insertarConstancia(nueva);
+            int idReserva = reservaService.insertarReserva(nuevaReserva);
+       // };
+
+            //int idReserva = compraService.insertarConstancia(nueva);
+            //int idReserva = reservaService.insertarReserva(nuevaReserva); 
+
 
             string scriptExito =
            "document.getElementById('modalExitoBody').innerText = 'Pago realizado con éxito.';" +
            "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
            "modal.show();" +
            "setTimeout(function() {" +
-           "  window.location.href = '/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia + "';" +
+           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idReserva + "';" +
            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
 
             //Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
+
+
     }
 }
