@@ -167,21 +167,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             }
 
 
-            // ---------- Insertar constancia ----------
-            //constancia nueva = new constancia
-            //{
-            //  fecha = DateTime.Now,
-            //  fechaSpecified = true,
-            //  metodoPago = mp,
-            //  metodoPagoSpecified = true,
-            //   igv = 0.18,
-            //  detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
-            //   total = totalAPagar,
-
-            // };
-
-            // int idConstancia = compraService.insertarConstancia(nueva);
-
             reserva nuevaReserva = new reserva
             {
                 // Campos heredados de constancia
@@ -196,26 +181,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 // Campos propios de reserva
                 fechaReserva = DateTime.Parse(fechaR),  // Convertir a DateTime
                 fechaReservaSpecified = true,
-                //horarioIni = new ReferenciaDisco.localTime
-                //{
-                //hour = tIni.Hours,
-                //minute = tIni.Minutes,
-                //second = tIni.Seconds
-
-                //},
-                //horarioFin = new ReferenciaDisco.localTime
-                //{
-                 //   hour = tFin.Hours,
-                 //   minute = tFin.Minutes,
-                 //   second = tFin.Seconds
-                 //},
-
-                //horarioIni = horaIni,
-                //horarioFin = horaFin,
-
-                // Relaciones
-                //horarioIni = reservaService.convertirALocalTime(horaIni), // Convertir a localTime
-               // horarioFin = reservaService.convertirALocalTime(horaFin),
+                
                 iniString = horaIni,
                 finString = horaFin,
 
@@ -230,9 +196,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             int idReserva = reservaService.insertarReserva(nuevaReserva);
        // };
-
-            //int idReserva = compraService.insertarConstancia(nueva);
-            //int idReserva = reservaService.insertarReserva(nuevaReserva); 
 
 
             string scriptExito =

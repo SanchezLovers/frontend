@@ -22,8 +22,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                int idEntrada = 1;
+                //int idEntrada = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
+                int idEntrada = int.Parse(Request.QueryString["idEntrada"]);
                 entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
                 comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
                 funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);

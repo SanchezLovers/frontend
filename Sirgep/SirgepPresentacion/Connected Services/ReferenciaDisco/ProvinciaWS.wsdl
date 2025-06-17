@@ -5,31 +5,31 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/ProvinciaWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="buscarProvinciaPorId">
-    <part name="parameters" element="tns:buscarProvinciaPorId" />
-  </message>
-  <message name="buscarProvinciaPorIdResponse">
-    <part name="parameters" element="tns:buscarProvinciaPorIdResponse" />
-  </message>
   <message name="listarProvinciaPorDepa">
     <part name="parameters" element="tns:listarProvinciaPorDepa" />
   </message>
   <message name="listarProvinciaPorDepaResponse">
     <part name="parameters" element="tns:listarProvinciaPorDepaResponse" />
   </message>
+  <message name="buscarProvinciaPorId">
+    <part name="parameters" element="tns:buscarProvinciaPorId" />
+  </message>
+  <message name="buscarProvinciaPorIdResponse">
+    <part name="parameters" element="tns:buscarProvinciaPorIdResponse" />
+  </message>
   <portType name="ProvinciaWS">
-    <operation name="buscarProvinciaPorId">
-      <input wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest" message="tns:buscarProvinciaPorId" />
-      <output wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse" message="tns:buscarProvinciaPorIdResponse" />
-    </operation>
     <operation name="listarProvinciaPorDepa">
       <input wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaRequest" message="tns:listarProvinciaPorDepa" />
       <output wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaResponse" message="tns:listarProvinciaPorDepaResponse" />
     </operation>
+    <operation name="buscarProvinciaPorId">
+      <input wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest" message="tns:buscarProvinciaPorId" />
+      <output wsam:Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse" message="tns:buscarProvinciaPorIdResponse" />
+    </operation>
   </portType>
   <binding name="ProvinciaWSPortBinding" type="tns:ProvinciaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="buscarProvinciaPorId">
+    <operation name="listarProvinciaPorDepa">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -38,7 +38,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarProvinciaPorDepa">
+    <operation name="buscarProvinciaPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

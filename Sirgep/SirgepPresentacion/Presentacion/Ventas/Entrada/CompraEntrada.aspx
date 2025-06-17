@@ -62,9 +62,16 @@
         </div>
 
         <!-- Panel de pago y resumen -->
-        <div class="col-md-6">
-            
-            
+        <div class="col-md-6" style="position: relative;">
+            <!--<h4>Elige tu método de pago</h4>
+            <asp:RadioButtonList ID="rblPago" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Text="Yape" Value="YAPE"/>
+                <asp:ListItem Text="Plin"    Value="PLIN" />
+                <asp:ListItem Text="Tarjeta" Value="TARJETA" />
+            </asp:RadioButtonList>-->
+            <div id="timerContainer" style="position: absolute; top: 0; right: -9px; background: #fff; border-radius: 8px; padding: 8px 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 18px;">
+                Tiempo restante: <span id="timer">01:00</span>
+            </div>
             <h4>Elige tu método de pago</h4>
             <div class="d-flex gap-3 mb-3" id="metodosPago">
                 <button type="button" class="btn-metodo" data-value="YAPE" onclick="seleccionarMetodo(this)">
@@ -108,6 +115,28 @@
         }
 </script>
 
+    <script type="text/javascript">
+        var totalSeconds = 60;
+        var timerInterval = setInterval(function () {
+            totalSeconds--;
+            var minutes = Math.floor(totalSeconds / 60);
+            var seconds = totalSeconds % 60;
+            document.getElementById('timer').textContent =
+                (minutes < 10 ? '0' : '') + minutes + ':' +
+                (seconds < 10 ? '0' : '') + seconds;
 
+            if (totalSeconds <= 0) {
+                clearInterval(timerInterval);
+                // Mostrar modal de error del MainLayout
+                document.getElementById('modalErrorBody').innerText = "El tiempo para completar la reserva ha expirado.";
+                var modal = new bootstrap.Modal(document.getElementById('modalError'));
+                modal.show();
+                // Redirigir después de 2 segundos
+                setTimeout(function () {
+                    window.location.href = '/Presentacion/Ubicacion/Distrito/EligeDistrito.aspx';
+                }, 2000);
+            }
+        }, 1000);
+    </script>
 
 </asp:Content>
