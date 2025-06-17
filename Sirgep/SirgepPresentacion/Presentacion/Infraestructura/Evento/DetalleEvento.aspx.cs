@@ -18,7 +18,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             {
                 //                int idEvento = int.Parse(Request.QueryString["idEvento"]);
                 eventoWS = new EventoWSClient();
-                int idEvento = 1; // Simulación de ID de evento, reemplazar con el ID real obtenido de la URL o base de datos
+               // int idEvento = 1; // Simulación de ID de evento, reemplazar con el ID real obtenido de la URL o base de datos
+                int idEvento= int.Parse(Request.QueryString["idEvento"]);
                 CargarDatosEvento(idEvento);
                 CargarFunciones(idEvento);
             }
@@ -42,6 +43,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 lblUbicacion.Text = "av bolivar 123";
                 lblReferencia.Text = "edificio 123";
                 */
+                PrecioEntrada.Text = $"El precio por entrada a este evento es: S/{e.precioEntrada}.";
             }
         }
 
@@ -52,15 +54,23 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             int cantFunciones = 0; //para contar las funciones y dividir la cantidad de entradas entre el num de funciones
             var funciones = eventoWS.listarFuncionesDeEvento(idEvento);
 
-            foreach (var funcion in funciones)
+            if (funciones!=null)
             {
-                cantFunciones++;
-                ddlFunciones.Items.Add(new ListItem($"{funcion.horaInicio}", funcion.idFuncion.ToString()));
+                foreach (var funcion in funciones)
+                {
+                    cantFunciones++;
+                    ddlFunciones.Items.Add(new ListItem($"{funcion.horaInicio}", funcion.idFuncion.ToString()));
+                }
+                int cg = int.Parse(cantGeneralInvisible.Value);
+                int a = cg / cantFunciones;
+                string cadena = a.ToString();
+                cantFuncionInvisible.Value = cadena;//asignar la cantidad de entradas por funcion
             }
-            int cg = int.Parse(cantGeneralInvisible.Value);
-            int a = cg / cantFunciones;
-            string cadena = a.ToString();
-            cantFuncionInvisible.Value = cadena;//asignar la cantidad de entradas por funcion
+            else
+            {
+                ddlFunciones.Items.Clear();
+                ddlFunciones.Items.Add(new ListItem("Todavía no hay funciones para este evento.", ""));
+            }
         }
 
         protected void ddlFunciones_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,7 +93,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void btnComprar_Click(object sender, EventArgs e)
         {
             string idFuncion = ddlFunciones.SelectedValue;
-            Response.Redirect("/Presentacion/Ventas/Entrada/CompraEntrada.aspx?idFuncion={idFuncion}");
+            Response.Redirect($"/Presentacion/Ventas/Entrada/CompraEntrada.aspx?idFuncion={idFuncion}");
         }
     }
 }

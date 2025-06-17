@@ -11,9 +11,17 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
     public partial class CompraEntrada : System.Web.UI.Page
     {
         CompraWSClient compraService;
+        FuncionWSClient fWs;
+        EntradaWSClient entradaWS;
+        PersonaWSClient personaWS;
+        EventoWSClient eventoWS;
         protected void Page_Init(object sender, EventArgs e)
         {
             compraService = new CompraWSClient();
+            fWs = new FuncionWSClient();
+            entradaWS = new EntradaWSClient();
+            personaWS = new PersonaWSClient();
+            eventoWS = new EventoWSClient();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,9 +29,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 //if (Request.QueryString["idEvento"] != null)
                 //{
-                int idEvento = 1; // Simular ID elegido
-                                  //int idEvento = int.Parse(Request.QueryString["idEvento"]);
-                evento evento = compraService.buscarEventos(idEvento);
+                //int idEntrada = int.Parse((sender as Button).CommandArgument);
+
+                   
+                //int idFuncion = 1; // Simular ID elegido
+                int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
+                var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
+                evento evento = compraService.buscarEventos(funcion.evento.idEvento);
 
                 lblEvento.Text = evento.nombre;
                 lblUbicacion.Text = evento.ubicacion;
@@ -35,12 +47,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 //string horaFin = Request.QueryString["horaFin"];
                 //string cantidadStr = Request.QueryString["cantidad"];
 
+                
 
 
-                string fecha = "20/06/2025";
-                string horaIni = "15:00";
-                string horaFin = "17:00";
-                string cantidad = "1";
+                string fecha = funcion.fecha.ToString();
+                string horaIni = funcion.horaInicio.ToString();
+                string horaFin = funcion.horaFin.ToString();
+                string cantidad = "1"; //siempre es 1
 
 
                 lblHorario.Text = $"{horaIni} - {horaFin}";
@@ -85,7 +98,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
-
+            int idPersona1;
             // ---------- Datos que necesitas ----------
             //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
             int cantidad = 1;
@@ -97,6 +110,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
             {
+                idPersona1 = compradorExistente.idPersona;
                 ScriptManager.RegisterStartupScript(this, GetType(), "alert",
                     "alert('Saldo insuficiente.');", true);
                 return;
@@ -116,12 +130,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                     tipoDocumentoSpecified = true,
                     registrado = 0,
                 };
-                compraService.insertarComprador(nuevo);
+                idPersona1 = compraService.insertarComprador(nuevo);
+                //idPersona1 = nuevo.idPersona; // Obtener el ID del nuevo comprador
             }
             else
             {
                 compradorExistente.monto -= totalAPagar;
                 compraService.actualizarComprador(compradorExistente);
+                idPersona1 = compradorExistente.idPersona;
             }
 
 
@@ -140,32 +156,51 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                     "alert('Método de pago desconocido.');", true);
                 return;
             }
-
-
+            //int idFuncion = 1; // Simular ID elegido
+            int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
+            var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
+            evento evento = compraService.buscarEventos(funcion.evento.idEvento);
+            int numE = evento.cantEntradasVendidas+1;
+            evento.cantEntradasVendidas= numE;
+            // Actualizar el evento con la nueva cantidad de entradas vendidas
+            //evento.canti
+            eventoWS.actualizarEvento(evento);
             // ---------- Insertar constancia ----------
-            constancia nueva = new constancia
+
+            entrada nEntrada = new entrada
             {
+                numEntrada = numE,
                 fecha = DateTime.Now,
                 fechaSpecified = true,
                 metodoPago = mp,
                 metodoPagoSpecified = true,
-                igv = 0.18,
                 detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",//aqui
                 total = totalAPagar,
-
+                igv = 0.18,
+                persona = new persona
+                {
+                    idPersona = idPersona1,
+                },
+                funcion = new funcion
+                {
+                    //idFuncion = int.Parse(Request.QueryString["idFuncion"]),
+                    idFuncion = 1, // Simular ID de función
+                },
             };
 
-            int idConstancia=compraService.insertarConstancia(nueva);
+            //int idConstancia=compraService.insertarConstancia(nueva);
+            int idEntrada = entradaWS.insertarEntrada(nEntrada);
+            string scriptExito =
+                "document.getElementById('modalExitoBody').innerText = 'Pago realizado con éxito.';" +
+                "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
+                "modal.show();" +
+                "setTimeout(function() {" +
+                "  window.location.href = '/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idEntrada=" + idEntrada + "';" +
+                "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
-            string script = @"
-                alert('Pago realizado con éxito.');
-                setTimeout(function() {
-                    window.location.href = '/Usuario/Comprador/DetalleEntrada.aspx?idConstancia=" + idConstancia + @"';
-                }, 1000); // 1000 milisegundos = 1 segundo
-            ";
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertAndRedirect", script, true);
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
 
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
+            //   Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idEntrada);
         }
     }
 }
