@@ -29,7 +29,7 @@
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
                     <ItemTemplate>
-                        <a href='<%# "DetalleReserva.aspx?id=" + Eval("NumReserva") %>'>
+                        <a href='<%# "ConstanciaReserva.aspx?numReserva=" + Eval("NumReserva") %>'>
                             <img src="/Images/icons/open-link.png" alt="Abrir" class="icono-abrir" />
                         </a>
                     </ItemTemplate>
