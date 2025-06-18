@@ -84,7 +84,7 @@ namespace SirgepPresentacion
 
         protected void lnkPerfil_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuario/Perfil.aspx");
+            Response.Redirect("/Presentacion/Usuarios/Perfil.aspx");
         }
 
         protected void lnkReservasComprador_Click(object sender, EventArgs e)
@@ -105,12 +105,12 @@ namespace SirgepPresentacion
 
         protected void lnkEspaciosAdmin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuario/Admin/ListaEspacios.aspx");
+            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEspacios.aspx");
         }
 
         protected void lnkEventosAdmin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuario/Admin/ListaEventos.aspx");
+            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEventos.aspx");
         }
         protected void btnEnviarFeedback_Click(object sender, EventArgs e)
         {
