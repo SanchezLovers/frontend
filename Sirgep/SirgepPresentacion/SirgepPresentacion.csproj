@@ -2470,9 +2470,6 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarVentasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.provincia.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2615,6 +2612,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarVentasResponse1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

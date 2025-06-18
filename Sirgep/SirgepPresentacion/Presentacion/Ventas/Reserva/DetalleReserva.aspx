@@ -162,5 +162,18 @@
             }
         }, 1000);
     </script>
+    <script type="text/javascript">
+        // Detener el temporizador al hacer clic en "Pagar"
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnPagar = document.getElementById('<%= btnPagar.ClientID %>');
+            if (btnPagar) {
+                btnPagar.addEventListener('click', function () {
+                    if (typeof timerInterval !== 'undefined') {
+                        clearInterval(timerInterval);
+                    }
+                });
+            }
+        });
+</script>
 
 </asp:Content>

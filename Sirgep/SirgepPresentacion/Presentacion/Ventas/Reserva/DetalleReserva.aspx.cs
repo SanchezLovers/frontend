@@ -243,7 +243,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
            "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
            "modal.show();" +
            "setTimeout(function() {" +
-           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idReserva=" + idReserva + "';" +
+           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?numReserva=" + idReserva + "';" +
            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);

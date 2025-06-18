@@ -7,16 +7,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
     public partial class ListaEntradasComprador : System.Web.UI.Page
     {
         private EntradaWSClient entradaWS;
-        protected void Page_Init(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             entradaWS = new EntradaWSClient();
             CargarDatos();
-        }
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-            }
         }
         protected void GvListaEntradasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
