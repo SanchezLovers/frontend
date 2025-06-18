@@ -45,3 +45,10 @@ Sirgep/packages/
 
 *.datasource
 *.TMP
+
+# Archivos de servicios generados automáticamente por Visual Studio
+*.svcinfo
+*.disco
+*.svcmap
+*.wsdl
+*.xsd

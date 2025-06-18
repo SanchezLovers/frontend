@@ -26,7 +26,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         private void CargarDatosEvento(int idEvento)
         {
-            evento e = eventoWS.buscarPorID(idEvento);
+            evento e = eventoWS.buscarEventoPorID(idEvento);
             if (e != null)
             {
                 lblTitulo.Text = e.nombre;
@@ -71,7 +71,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             {
                 int cantEF = int.Parse(cantFuncionInvisible.Value);
                 eventoWS = new EventoWSClient();
-                int disponibilidad = eventoWS.cantEntradasDisponibles(idFuncion, cantEF);
+                int disponibilidad = eventoWS.obtenerCantEntradasDisponibles(idFuncion, cantEF);
                 if (disponibilidad > 0)
                 {
                     btnComprar.Enabled = true; //habilitar el botón de compra si hay entradas disponibles

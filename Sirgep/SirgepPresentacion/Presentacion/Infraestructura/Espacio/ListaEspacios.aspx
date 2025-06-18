@@ -141,13 +141,15 @@
                     <div class="row">
                         <div class="mb-3 col-md-2">
                             <label>Hora Inicio</label>
-                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" AutoPostBack="true" Placeholder="00:00"></asp:TextBox>
 
                         </div>
                         <div class="mb-3 col-md-2">
                             <label>Hora Fin</label>
-                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" Placeholder="00:00" AutoPostBack="true"></asp:TextBox>
                         </div>
+
+                        <asp:Label ID="lblError" runat="server" ForeColor="Red" />
                     </div>
 
                     <div>
@@ -416,9 +418,6 @@
             var modalEdicion = bootstrap.Modal.getInstance(document.getElementById('modalEdicionEspacio'));
             modalEdicion.show();
         }
-    </script>
-
-    <script type="text/javascript">
         function mostrarModalConfirmacion(id) {
             
             // Guardar el ID en campo oculto
@@ -428,23 +427,22 @@
             var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
             modal.show();
         }
-    </script>
+        function validarHoras() {
+            const horaInicio = document.getElementById('<%= txtHoraInicioInsert.ClientID %>').value;
+            const horaFin = document.getElementById('<%= txtHoraFinInsert.ClientID %>').value;
 
-    <script type="text/javascript">
-        const inicio = document.getElementById("inpHoraInicio");
-        const fin = document.getElementById("inpHoraFin");
-        /*
-        inicio.addEventListener("change", () => {
-            fin.min = inicio.value;
-        });
-
-        fin.addEventListener("change", () => {
-            if (fin.value <= inicio.value) {
-                alert("La hora de fin debe ser mayor que la de inicio");
-                fin.value = "";
+            if (!horaInicio || !horaFin) {
+                alert("Ambas horas deben estar completas.");
+                return false;
             }
-        });
-        */
+
+            if (horaInicio >= horaFin) {
+                alert("La hora de inicio debe ser menor que la hora de fin.");
+                return false;
+            }
+
+            return true;
+        }
     </script>
 
 

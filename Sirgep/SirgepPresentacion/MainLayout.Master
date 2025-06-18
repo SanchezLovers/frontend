@@ -272,5 +272,18 @@
         document.getElementById('modalFeedback').addEventListener('hidden.bs.modal', function () {
             redirigirPaginaPrincipal();
         });
+        function modalConfirmacion(id) {
+            // Mostrar el modal (Bootstrap 5)
+            var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+            modal.show();
+        }
+        function modalError() {
+            var modal = new bootstrap.Modal(document.getElementById('modalError'));
+            modal.show();
+        }
+        function modalExito() {
+            var modal = new bootstrap.Modal(document.getElementById('modalExito'));
+            modal.show();
+        }
     </script>
 </html>
