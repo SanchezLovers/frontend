@@ -116,9 +116,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idEspacio = int.Parse(ddlEspacio.SelectedValue);
-            lblPrecioHora.Text = espacioWS.buscarEspacio(idEspacio).precioReserva.ToString();
-            lblPrecioHora.Text = $"Precio por hora: S/ {espacioWS.buscarEspacio(idEspacio).precioReserva.ToString()}";
+            espacio es = espacioWS.buscarEspacio(idEspacio);
+            lblPrecioHora.Text =es.precioReserva.ToString();
+            lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString()}";
             lblPrecioTotal.Text = "Precio total seleccionado: Seleccione un horario";
+            hdnPrecioHora.Value = es.precioReserva.ToString(CultureInfo.InvariantCulture);
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,8 +162,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 rptHorarios.DataSource = horarios;
                 rptHorarios.DataBind();
 
-                lblPrecioHora.Text = "Precio por hora: S/ 5.00";
-                lblPrecioTotal.Text = "Precio total seleccionado: S/ 0.00"; // Recalcula con JS si deseas
             }
         }
         protected void btnReservar_Click(object sender, EventArgs e)
@@ -180,37 +180,20 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             }
             else
             {
-                List<TimeSpan> horasSeleccionadas = new List<TimeSpan>();
-                int cant = 0;
-                foreach (RepeaterItem item in rptHorarios.Items)
-                {
-                    CheckBox chk = (CheckBox)item.FindControl("chkHorario");
-                    Label lbl = (Label)item.FindControl("lblHora");
-
-                    if (chk.Checked)
-                    {
-                        cant++;
-                        if (TimeSpan.TryParse(lbl.Text, out TimeSpan hora))
-                        {
-                            horasSeleccionadas.Add(hora);
-                        }
-                    }
-                }
-
-                if (horasSeleccionadas.Count == 0)
+                string horaIni = hdnHoraInicioSeleccionada.Value;
+                string horaFin = hdnHoraFinSeleccionada.Value;
+                if (horaIni.Length==0 && horaFin.Length == 0)
                 {
                     lblError.Visible = true;
                     lblError.Text = "Por favor, seleccione al menos un horario disponible.";
                 }
                 else
                 {
-                    horasSeleccionadas.Sort(); // porsiaca no esten ordenadas
-                    string horaIni = horasSeleccionadas.First().ToString(@"hh\:mm");
-                    string horaFin = horasSeleccionadas.Last().Add(TimeSpan.FromHours(1)).ToString(@"hh\:mm"); // siempre osn de 1 hora
+                    double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours +1;
                     int idEspacio = int.Parse(ddlEspacio.SelectedValue);
                     string fecha = txtFecha.Text;
 
-                    string url = $"/Presentacion/Ventas/Reserva/DetalleReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cant}";
+                    string url = $"/Presentacion/Ventas/Reserva/DetalleReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cantidadHoras}";
 
                     Response.Redirect(url);
                 }

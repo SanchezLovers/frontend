@@ -1,9 +1,3 @@
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.Properties.Resources.resources
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.GenerateResource.cache
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
-D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
@@ -43,4 +37,10 @@ D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\fron
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xmlworker.dll
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\BouncyCastle.Cryptography.xml
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xml
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.Properties.Resources.resources
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.GenerateResource.cache
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
 D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb

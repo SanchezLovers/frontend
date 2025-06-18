@@ -28,7 +28,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 string fechaR = Request.QueryString["fecha"];
                 string horaIni = Request.QueryString["horaIni"];
                 string horaFin = Request.QueryString["horaFin"];
-                int cantidad = int.Parse(Request.QueryString["cant"]); // Simular cantidad elegida
+                int cantidadHoras = int.Parse(Request.QueryString["cant"]); // Simular cantidad elegida
                 espacio espacio = espacioService.buscarEspacio(idEspacio);
                 LblEspacio.Text = espacio.nombre;
                 LblUbicacionReserva.Text = espacio.ubicacion;
@@ -45,7 +45,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 LblHorarioReserva.Text = $"{horaIni} - {horaFin}";
                 LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
 
-                double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
+                //double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
 
                 lblPrecioHora.Text = espacio.precioReserva.ToString();
                 LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
@@ -231,11 +231,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 espacio = espacioService.buscarEspacio(1)        // el objeto espacio
             };
 
-            int idReserva = reservaService.insertarReserva(nuevaReserva);
+            //int idReserva = reservaService.insertarReserva(nuevaReserva);
             // };
 
             //int idReserva = compraService.insertarConstancia(nueva);
-            //int idReserva = reservaService.insertarReserva(nuevaReserva); 
+            int idReserva = reservaService.insertarReserva(nuevaReserva); 
 
 
             string scriptExito =
@@ -243,7 +243,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
            "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
            "modal.show();" +
            "setTimeout(function() {" +
-           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idReserva + "';" +
+           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idReserva=" + idReserva + "';" +
            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);

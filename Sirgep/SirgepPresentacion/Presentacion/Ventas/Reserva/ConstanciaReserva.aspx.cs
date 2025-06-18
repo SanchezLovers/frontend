@@ -19,8 +19,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                int inumReserva = 1;
+                //int inumReserva = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
+                int inumReserva = int.Parse(Request.QueryString["idReserva"]);
                 reserva reservaDomain = reservaWS.buscarReserva(inumReserva);
                 comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
                 espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
