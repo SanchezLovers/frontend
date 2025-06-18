@@ -20,8 +20,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                int numReserva = 1;
-                //int numReserva = int.Parse(Request.QueryString["numReserva"]);
+                //int numReserva = 1;
+                int numReserva = int.Parse(Request.QueryString["numReserva"]);
                 CargarDatosEnPantalla(numReserva);
             }
         }
