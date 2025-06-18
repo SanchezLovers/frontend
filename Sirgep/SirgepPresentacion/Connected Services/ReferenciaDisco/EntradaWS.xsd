@@ -138,8 +138,10 @@
           <xs:element name="activo" type="xs:unsignedShort" />
           <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
           <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="finString" type="xs:string" />
           <xs:element minOccurs="0" name="horarioFin" type="tns:localTime" />
           <xs:element minOccurs="0" name="horarioIni" type="tns:localTime" />
+          <xs:element minOccurs="0" name="iniString" type="xs:string" />
           <xs:element name="numReserva" type="xs:int" />
           <xs:element minOccurs="0" name="persona" type="tns:persona" />
         </xs:sequence>
@@ -173,6 +175,14 @@
       <xs:element minOccurs="0" name="return" type="tns:entrada" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="listarEntradasActivas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEntradasActivasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarDetalleEntradasPorComprador">
     <xs:sequence>
       <xs:element name="idComprador" type="xs:int" />
@@ -194,14 +204,6 @@
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEntradasActivas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEntradasActivasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="eliminarFisicoEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -212,6 +214,14 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="crearLibroExcelEntradas">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelEntradasResponse">
+    <xs:sequence />
+  </xs:complexType>
   <xs:complexType name="buscarFuncionDeEntrada">
     <xs:sequence>
       <xs:element name="idFuncion" type="xs:int" />
@@ -221,14 +231,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:funcion" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="crearLibroExcelEntradas">
-    <xs:sequence>
-      <xs:element name="idComprador" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="crearLibroExcelEntradasResponse">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="buscarEventoDeEntrada">
     <xs:sequence>

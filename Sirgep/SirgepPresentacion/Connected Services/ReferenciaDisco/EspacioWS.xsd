@@ -10,14 +10,16 @@
   <xs:element name="eliminarLogicoResponse" type="tns:eliminarLogicoResponse" />
   <xs:element name="insertarEspacio" type="tns:insertarEspacio" />
   <xs:element name="insertarEspacioResponse" type="tns:insertarEspacioResponse" />
-  <xs:element name="listarEspacio" type="tns:listarEspacio" />
+  <xs:element name="listarEspacio" nillable="true" type="tns:listarEvento" />
   <xs:element name="listarEspacioDistyCat" type="tns:listarEspacioDistyCat" />
   <xs:element name="listarEspacioDistyCatResponse" type="tns:listarEspacioDistyCatResponse" />
   <xs:element name="listarEspacioPorCategoria" type="tns:listarEspacioPorCategoria" />
   <xs:element name="listarEspacioPorCategoriaResponse" type="tns:listarEspacioPorCategoriaResponse" />
   <xs:element name="listarEspacioPorDistrito" type="tns:listarEspacioPorDistrito" />
   <xs:element name="listarEspacioPorDistritoResponse" type="tns:listarEspacioPorDistritoResponse" />
-  <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
+  <xs:element name="listarEspacioResponse" nillable="true" type="tns:listarEventoResponse" />
+  <xs:element name="listarEvento" type="tns:listarEvento" />
+  <xs:element name="listarEventoResponse" type="tns:listarEventoResponse" />
   <xs:complexType name="insertarEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
@@ -84,8 +86,10 @@
           <xs:element name="activo" type="xs:unsignedShort" />
           <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
           <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="finString" type="xs:string" />
           <xs:element minOccurs="0" name="horarioFin" type="tns:localTime" />
           <xs:element minOccurs="0" name="horarioIni" type="tns:localTime" />
+          <xs:element minOccurs="0" name="iniString" type="xs:string" />
           <xs:element name="numReserva" type="xs:int" />
           <xs:element minOccurs="0" name="persona" type="tns:persona" />
         </xs:sequence>
@@ -157,22 +161,12 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEspacio">
+  <xs:complexType name="listarEvento">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarEspacioResponse">
+  <xs:complexType name="listarEventoResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="actualizarEspacio">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="actualizarEspacioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarEspacio">
@@ -183,6 +177,16 @@
   <xs:complexType name="buscarEspacioResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:espacio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarEspacio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarEspacioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarLogico">
