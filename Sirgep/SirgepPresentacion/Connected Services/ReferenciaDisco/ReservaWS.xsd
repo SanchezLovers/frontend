@@ -10,6 +10,10 @@
   <xs:element name="buscarEspacioDeReservaResponse" type="tns:buscarEspacioDeReservaResponse" />
   <xs:element name="buscarReserva" type="tns:buscarReserva" />
   <xs:element name="buscarReservaResponse" type="tns:buscarReservaResponse" />
+  <xs:element name="buscarReservasPorFecha" type="tns:buscarReservasPorFecha" />
+  <xs:element name="buscarReservasPorFechaResponse" type="tns:buscarReservasPorFechaResponse" />
+  <xs:element name="buscarReservasPorNombreEspacio" type="tns:buscarReservasPorNombreEspacio" />
+  <xs:element name="buscarReservasPorNombreEspacioResponse" type="tns:buscarReservasPorNombreEspacioResponse" />
   <xs:element name="crearLibroExcelReservas" type="tns:crearLibroExcelReservas" />
   <xs:element name="crearLibroExcelReservasResponse" type="tns:crearLibroExcelReservasResponse" />
   <xs:element name="eliminarFisicoReserva" type="tns:eliminarFisicoReserva" />
@@ -32,23 +36,12 @@
   <xs:element name="listarReservaPorPersonaResponse" type="tns:listarReservaPorPersonaResponse" />
   <xs:element name="listarReservas" type="tns:listarReservas" />
   <xs:element name="listarReservasResponse" type="tns:listarReservasResponse" />
-  <xs:element name="obtenerPorNumReserva" type="tns:obtenerPorNumReserva" />
-  <xs:element name="obtenerPorNumReservaResponse" type="tns:obtenerPorNumReservaResponse" />
-  <xs:complexType name="crearLibroExcelReservas">
+  <xs:complexType name="buscarReservasPorNombreEspacio">
     <xs:sequence>
-      <xs:element name="idComprador" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="crearLibroExcelReservasResponse">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarReservaPorDistrito">
-    <xs:sequence>
-      <xs:element name="idDistrito" type="xs:int" />
-      <xs:element name="activo" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarReservaPorDistritoResponse">
+  <xs:complexType name="buscarReservasPorNombreEspacioResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
@@ -174,10 +167,21 @@
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarReservas">
+  <xs:complexType name="crearLibroExcelReservas">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="crearLibroExcelReservasResponse">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarReservasResponse">
+  <xs:complexType name="listarReservaPorDistrito">
+    <xs:sequence>
+      <xs:element name="idDistrito" type="xs:int" />
+      <xs:element name="activo" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarReservaPorDistritoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
@@ -189,6 +193,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarReservaPorEspacioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarReservas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarReservasResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>
@@ -246,17 +258,6 @@
       <xs:element minOccurs="0" name="return" type="tns:distrito" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerPorNumReserva">
-    <xs:sequence>
-      <xs:element name="numReserva" type="xs:int" />
-      <xs:element name="activo" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerPorNumReservaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:reserva" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="buscarCompradorDeReserva">
     <xs:sequence>
       <xs:element name="idComprador" type="xs:int" />
@@ -296,6 +297,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarReservaPorHorarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarReservasPorFecha">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarReservasPorFechaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
     </xs:sequence>

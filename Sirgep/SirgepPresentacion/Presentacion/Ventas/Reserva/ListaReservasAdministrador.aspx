@@ -12,21 +12,12 @@
                 <asp:DropDownList ID="ddlFiltros" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltros_SelectedIndexChanged" CssClass="filtro-select">
                     <asp:ListItem Text="Código" Value="codigo" />
                     <asp:ListItem Text="Fecha" Value="fecha" />
-                    <asp:ListItem Text="Fecha y Horario" Value="horario" />
-                    <asp:ListItem Text="Persona" Value="persona" />
-                    <asp:ListItem Text="Espacio" Value="espacio" />
-                    <asp:ListItem Text="Distrito" Value="distrito" />
+                    <asp:ListItem Text="Nombre del distrito" Value="distrito" />
+                    <asp:ListItem Text="Nombre del espacio" Value="espacio" />
+                    <asp:ListItem Text="IdPersona" Value="persona" />
                 </asp:DropDownList>
                 <asp:DropDownList ID="ddlDistritos" runat="server" CssClass="filtro-select" />
                 <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control filtro-fecha" TextMode="Date" />
-                <div id="horaContainerIni" runat="server" class="hora-container">
-                    <asp:Label ID="lblHoraIni" runat="server" AssociatedControlID="inputHoraIni" Text="Horario Inicio:" />
-                    <input type="number" id="inputHoraIni" runat="server" class="filtro-horario" min="0" max="23" step="1" />
-                </div>
-                <div id="horaContainerFin" runat="server" class="hora-container">
-                    <asp:Label ID="lblHoraFin" runat="server" AssociatedControlID="inputHoraFin" Text="Horario Fin:" />
-                    <input type="number" id="inputHoraFin" runat="server" class="filtro-horario" min="0" max="23" step="1" />
-                </div>
                 <div class="filtro-activos-checkbox">
                     <input type="text" class="input-filtro" value="Filtro por Activos" readonly />
                     <asp:CheckBox ID="chkActivos" runat="server" CssClass="checkbox-filtro" />
@@ -34,42 +25,29 @@
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark mx-2" OnClick="btnFiltrar_Click" />
             </div>
         </div>
-        <div class="tabla-reservas">
-            <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None">
-                <Columns>
-                    <asp:TemplateField HeaderText="Abrir">
-                        <ItemTemplate>
-                            <%--<a href='<%# "DetalleReserva.aspx?id=" + Eval("Codigo") %>'>--%>
+        <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None">
+            <Columns>
+                <asp:TemplateField HeaderText="Abrir">
+                    <ItemTemplate>
+                        <a href='<%# "DetalleReserva.aspx?id=" + Eval("NumReserva") %>'>
                             <img src="/Images/icons/open-link.png" alt="Abrir" class="icono-abrir" />
-                            </a>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Código">
-                        <ItemTemplate>
-                            <%# "#" + Convert.ToInt32(Eval("numReserva")).ToString("D3") %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Horario">
-                        <ItemTemplate>
-                            <%# Eval("iniString") + " - " + Eval("finString") %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                        </a>
+                    </ItemTemplate>
+                </asp:TemplateField>
 
-                    <asp:BoundField DataField="fechaReserva" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />
-                    <asp:BoundField DataField="persona.idPersona" HeaderText="Persona" />
-                    <asp:BoundField DataField="espacio.idEspacio" HeaderText="Espacio" />
-                    <asp:BoundField DataField="idConstancia" HeaderText="Constancia" />
-                    <asp:TemplateField HeaderText="Activo">
-                        <ItemTemplate>
-                            <span class="icono-activo">
-                                <%--<El servicio SOAP devuelve el caracter como ASCII />--%>
-                                <%# Eval("activo").ToString() == "65" ? "Sí" : "No" %>
-                            </span>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
-        </div>
+                <asp:TemplateField HeaderText="Código">
+                    <ItemTemplate>
+                        <%# "#" + Convert.ToInt32(Eval("NumReserva")).ToString("D3") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="FechaReserva" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="NombreDistrito" HeaderText="Distrito" />
+                <asp:BoundField DataField="NombreEspacio" HeaderText="Espacio" />
+                <asp:BoundField DataField="PersonaId" HeaderText="Persona" />
+
+            </Columns>
+        </asp:GridView>
+
         <!-- Cambio de paginado -->
         <asp:Panel ID="pnlPaginacion" runat="server" CssClass="d-flex justify-content-center my-3">
             <asp:Button ID="btnAnterior" runat="server" Text="Anterior" CssClass="btn btn-outline-dark mx-1" OnClick="btnAnterior_Click" />

@@ -16,23 +16,22 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         private const int ReservasPorPagina = 20;
         private List<reserva> reservas = new List<reserva>();
         ReservaWSClient client = new ReservaWSClient();
-        DistritoWSClient distrito = new DistritoWSClient();
+        DistritoWSClient distrClient = new DistritoWSClient();
+        EspacioWSClient espClient = new EspacioWSClient();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
-                // Initialize page components or load data here
                 ViewState["PaginaActual"] = 1;
                 CargarReservas();
-                ddlDistritos.DataSource = distrito.listarTodosDistritos().ToList();
+                ddlDistritos.DataSource = distrClient.listarTodosDistritos().ToList();
                 ddlDistritos.DataTextField = "nombre";
                 ddlDistritos.DataValueField = "idDistrito";
                 ddlDistritos.DataBind();
                 ddlDistritos.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
                 ddlDistritos.Visible = false;
                 txtFecha.Visible = false;
-                horaContainerIni.Visible = false;
-                horaContainerFin.Visible = false;
             }
         }
 
@@ -40,13 +39,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             try
             {
-                //Esto es para convertir en una lista
                 List<reserva> todasLasReservas = client.listarReservas().ToList();
                 return todasLasReservas;
             }
             catch (ArgumentNullException)
             {
-                // Si ocurre ArgumentNullException, retorna una lista vacía
                 return new List<reserva>();
             }
         }
@@ -61,13 +58,31 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 .Take(ReservasPorPagina)
                 .ToList();
 
-            gvReservas.DataSource = reservasPagina;
+            var reservasDTO = reservasPagina.Select(r =>
+            {
+                espacio esp = espClient.buscarEspacio(r.espacio.idEspacio);
+                distrito dist = distrClient.buscarDistPorId(esp.distrito.idDistrito);
+
+                return new
+                {
+                    NumReserva = r.numReserva,
+                    IniString = r.iniString,
+                    FinString = r.finString,
+                    FechaReserva = r.fechaReserva,
+                    PersonaId = r.persona.idPersona,
+                    NombreEspacio = esp.nombre,
+                    NombreDistrito = dist.nombre,
+                };
+            }).ToList();
+
+            gvReservas.DataSource = reservasDTO;
             gvReservas.DataBind();
 
             lblPagina.Text = $"Página {paginaActual} de {totalPaginas}";
             btnAnterior.Enabled = paginaActual > 1;
             btnSiguiente.Enabled = paginaActual < totalPaginas;
         }
+
         protected void CargarReservas()
         {
             reservas = obtenerTodasLasReservas();
@@ -76,21 +91,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void ddlFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlFiltros.SelectedValue == "fecha")
+            if (ddlFiltros.SelectedValue == "fecha" || ddlFiltros.SelectedValue == "horario")
             {
                 txtFecha.Visible = true;
-                horaContainerIni.Visible = false;
-                horaContainerFin.Visible = false;
-                input_busqueda.Disabled = true;
-                ddlDistritos.Visible = false;
-                //Esto cambia el formato del borde de busqueda cuando estas en un filtro que no se usa
-                input_busqueda.Attributes["class"] = "input-busqueda deshabilitado";
-            }
-            else if(ddlFiltros.SelectedValue == "horario")
-            {
-                txtFecha.Visible = true;
-                horaContainerIni.Visible = true;
-                horaContainerFin.Visible = true;
                 input_busqueda.Disabled = true;
                 ddlDistritos.Visible = false;
                 input_busqueda.Attributes["class"] = "input-busqueda deshabilitado";
@@ -98,8 +101,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             else if (ddlFiltros.SelectedValue == "distrito")
             {
                 txtFecha.Visible = false;
-                horaContainerIni.Visible = false;
-                horaContainerFin.Visible = false;
                 input_busqueda.Disabled = false;
                 ddlDistritos.Visible = true;
                 input_busqueda.Attributes["class"] = "input-busqueda deshabilitado";
@@ -107,8 +108,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             else
             {
                 txtFecha.Visible = false;
-                horaContainerIni.Visible = false;
-                horaContainerFin.Visible = false;
                 input_busqueda.Disabled = false;
                 ddlDistritos.Visible = false;
                 input_busqueda.Attributes["class"] = "input-busqueda";
@@ -120,25 +119,26 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             int paginaActual = (int)(ViewState["PaginaActual"] ?? 1);
             if (paginaActual > 1)
                 ViewState["PaginaActual"] = paginaActual - 1;
-                CargarReservas();
+
+            CargarReservas();
         }
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             int paginaActual = (int)(ViewState["PaginaActual"] ?? 1);
             int totalPaginas = (int)Math.Ceiling((double)obtenerTodasLasReservas().Count / ReservasPorPagina);
+
             if (paginaActual < totalPaginas)
                 ViewState["PaginaActual"] = paginaActual + 1;
+
             CargarReservas();
         }
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             string filtro = ddlFiltros.SelectedValue;
-            string textoBusqueda = input_busqueda.Value.Trim();
-            bool activo = chkActivos.Checked;
-            string horaIni = inputHoraIni.Value.ToString().Trim();
-            string horaFin = inputHoraFin.Value.ToString().Trim();
+            string textoBusqueda = textoBusqueda.value.trim();
+            bool activo = chkActivos.checked;
 
             try
             {
@@ -165,20 +165,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                         reservas = client.listarReservaPorPersona(codigo, activo).ToList();
                     }
                 }
-                else if ((filtro == "fecha" || filtro == "horario") && !string.IsNullOrWhiteSpace(txtFecha.Text))
+                else if ((filtro == "fecha") && !string.IsNullOrWhiteSpace(txtFecha.Text))
                 {
                     DateTime fecha;
                     DateTime.TryParseExact(txtFecha.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha);
                     string fechaStr = fecha.ToString("yyyy-MM-dd");
-
-                    if (filtro == "fecha")
-                    {
-                        reservas = client.listarPorFecha(fechaStr, activo).ToList();
-                    }
-                    else if (filtro == "horario")
-                    {
-                        reservas = client.listarReservaPorHorario(horaIni, horaFin, fechaStr, activo).ToList();
-                    }
+                     reservas = client.listarPorFecha(fechaStr, activo).ToList();
                 }
                 else if (filtro == "distrito" && ddlDistritos.SelectedValue != "")
                 {
@@ -187,13 +179,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 }
                 else if (activo)
                 {
-                    // Caso: No filtro ni texto, solo activo marcado
                     List<reserva> todas = client.listarReservas().ToList();
                     reservas = todas.Where(r => (char)r.activo == 'A').ToList();
                 }
                 else
                 {
-                    // Si no se cumple nada, lista vacía o todas las reservas?
                     reservas = client.listarReservas().ToList();
                 }
             }
@@ -201,7 +191,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             {
                 reservas = new List<reserva>();
             }
+
             CargarPagina();
+            }
         }
     }
 }

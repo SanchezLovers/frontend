@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="actualizarEvento" type="tns:actualizarEvento" />
+  <xs:element name="actualizarEventoResponse" type="tns:actualizarEventoResponse" />
   <xs:element name="buscarPorID" type="tns:buscarPorID" />
   <xs:element name="buscarPorIDResponse" type="tns:buscarPorIDResponse" />
   <xs:element name="cantEntradasDisponibles" type="tns:cantEntradasDisponibles" />
@@ -160,6 +162,16 @@
   <xs:complexType name="cantEntradasDisponiblesResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarEvento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarEventoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarEvento">
