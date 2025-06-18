@@ -1,13 +1,12 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Drawing.Printing;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
-//Para generar pdf
+﻿//Para generar pdf
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using SirgepPresentacion.ReferenciaDisco;
+using System;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
 
 
@@ -22,38 +21,41 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                //int idEntrada = 1;
-                //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                int idEntrada = int.Parse(Request.QueryString["idEntrada"]);
-                entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
-                comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
-                funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
-                evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
-                distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
-                // Datos de la entrada
-                lblNumEntrada.Text = entradaDomain.numEntrada.ToString();
-                // Datos del evento
-                lblEvento.Text = eventoDomain.nombre;
-                lblUbicacion.Text = eventoDomain.ubicacion;
-                lblReferencias.Text = eventoDomain.referencia;
-                lblDistrito.Text = distritoDomain.nombre;
-                // Datos de la funcion
-                lblFechaFuncion.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
-                lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
-                lblHoraFin.Text = funcionDomain.horaFin.ToString();
-                //Datos del comprador
-                lblNombres.Text = compradorDomain.nombres;
-                lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
-                lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
-                lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
-                lblCorreo.Text = compradorDomain.correo;
-                // Datos de la constancia del pago
-                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
-                lblDetallePago.Text = entradaDomain.detallePago.ToString();
-                //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+entradaDomain.total.ToString();
+                int numEntrada = 1;
+                //int numEntrada = int.Parse(Request.QueryString["idEntrada"]);
+                CargarDatosEnPantalla(numEntrada);
             }
+        }
+        protected void CargarDatosEnPantalla(int numEntrada)
+        {
+            entrada entradaDomain = entradaWS.buscarEntrada(numEntrada);
+            comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
+            funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
+            evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
+            distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
+            // Datos de la entrada
+            lblNumEntrada.Text = entradaDomain.numEntrada.ToString();
+            // Datos del evento
+            lblEvento.Text = eventoDomain.nombre;
+            lblUbicacion.Text = eventoDomain.ubicacion;
+            lblReferencias.Text = eventoDomain.referencia;
+            lblDistrito.Text = distritoDomain.nombre;
+            // Datos de la funcion
+            lblFechaFuncion.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
+            lblHoraFin.Text = funcionDomain.horaFin.ToString();
+            //Datos del comprador
+            lblNombres.Text = compradorDomain.nombres;
+            lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
+            lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
+            lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
+            lblCorreo.Text = compradorDomain.correo;
+            // Datos de la constancia del pago
+            lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
+            lblDetallePago.Text = entradaDomain.detallePago.ToString();
+            //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
+            lblTotal.Text = "S/. " + entradaDomain.total.ToString();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -66,7 +68,38 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
             string rutaHtml = Server.MapPath("~/Resources/Pdfs/EntradaPdf.html");
-            string paginaHTML_Texto = File.ReadAllText(rutaHtml);
+            string paginaHTML_Texto = File.ReadAllText(rutaHtml, Encoding.UTF8);
+            CargarDatosEnPdf(ref paginaHTML_Texto);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Document pdfDoc = new Document(PageSize.A4, 50, 50, 50, 50);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, ms);
+                pdfDoc.Open();
+                pdfDoc.Add(new Phrase(""));
+                // Ruta física y reemplazo del logo
+                string rutaFisicaLogo = Server.MapPath("~/Images/grl/Escudo_Región_Lima_recortado.PNG");
+                string rutaLogoFormatoFile = "file:///" + rutaFisicaLogo.Replace("\\", "/");
+                paginaHTML_Texto = paginaHTML_Texto.Replace("{RUTA_LOGO}", rutaLogoFormatoFile);
+                using (StringReader stringReader = new StringReader(paginaHTML_Texto))
+                {
+                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, stringReader);
+                }
+                pdfDoc.Close();
+                // Envía el PDF al navegador
+                byte[] bytes = ms.ToArray();
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                string fechaFormato = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string nombresLimpios = Regex.Replace(lblNombres.Text, @"[^A-Za-z0-9]", "_");
+                string nombreArchivo = $"Constancia_Entrada_{lblNumEntrada.Text}_{nombresLimpios}_{fechaFormato}.pdf";
+                Response.AddHeader("Content-Disposition", $"attachment; filename={nombreArchivo}");
+                Response.OutputStream.Write(bytes, 0, bytes.Length);
+                Response.Flush();
+                Response.End();
+            }
+        }
+        protected void CargarDatosEnPdf(ref string paginaHTML_Texto)
+        {
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NUMERO_ENTRADA}", lblNumEntrada.Text);
             // Datos de la entrada
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_EVENTO}", lblEvento.Text);
@@ -89,29 +122,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             paginaHTML_Texto = paginaHTML_Texto.Replace("{TOTAL}", lblTotal.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{DETALLE_PAGO}", lblDetallePago.Text);
             //paginaHTML_Texto = paginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, ms);
-                pdfDoc.Open();
-                pdfDoc.Add(new Phrase(""));
-
-                using (StringReader stringReader = new StringReader(paginaHTML_Texto))
-                {
-                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, stringReader);
-                }
-                pdfDoc.Close();
-                // Envía el PDF al navegador
-                byte[] bytes = ms.ToArray();
-                Response.Clear();
-                Response.ContentType = "application/pdf";
-                string fechaFormato = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string nombreArchivo = $"Constancia_Entrada_{lblNumEntrada.Text}_{lblNombres.Text}_{fechaFormato}.pdf";
-                Response.AddHeader("Content-Disposition", $"attachment; filename={nombreArchivo}");
-                Response.OutputStream.Write(bytes, 0, bytes.Length);
-                Response.Flush();
-                Response.End();
-            }
         }
     }
 }

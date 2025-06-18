@@ -1,15 +1,13 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Drawing.Printing;
-using System.Web.UI.WebControls;
-using System.Xml.Linq;
-//Para generar pdf
+﻿//Para generar pdf
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using SirgepPresentacion.ReferenciaDisco;
+using System;
 using System.IO;
-
-
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
@@ -22,36 +20,40 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                int inumReserva = 1;
-                //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                reserva reservaDomain = reservaWS.buscarReserva(inumReserva);
-                comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
-                espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
-                distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
-                // Datos del espacio
-                lblEspacio.Text = espacioDomain.nombre;
-                lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
-                lblSuperficie.Text = espacioDomain.superficie.ToString()+ " m²";
-                lblUbicacion.Text = espacioDomain.ubicacion; 
-                lblDistrito.Text = distritoDomain.nombre;
-                // Datos de la Reserva
-                lblNumReserva.Text = reservaDomain.numReserva.ToString();
-                lblFechaReserva.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
-                lblHoraInicio.Text = reservaDomain.horarioIni.ToString();
-                lblHoraFin.Text = reservaDomain.horarioFin.ToString();
-                //Datos del comprador
-                lblNombres.Text = compradorDomain.nombres;
-                lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
-                lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
-                lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
-                lblCorreo.Text = compradorDomain.correo;
-                // Datos de la constancia del pago
-                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
-                lblDetallePago.Text = reservaDomain.detallePago;
-                //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+ reservaDomain.total.ToString();
+                int numReserva = 1;
+                //int numReserva = int.Parse(Request.QueryString["numReserva"]);
+                CargarDatosEnPantalla(numReserva);
             }
+        }
+        protected void CargarDatosEnPantalla(int numReserva)
+        {
+            reserva reservaDomain = reservaWS.buscarReserva(numReserva);
+            comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
+            espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
+            distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
+            // Datos del espacio
+            lblEspacio.Text = espacioDomain.nombre;
+            lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
+            lblSuperficie.Text = espacioDomain.superficie.ToString() + " m²";
+            lblUbicacion.Text = espacioDomain.ubicacion;
+            lblDistrito.Text = distritoDomain.nombre;
+            // Datos de la Reserva
+            lblNumReserva.Text = reservaDomain.numReserva.ToString();
+            lblFechaReserva.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = reservaDomain.horarioIni.ToString();
+            lblHoraFin.Text = reservaDomain.horarioFin.ToString();
+            //Datos del comprador
+            lblNombres.Text = compradorDomain.nombres;
+            lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
+            lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
+            lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
+            lblCorreo.Text = compradorDomain.correo;
+            // Datos de la constancia del pago
+            lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
+            lblDetallePago.Text = reservaDomain.detallePago;
+            //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
+            lblTotal.Text = "S/. " + reservaDomain.total.ToString();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -65,6 +67,37 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             string rutaHtml = Server.MapPath("~/Resources/Pdfs/ReservaPdf.html");
             string paginaHTML_Texto = File.ReadAllText(rutaHtml);
+            CargarDatosEnPdf(ref paginaHTML_Texto);
+            using (MemoryStream ms = new MemoryStream())
+            {
+                Document pdfDoc = new Document(PageSize.A4, 50, 50, 50, 50);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, ms);
+                pdfDoc.Open();
+                pdfDoc.Add(new Phrase(""));
+                // Ruta física y reemplazo del logo
+                string rutaFisicaLogo = Server.MapPath("~/Images/grl/Escudo_Región_Lima_recortado.PNG");
+                string rutaLogoFormatoFile = "file:///" + rutaFisicaLogo.Replace("\\", "/");
+                paginaHTML_Texto = paginaHTML_Texto.Replace("{RUTA_LOGO}", rutaLogoFormatoFile);
+                using (StringReader stringReader = new StringReader(paginaHTML_Texto))
+                {
+                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, stringReader);
+                }
+                pdfDoc.Close();
+                // Envía el PDF al navegador
+                byte[] bytes = ms.ToArray();
+                Response.Clear();
+                Response.ContentType = "application/pdf";
+                string fechaFormato = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+                string nombresLimpios = Regex.Replace(lblNombres.Text, @"[^A-Za-z0-9]", "_");
+                string nombreArchivo = $"Constancia_Reserva_{lblNumReserva.Text}_{nombresLimpios}_{fechaFormato}.pdf";
+                Response.AddHeader("Content-Disposition", $"attachment; filename={nombreArchivo}");
+                Response.OutputStream.Write(bytes, 0, bytes.Length);
+                Response.Flush();
+                Response.End();
+            }
+        }
+        protected void CargarDatosEnPdf(ref string paginaHTML_Texto)
+        {
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NUMERO_RESERVA}", lblNumReserva.Text);
             // Datos del Espacio
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_ESPACIO}", lblEspacio.Text);
@@ -88,29 +121,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             paginaHTML_Texto = paginaHTML_Texto.Replace("{TOTAL}", lblTotal.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{DETALLE_PAGO}", lblDetallePago.Text);
             //paginaHTML_Texto = paginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-            using (MemoryStream ms = new MemoryStream())
-            {
-                Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, ms);
-                pdfDoc.Open();
-                pdfDoc.Add(new Phrase(""));
-
-                using (StringReader stringReader = new StringReader(paginaHTML_Texto))
-                {
-                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, stringReader);
-                }
-                pdfDoc.Close();
-                // Envía el PDF al navegador
-                byte[] bytes = ms.ToArray();
-                Response.Clear();
-                Response.ContentType = "application/pdf";
-                string fechaFormato = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string nombreArchivo = $"Constancia_Reserva_{lblNumReserva.Text}_{lblNombres.Text}_{fechaFormato}.pdf";
-                Response.AddHeader("Content-Disposition", $"attachment; filename={nombreArchivo}");
-                Response.OutputStream.Write(bytes, 0, bytes.Length);
-                Response.Flush();
-                Response.End();
-            }
         }
     }
 }

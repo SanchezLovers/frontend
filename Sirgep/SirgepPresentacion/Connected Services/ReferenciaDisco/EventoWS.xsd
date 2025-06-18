@@ -6,12 +6,10 @@
   <xs:element name="buscarPorIDResponse" type="tns:buscarPorIDResponse" />
   <xs:element name="cantEntradasDisponibles" type="tns:cantEntradasDisponibles" />
   <xs:element name="cantEntradasDisponiblesResponse" type="tns:cantEntradasDisponiblesResponse" />
-  <xs:element name="listarEspacio" type="tns:listarEspacio" />
-  <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
-  <xs:element name="listarEvento" nillable="true" type="tns:listarEspacio" />
+  <xs:element name="listarEvento" type="tns:listarEvento" />
   <xs:element name="listarEventoPorDistrito" type="tns:listarEventoPorDistrito" />
   <xs:element name="listarEventoPorDistritoResponse" type="tns:listarEventoPorDistritoResponse" />
-  <xs:element name="listarEventoResponse" nillable="true" type="tns:listarEspacioResponse" />
+  <xs:element name="listarEventoResponse" type="tns:listarEventoResponse" />
   <xs:element name="listarFuncionesDeEvento" type="tns:listarFuncionesDeEvento" />
   <xs:element name="listarFuncionesDeEventoResponse" type="tns:listarFuncionesDeEventoResponse" />
   <xs:complexType name="listarEventoPorDistrito">
@@ -174,12 +172,12 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEspacio">
+  <xs:complexType name="listarEvento">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="listarEspacioResponse">
+  <xs:complexType name="listarEventoResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarPorID">
