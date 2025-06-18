@@ -116,8 +116,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idEspacio = int.Parse(ddlEspacio.SelectedValue);
-            lblPrecioHora.Text = espacioWS.buscarEspacio(idEspacio).precioReserva.ToString();
-            lblPrecioHora.Text = $"Precio por hora: S/ {espacioWS.buscarEspacio(idEspacio).precioReserva.ToString()}";
+            double precio = espacioWS.buscarEspacio(idEspacio).precioReserva;
+            lblPrecioHora.Text = $"Precio por hora: S/ {precio}";
+            hfPrecioHora.Value = precio.ToString(System.Globalization.CultureInfo.InvariantCulture);
             lblPrecioTotal.Text = "Precio total seleccionado: Seleccione un horario";
         }
 
@@ -160,8 +161,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 rptHorarios.DataSource = horarios;
                 rptHorarios.DataBind();
 
-                lblPrecioHora.Text = "Precio por hora: S/ 5.00";
-                lblPrecioTotal.Text = "Precio total seleccionado: S/ 0.00"; // Recalcula con JS si deseas
+                //lblPrecioHora.Text = "Precio por hora: S/ 5.00";
+                //lblPrecioTotal.Text = "Precio total seleccionado: S/ 0.00"; // Recalcula con JS si deseas
             }
         }
 

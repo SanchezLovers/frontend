@@ -70,10 +70,11 @@
         OnClick="btnReservar_Click" />
 
     <!-- JavaScript -->
+   <asp:HiddenField ID="hfPrecioHora" runat="server" />
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const checks = Array.from(document.querySelectorAll('.horario-check'));
-            const precioPorHora = 5;
+            const precioPorHora = parseFloat(document.getElementById('<%= hfPrecioHora.ClientID %>').value) || 0;
             const lblPrecioTotal = document.getElementById('<%= lblPrecioTotal.ClientID %>');
 
         function actualizarEstado() {

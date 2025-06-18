@@ -13,12 +13,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         EspacioWSClient espacioService;
         CompraWSClient compraService;
         ReservaWSClient reservaService;
-        
+        protected double cantidadHoras;
         protected void Page_Init(object sender, EventArgs e)
         {
             espacioService = new EspacioWSClient();
             compraService = new CompraWSClient();
             reservaService = new ReservaWSClient();
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,16 +34,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 string fechaR = "20/06/2025";
                 string horaIni = "15:00";
                 string horaFin = "17:00";
-                //DateTime fecha = DateTime.Parse("20/06/2025");
-               // DateTime horaIni = fecha.Date.AddHours(15); // 15:00
-                //DateTime horaFin = fecha.Date.AddHours(17); // 17:00
-
-                //int cantidadHoras = 2;
+               
 
                 LblHorarioReserva.Text = $"{horaIni} - {horaFin}";
                 LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
 
-                double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
+                cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
                 
                 lblPrecioHora.Text = espacio.precioReserva.ToString();
                 LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
@@ -58,8 +55,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             string fechaR = "20/06/2025";
             var horaIni = "15:00";
             var horaFin = "17:00";
-            TimeSpan tIni = TimeSpan.Parse(horaIni);
-            TimeSpan tFin = TimeSpan.Parse(horaFin);
+            
 
             //TimeSpan horarioIni = TimeSpan.Parse(horaIni);
             //TimeSpan horarioFin = TimeSpan.Parse(horaFin);
@@ -106,7 +102,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
 
             double precio = espacioService.buscarEspacio(1).precioReserva;
-            double totalAPagar = precio*cantidad;
+            double totalAPagar = precio*cantidadHoras;;
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
