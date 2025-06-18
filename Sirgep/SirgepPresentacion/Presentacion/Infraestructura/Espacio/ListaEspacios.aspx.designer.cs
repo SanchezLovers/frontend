@@ -15,6 +15,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
     {
 
         /// <summary>
+        /// Control hdnIdAEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdAEliminar;
+
+        /// <summary>
         /// Control txtBusqueda.
         /// </summary>
         /// <remarks>
@@ -301,14 +310,5 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmarAccion;
-
-        /// <summary>
-        /// Control hdnIdAEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnIdAEliminar;
     }
 }

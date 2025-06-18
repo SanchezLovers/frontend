@@ -25,44 +25,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-
                 //int idEntrada = 1;
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
-<<<<<<< HEAD:Sirgep/SirgepPresentacion/Presentacion/Ventas/Entrada/DetalleEntrada.aspx.cs
-                entrada entradaDomain = entradaWS.buscarEntrada(idEntrada);
-                comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
-                funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
-                evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
-                distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
-                // Datos de la entrada
-                lblNumEntrada.Text = entradaDomain.numEntrada.ToString();
-                // Datos del evento
-                lblEvento.Text = eventoDomain.nombre;
-                lblUbicacion.Text = eventoDomain.ubicacion;
-                lblReferencias.Text = eventoDomain.referencia;
-                lblDistrito.Text = distritoDomain.nombre;
-                // Datos de la funcion
-                lblFechaFuncion.Text = funcionDomain.fecha.ToString(); // ahora la fecha es String para insertar correctamente
-                lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
-                lblHoraFin.Text = funcionDomain.horaFin.ToString();
-                //Datos del comprador
-                lblNombres.Text = compradorDomain.nombres;
-                lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
-                lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
-                lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
-                lblCorreo.Text = compradorDomain.correo;
-                // Datos de la constancia del pago
-                lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
-                lblDetallePago.Text = entradaDomain.detallePago.ToString();
-                //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-                lblTotal.Text = "S/. "+entradaDomain.total.ToString();
-=======
                 int numEntrada = int.Parse(Request.QueryString["idEntrada"]);
-                
-
                 CargarDatosEnPantalla(numEntrada);
->>>>>>> origin/rama-italo:Sirgep/SirgepPresentacion/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx.cs
             }
         }
         protected void CargarDatosEnPantalla(int numEntrada)
@@ -80,7 +46,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             lblReferencias.Text = eventoDomain.referencia;
             lblDistrito.Text = distritoDomain.nombre;
             // Datos de la funcion
-            lblFechaFuncion.Text = funcionDomain.fecha.ToString("dd/MM/yyyy");
+            lblFechaFuncion.Text = funcionDomain.fecha.ToString();
             lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
             lblHoraFin.Text = funcionDomain.horaFin.ToString();
             //Datos del comprador

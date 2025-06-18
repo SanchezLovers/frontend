@@ -291,8 +291,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string horaIni = txtHoraInicioEdit.Text;
             string horaFin = txtHoraFinEdit.Text;
 
-            if (horaIni[horaIni.Length - 1] != '0') horaIni += ":00";
-            if (horaFin[horaFin.Length - 1] != '0') horaFin += ":00";
+            if (horaIni.Length==5) horaIni += ":00";
+            if (horaFin.Length==5) horaFin += ":00";
 
             eTipoEspacio eTipo;
             eTipoEspacio.TryParse(tipoEspacioInsumo, false, out eTipo);
