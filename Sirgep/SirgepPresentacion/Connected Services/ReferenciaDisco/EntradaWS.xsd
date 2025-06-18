@@ -175,14 +175,6 @@
       <xs:element minOccurs="0" name="return" type="tns:entrada" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEntradasActivas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEntradasActivasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarDetalleEntradasPorComprador">
     <xs:sequence>
       <xs:element name="idComprador" type="xs:int" />
@@ -202,6 +194,14 @@
       <xs:element minOccurs="0" name="nombreEvento" type="xs:string" />
       <xs:element name="numEntrada" type="xs:int" />
       <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEntradasActivas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEntradasActivasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:entrada" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarFisicoEntrada">

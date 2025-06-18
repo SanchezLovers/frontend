@@ -137,8 +137,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
             string filtro = ddlFiltros.SelectedValue;
-            string textoBusqueda = textoBusqueda.value.trim();
-            bool activo = chkActivos.checked;
+            string textoBusqueda = input_busqueda.Value.Trim();
+            bool activo = chkActivos.Checked;
 
             try
             {
@@ -147,14 +147,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     if (filtro == "codigo")
                     {
                         reserva reservaBuscada = client.obtenerPorNumReserva(codigo, activo);
-                        if (reservaBuscada != null)
-                        {
-                            reservas.Add(reservaBuscada);
-                        }
-                        else
-                        {
-                            reservas = new List<reserva>();
-                        }
+                        reservas = reservaBuscada != null ? new List<reserva> { reservaBuscada } : new List<reserva>();
                     }
                     else if (filtro == "espacio")
                     {
@@ -165,12 +158,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                         reservas = client.listarReservaPorPersona(codigo, activo).ToList();
                     }
                 }
-                else if ((filtro == "fecha") && !string.IsNullOrWhiteSpace(txtFecha.Text))
+                else if (filtro == "fecha" && !string.IsNullOrWhiteSpace(txtFecha.Text))
                 {
                     DateTime fecha;
                     DateTime.TryParseExact(txtFecha.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fecha);
                     string fechaStr = fecha.ToString("yyyy-MM-dd");
-                     reservas = client.listarPorFecha(fechaStr, activo).ToList();
+                    reservas = client.listarPorFecha(fechaStr, activo).ToList();
                 }
                 else if (filtro == "distrito" && ddlDistritos.SelectedValue != "")
                 {
@@ -193,7 +186,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             }
 
             CargarPagina();
-            }
         }
     }
 }

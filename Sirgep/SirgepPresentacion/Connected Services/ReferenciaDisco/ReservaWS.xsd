@@ -36,6 +36,8 @@
   <xs:element name="listarReservaPorPersonaResponse" type="tns:listarReservaPorPersonaResponse" />
   <xs:element name="listarReservas" type="tns:listarReservas" />
   <xs:element name="listarReservasResponse" type="tns:listarReservasResponse" />
+  <xs:element name="obtenerPorNumReserva" type="tns:obtenerPorNumReserva" />
+  <xs:element name="obtenerPorNumReservaResponse" type="tns:obtenerPorNumReservaResponse" />
   <xs:complexType name="buscarReservasPorNombreEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
@@ -246,6 +248,17 @@
   <xs:complexType name="listarReservaPorPersonaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reserva" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerPorNumReserva">
+    <xs:sequence>
+      <xs:element name="num_reserva" type="xs:int" />
+      <xs:element name="activo" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerPorNumReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:reserva" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarDistritoDeReserva">
