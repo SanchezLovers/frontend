@@ -192,8 +192,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 },
                 funcion = new funcion
                 {
-                    //idFuncion = int.Parse(Request.QueryString["idFuncion"]),
-                    idFuncion = 1, // Simular ID de función
+                    idFuncion = int.Parse(Request.QueryString["idFuncion"]),
+                    //idFuncion = 1, // Simular ID de función
                 },
             };
 

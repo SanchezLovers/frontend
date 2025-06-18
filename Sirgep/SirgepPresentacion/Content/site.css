@@ -164,16 +164,151 @@ body {
     text-align: center;
 }
 
-    .btn-metodo.selected, .btn-metodo:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 0 2px #007bff33;
-    }
+.btn-metodo.selected, .btn-metodo:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px #007bff33;
+}
 
-    .btn-metodo img {
-        display: block;
-        margin: 0 auto 5px auto;
-    }
+.btn-metodo img {
+    display: block;
+    margin: 0 auto 5px auto;
+}
 
-    .columna-peq{
-        width: 35px;
-    }
+.columna-peq{
+    width: 35px;
+}
+
+
+/* Título principal */
+.titulo-principal {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+/* Filtros y búsqueda */
+.busqueda-filtros {
+    margin-bottom: 36px;
+}
+
+.busqueda {
+    margin-bottom: 40px;
+}
+
+.input-busqueda {
+    width: 100%;
+    max-width: 580px;
+    font-size: 1em;
+    padding: 6.5px 20px;
+    border: 2.5px solid #222;
+    border-radius: 12px;
+    background: #fafafa;
+    transition: border-color 0.2s;
+}
+
+.input-busqueda:focus {
+    border-color: #b71c1c;
+    outline: none;
+}
+
+.input-busqueda.deshabilitado {
+    background: #e0e0e0;
+    border-color: #999;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.filtros-label {
+    font-weight: bold;
+    font-size: 1.35em;
+    margin-right: 5px;
+}
+
+.filtros {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filtro-select {
+    font-size: 1em;
+    padding: 6.5px 5px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    min-width: 150px;
+    background: #fff;
+}
+
+.filtro-activos-checkbox {
+    position: relative;
+    width: 185px;
+    margin-left: 0;
+}
+
+.input-filtro {
+    width: 100%;
+    font-size: 1em;
+    padding: 6.5px 50px 6.5px 8px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    color: #222;
+}
+
+.checkbox-filtro {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.checkbox-filtro input[type="checkbox"] {
+    transform: scale(1.9);
+    cursor: pointer;
+}
+
+
+/* === ESTILO UNIFICADO PARA TABLA DE RESERVAS Y GRIDVIEW === */
+.tabla-reservas,
+.tabla-reservas table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabla-reservas th,
+.tabla-reservas td {
+    border: 1px solid #e0e0e0;
+    padding: 16px 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tabla-reservas th {
+    background: #e0e0e0;
+    font-weight: bold;
+    font-size: 1.08em;
+}
+
+/* Íconos */
+.icono-abrir {
+    width: 26px;
+    height: 26px;
+}
+
+.form-control.filtro-fecha {
+    font-size: 1em;
+    padding: 6.5px 6px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    width: 130px;
+    background: #fff;
+}

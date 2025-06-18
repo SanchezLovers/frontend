@@ -2218,6 +2218,7 @@
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
@@ -2333,6 +2334,13 @@
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.designer.cs">
       <DependentUpon>DetalleReserva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx.cs">
+      <DependentUpon>ListaReservasAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx.designer.cs">
+      <DependentUpon>ListaReservasAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>

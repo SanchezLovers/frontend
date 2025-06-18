@@ -18,8 +18,9 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnConsultarReservas_Click(object sender, EventArgs e)
         {
-            string script = "setTimeout(function(){ mostrarModalError('En proceso...','Esta opción aún está en desarrollo :)'); }, 300);";
-            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+            Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservasAdministrador.aspx");
+            //string script = "setTimeout(function(){ mostrarModalError('En proceso...','Esta opción aún está en desarrollo :)'); }, 300);";
+            //ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
             //Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservas.aspx"); 
         }
 

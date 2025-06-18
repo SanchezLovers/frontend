@@ -4,14 +4,14 @@
   <xs:element name="buscarDistPorIdResponse" type="tns:buscarDistPorIdResponse" />
   <xs:element name="listarDistritosFiltrados" type="tns:listarDistritosFiltrados" />
   <xs:element name="listarDistritosFiltradosResponse" type="tns:listarDistritosFiltradosResponse" />
-  <xs:complexType name="buscarDistPorId">
-    <xs:sequence>
-      <xs:element name="idDistrito" type="xs:int" />
-    </xs:sequence>
+  <xs:element name="listarTodosDistritos" type="tns:listarTodosDistritos" />
+  <xs:element name="listarTodosDistritosResponse" type="tns:listarTodosDistritosResponse" />
+  <xs:complexType name="listarTodosDistritos">
+    <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="buscarDistPorIdResponse">
+  <xs:complexType name="listarTodosDistritosResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:distrito" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:distrito" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="distrito">
@@ -133,6 +133,16 @@
     <xs:sequence>
       <xs:element name="idDepartamento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarDistPorId">
+    <xs:sequence>
+      <xs:element name="idDistrito" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarDistPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:distrito" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarDistritosFiltrados">
