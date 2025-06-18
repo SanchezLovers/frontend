@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\willi\Desktop\Material PUCP\Sexto Ciclo\Programación 3\TA_SIRGEP\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
 C:\Users\willi\Desktop\Material PUCP\Sexto Ciclo\Programación 3\TA_SIRGEP\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
 C:\Users\willi\Desktop\Material PUCP\Sexto Ciclo\Programación 3\TA_SIRGEP\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
@@ -137,3 +138,51 @@ C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaci
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
 C:\Users\Usuario\Desktop\PUCP\CICLO 7 (2025-1)\1INF30 - Programación 3\Evaluaciones\TA\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
+=======
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll.config
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\SirgepPresentacion.pdb
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.exe.config
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csc.rsp
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.exe
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.exe.config
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\csi.rsp
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.Managed.Core.targets
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Buffers.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Collections.Immutable.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Memory.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Numerics.Vectors.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Reflection.Metadata.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.exe
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.exe.config
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\vbc.rsp
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\roslyn\VBCSCompiler.exe.config
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\BouncyCastle.Cryptography.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xmlworker.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\BouncyCastle.Cryptography.xml
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\bin\itextsharp.xml
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.AssemblyReference.cache
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.Properties.Resources.resources
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.GenerateResource.cache
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.csproj.CoreCompileInputs.cache
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPr.F7A4D5F4.Up2Date
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.dll
+D:\PUCP\Estudios PUCP\25-1\Programacion3\TrabajoAcademico\copiarepositorio2\frontend\frontend\Sirgep\SirgepPresentacion\obj\Debug\SirgepPresentacion.pdb
+>>>>>>> e5828c89f5a46c5034e4d2f97b04e0a8456f5e3f

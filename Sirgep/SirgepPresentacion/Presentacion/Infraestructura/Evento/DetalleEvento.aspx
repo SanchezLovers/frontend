@@ -17,6 +17,9 @@
         <p class="mt-2" style="font-size: 0.9rem; color: gray;">
             <asp:Label ID="lblReferencia" runat="server" Text=""></asp:Label><br />
         </p>
+        <p class="mt-2" style="font-size: 1rem; color: black;">
+            <asp:Label ID="PrecioEntrada" runat="server" Text=""></asp:Label><br />
+        </p>
         <asp:HiddenField ID="cantGeneralInvisible" runat="server" />
         <asp:HiddenField ID="cantFuncionInvisible" runat="server" />
         <div class="row mb-3 align-items-end">

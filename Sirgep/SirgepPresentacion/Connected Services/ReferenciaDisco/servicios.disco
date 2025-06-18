@@ -10,4 +10,6 @@
   <contractRef ref="http://localhost:8080/SirgepWS/ReservaWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/SirgepWS/PersonaWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
   <contractRef ref="http://localhost:8080/SirgepWS/CalificacionWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/SirgepWS/FuncionWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <contractRef ref="http://localhost:8080/SirgepWS/HorarioEspacioWS?wsdl" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
 </discovery>

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Inicio
 {
@@ -16,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnReservar_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Funcionalidad no implementada aún...');", true);
+            Response.Redirect("/Presentacion/Ventas/Reserva/FormularioEspacio.aspx");
         }
 
         protected void btnVerEventos_Click(object sender, EventArgs e)

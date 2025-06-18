@@ -1,11 +1,6 @@
-﻿using SirgepPresentacion.Presentacion.Ventas.Entrada;
-using SirgepPresentacion.ReferenciaDisco;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+﻿using System;
 using System.Web.UI.WebControls;
+using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
