@@ -7,30 +7,48 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SirgepPresentacion.Presentacion.Ventas.Entrada
+namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
 
 
-    public partial class DetalleEntrada
+    public partial class ConstanciaReserva
     {
 
         /// <summary>
-        /// Control lblNumEntrada.
+        /// Control lblNumReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumEntrada;
+        protected global::System.Web.UI.WebControls.Label lblNumReserva;
 
         /// <summary>
-        /// Control lblEvento.
+        /// Control lblEspacio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEvento;
+        protected global::System.Web.UI.WebControls.Label lblEspacio;
+
+        /// <summary>
+        /// Control lblTipoEspacio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoEspacio;
+
+        /// <summary>
+        /// Control lblSuperficie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuperficie;
 
         /// <summary>
         /// Control lblUbicacion.
@@ -51,22 +69,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected global::System.Web.UI.WebControls.Label lblDistrito;
 
         /// <summary>
-        /// Control lblReferencias.
+        /// Control lblFechaReserva.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReferencias;
-
-        /// <summary>
-        /// Control lblFechaFuncion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaFuncion;
+        protected global::System.Web.UI.WebControls.Label lblFechaReserva;
 
         /// <summary>
         /// Control lblHoraInicio.
@@ -177,12 +186,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
-        /// Control btnDescargar.
+        /// Control btnDescargarMostrarModal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDescargar;
+        protected global::System.Web.UI.WebControls.Button btnDescargarMostrarModal;
     }
 }

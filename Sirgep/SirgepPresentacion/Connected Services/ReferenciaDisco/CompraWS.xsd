@@ -118,10 +118,13 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:constancia">
         <xs:sequence>
+          <xs:element name="activo" type="xs:unsignedShort" />
           <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
           <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="finString" type="xs:string" />
           <xs:element minOccurs="0" name="horarioFin" type="tns:localTime" />
           <xs:element minOccurs="0" name="horarioIni" type="tns:localTime" />
+          <xs:element minOccurs="0" name="iniString" type="xs:string" />
           <xs:element name="numReserva" type="xs:int" />
           <xs:element minOccurs="0" name="persona" type="tns:persona" />
         </xs:sequence>

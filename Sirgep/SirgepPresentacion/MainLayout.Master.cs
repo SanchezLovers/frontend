@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SirgepPresentacion.ReferenciaDisco;
+using System;
 using System.Web.UI;
 
 namespace SirgepPresentacion
@@ -37,7 +38,7 @@ namespace SirgepPresentacion
                     string page = System.IO.Path.GetFileName(Request.Url.AbsolutePath).ToLower();
                     if (page == "login.aspx")
                         liIngresar.Visible = false; // Si estás en la página de invitado, no mostrar el botón de ingresar
-                    
+
                     break;
                 default:
                     liAdminMenu.Visible = false;
@@ -45,6 +46,7 @@ namespace SirgepPresentacion
                     liIngresar.Visible = false;
                     break;
             }
+            hdnTipoUsuario.Value = Session["tipoUsuario"] as string ?? "invitado";
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -53,6 +55,11 @@ namespace SirgepPresentacion
         }
 
         protected void lnkLogo_Click(object sender, EventArgs e)
+        {
+            redirigirInicio();
+        }
+
+        protected void redirigirInicio()
         {
             string tipoUsuario = Session["tipoUsuario"] as string;
 
@@ -63,7 +70,7 @@ namespace SirgepPresentacion
                     break;
 
                 case "comprador":
-                    Response.Redirect("/Presentacion/Inicio/PrincipalComprador.aspx");
+                    Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
 
                 case "invitado":
@@ -75,9 +82,59 @@ namespace SirgepPresentacion
             }
         }
 
-        protected void btnPerfil_Click(object sender, EventArgs e)
+        protected void lnkPerfil_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Presentacion/Usuarios/Perfil.aspx");
+        }
+
+        protected void lnkReservasComprador_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservasComprador.aspx");
+        }
+
+        protected void lnkEntradasComprador_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Ventas/Entrada/ListaEntradasComprador.aspx");
+        }
+
+        protected void lnkCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
+        }
+
+        protected void lnkEspaciosAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEspacios.aspx");
+        }
+
+        protected void lnkEventosAdmin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEventos.aspx");
+        }
+        protected void btnEnviarFeedback_Click(object sender, EventArgs e)
+        {
+            string comentario = txtComentarioFeedback.Text.Trim();
+            int puntaje = ObtenerPuntajeFeedback();
+
+            CalificacionWSClient calificacionService = new CalificacionWSClient();
+            string tipoServicio = Session["tipoServicio"] as string;
+            calificacionService.calificarServicio(puntaje, comentario, tipoServicio);
+            string script = "var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalFeedback')); modal.hide();";
+            ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalFeedback", script, true);
+
+            Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
+        }
+
+        private int ObtenerPuntajeFeedback()
+        {
+            // Leer el valor del HiddenField directamente
+            int puntaje = 0;
+            if (int.TryParse(calificacionFeedback.Value, out puntaje))
+            {
+                return puntaje;
+            }
+            return 0; // Valor por defecto si no se seleccionó nada
         }
     }
 }

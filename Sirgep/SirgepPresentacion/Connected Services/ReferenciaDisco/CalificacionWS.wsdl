@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="pe.edu.pucp.sirgep" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="CalificacionWS" targetNamespace="pe.edu.pucp.sirgep" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/SirgepWS/CalificacionWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
+    </xsd:schema>
+  </types>
+  <message name="calificarServicio">
+    <part name="parameters" element="tns:calificarServicio" />
+  </message>
+  <message name="calificarServicioResponse">
+    <part name="parameters" element="tns:calificarServicioResponse" />
+  </message>
+  <portType name="CalificacionWS">
+    <operation name="calificarServicio">
+      <input wsam:Action="pe.edu.pucp.sirgep/CalificacionWS/calificarServicioRequest" message="tns:calificarServicio" />
+      <output wsam:Action="pe.edu.pucp.sirgep/CalificacionWS/calificarServicioResponse" message="tns:calificarServicioResponse" />
+    </operation>
+  </portType>
+  <binding name="CalificacionWSPortBinding" type="tns:CalificacionWS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="calificarServicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CalificacionWS">
+    <port name="CalificacionWSPort" binding="tns:CalificacionWSPortBinding">
+      <soap:address location="http://localhost:8080/SirgepWS/CalificacionWS" />
+    </port>
+  </service>
+</definitions>
