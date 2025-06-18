@@ -84,7 +84,25 @@ namespace SirgepPresentacion
 
         protected void lnkPerfil_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuarios/Perfil.aspx");
+            string tipoUsuario = Session["tipoUsuario"] as string;
+            if (tipoUsuario == null)
+            {
+                // No ha iniciado sesión, es invitado por defecto
+                tipoUsuario = "invitado";
+                Session["tipoUsuario"] = "invitado"; // puedes asignarlo si deseas
+            }
+            switch (tipoUsuario.ToLower())
+            {
+                case "administrador":
+                    break;
+                case "comprador":
+                    Response.Redirect("/Presentacion/Usuarios/Comprador/PerfilComprador.aspx");
+                    break;
+                case "invitado":
+                    break;
+                default:
+                    break;
+            }
         }
 
         protected void lnkReservasComprador_Click(object sender, EventArgs e)

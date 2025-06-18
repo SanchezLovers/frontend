@@ -25,9 +25,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                //int idEntrada = 1;
-                //int idEntrada = int.Parse((sender as Button).CommandArgument);
-                int numEntrada = int.Parse(Request.QueryString["idEntrada"]);
+                //int NumEntrada = 1;
+                //int NumEntrada = int.Parse((sender as Button).CommandArgument);
+                int numEntrada = int.Parse(Request.QueryString["NumEntrada"]);
                 CargarDatosEnPantalla(numEntrada);
             }
         }
