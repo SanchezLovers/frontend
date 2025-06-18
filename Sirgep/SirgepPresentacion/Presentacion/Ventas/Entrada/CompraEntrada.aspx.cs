@@ -202,7 +202,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idEntrada);
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idEntrada=" + idEntrada);
         }
     }
 }

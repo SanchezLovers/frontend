@@ -232,14 +232,20 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             // };
 
             //int idReserva = compraService.insertarConstancia(nueva);
-            int idReserva = reservaService.insertarReserva(nuevaReserva); 
+            int idReserva = reservaService.insertarReserva(nuevaReserva);
 
 
-            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);";
+            string scriptExito =
+           "document.getElementById('modalExitoBody').innerText = 'Pago realizado con éxito.';" +
+           "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
+           "modal.show();" +
+           "setTimeout(function() {" +
+           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?numReserva=" + idReserva + "';" +
+           "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
 
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idReserva);
+            //Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
 
 

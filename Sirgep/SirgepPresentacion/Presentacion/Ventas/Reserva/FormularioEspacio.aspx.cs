@@ -115,7 +115,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idEspacio = int.Parse(ddlEspacio.SelectedValue);
+            int idEspacio = int.Parse(ddlEspacio.SelectedValue.ToString());
             espacio es = espacioWS.buscarEspacio(idEspacio);
             lblPrecioHora.Text =es.precioReserva.ToString();
             lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString()}";
