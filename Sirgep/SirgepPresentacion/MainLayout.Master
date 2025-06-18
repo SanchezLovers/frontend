@@ -228,6 +228,18 @@
         var modalFeedback = new bootstrap.Modal(document.getElementById('modalFeedback'));
         modalFeedback.show();
     }
+    function mostrarModalExito() {
+        var modalFeedback = new bootstrap.Modal(document.getElementById('modalExito'));
+        modalFeedback.show();
+    }
+    function mostrarModalError() {
+        var modalFeedback = new bootstrap.Modal(document.getElementById('modalError'));
+        modalFeedback.show();
+    }
+    function mostrarModalConfirmacion() {
+        var modalFeedback = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        modalFeedback.show();
+    }
 
     // Lógica para estrellas de feedback
     let calificacionFeedback = 0;
@@ -265,6 +277,30 @@
             });
         }
     });
+    function mostrarModalExito(titulo, mensaje) {
+        // Cambia el título y mensaje del modal de éxito
+        document.getElementById("modalExitoLabel").innerText = titulo;
+        document.getElementById("modalExitoBody").innerText = mensaje;
+        // Muestra el modal
+        var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
+        myModal.show();
+    }
+    function mostrarModalError(titulo, mensaje) {
+        // Cambia el título y mensaje del modal de éxito
+        document.getElementById("modalErrorLabel").innerText = titulo;
+        document.getElementById("modalErrorBody").innerText = mensaje;
+        // Muestra el modal
+        var myModal = new bootstrap.Modal(document.getElementById('modalError'));
+        myModal.show();
+    }
+    function mostrarModalConfirmacion(titulo, mensaje) {
+        // Cambia el título y mensaje del modal de éxito
+        document.getElementById("modalConfirmacionLabel").innerText = titulo;
+        document.getElementById("modalconfirmacionBody").innerText = mensaje;
+        // Muestra el modal
+        var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+        myModal.show();
+    }
 
     </script>
 </html>

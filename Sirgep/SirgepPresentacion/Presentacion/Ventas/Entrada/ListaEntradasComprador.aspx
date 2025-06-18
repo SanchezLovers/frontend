@@ -13,7 +13,7 @@
     <div class="container">
         <!-- BOTONES -->
         <div class="d-flex justify-content-between mb-3">
-            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Lista de Entradas" OnClientClick="setTimeout(function() { mostrarModalExitoPersonalizado('Descarga exitosa', 'La lista de entradas fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
+            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Lista de Entradas" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de entradas fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
         </div>
     </div>
 
@@ -42,15 +42,4 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <!-- MODAL -->
-    <script type="text/javascript">
-        function mostrarModalExitoPersonalizado(titulo, mensaje) {
-            // Cambia el título y mensaje del modal de éxito
-            document.getElementById("modalExitoLabel").innerText = titulo;
-            document.getElementById("modalExitoBody").innerText = mensaje;
-            // Muestra el modal
-            var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
-            myModal.show();
-        }
-    </script>
 </asp:Content>

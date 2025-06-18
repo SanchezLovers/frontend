@@ -31,33 +31,36 @@ namespace SirgepPresentacion.Presentacion.Inicio
             string correo = txtEmail.Text.Trim();
             string contrasena = txtPassword.Text.Trim();
             int resultado = personaWS.validarCuenta(correo,contrasena);
-            if (resultado>0)
-            {
-                //Session["idUsuario"] = personaWS.obtenerIdPorCorreo(correo);
-            }
-            switch (resultado)
+            int id = resultado / 10;
+            int tipo = resultado % 10;
+            string script;
+            switch (tipo)
             {
                 case 0:
-                    // Usuario no existe
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Credenciales fallidas.');", true);//Cambiar por modal de error
+                    script = "setTimeout(function(){ mostrarModalError('Credenciales fallidas.','Las credenciales no son correctas. Intente nuevamente.'); }, 300);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                     break;
                 case 1:
                     // Usuario es administrador
                     Session["tipoUsuario"] = "administrador";
+                    Session["idUsuario"] = id;
                     Response.Redirect("/Presentacion/Inicio/PrincipalAdministrador.aspx");
                     break;
                 case 2:
                     // Usuario es cliente
                     Session["tipoUsuario"] = "comprador";
+                    Session["idUsuario"] = id;
                     Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
                 case -1:
                     // Credenciales no pertenecen a ninguna cuenta
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Credenciales no pertenecen a ninguna cuenta.');", true);//Cambiar por modal de error
+                    script = "setTimeout(function(){ mostrarModalError('Credenciales inexistentes.','Las credenciales no pertenecen a ninguna cuenta. Intente nuevamente.'); }, 300);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                     break;
                 default:
                     // Error desconocido
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error desconocido.');", true);//Cambiar por modal de error
+                    script = "setTimeout(function(){ mostrarModalError('Error Desconocido.','Intente nuevamente.'); }, 300);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                     break;
             }
         }

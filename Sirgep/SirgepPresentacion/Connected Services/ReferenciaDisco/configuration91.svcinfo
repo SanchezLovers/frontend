@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="yJ0n40W02FHzAr+fWkXSlm/1Hmwc35dvf3f7MtACDh8=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="8DMOxOK0Cfw2HwNVCXCgK9tQxqdCdQ9KuiJbRUXEWHk=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="basicHttpBinding" name="ReservaWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="ReservaWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ReservaWSPortBinding1</serializedValue>
+          <serializedValue>ReservaWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -110,10 +110,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="HorarioEspacioWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="HorarioEspacioWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>HorarioEspacioWSPortBinding1</serializedValue>
+          <serializedValue>HorarioEspacioWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -219,10 +219,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="FuncionWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="FuncionWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>FuncionWSPortBinding1</serializedValue>
+          <serializedValue>FuncionWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -328,10 +328,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="DepartamentoWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="DepartamentoWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DepartamentoWSPortBinding1</serializedValue>
+          <serializedValue>DepartamentoWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -437,10 +437,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="EntradaWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="EntradaWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EntradaWSPortBinding1</serializedValue>
+          <serializedValue>EntradaWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -546,10 +546,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="DistritoWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="DistritoWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DistritoWSPortBinding1</serializedValue>
+          <serializedValue>DistritoWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -655,10 +655,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="CompraWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="CompraWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CompraWSPortBinding1</serializedValue>
+          <serializedValue>CompraWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -764,10 +764,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="EventoWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="EventoWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EventoWSPortBinding1</serializedValue>
+          <serializedValue>EventoWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -873,10 +873,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="EspacioWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="EspacioWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EspacioWSPortBinding1</serializedValue>
+          <serializedValue>EspacioWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -982,10 +982,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="CalificacionWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="CalificacionWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CalificacionWSPortBinding1</serializedValue>
+          <serializedValue>CalificacionWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1091,10 +1091,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="PersonaWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="PersonaWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PersonaWSPortBinding1</serializedValue>
+          <serializedValue>PersonaWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1200,10 +1200,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="basicHttpBinding" name="ProvinciaWSPortBinding1">
+    <bindingConfiguration bindingType="basicHttpBinding" name="ProvinciaWSPortBinding">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ProvinciaWSPortBinding1</serializedValue>
+          <serializedValue>ProvinciaWSPortBinding</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1311,7 +1311,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ReservaWSPort1" contract="ReferenciaDisco.ReservaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/ReservaWS" bindingConfiguration="ReservaWSPortBinding1">
+    <endpoint name="ReservaWSPort" contract="ReferenciaDisco.ReservaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/ReservaWS" bindingConfiguration="ReservaWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/ReservaWS</serializedValue>
@@ -1323,7 +1323,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ReservaWSPortBinding1</serializedValue>
+          <serializedValue>ReservaWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.ReservaWS</serializedValue>
@@ -1386,7 +1386,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ReservaWSPort1</serializedValue>
+          <serializedValue>ReservaWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1396,7 +1396,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="HorarioEspacioWSPort1" contract="ReferenciaDisco.HorarioEspacioWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/HorarioEspacioWS" bindingConfiguration="HorarioEspacioWSPortBinding1">
+    <endpoint name="HorarioEspacioWSPort" contract="ReferenciaDisco.HorarioEspacioWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/HorarioEspacioWS" bindingConfiguration="HorarioEspacioWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/HorarioEspacioWS</serializedValue>
@@ -1408,7 +1408,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>HorarioEspacioWSPortBinding1</serializedValue>
+          <serializedValue>HorarioEspacioWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.HorarioEspacioWS</serializedValue>
@@ -1471,7 +1471,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>HorarioEspacioWSPort1</serializedValue>
+          <serializedValue>HorarioEspacioWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1481,7 +1481,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="FuncionWSPort1" contract="ReferenciaDisco.FuncionWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/FuncionWS" bindingConfiguration="FuncionWSPortBinding1">
+    <endpoint name="FuncionWSPort" contract="ReferenciaDisco.FuncionWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/FuncionWS" bindingConfiguration="FuncionWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/FuncionWS</serializedValue>
@@ -1493,7 +1493,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>FuncionWSPortBinding1</serializedValue>
+          <serializedValue>FuncionWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.FuncionWS</serializedValue>
@@ -1556,7 +1556,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>FuncionWSPort1</serializedValue>
+          <serializedValue>FuncionWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1566,7 +1566,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="DepartamentoWSPort1" contract="ReferenciaDisco.DepartamentoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/DepartamentoWS" bindingConfiguration="DepartamentoWSPortBinding1">
+    <endpoint name="DepartamentoWSPort" contract="ReferenciaDisco.DepartamentoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/DepartamentoWS" bindingConfiguration="DepartamentoWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/DepartamentoWS</serializedValue>
@@ -1578,7 +1578,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DepartamentoWSPortBinding1</serializedValue>
+          <serializedValue>DepartamentoWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.DepartamentoWS</serializedValue>
@@ -1641,7 +1641,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DepartamentoWSPort1</serializedValue>
+          <serializedValue>DepartamentoWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1651,7 +1651,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="EntradaWSPort1" contract="ReferenciaDisco.EntradaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EntradaWS" bindingConfiguration="EntradaWSPortBinding1">
+    <endpoint name="EntradaWSPort" contract="ReferenciaDisco.EntradaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EntradaWS" bindingConfiguration="EntradaWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/EntradaWS</serializedValue>
@@ -1663,7 +1663,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EntradaWSPortBinding1</serializedValue>
+          <serializedValue>EntradaWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.EntradaWS</serializedValue>
@@ -1726,7 +1726,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EntradaWSPort1</serializedValue>
+          <serializedValue>EntradaWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1736,7 +1736,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="DistritoWSPort1" contract="ReferenciaDisco.DistritoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/DistritoWS" bindingConfiguration="DistritoWSPortBinding1">
+    <endpoint name="DistritoWSPort" contract="ReferenciaDisco.DistritoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/DistritoWS" bindingConfiguration="DistritoWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/DistritoWS</serializedValue>
@@ -1748,7 +1748,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DistritoWSPortBinding1</serializedValue>
+          <serializedValue>DistritoWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.DistritoWS</serializedValue>
@@ -1811,7 +1811,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>DistritoWSPort1</serializedValue>
+          <serializedValue>DistritoWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1821,7 +1821,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="CompraWSPort1" contract="ReferenciaDisco.CompraWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/CompraWS" bindingConfiguration="CompraWSPortBinding1">
+    <endpoint name="CompraWSPort" contract="ReferenciaDisco.CompraWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/CompraWS" bindingConfiguration="CompraWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/CompraWS</serializedValue>
@@ -1833,7 +1833,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CompraWSPortBinding1</serializedValue>
+          <serializedValue>CompraWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.CompraWS</serializedValue>
@@ -1896,7 +1896,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CompraWSPort1</serializedValue>
+          <serializedValue>CompraWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1906,7 +1906,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="EventoWSPort1" contract="ReferenciaDisco.EventoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EventoWS" bindingConfiguration="EventoWSPortBinding1">
+    <endpoint name="EventoWSPort" contract="ReferenciaDisco.EventoWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EventoWS" bindingConfiguration="EventoWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/EventoWS</serializedValue>
@@ -1918,7 +1918,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EventoWSPortBinding1</serializedValue>
+          <serializedValue>EventoWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.EventoWS</serializedValue>
@@ -1981,7 +1981,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EventoWSPort1</serializedValue>
+          <serializedValue>EventoWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -1991,7 +1991,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="EspacioWSPort1" contract="ReferenciaDisco.EspacioWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EspacioWS" bindingConfiguration="EspacioWSPortBinding1">
+    <endpoint name="EspacioWSPort" contract="ReferenciaDisco.EspacioWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/EspacioWS" bindingConfiguration="EspacioWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/EspacioWS</serializedValue>
@@ -2003,7 +2003,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EspacioWSPortBinding1</serializedValue>
+          <serializedValue>EspacioWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.EspacioWS</serializedValue>
@@ -2066,7 +2066,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>EspacioWSPort1</serializedValue>
+          <serializedValue>EspacioWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -2076,7 +2076,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="CalificacionWSPort1" contract="ReferenciaDisco.CalificacionWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/CalificacionWS" bindingConfiguration="CalificacionWSPortBinding1">
+    <endpoint name="CalificacionWSPort" contract="ReferenciaDisco.CalificacionWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/CalificacionWS" bindingConfiguration="CalificacionWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/CalificacionWS</serializedValue>
@@ -2088,7 +2088,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CalificacionWSPortBinding1</serializedValue>
+          <serializedValue>CalificacionWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.CalificacionWS</serializedValue>
@@ -2151,7 +2151,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CalificacionWSPort1</serializedValue>
+          <serializedValue>CalificacionWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -2161,7 +2161,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="PersonaWSPort1" contract="ReferenciaDisco.PersonaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/PersonaWS" bindingConfiguration="PersonaWSPortBinding1">
+    <endpoint name="PersonaWSPort" contract="ReferenciaDisco.PersonaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/PersonaWS" bindingConfiguration="PersonaWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/PersonaWS</serializedValue>
@@ -2173,7 +2173,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PersonaWSPortBinding1</serializedValue>
+          <serializedValue>PersonaWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.PersonaWS</serializedValue>
@@ -2236,7 +2236,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>PersonaWSPort1</serializedValue>
+          <serializedValue>PersonaWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -2246,7 +2246,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="ProvinciaWSPort1" contract="ReferenciaDisco.ProvinciaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/ProvinciaWS" bindingConfiguration="ProvinciaWSPortBinding1">
+    <endpoint name="ProvinciaWSPort" contract="ReferenciaDisco.ProvinciaWS" bindingType="basicHttpBinding" address="http://localhost:8080/SirgepWS/ProvinciaWS" bindingConfiguration="ProvinciaWSPortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:8080/SirgepWS/ProvinciaWS</serializedValue>
@@ -2258,7 +2258,7 @@
           <serializedValue>basicHttpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ProvinciaWSPortBinding1</serializedValue>
+          <serializedValue>ProvinciaWSPortBinding</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReferenciaDisco.ProvinciaWS</serializedValue>
@@ -2321,7 +2321,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>ProvinciaWSPort1</serializedValue>
+          <serializedValue>ProvinciaWSPort</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

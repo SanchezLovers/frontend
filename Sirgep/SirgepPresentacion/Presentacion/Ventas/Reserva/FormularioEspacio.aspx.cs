@@ -163,6 +163,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 rptHorarios.DataBind();
 
             }
+            else
+            {
+                lblError.Visible = true;
+                lblError.Text = "Por favor, seleccione un Espacio y una Fecha.";
+                string script = "setTimeout(function(){ mostrarModalError('Datos Faltantes','Por favor, seleccione un Espacio y una Fecha.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
+            }
         }
         protected void btnReservar_Click(object sender, EventArgs e)
         {
@@ -172,11 +179,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             {
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione un Espacio.";
+                string script = "setTimeout(function(){ mostrarModalError('Espacio Faltante','Por favor, seleccione un Espacio.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
             }
             else if (string.IsNullOrEmpty(txtFecha.Text))
             {
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione una Fecha.";
+                string script = "setTimeout(function(){ mostrarModalError('Fecha Faltante','Por favor, seleccione una Fecha.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
             }
             else
             {
@@ -186,6 +197,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 {
                     lblError.Visible = true;
                     lblError.Text = "Por favor, seleccione al menos un horario disponible.";
+                    string script = "setTimeout(function(){ mostrarModalError('Horario Faltante','Por favor, seleccione al menos un horario disponible.'); }, 300);";
+                    ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                 }
                 else
                 {

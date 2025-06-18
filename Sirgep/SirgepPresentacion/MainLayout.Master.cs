@@ -117,12 +117,9 @@ namespace SirgepPresentacion
             string comentario = txtComentarioFeedback.Text.Trim();
             int puntaje = ObtenerPuntajeFeedback();
 
-            // Llamar al servicio web CalificacionWSCliente
             CalificacionWSClient calificacionService = new CalificacionWSClient();
             string tipoServicio = Session["tipoServicio"] as string;
             calificacionService.calificarServicio(puntaje, comentario, tipoServicio);
-
-            // Cerrar el modal (opcional, si quieres mostrar el cierre visual)
             string script = "var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalFeedback')); modal.hide();";
             ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModalFeedback", script, true);
 

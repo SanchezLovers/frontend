@@ -89,18 +89,7 @@
         <!-- BOTONES -->
         <div class="d-flex justify-content-between mb-3">
             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-dark" OnClick="btnVolver_Click" />
-            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Constancia" OnClientClick="setTimeout(function() { mostrarModalExitoPersonalizado('Descarga exitosa', 'La constancia de la reserva fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
+            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Constancia" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La constancia de la reserva fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
         </div>
     </div>
-    <!-- MODAL -->
-    <script type="text/javascript">
-        function mostrarModalExitoPersonalizado(titulo, mensaje) {
-            // Cambia el título y mensaje del modal de éxito
-            document.getElementById("modalExitoLabel").innerText = titulo;
-            document.getElementById("modalExitoBody").innerText = mensaje;
-            // Muestra el modal
-            var myModal = new bootstrap.Modal(document.getElementById('modalExito'));
-            myModal.show();
-        }
-    </script>
 </asp:Content>

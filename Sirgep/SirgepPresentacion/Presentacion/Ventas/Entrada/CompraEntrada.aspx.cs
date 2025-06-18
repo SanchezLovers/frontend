@@ -83,9 +83,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);
                 //return;
-                string script = "document.getElementById('modalErrorBody').innerText = \"Por favor, complete todos los campos obligatorios.\";" +
-                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
-                "modal.show();";
+                string script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
 
@@ -96,9 +94,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Debe seleccionar un método de pago.');", true);
                 //return;
-                string script = "document.getElementById('modalErrorBody').innerText = \"Debe seleccionar un método de pago.\";" +
-                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
-                "modal.show();";
+                string script = "setTimeout(function(){ mostrarModalError('Método de pago faltante.','Debe seleccionar un método de pago.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
@@ -124,9 +120,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 //ScriptManager.RegisterStartupScript(this, GetType(), "alert",
                 //  "alert('Saldo insuficiente.');", true);
                 //return;
-                string script = "document.getElementById('modalErrorBody').innerText = \"Saldo insuficiente.\";" +
-                "var modal = new bootstrap.Modal(document.getElementById('modalError'));" +
-                "modal.show();";
+                string script = "setTimeout(function(){ mostrarModalError('Error en pago.','Saldo insuficiente.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
@@ -167,8 +161,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             if (!ok)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert",
-                    "alert('Método de pago desconocido.');", true);
+                string script = "setTimeout(function(){ mostrarModalError('Método de pago incorrecto.','Método de pago desconocido.'); }, 300);";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
             //int idFuncion = 1; // Simular ID elegido
@@ -205,17 +199,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             //int idConstancia=compraService.insertarConstancia(nueva);
             int idEntrada = entradaWS.insertarEntrada(nEntrada);
-            string scriptExito =
-                "document.getElementById('modalExitoBody').innerText = 'Pago realizado con éxito.';" +
-                "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
-                "modal.show();" +
-                "setTimeout(function() {" +
-                "  window.location.href = '/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idEntrada=" + idEntrada + "';" +
-                "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
+            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
-
-            //   Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idEntrada);
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idEntrada);
         }
     }
 }

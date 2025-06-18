@@ -73,21 +73,27 @@ namespace SirgepPresentacion.Presentacion.Ubicacion.Distrito
         {
             if (!(ddlDepartamento.SelectedIndex > 0))
             {
-                // Mostrar un mensaje de error si no se ha seleccionado un distrito
+                // Mostrar un mensaje de error si no se ha seleccionado un departamento
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione un departamento.";
+                string script = "setTimeout(function(){ mostrarModalError('Distrito Faltante','Por favor, seleccione un departamento.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
             }
             else if (!(ddlProvincia.SelectedIndex > 0))
             {
-                // Mostrar un mensaje de error si no se ha seleccionado un distrito
+                // Mostrar un mensaje de error si no se ha seleccionado un provincia
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione una provincia.";
+                string script = "setTimeout(function(){ mostrarModalError('Provincia Faltante','Por favor, seleccione una provincia.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
             }
             else if (!(ddlDistrito.SelectedIndex > 0))
             {
                 // Mostrar un mensaje de error si no se ha seleccionado un distrito
                 lblError.Visible = true;
                 lblError.Text = "Por favor, seleccione un distrito.";
+                string script = "setTimeout(function(){ mostrarModalError('Distrito Faltante','Por favor, seleccione un distrito.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
             }
             else
             {

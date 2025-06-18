@@ -69,7 +69,7 @@
     <asp:HiddenField ID="hdnPrecioHora" runat="server" />
     
     <asp:Label ID="lblPrecioTotal" runat="server" CssClass="d-block fw-bold" />
-    <asp:Label ID="lblError" runat="server" CssClass="d-block fw-bold" />
+    <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" />
 
     <asp:Button ID="btnReservar" runat="server" Text="Reservar" CssClass="btn btn-primary mt-3"
         OnClick="btnReservar_Click" />
