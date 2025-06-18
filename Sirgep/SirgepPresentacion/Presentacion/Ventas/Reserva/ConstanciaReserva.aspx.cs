@@ -36,9 +36,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             lblDistrito.Text = distritoDomain.nombre;
             // Datos de la Reserva
             lblNumReserva.Text = reservaDomain.numReserva.ToString();
-            lblFechaReserva.Text = reservaDomain.fecha.ToString("dd/MM/yyyy");
-            lblHoraInicio.Text = reservaDomain.horarioIni.ToString();
-            lblHoraFin.Text = reservaDomain.horarioFin.ToString();
+            lblFechaReserva.Text = reservaDomain.fechaReserva.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = reservaDomain.iniString;
+            lblHoraFin.Text = reservaDomain.finString;
             //Datos del comprador
             lblNombres.Text = compradorDomain.nombres;
             lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;

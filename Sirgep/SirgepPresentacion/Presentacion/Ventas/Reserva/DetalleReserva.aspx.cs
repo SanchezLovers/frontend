@@ -32,7 +32,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 espacio espacio = espacioService.buscarEspacio(idEspacio);
                 LblEspacio.Text = espacio.nombre;
                 LblUbicacionReserva.Text = espacio.ubicacion;
-
+                TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
                 //string fechaR = "20/06/2025";
                 //string horaIni = "15:00";
                 //string horaFin = "17:00";
@@ -42,7 +42,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 //int cantidadHoras = 2;
 
-                LblHorarioReserva.Text = $"{horaIni} - {horaFin}";
+                LblHorarioReserva.Text = $"{horaIni} - {tFin.ToString()}";
                 LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
 
                 //double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
@@ -58,12 +58,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnPagar_Click(object sender, EventArgs e)
 
         {
-            string fechaR = "20/06/2025";
-            var horaIni = "15:00";
-            var horaFin = "17:00";
+            //string fechaR = "20/06/2025";
+            //var horaIni = "15:00";
+            //var horaFin = "17:00";
+            string fechaR = Request.QueryString["fecha"];
+            string horaIni = Request.QueryString["horaIni"];
+            string horaFin = Request.QueryString["horaFin"];
             TimeSpan tIni = TimeSpan.Parse(horaIni);
-            TimeSpan tFin = TimeSpan.Parse(horaFin);
-
+            TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
             //TimeSpan horarioIni = TimeSpan.Parse(horaIni);
             //TimeSpan horarioFin = TimeSpan.Parse(horaFin);
             // Validar campos obligatorios
@@ -215,7 +217,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 //horarioIni = reservaService.convertirALocalTime(horaIni), // Convertir a localTime
                 // horarioFin = reservaService.convertirALocalTime(horaFin),
                 iniString = horaIni,
-                finString = horaFin,
+                finString = tFin.ToString(),
 
 
                 persona = new persona
