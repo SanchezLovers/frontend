@@ -108,7 +108,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             int idPersona1;
             // ---------- Datos que necesitas ----------
             //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
-            int cantidad = 1;
 
 
             double precio = compraService.buscarEventos(1).precioEntrada;

@@ -133,7 +133,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (filtroCat != "" && filtroDist != "")
             {
                 // llamamos a la filtración doble implementada en backend
-                listarEspacioDistyCatResponse response = null;
                 ddlEspacio.DataSource = espacioWS.listarEspacioDistyCat(int.Parse(filtroDist), filtroCat);
 
                 ddlEspacio.DataTextField = "nombre";
