@@ -81,8 +81,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
-                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);
-                //return;
                 string script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
@@ -92,8 +90,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
             {
-                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Debe seleccionar un método de pago.');", true);
-                //return;
                 string script = "setTimeout(function(){ mostrarModalError('Método de pago faltante.','Debe seleccionar un método de pago.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
@@ -107,18 +103,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
             int idPersona1;
             // ---------- Datos que necesitas ----------
-            //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
-
-
             double precio = compraService.buscarEventos(1).precioEntrada;
             double totalAPagar = precio;
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
             {
-                //ScriptManager.RegisterStartupScript(this, GetType(), "alert",
-                //  "alert('Saldo insuficiente.');", true);
-                //return;
                 string script = "setTimeout(function(){ mostrarModalError('Error en pago.','Saldo insuficiente.'); }, 300);";
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;

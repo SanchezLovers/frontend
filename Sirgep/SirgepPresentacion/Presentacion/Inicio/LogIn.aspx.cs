@@ -22,10 +22,12 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            string script;
             // Validar que datos no esten vacios
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Por favor, complete todos los campos.');", true);//Cambiar por modal de error
+                script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                 return;
             }
             string correo = txtEmail.Text.Trim();
@@ -33,7 +35,6 @@ namespace SirgepPresentacion.Presentacion.Inicio
             int resultado = personaWS.validarCuenta(correo,contrasena);
             int id = resultado / 10;
             int tipo = resultado % 10;
-            string script;
             switch (tipo)
             {
                 case 0:
