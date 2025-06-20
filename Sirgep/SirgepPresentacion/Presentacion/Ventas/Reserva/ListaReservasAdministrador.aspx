@@ -5,16 +5,14 @@
         <h1 class="titulo-principal">Municipalidad &gt; Reservas</h1>
         <div class="busqueda-filtros">
             <div class="busqueda">
-                <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" />
+                <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display:none" />
             </div>
             <div class="filtros">
                 <label class="filtros-label">Filtros:</label>
                 <asp:DropDownList ID="ddlFiltros" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltros_SelectedIndexChanged" CssClass="filtro-select">
-                    <asp:ListItem Text="Código" Value="codigo" />
                     <asp:ListItem Text="Fecha" Value="fecha" />
                     <asp:ListItem Text="Nombre del distrito" Value="distrito" />
-                    <asp:ListItem Text="Nombre del espacio" Value="espacio" />
-                    <asp:ListItem Text="IdPersona" Value="persona" />
                 </asp:DropDownList>
                 <asp:DropDownList ID="ddlDistritos" runat="server" CssClass="filtro-select" />
                 <asp:TextBox ID="txtFecha" runat="server" CssClass="form-control filtro-fecha" TextMode="Date" />
@@ -29,7 +27,7 @@
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
                     <ItemTemplate>
-                        <a href='<%# "DetalleReserva.aspx?id=" + Eval("NumReserva") %>'>
+                        <a href='<%# "ConstanciaReserva.aspx?numReserva=" + Eval("codigo") %>'>
                             <img src="/Images/icons/open-link.png" alt="Abrir" class="icono-abrir" />
                         </a>
                     </ItemTemplate>
@@ -37,13 +35,19 @@
 
                 <asp:TemplateField HeaderText="Código">
                     <ItemTemplate>
-                        <%# "#" + Convert.ToInt32(Eval("NumReserva")).ToString("D3") %>
+                        <%# "#" + Convert.ToInt32(Eval("codigo")).ToString("D3") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="FechaReserva" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />
-                <asp:BoundField DataField="NombreDistrito" HeaderText="Distrito" />
-                <asp:BoundField DataField="NombreEspacio" HeaderText="Espacio" />
-                <asp:BoundField DataField="PersonaId" HeaderText="Persona" />
+                <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="Distrito" HeaderText="Distrito" />
+                <asp:BoundField DataField="Espacio" HeaderText="Espacio" />
+                <asp:BoundField DataField="Correo" HeaderText="Correo del usuario" />
+                <asp:TemplateField HeaderText="¿Activo?">
+                    <ItemTemplate>
+                        <%# Eval("Activo").ToString() == "65" ? "Sí" : "No" %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
 
             </Columns>
         </asp:GridView>
@@ -55,5 +59,17 @@
             <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark mx-1" OnClick="btnSiguiente_Click" />
         </asp:Panel>
     </div>
+     <!-- Java Script -->
+    <script type="text/javascript">
+        function buscarOnEnter(e) {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault(); // evitar submit automático
+                __doPostBack('<%= btnBuscar.UniqueID %>', ''); // simula click en botón
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </asp:Content>
 

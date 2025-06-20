@@ -13,7 +13,7 @@
     <div class="container">
         <!-- BOTONES -->
         <div class="d-flex justify-content-between mb-3">
-            <asp:Button ID="btnDescargar" runat="server" Text="Descargar" CssClass="btn btn-dark" OnClick="btnDescargar_Click" UseSubmitBehavior="false" />
+            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Lista de Reservas" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de reservas fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
         </div>
     </div>
 
@@ -43,28 +43,4 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
-    <!-- MODAL -->
-    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-header-rojo text-white">
-                    <h5 class="modal-title" id="miModalLabel">Descarga Completada</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    Descarga completada correctamente.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function mostrarModal() {
-            var modal = new bootstrap.Modal(document.getElementById('miModal'));
-            modal.show();
-        }
-    </script>
 </asp:Content>

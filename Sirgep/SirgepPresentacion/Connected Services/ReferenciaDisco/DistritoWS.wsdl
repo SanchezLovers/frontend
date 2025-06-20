@@ -11,30 +11,30 @@
   <message name="listarTodosDistritosResponse">
     <part name="parameters" element="tns:listarTodosDistritosResponse" />
   </message>
-  <message name="buscarDistPorId">
-    <part name="parameters" element="tns:buscarDistPorId" />
-  </message>
-  <message name="buscarDistPorIdResponse">
-    <part name="parameters" element="tns:buscarDistPorIdResponse" />
-  </message>
   <message name="listarDistritosFiltrados">
     <part name="parameters" element="tns:listarDistritosFiltrados" />
   </message>
   <message name="listarDistritosFiltradosResponse">
     <part name="parameters" element="tns:listarDistritosFiltradosResponse" />
   </message>
+  <message name="buscarDistPorId">
+    <part name="parameters" element="tns:buscarDistPorId" />
+  </message>
+  <message name="buscarDistPorIdResponse">
+    <part name="parameters" element="tns:buscarDistPorIdResponse" />
+  </message>
   <portType name="DistritoWS">
     <operation name="listarTodosDistritos">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosRequest" message="tns:listarTodosDistritos" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosResponse" message="tns:listarTodosDistritosResponse" />
     </operation>
-    <operation name="buscarDistPorId">
-      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest" message="tns:buscarDistPorId" />
-      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse" message="tns:buscarDistPorIdResponse" />
-    </operation>
     <operation name="listarDistritosFiltrados">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest" message="tns:listarDistritosFiltrados" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse" message="tns:listarDistritosFiltradosResponse" />
+    </operation>
+    <operation name="buscarDistPorId">
+      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest" message="tns:buscarDistPorId" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse" message="tns:buscarDistPorIdResponse" />
     </operation>
   </portType>
   <binding name="DistritoWSPortBinding" type="tns:DistritoWS">
@@ -48,7 +48,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarDistPorId">
+    <operation name="listarDistritosFiltrados">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -57,7 +57,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDistritosFiltrados">
+    <operation name="buscarDistPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

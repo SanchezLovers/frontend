@@ -5,6 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
     <!-- Título principal -->
     <h2 class="fw-bold mb-4">Municipalidad &gt; Espacios</h2>
 
@@ -58,7 +59,7 @@
                                 <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("IdEspacio") %>' OnClick="btnEditar_Click" />
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
                                 Text="Eliminar" CommandArgument='<%# Eval("IdEspacio") %>'
-                                OnClientClick='<%# $"mostrarModalConfirmacion({Eval("IdEspacio")}); return false;" %>' />
+                                OnClientClick='<%# $"mostrarConfEspacio({Eval("IdEspacio")}); return false;" %>' />
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -141,13 +142,15 @@
                     <div class="row">
                         <div class="mb-3 col-md-2">
                             <label>Hora Inicio</label>
-                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" AutoPostBack="true" Placeholder="00:00"></asp:TextBox>
 
                         </div>
                         <div class="mb-3 col-md-2">
                             <label>Hora Fin</label>
-                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" Placeholder="00:00" AutoPostBack="true"></asp:TextBox>
                         </div>
+
+                        <asp:Label ID="lblError" runat="server" ForeColor="Red" />
                     </div>
 
                     <div>
@@ -224,8 +227,6 @@
                     <h2 class="modal-title" id="modalEdicionLabel" style="color: white">Editar - Espacio</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
-
-                
 
                 <!--Cuerpo del modal [ EDICION ESPACIO ] -->
                 <div class="modal-body">
@@ -365,39 +366,37 @@
 
     <!---------------------------- FIN DE EDICION MODAL  --------------------------------------------->
 
-
     <!-- Modal de Confirmación -->
-<div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal fade" id="mostrarConfEspacio" tabindex="-1" aria-labelledby="mostrarConfEspacioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
 
-      <div class="modal-header modal-header-rojo text-white" style="background-color: #f10909;">
-        <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
+                <div class="modal-header modal-header-rojo text-white">
+                    <h5 class="modal-title" id="mostrarConfEspacioLabel">Ventana de confirmación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
 
-      <div class="modal-body d-flex align-items-center modal-body-confirmacion">
-        <div class="icono-confirmacion me-3">
-          <div class="icono-circulo">
-            <span class="icono-texto">i</span>
-          </div>
+                <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                    
+                    <div class="icono-confirmacion me-3">
+                        <div class="icono-circulo">
+                            <i class="bi bi-info-lg fs-1"></i>
+                        </div>
+                    </div>
+
+                    <div id="modalConfirmacionCuerpo" class="fs-5">
+                        ¿Está seguro que desea eliminar este registro?
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+                    <asp:Button ID="btnConfirmarAccion" runat="server" CssClass="btn btn-dark px-4" Text="Sí" OnClick="btnConfirmarAccion_Click" />
+                </div>
+
+            </div>
         </div>
-        <div id="modalConfirmacionBody" class="fs-5">
-          ¿Está seguro que quiere eliminar este espacio?
-        </div>
-      </div>
-
-      <div class="modal-footer justify-content-center">
-        <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
-        <asp:Button ID="btnConfirmarAccion" runat="server" CssClass="btn btn-dark px-4" Text="Sí" OnClick="btnConfirmarAccion_Click" />
-      </div>
-
     </div>
-  </div>
-</div>
-
-    <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
-
 
     <script type="text/javascript">
         function abrirPaso1() {
@@ -418,36 +417,47 @@
             var modalEdicion = bootstrap.Modal.getInstance(document.getElementById('modalEdicionEspacio'));
             modalEdicion.show();
         }
-    </script>
+        function validarHoras() {
+            const horaInicio = document.getElementById('<%= txtHoraInicioInsert.ClientID %>').value;
+            const horaFin = document.getElementById('<%= txtHoraFinInsert.ClientID %>').value;
 
-    <script type="text/javascript">
-        function mostrarModalConfirmacion(id) {
-            
-            // Guardar el ID en campo oculto
-            document.getElementById('<%= hdnIdAEliminar.ClientID %>').value = id;
+            if (!horaInicio || !horaFin) {
+                alert("Ambas horas deben estar completas.");
+                return false;
+            }
+
+            if (horaInicio >= horaFin) {
+                alert("La hora de inicio debe ser menor que la hora de fin.");
+                return false;
+            }
+
+            return true;
+        }
+        function mostrarConfEspacio(id) {
+        // Obtener correctamente el ID generado por ASP.NET
+        var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
+            if (hiddenField) {
+                hiddenField.value = id;
+            // Mostrar el modal aquí si lo necesitas
+            console.log("ID asignado:", id);
+            } else {
+                    console.error("No se encontró el campo oculto.");
+                return; // Importante: salir de la función si no se encuentra el campo oculto
+            }
+
+            // Obtener el elemento del modal
+            var modalElement = document.getElementById('mostrarConfEspacio');
+            if (!modalElement) {
+                    console.error("No se encontró el elemento del modal.");
+                return; // Importante: salir de la función si no se encuentra el modal
+            }
+
+            // Crear una instancia del modal de Bootstrap
+            var modalEliminar = new bootstrap.Modal(modalElement);
 
             // Mostrar el modal
-            var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
-            modal.show();
+            modalEliminar.show();
         }
     </script>
-
-    <script type="text/javascript">
-        const inicio = document.getElementById("inpHoraInicio");
-        const fin = document.getElementById("inpHoraFin");
-        /*
-        inicio.addEventListener("change", () => {
-            fin.min = inicio.value;
-        });
-
-        fin.addEventListener("change", () => {
-            if (fin.value <= inicio.value) {
-                alert("La hora de fin debe ser mayor que la de inicio");
-                fin.value = "";
-            }
-        });
-        */
-    </script>
-
 
 </asp:Content>

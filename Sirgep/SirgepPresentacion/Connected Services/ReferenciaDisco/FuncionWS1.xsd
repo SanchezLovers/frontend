@@ -2,6 +2,10 @@
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="buscarFuncionId" type="tns:buscarFuncionId" />
   <xs:element name="buscarFuncionIdResponse" type="tns:buscarFuncionIdResponse" />
+  <xs:element name="insertarFuncion" type="tns:insertarFuncion" />
+  <xs:element name="insertarFuncionResponse" type="tns:insertarFuncionResponse" />
+  <xs:element name="listarFuncionesPorIdEvento" type="tns:listarFuncionesPorIdEvento" />
+  <xs:element name="listarFuncionesPorIdEventoResponse" type="tns:listarFuncionesPorIdEventoResponse" />
   <xs:complexType name="buscarFuncionId">
     <xs:sequence>
       <xs:element name="idFuncion" type="xs:int" />
@@ -17,9 +21,9 @@
       <xs:element name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="entradas" nillable="true" type="tns:entrada" />
       <xs:element minOccurs="0" name="evento" type="tns:evento" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:string" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:string" />
       <xs:element name="idFuncion" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -107,8 +111,8 @@
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
-      <xs:element minOccurs="0" name="fecha_fin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fecha_inicio" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fecha_fin" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha_inicio" type="xs:string" />
       <xs:element name="idEvento" type="xs:int" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element name="precioEntrada" type="xs:double" />
@@ -132,6 +136,26 @@
   </xs:complexType>
   <xs:complexType name="localTime" final="extension restriction">
     <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="insertarFuncion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="funcion" type="tns:funcion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarFuncionResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesPorIdEvento">
+    <xs:sequence>
+      <xs:element name="idEvento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesPorIdEventoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
+    </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="eDiaSemana">
     <xs:restriction base="xs:string">

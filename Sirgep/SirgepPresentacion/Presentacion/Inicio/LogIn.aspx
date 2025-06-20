@@ -71,5 +71,5 @@
                 toggleIcon.classList.add('bi-eye-slash');
             }
         }
-</script>
+    </script>
 </asp:Content>

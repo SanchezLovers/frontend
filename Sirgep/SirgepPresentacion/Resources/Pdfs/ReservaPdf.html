@@ -57,7 +57,24 @@
     </style>
 </head>
 <body>
-    <h1>Detalle de Reserva #<span id="lblNumEntrada">{NUMERO_RESERVA}</span></h1>
+    <!-- Cabecera con logo a la izquierda y texto a la derecha usando tabla (compatible con PDF) -->
+    <table style="width: 100%; margin-bottom: 20px; border-collapse: collapse;">
+        <tr>
+            <td style="width: 40px; padding: 0; text-align: right; vertical-align: middle;">
+                <img src="{RUTA_LOGO}" alt="Escudo Región Lima" style="height: 40px; display: block; margin: 0;" />
+            </td>
+            <td style="text-align: left; vertical-align: middle;">
+                <div style="font-size: 14pt; font-weight: bold; color: black;">
+                    GOBIERNO REGIONAL DE LIMA | SIRGEP
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+    <h1 style="color: black; text-align: center;">
+        Constancia de Reserva #<span id="lblNumReserva" style="color: black;">{NUMERO_RESERVA}</span>
+    </h1>
 
     <!-- Datos del Espacio -->
     <div class="section">

@@ -12,8 +12,7 @@
     <div class="row mb-3">
         <div class="col-12 col-md-6">
             <div class="input-group">
-                <span class="input-group-text bg-white border-end-0">🔍</span>
-                <input type="text" class="form-control border-start-0" placeholder="Buscar" style="font-size: 1rem;" />
+                <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true"/>
             </div>
         </div>
     </div>
@@ -23,37 +22,23 @@
         <label class="fw-bold d-block mb-3" style="font-size: 1.2rem;">Filtros:</label>
 
         <div class="row g-3 align-items-end">
-            <!-- 1. Actividad -->
-            <div class="col-12 col-md-6 col-lg-3">
-                <asp:DropDownList ID="ddlActividad" runat="server" CssClass="form-select w-100">
-                    <asp:ListItem Text="Filtro por Actividad" Value="" />
-                    <asp:ListItem Text="Fútbol" Value="Futbol" />
-                    <asp:ListItem Text="Vóley" Value="Voley" />
-                    <asp:ListItem Text="Auditorio" Value="Auditorio" />
-                </asp:DropDownList>
-            </div>
-
             <!-- 2. Checkbox de filtro por fecha -->
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="input-group">
                     <input type="text" class="form-control bg-white" value="Filtro por Fechas" readonly />
-                    <span class="input-group-text bg-white px-2">
-                        <input type="checkbox" id="chkFiltroFechas" class="form-check-input m-0"
-                            style="width: 1.1em; height: 1.1em;" onclick="toggleFechas()" />
-                    </span>
                 </div>
             </div>
 
             <!-- 3. Fechas inicio / fin en una fila -->
-            <div class="col-12 col-md-6 col-lg-3" id="filtrosFechas" style="display: none;">
+            <div class="col-12 col-md-6 col-lg-3" id="filtrosFechas">
                 <div class="row gx-2">
                     <div class="col-6">
-                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Inicio:</label>
-                        <input type="date" class="form-control form-control-sm" />
+                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Inicio</label>
+                        <asp:TextBox ID="txtFechaInicioFiltro" runat="server" CssClass="form-control form-control-sm" TextMode="Date" />
                     </div>
                     <div class="col-6">
-                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Fin:</label>
-                        <input type="date" class="form-control form-control-sm" />
+                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Fin</label>
+                        <asp:TextBox ID="txtFechaFinFiltro" runat="server" CssClass="form-control form-control-sm" TextMode="Date" />
                     </div>
                 </div>
             </div>
@@ -62,7 +47,8 @@
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="d-flex justify-content-lg-end">
                     <asp:Button ID="btnConsultar" runat="server" Text="Consultar"
-                        CssClass="btn btn-dark px-4 fw-semibold fst-italic" />
+                        CssClass="btn btn-dark px-4 fw-semibold fst-italic" OnClick="btnConsultar_Click"
+                        OnClientClick="return validarFechasFiltro();"/>
                 </div>
             </div>
         </div>
@@ -75,8 +61,13 @@
                 <tr>
                     <th>Abrir</th>
                     <th>Código</th>
-                    <th>Categoría</th>
-                    <th>Evento Reservado</th>
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
+                    <th>E. Disponibles</th>
+                    <th>E. Vendidas</th>
+                    <th>Precio S/.</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -85,18 +76,22 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <a href='<%# Eval("LinkDetalle") %>'>
+                                <a href='<%# Eval("IdEvento") %>'>
                                     <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
                                 </a>
                             </td>
-                            <td><%# Eval("Codigo") %></td>
-                            <td><%# Eval("Categoria") %></td>
-                            <td><%# Eval("EventoReservado") %></td>
+                            <td class="columna-peq"><%# Eval("IdEvento") %></td>
+                            <td><%# Eval("Nombre") %></td>
+                            <td><%# Eval("Ubicacion") %></td>
+                            <td class="columna-peq"><%# Eval("cantEntradasDispo") %></td>
+                            <td class="columna-peq"><%# Eval("cantEntradasVendidas") %></td>
+                            <td class="columna-peq"><%# Eval("precioEntrada") %></td>
+                            <td><%# Eval("fecha_inicio").ToString().Split('T')[0] %></td>
+                            <td><%# Eval("fecha_fin").ToString().Split('T')[0] %></td>
                             <td>
-                                <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("Id") %>' OnClick="btnEditar_Click" />
+                                <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEditar_Click" />
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
-                                    Text="Eliminar" CommandArgument='<%# Eval("Id") %>'
-                                    OnClientClick='<%# $"mostrarModalConfirmacion({Eval("Id")}); return false;" %>' />
+                                    Text="Eliminar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEliminar_Click" />
 
                             </td>
                         </tr>
@@ -112,11 +107,205 @@
     Text="Añadir Evento" OnClick="btnMostrarModalAgregarEvento_Click" />
     </div>
 
-    <div class="modal fade" id="modalAgregarEvento" tabindex="-1" aria-labelledby="modalAgregarEventoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
+    <!-- ------------------------------MODAL AGREGAR EVENTO------------------------------ -->
+        <div class="modal fade" id="modalAgregarEvento" tabindex="-1" aria-labelledby="modalAgregarEventoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #f10909">
+                        <h2 class="modal-title" id="modalAgregarEventoLabel" style="color: white">Añadir - Evento</h2>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- Campos del evento -->
+                        <div class="row g-3">
+                            <!-- Nombre del evento -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Nombre</label>
+                                <asp:TextBox ID="txtNomEvent" runat="server" Placeholder="Ingrese el nombre" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- DROP DOWN LIST -- FUNCIONES -- -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Ver Funciones</label>
+                                <asp:DropDownList ID="ddlFuncionesAgregar" runat="server" CssClass="form-select" onchange="this.selectedIndex = this.dataset.lastSelectedIndex || 0" onfocus="this.dataset.lastSelectedIndex = this.selectedIndex;">
+                                    <asp:ListItem Text="Presione para ver las funciones agregadas" Value="" Disabled="true" Selected="True" />
+                                </asp:DropDownList>
+                            </div>
+
+                            <asp:TextBox ID="txtFechaInicioEvento" runat="server" CssClass="d-none" />
+                            <asp:TextBox ID="txtFechaFinEvento" runat="server" CssClass="d-none" />
+
+                        </div>
+
+                        <div class="row g-3 my-2">
+
+                            <!-- Descripción -->
+                            <div class="col-6">
+                                <label class="form-label fw-semibold">Descripción</label>
+                                <asp:TextBox ID="txtDescAgregar" runat="server" Placeholder="Ingrese una descripción" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Departamento -->
+                            <div class="col-6">
+                                <label class="form-label fw-semibold">Departamento</label>
+                                <asp:DropDownList ID="ddlDepaAgregar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDepaAgregar_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem Text="Seleccione un departamento" Value="" Disabled="true" Selected="True" />
+                                </asp:DropDownList>
+                            </div>
+
+                        </div>
+
+                        <div class="row g-3 my-2">
+                            <!-- Ubicación -->
+                            <div class="col-6">
+                                <lsabel class="form-label fw-semibold">Ubicación</lsabel>
+                                <asp:TextBox ID="txtUbicacionAgregar" runat="server" Placeholder="Ingrese la ubicación del evento" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Provincia -->
+                            <div class="col-6">
+                                <lsabel class="form-label fw-semibold">Provincia</lsabel>
+                                <asp:DropDownList ID="ddlProvAgregar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlProvAgregar_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem Text="Seleccione una provincia" Value="" Disabled="true" Selected="True" />
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 my-2">
+                            <!-- Referencia -->
+                            <div class="col-6">
+                                <label class="form-label fw-semibold">Referencia</label>
+                                <asp:TextBox ID="txtReferencia" runat="server" Placeholder="Inserte una referencia del lugar" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Distrito -->
+                            <div class="col-6">
+                                <lsabel class="form-label fw-semibold">Distrito</lsabel>
+                                <asp:DropDownList ID="ddlDistAgregar" runat="server" CssClass="form-select">
+                                    <asp:ListItem Text="Seleccione un distrito" Value="" Disabled="true" Selected="True" />
+                                </asp:DropDownList>
+                            </div>
+
+                        </div>
+
+                        <div class="row g-3 my-2">
+
+                            <!-- Precio Entrada -->
+                            <div class="col-4">
+                                <label class="form-label fw-semibold">Precio Entrada</label>
+                                <asp:TextBox ID="txtPrecioEntrada" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <!-- Disponibles -->
+                            <div class="col-4">
+                                <label class="form-label fw-semibold">Entradas Disponibles</label>
+                                <asp:TextBox ID="txtDisponibles" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
+                            </div>
+                            <!-- Vendidas -->
+                            <div class="col-4">
+                                <label class="form-label fw-semibold">Entradas Vendidas</label>
+                                <asp:TextBox ID="txtVendidas" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                        </div>
+
+
+                    <div class="row g-3 my-2">
+
+                        <!-- Foto -->
+                        <div class="col-md-5">
+                            <label class="form-label fw-semibold">Subir foto</label>
+                            <input type="file" id="fuArchivo" title="Añadir un archivo"/>
+                        </div>
+                        <div class="col-md-7 d-flex align-items-end">
+                            <button type="button" class="btn btn-outline-primary w-100" onclick="verFoto()">
+                                Ver Foto
+                            </button>
+                        </div>
+
+                        <img id="previewImg" src="#" alt="Vista previa" style="display: none; max-width: 100%; margin-top: 10px;" />
+
+
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <!-- Lista de funciones -->
+                    <h6 class="fw-bold mb-3">Funciones del Evento:</h6>
+                    <!-- Añadir función -->
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-4">
+                            <label class="form-label">Fecha:</label>
+                            <asp:TextBox ID="txtFechaFuncion" runat="server" CssClass="form-control" TextMode="Date"/>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Hora Inicio:</label>
+                            <asp:TextBox ID="txtHoraIniFuncion" runat="server" CssClass="form-control" TextMode="Time"/>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Hora Fin:</label>
+                            <asp:TextBox ID="txtHoraFinFuncion" runat="server" CssClass="form-control" TextMode="Time"/>
+                        </div>
+                        <div class="col-md-2">
+                            <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncion_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnAgregar" CssClass="btn btn-secondary" runat="server" Text="Aceptar" OnClick="btnAgregar_Click"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ------------------------------FIN MODAL AGREGAR EVENTO------------------------------ -->
+
+    <!-- MODAL DE ELIMINAR EVENTO -- -->
+
+    <asp:HiddenField ID="hdnIdEvento" runat="server" />
+
+    <div runat="server" class="modal fade" id="modalConfirmacionEliminado" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header bg-dark text-white">
-                    <h5 class="modal-title" id="modalAgregarEventoLabel">Añadir Evento</h5>
+
+                <div class="modal-header modal-header-rojo text-white">
+                    <h5 class="modal-title" id="modalConfirmacionLabel">Ventana de confirmación</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body d-flex align-items-center modal-body-confirmacion">
+                    <div class="icono-confirmacion me-3">
+                        <div class="icono-circulo">
+                            <i class="bi bi-info-lg fs-1"></i>
+                        </div>
+                    </div>
+                    <div id="modalConfirmacionBody" class="fs-5">
+                        ¿Está seguro que desea eliminar este registro?
+       
+                    </div>
+                </div>
+
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal"><em>No</em></button>
+                    <asp:Button ID="btnConfirmarEliminado" runat="server" Text="Sí" OnClick="btnConfirmarEliminado_Click"
+                        CssClass="btn btn-danger"/>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE EDITAR EVENTO -- -->
+
+    <!-- tengo un hdnIDevento para editarlo por si acaso -->
+
+    <!-- ------------------------------MODAL EDITAR EVENTO------------------------------ -->
+    <div class="modal fade" id="modalEditarEvento" tabindex="-1" aria-labelledby="modalEditarEventoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #f10909">
+                    <h2 class="modal-title" id="modalEditarEventoLabel" style="color: white">Editar - Evento</h2>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 
@@ -125,130 +314,262 @@
                     <div class="row g-3">
                         <!-- Nombre del evento -->
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Nombre del Evento:</label>
-                            <input type="text" class="form-control" placeholder="Ingrese el nombre" />
+                            <label class="form-label fw-semibold">Nombre</label>
+                            <asp:TextBox ID="txtNombreEditar" runat="server" Placeholder="Ingrese el nombre" CssClass="form-control"></asp:TextBox>
                         </div>
-
-                        <!-- Categoría -->
+                        
+                        <!-- DROP DOWN LIST -- FUNCIONES -- NO SE IMPLEMENTARÁ SU EDICIÓN - -->
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">Categoría:</label>
-                            <select class="form-select">
-                                <option value="">Seleccione categoría</option>
-                                <option>Fútbol</option>
-                                <option>Vóley</option>
-                                <option>Auditorio</option>
-                            </select>
+                            <label class="form-label fw-semibold">Ver Funciones</label>
+                            <asp:DropDownList ID="ddlFuncEditar" runat="server" CssClass="form-select" onchange="this.selectedIndex = this.dataset.lastSelectedIndex || 0" onfocus="this.dataset.lastSelectedIndex = this.selectedIndex;">
+                                <asp:ListItem Text="Presione para ver las funciones agregadas" Value="" Disabled="true" Selected="True" />
+                            </asp:DropDownList>
                         </div>
+                        
+                    </div>
 
-                        <!-- Dirección -->
-                        <div class="col-12">
-                            <label class="form-label fw-semibold">Ubicación (Dirección):</label>
-                            <input type="text" class="form-control" placeholder="Ingrese dirección" />
-                        </div>
+                    <div class="row g-3 my-2">
 
                         <!-- Descripción -->
-                        <div class="col-12">
-                            <label class="form-label fw-semibold">Descripción del Evento:</label>
-                            <textarea class="form-control" rows="3" placeholder="Ingrese una descripción..."></textarea>
+                        <div class="col-6">
+                            <label class="form-label fw-semibold">Descripción</label>
+                            <asp:TextBox ID="txtDescEditar" runat="server" Placeholder="Ingrese una descripción" CssClass="form-control"></asp:TextBox>
                         </div>
 
-                        <!-- Foto -->
-                        <div class="col-md-6">
-                            <label class="form-label fw-semibold">Foto:</label>
-                            <input type="file" class="form-control" />
+                        <!-- Departamento -->
+                        <div class="col-6">
+                            <label class="form-label fw-semibold">Departamento</label>
+                            <asp:DropDownList ID="ddlDepasEditar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDepasEditar_SelectedIndexChanged" AutoPostBack="true">
+                                <asp:ListItem Text="Seleccione un departamento" Value="" Disabled="true" Selected="True" />
+                            </asp:DropDownList>
                         </div>
-                        <div class="col-md-6 d-flex align-items-end">
+
+                    </div>
+
+                    <div class="row g-3 my-2">
+                        <!-- Ubicación -->
+                        <div class="col-6">
+                            <lsabel class="form-label fw-semibold">Ubicación</lsabel>
+                            <asp:TextBox ID="txtUbiEditar" runat="server" Placeholder="Ingrese la ubicación del evento" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                        <!-- Provincia -->
+                        <div class="col-6">
+                            <lsabel class="form-label fw-semibold">Provincia</lsabel>
+                            <asp:DropDownList ID="ddlProvEditar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlProvEditar_SelectedIndexChanged" AutoPostBack="true">
+                                <asp:ListItem Text="Seleccione una provincia" Value="" Disabled="true" Selected="True" />
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 my-2">
+                        <!-- Referencia -->
+                        <div class="col-6">
+                            <label class="form-label fw-semibold">Referencia</label>
+                            <asp:TextBox ID="txtRefEditar" runat="server" Placeholder="Inserte una referencia del lugar" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                        <!-- Distrito -->
+                        <div class="col-6">
+                            <lsabel class="form-label fw-semibold">Distrito</lsabel>
+                            <asp:DropDownList ID="ddlDistEditar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistEditar_SelectedIndexChanged">
+                                <asp:ListItem Text="Seleccione un distrito" Value="" Disabled="true" Selected="True" />
+                            </asp:DropDownList>
+                        </div>
+
+                    </div>
+
+                    <div class="row g-3 my-2">
+
+                        <!-- Precio Entrada -->
+                        <div class="col-4">
+                            <label class="form-label fw-semibold">Precio Entrada</label>
+                            <asp:TextBox ID="txtPrecioEditar" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <!-- Disponibles -->
+                        <div class="col-4">
+                            <label class="form-label fw-semibold">Entradas Disponibles</label>
+                            <asp:TextBox ID="txtDispoEditar" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <!-- Vendidas -->
+                        <div class="col-4">
+                            <label class="form-label fw-semibold">Entradas Vendidas</label>
+                            <asp:TextBox ID="txtVendEditar" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row g-3 my-2">
+
+                        <!-- Foto -->
+                        <div class="col-md-5">
+                            <label class="form-label fw-semibold">Subir foto</label>
+                            <input type="file" id="fuEditar" title="Añadir un archivo" />
+                        </div>
+                        <div class="col-md-7 d-flex align-items-end">
                             <button type="button" class="btn btn-outline-primary w-100" onclick="verFoto()">
                                 Ver Foto
                             </button>
                         </div>
+
+                        <img id="previewImgEditar" src="#" alt="Vista previa" style="display: none; max-width: 100%; margin-top: 10px;" />
+
                     </div>
 
                     <hr class="my-4" />
 
                     <!-- Lista de funciones -->
                     <h6 class="fw-bold mb-3">Funciones del Evento:</h6>
-                    <div class="table-responsive mb-3">
-                        <table class="table table-bordered align-middle text-center">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Fecha</th>
-                                    <th>Hora Inicio</th>
-                                    <th>Hora Fin</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tablaFunciones">
-                                <!-- Aquí se añadirán las funciones dinámicamente -->
-                            </tbody>
-                        </table>
-                    </div>
-
                     <!-- Añadir función -->
                     <div class="row g-3 align-items-end">
                         <div class="col-md-4">
                             <label class="form-label">Fecha:</label>
-                            <input type="date" class="form-control" id="fechaFuncion" />
+                            <asp:TextBox ID="txtFechaEditar" runat="server" CssClass="form-control" TextMode="Date" />
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Hora Inicio:</label>
-                            <input type="time" class="form-control" id="horaInicioFuncion" />
+                            <asp:TextBox ID="txtHoraIniEditar" runat="server" CssClass="form-control" TextMode="Time" />
                         </div>
                         <div class="col-md-3">
                             <label class="form-label">Hora Fin:</label>
-                            <input type="time" class="form-control" id="horaFinFuncion" />
+                            <asp:TextBox ID="txtHoraFinEditar" runat="server" CssClass="form-control" TextMode="Time" />
                         </div>
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-success w-100" onclick="agregarFuncion()">Añadir</button>
+                            <asp:Button ID="btnAgregarFuncionEditar" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncionEditar_Click" />
                         </div>
                     </div>
+
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Aceptar</button>
+                    <asp:Button ID="btnAceptarEditar" CssClass="btn btn-secondary" runat="server" Text="Aceptar" OnClick="btnAceptarEditar_Click" />
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- fin MODAL EDITAR EVENTO -- -->
+
+    <!-- SCRIPTS -->
 
     <script type="text/javascript">
+
         function toggleFechas() {
             var check = document.getElementById('chkFiltroFechas');
             var filtros = document.getElementById('filtrosFechas');
             filtros.style.display = check.checked ? 'block' : 'none';
         }
         function verFoto() {
-            alert("Mostrar vista previa de la foto (puedes implementar esto con FileReader si deseas)");
-        }
+            const input = document.getElementById('fuArchivo');
+            const preview = document.getElementById('previewImg');
 
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // Mostrar la imagen
+                };
+
+                reader.readAsDataURL(input.files[0]); // Leer como base64
+            } else {
+                alert("No se ha seleccionado ningún archivo.");
+            }
+        }
         function agregarFuncion() {
             const fecha = document.getElementById('fechaFuncion').value;
             const horaInicio = document.getElementById('horaInicioFuncion').value;
             const horaFin = document.getElementById('horaFinFuncion').value;
 
+            // Validar campos vacíos
             if (!fecha || !horaInicio || !horaFin) {
                 alert("Por favor complete todos los campos de la función.");
                 return;
             }
 
-            const tbody = document.getElementById("tablaFunciones");
-            const row = document.createElement("tr");
-            row.innerHTML = `
-            <td>${fecha}</td>
-            <td>${horaInicio}</td>
-            <td>${horaFin}</td>
-            <td>
-                <button class="btn btn-danger btn-sm" onclick="this.closest('tr').remove()">Eliminar</button>
-            </td>
-        `;
-            tbody.appendChild(row);
+            const hoy = new Date();
+            const fechaSeleccionada = new Date(fecha + "T00:00");
+
+            // Validar año actual
+            if (fechaSeleccionada.getFullYear() !== hoy.getFullYear()) {
+                alert("La fecha debe estar en el año actual.");
+                return;
+            }
+
+            // Validar que no sea fecha pasada
+            const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
+            if (fechaSeleccionada < hoySinHora) {
+                alert("La fecha no puede ser anterior a hoy.");
+                return;
+            }
+
+            // Validar hora inicio < hora fin
+            const horaInicioDate = new Date(`1970-01-01T${horaInicio}`);
+            const horaFinDate = new Date(`1970-01-01T${horaFin}`);
+            if (horaInicioDate >= horaFinDate) {
+                alert("La hora de Inicio debe ser menor a la hora de Fin.");
+                return;
+            }
+
+            // Verificar duplicados en el DropDownList de ASP.NET
+            const ddl = document.getElementById('<%= ddlFuncionesAgregar.ClientID %>');
+            const valorFuncion = `${fecha}_${horaInicio}_${horaFin}`;
+
+            for (let i = 0; i < ddl.options.length; i++) {
+                if (ddl.options[i].value === valorFuncion) {
+                    alert("Esa función ya ha sido agregada.");
+                    return;
+                }
+            }
+
+            // ACTUALIZAR FECHAS MÍNIMA Y MÁXIMA
+            if (fechaMinima === null || new Date(fecha) < new Date(fechaMinima)) {
+                fechaMinima = fecha;
+            }
+            if (fechaMaxima === null || new Date(fecha) > new Date(fechaMaxima)) {
+                fechaMaxima = fecha;
+            }
+            // los ponemos en mi txts ocultos
+            document.getElementById('<%= txtFechaInicioEvento.ClientID %>').value = fechaMinima;
+            document.getElementById('<%= txtFechaFinEvento.ClientID %>').value = fechaMaxima;
+
+            // agregar al Drop Down List 
+            const option = document.createElement("option");
+            option.value = `${fecha}_${horaInicio}_${horaFin}`;
+            option.textContent = `${fecha} - ${horaInicio} a ${horaFin}`;
+            ddl.appendChild(option);
 
             // Limpiar inputs
             document.getElementById('fechaFuncion').value = '';
             document.getElementById('horaInicioFuncion').value = '';
             document.getElementById('horaFinFuncion').value = '';
+        }
+
+        function validarFechasFiltro() {
+            const inicio = document.getElementById('<%= txtFechaInicioFiltro.ClientID %>').value;
+            const fin = document.getElementById('<%= txtFechaFinFiltro.ClientID %>').value;
+
+            if (!inicio || !fin) {
+                alert("Por favor, selecciona ambas fechas.");
+                return false;
+            }
+
+            const fechaInicio = new Date(inicio);
+            const fechaFin = new Date(fin);
+
+            if (fechaInicio >= fechaFin) {
+                alert("La fecha de inicio debe ser menor que la fecha de fin y no pueden ser iguales.");
+                return false;
+            }
+
+            return true;
+        }
+        function modalConfirmacionEliminado(id) {
+            // Mostrar el modal (Bootstrap 5)
+            var modal = new bootstrap.Modal(document.getElementById('modalConfirmacionEliminado'));
+            modal.show();
         }
     </script>
 </asp:Content>

@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 {
@@ -103,7 +105,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             hiddenIdEspacio.Value = idEspacio.ToString();
 
-
             espacio espCargar = response.@return;
             distrito disCargar = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espCargar.distrito.idDistrito)).@return;
             provincia provCargar = provinciaWS.buscarProvinciaPorId(new buscarProvinciaPorIdRequest(disCargar.provincia.idProvincia)).@return;
@@ -118,43 +119,32 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlTipoEspacioEdit.Items.Insert(3, new ListItem("Salones", "SALON"));
             ddlTipoEspacioEdit.Items.Insert(4, new ListItem("Parques", "PARQUE"));
 
-            listarDepasResponse responseDepas = departamentoWS.listarDepas(new listarDepasRequest());
-            ddlDepartamentoAgregar.DataSource = responseDepas.@return;
-            ddlDepartamentoAgregar.DataTextField = "Nombre";
-            ddlDepartamentoAgregar.DataValueField = "IdDepartamento";
-            ddlDepartamentoAgregar.DataBind();
-
             // Leer el valor
             txtNombreEdit.Text = espCargar.nombre;
             txtUbicacionEdit.Text = espCargar.ubicacion;
             txtSuperficieEdit.Text = espCargar.superficie.ToString();
             txtPrecioEdit.Text = espCargar.precioReserva.ToString();
-            //
+            
             ddlDepartamentoEdit.DataSource = departamentoWS.listarDepas(new listarDepasRequest()).@return;
             ddlDepartamentoEdit.DataTextField = "Nombre";
             ddlDepartamentoEdit.DataValueField = "IdDepartamento";
-            ddlDepartamentoEdit.Items.Insert(0, new ListItem(disCargar.nombre.ToString(), disCargar.idDistrito.ToString()));
             ddlDepartamentoEdit.DataBind();
+            ddlDepartamentoEdit.SelectedValue = depCargar.idDepartamento.ToString();
 
             ddlProvinciaEdit.DataSource = provinciaWS.listarProvinciaPorDepa(new listarProvinciaPorDepaRequest(depCargar.idDepartamento)).@return;
             ddlProvinciaEdit.DataTextField = "Nombre";
             ddlProvinciaEdit.DataValueField = "IdProvincia";
             ddlProvinciaEdit.DataBind();
+            ddlProvinciaEdit.SelectedValue = provCargar.idProvincia.ToString();
 
             ddlDistritoEdit.DataSource = distritoWS.listarDistritosFiltrados(new listarDistritosFiltradosRequest(provCargar.idProvincia)).@return;
             ddlDistritoEdit.DataTextField = "Nombre";
             ddlDistritoEdit.DataValueField = "IdDistrito";
             ddlDistritoEdit.DataBind();
-
-            string prueba = espCargar.horarioInicioAtencion.ToString();
-            string prueba2 = espCargar.horarioFinAtencion.ToString();
+            ddlDistritoEdit.SelectedValue = disCargar.idDistrito.ToString();
 
             txtHoraInicioEdit.Text = espCargar.horarioInicioAtencion.ToString();
             txtHoraFinEdit.Text = espCargar.horarioFinAtencion.ToString();
-
-            //inpHoraInicio. = espCargar.horarioInicioAtencion.ToString();
-            //inpHoraFin.Text = espCargar.horarioFinAtencion.ToString();
-
 
             // Mostrar el modal usando JavaScript
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEdicion",
@@ -301,6 +291,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string horaIni = txtHoraInicioEdit.Text;
             string horaFin = txtHoraFinEdit.Text;
 
+            if (horaIni.Length==5) horaIni += ":00";
+            if (horaFin.Length==5) horaFin += ":00";
+
             eTipoEspacio eTipo;
             eTipoEspacio.TryParse(tipoEspacioInsumo, false, out eTipo);
 
@@ -392,6 +385,53 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected void ddlDistritoAgregar_SelectedIndexChanged(object sender, EventArgs e)
         {
             hiddenIdDistrito.Value = ddlDistritoAgregar.SelectedValue.ToString();
+        }
+
+        protected void txtHoraFinInsert_TextChanged(object sender, EventArgs e)
+        {
+            string horaInicioStr = txtHoraInicioInsert.Text.Trim();
+            string horaFinStr = txtHoraFinInsert.Text.Trim();
+
+            // Verificar que ambas no estén vacías
+            if (string.IsNullOrEmpty(horaInicioStr) || string.IsNullOrEmpty(horaFinStr))
+            {
+                lblError.Text = "Las horas no pueden estar vacías.";
+                // Para que el modal siga abierto
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
+                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                return;
+            }
+
+            // Parsear a TimeSpan
+            TimeSpan horaInicio, horaFin;
+
+            bool inicioOk = TimeSpan.TryParse(horaInicioStr, out horaInicio);
+            bool finOk = TimeSpan.TryParse(horaFinStr, out horaFin);
+
+            if (!inicioOk || !finOk)
+            {
+                lblError.Text = "Formato de hora no válido.";
+                // Para que el modal siga abierto
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
+                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                return;
+            }
+
+            // Validar que hora inicio < hora fin
+            if (horaInicio >= horaFin)
+            {
+                lblError.Text = "La hora de inicio debe ser menor que la hora de fin.";
+                // Para que el modal siga abierto
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
+                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                return;
+            }
+
+            // Si todo está bien, borrar el error
+            lblError.Text = "";
+            // Para que el modal siga abierto
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
+                "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
         }
     }
 }

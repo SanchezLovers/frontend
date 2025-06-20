@@ -1,46 +1,82 @@
+
+# Carpetas de configuración de Visual Studio
 .vs/
-# Nunca subir esto
+.vscode/
+
+# Archivos sensibles
 Sirgep/SirgepPresentacion/DriveAuth/credentials.json
+
+# Archivos temporales y de backup
 *.swp
 *.*~
+*.TMP
 project.lock.json
 .DS_store
 *.pyc
+*.log
+*.orig
+*.merge
+*.rej
 
-#VisualStudio
-.vscode
-
-#userSpecific files
+# Archivos de usuario específicos (no compartir)
 *.suo
 *.user
 *.userosscache
 *.cln.docstates
 
 # Archivos binarios y temporales
-**/bin/
-**/obj/
 *.dll
 *.pdb
 *.cache
 *.exe
 *.txt
+*.datasource
 
-#Build
+# Directorios de compilación
+**/bin/
+**/obj/
+[Bb]in/
+[Oo]bj/
+bld/
+x64/
+x86/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
-x86/
-bld/
-[Bb]in/
-[Oo]bj/
+
+# Archivos de MSBuild
 msbuild.log
 msbuild.err
 msbuild.wrn
-# Ignorar paquetes NuGet descargados localmente
+
+# Paquetes NuGet
 /packages/
 /**/packages/
 Sirgep/packages/
 
-*.datasource
+# Archivos de publicación
+*.Publish.xml
+*.pubxml
+*.publishproj
+
+# Archivos de profiling y debugging
+*.psess
+*.vsp
+*.vspx
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Archivos de servicios generados automáticamente por Connected Services
+**/Connected Services/**/configuration*.svcinfo
+**/Connected Services/**/Reference*.svcmap
+**/Connected Services/**/*.disco
+**/Connected Services/**/*.wsdl
+**/Connected Services/**/*.xsd
+*.svcinfo
+*.disco
+*.svcmap
+*.wsdl
+*.xsd
