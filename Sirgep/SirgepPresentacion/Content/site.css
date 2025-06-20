@@ -268,6 +268,7 @@ body {
     z-index: 2;
 }
 
+
 .checkbox-filtro input[type="checkbox"] {
     transform: scale(1.9);
     cursor: pointer;
@@ -312,3 +313,70 @@ body {
     width: 130px;
     background: #fff;
 }
+#calendar-block {
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    padding: 24px 18px 18px 18px;
+    margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+}
+
+#calendar {
+    width: 100%;
+    height: 60vh; 
+    min-height: 400px;
+    max-width: 98vw;
+    margin: 0 auto;
+    transition: max-width 0.3s, height 0.3s;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+    #calendar-block {
+        max-width: 98vw;
+        padding: 12px 2vw 12px 2vw;
+    }
+
+    #calendar {
+        max-width: 98vw;
+    }
+}
+
+.export-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Días y encabezados de mes: sin subrayado ni cursor de selección */
+#calendar a {
+    color: inherit !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+
+#calendar td, #calendar th {
+    user-select: none;
+}
+
+/* Hace que todo el contenido de los eventos (reservas) sea clickeable */
+.fc-event, .fc-event *, .fc-event-main, .fc-event-title, .fc-event-time, .fc-event-main-frame {
+    cursor: pointer !important;
+}
+
+    /* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
+    .fc-event a {
+        color: inherit !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+    }
+
+    .fc-event:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        background-color: #e9ecef;
+        cursor: pointer !important;
+    }

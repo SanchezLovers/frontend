@@ -5,28 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Encabezado" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
-    <style>
-        .btn-metodo {
-            border: 2px solid #ccc;
-            background: #fff;
-            border-radius: 10px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            min-width: 100px;
-            text-align: center;
-        }
-
-        .btn-metodo.selected, .btn-metodo:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 2px #007bff33;
-        }
-
-        .btn-metodo img {
-            display: block;
-            margin: 0 auto 5px auto;
-        }
-    </style>
     <div class="row">
         <!-- Panel de datos del evento -->
         <div class="col-md-6">
