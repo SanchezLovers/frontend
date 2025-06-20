@@ -16,6 +16,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             if (!IsPostBack)
             {
+
             }
         }
         protected void GvListaReservasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -28,7 +29,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             int idComprador = 2;
             GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
-
             GvListaReservasComprador.DataBind();
         }
 

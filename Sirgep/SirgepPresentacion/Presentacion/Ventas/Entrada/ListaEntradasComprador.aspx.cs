@@ -22,7 +22,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         {
             int idComprador = 2;
             GvListaEntradasComprador.DataSource = entradaWS.listarDetalleEntradasPorComprador(idComprador);
-            detalleEntrada detalleEntradaDTO = new detalleEntrada();
+            detalleEntradaDTO detalleEntradaDTO = new detalleEntradaDTO();
 
             GvListaEntradasComprador.DataBind();
         }

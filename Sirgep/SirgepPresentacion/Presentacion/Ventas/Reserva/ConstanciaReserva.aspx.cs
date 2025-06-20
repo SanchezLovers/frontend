@@ -17,40 +17,44 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                //int numReserva = 1;
+                //int numReserva = 2;
                 int numReserva = int.Parse(Request.QueryString["numReserva"]);
                 CargarDatosEnPantalla(numReserva);
             }
         }
         protected void CargarDatosEnPantalla(int numReserva)
         {
+            /*
             reserva reservaDomain = reservaWS.buscarReserva(numReserva);
             comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
             espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
             distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
+            */
+            constanciaReservaDTO constanciaReservaDTO = reservaWS.buscarConstanciaReserva(numReserva);
             // Datos del espacio
-            lblEspacio.Text = espacioDomain.nombre;
-            lblTipoEspacio.Text = espacioDomain.tipoEspacio.ToString();
-            lblSuperficie.Text = espacioDomain.superficie.ToString() + " m²";
-            lblUbicacion.Text = espacioDomain.ubicacion;
-            lblDistrito.Text = distritoDomain.nombre;
+            lblEspacio.Text = constanciaReservaDTO.detalleReserva.nombreEspacio;
+            lblTipoEspacio.Text = constanciaReservaDTO.detalleReserva.categoria;
+            lblSuperficie.Text = constanciaReservaDTO.detalleReserva.superficie.ToString() + " m²";
+            lblUbicacion.Text = constanciaReservaDTO.detalleReserva.ubicacion;
+            lblDistrito.Text = constanciaReservaDTO.detalleReserva.nombreDistrito;
             // Datos de la Reserva
-            lblNumReserva.Text = reservaDomain.numReserva.ToString();
-            lblFechaReserva.Text = reservaDomain.fechaReserva.ToString("dd/MM/yyyy");
-            lblHoraInicio.Text = reservaDomain.iniString;
-            lblHoraFin.Text = reservaDomain.finString;
+            lblNumReserva.Text = constanciaReservaDTO.detalleReserva.numReserva.ToString();
+            lblFechaReserva.Text = constanciaReservaDTO.detalleReserva.fecha.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = constanciaReservaDTO.detalleReserva.horaInicio.ToString("hh:mm:ss");
+            lblHoraFin.Text = constanciaReservaDTO.detalleReserva.horaFin.ToString("hh:mm:ss");
             //Datos del comprador
-            lblNombres.Text = compradorDomain.nombres;
-            lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
-            lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
-            lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
-            lblCorreo.Text = compradorDomain.correo;
+            lblNombres.Text = constanciaReservaDTO.nombresComprador;
+            lblApellidos.Text = constanciaReservaDTO.apellidosComprador;
+            lblTipoDocumento.Text = constanciaReservaDTO.tipoDocumento;
+            lblTNumDocumento.Text = constanciaReservaDTO.numDocumento;
+            lblCorreo.Text = constanciaReservaDTO.correo;
             // Datos de la constancia del pago
-            lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
-            lblMetodoPago.Text = reservaDomain.metodoPago.ToString();
-            lblDetallePago.Text = reservaDomain.detallePago;
+            lblFechaConstancia.Text = constanciaReservaDTO.fecha.ToString("dd/MM/yyyy");
+            //lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            lblMetodoPago.Text = constanciaReservaDTO.metodoPago;
+            lblDetallePago.Text = constanciaReservaDTO.detallePago;
             //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-            lblTotal.Text = "S/. " + reservaDomain.total.ToString();
+            lblTotal.Text = "S/. " + constanciaReservaDTO.monto.ToString();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
