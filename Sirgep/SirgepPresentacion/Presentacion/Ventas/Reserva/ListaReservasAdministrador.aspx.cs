@@ -165,7 +165,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     listadoActual = client.listarTodasReservas().ToList();
                 }
 
-                    Reservas = listadoActual;
+                Reservas = listadoActual;
                 ViewState["PaginaActual"] = 1;
                 CargarPagina();
             }

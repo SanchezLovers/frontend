@@ -174,16 +174,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarFuncionesDeEvento">
-    <xs:sequence>
-      <xs:element name="Id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarFuncionesDeEventoResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="buscarEventoPorTexto">
     <xs:sequence>
       <xs:element minOccurs="0" name="texto" type="xs:string" />
@@ -192,6 +182,16 @@
   <xs:complexType name="buscarEventoPorTextoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEvento">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarFuncionesDeEventoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarEventoPorID">
