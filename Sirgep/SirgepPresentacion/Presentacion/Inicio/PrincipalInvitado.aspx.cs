@@ -11,7 +11,7 @@ namespace SirgepPresentacion.Presentacion.Inicio
 
         protected void btnReservar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Ventas/Reserva/FormularioEspacio.aspx");
+            Response.Redirect("/Presentacion/Infraestructura/Espacio/FormularioEspacio.aspx");
         }
 
         protected void btnVerEventos_Click(object sender, EventArgs e)
