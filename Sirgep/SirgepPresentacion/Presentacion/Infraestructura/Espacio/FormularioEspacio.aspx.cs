@@ -133,7 +133,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (filtroCat != "" && filtroDist != "")
             {
                 // llamamos a la filtración doble implementada en backend
-                listarEspacioDistyCatResponse response = null;
                 ddlEspacio.DataSource = espacioWS.listarEspacioDistyCat(int.Parse(filtroDist), filtroCat);
 
                 ddlEspacio.DataTextField = "nombre";
@@ -206,7 +205,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     int idEspacio = int.Parse(ddlEspacio.SelectedValue);
                     string fecha = txtFecha.Text;
 
-                    string url = $"/Presentacion/Ventas/Reserva/DetalleReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cantidadHoras}";
+                    string url = $"/Presentacion/Ventas/Reserva/CompraReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cantidadHoras}";
 
                     Response.Redirect(url);
                 }

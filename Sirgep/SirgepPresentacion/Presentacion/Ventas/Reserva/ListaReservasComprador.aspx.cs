@@ -16,6 +16,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             if (!IsPostBack)
             {
+
             }
         }
         protected void GvListaReservasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -28,7 +29,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             int idComprador = 2;
             GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
-
             GvListaReservasComprador.DataBind();
         }
 
@@ -40,9 +40,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
             //LinkButton btn = (LinkButton)sender;
-            //string numEntrada = btn.CommandArgument;
-            string numReserva = "2";
-            Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?NumReserva=" + numReserva);
+            //string idConstancia = btn.CommandArgument;
+            string idConstancia = "6";
+            Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia);
         }
     }
 }

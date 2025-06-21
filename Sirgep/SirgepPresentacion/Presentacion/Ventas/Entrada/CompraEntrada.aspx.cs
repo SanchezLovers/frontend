@@ -108,7 +108,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             int idPersona1;
             // ---------- Datos que necesitas ----------
             //int cantidad = int.Parse(lblCantidad.Text);       // <— corrección
-            int cantidad = 1;
 
 
             double precio = compraService.buscarEventos(1).precioEntrada;
@@ -198,11 +197,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             };
 
             //int idConstancia=compraService.insertarConstancia(nueva);
-            int idEntrada = entradaWS.insertarEntrada(nEntrada);
+            int idConstancia = entradaWS.insertarEntrada(nEntrada);
             string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);";
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?NumEntrada=" + idEntrada);
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
     }
 }

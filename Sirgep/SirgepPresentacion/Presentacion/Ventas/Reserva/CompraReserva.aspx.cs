@@ -5,7 +5,7 @@ using static SirgepPresentacion.Presentacion.Ventas.Reserva.FormularioEspacio;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
-    public partial class DetalleReserva : System.Web.UI.Page
+    public partial class CompraReserva : System.Web.UI.Page
     {
         EspacioWSClient espacioService;
         CompraWSClient compraService;
@@ -19,7 +19,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string url = $"/Presentacion/Ventas/Reserva/DetalleReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cant}";
+            //string url = $"/Presentacion/Ventas/Reserva/CompraReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cant}";
 
             if (!IsPostBack)
             {
@@ -232,7 +232,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             // };
 
             //int idReserva = compraService.insertarConstancia(nueva);
-            int idReserva = reservaService.insertarReserva(nuevaReserva);
+            int idConstancia = reservaService.insertarReserva(nuevaReserva);
 
 
             string scriptExito =
@@ -240,7 +240,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
            "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
            "modal.show();" +
            "setTimeout(function() {" +
-           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?numReserva=" + idReserva + "';" +
+           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia + "';" +
            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);

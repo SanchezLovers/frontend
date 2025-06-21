@@ -2245,6 +2245,7 @@
     <Content Include="Images\metodosDePago\Tarjeta.png" />
     <Content Include="Images\metodosDePago\Yape.png" />
     <Content Include="Images\principal\lima_evento.jpg" />
+    <Content Include="Presentacion\Infraestructura\Espacio\FormularioEspacio.aspx" />
     <Content Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx" />
@@ -2259,10 +2260,9 @@
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
-    <Content Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx" />
+    <Content Include="Presentacion\Ventas\Reserva\CompraReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx" />
-    <Content Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx" />
     <Content Include="Resources\Pdfs\CalendarioReservasPdf.html" />
     <Content Include="Resources\Pdfs\EntradaPdf.html" />
     <Content Include="Resources\Pdfs\ReservaPdf.html" />
@@ -2279,6 +2279,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Espacio\FormularioEspacio.aspx.cs">
+      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Infraestructura\Espacio\FormularioEspacio.aspx.designer.cs">
+      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Infraestructura\Espacio\ListaEspacios.aspx.cs">
       <DependentUpon>ListaEspacios.aspx</DependentUpon>
@@ -2385,12 +2392,12 @@
     <Compile Include="MainLayout.Master.designer.cs">
       <DependentUpon>MainLayout.Master</DependentUpon>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.cs">
-      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\CompraReserva.aspx.cs">
+      <DependentUpon>CompraReserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\DetalleReserva.aspx.designer.cs">
-      <DependentUpon>DetalleReserva.aspx</DependentUpon>
+    <Compile Include="Presentacion\Ventas\Reserva\CompraReserva.aspx.designer.cs">
+      <DependentUpon>CompraReserva.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasAdministrador.aspx.cs">
       <DependentUpon>ListaReservasAdministrador.aspx</DependentUpon>
@@ -2405,13 +2412,6 @@
     </Compile>
     <Compile Include="Presentacion\Ventas\Reserva\ListaReservasComprador.aspx.designer.cs">
       <DependentUpon>ListaReservasComprador.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx.cs">
-      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Presentacion\Ventas\Reserva\FormularioEspacio.aspx.designer.cs">
-      <DependentUpon>FormularioEspacio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -2743,6 +2743,36 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.detalleReservaDTO1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEspacioResponse2.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservaDTO1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarConstanciaEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.constanciaEntradaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
