@@ -18,6 +18,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         private DistritoWS distritoWS;
         private DepartamentoWS departamentoWS;
         private ProvinciaWS provinciaWS;
+        private EspacioDiaSemWS diaSemWS;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -25,6 +26,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             distritoWS = new DistritoWSClient();
             departamentoWS = new DepartamentoWSClient();
             provinciaWS = new ProvinciaWSClient();
+            diaSemWS = new EspacioDiaSemWSClient();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -369,16 +371,47 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             if (insertado > 0)
             {
+                // Ahora debemos insertar los días en los que estará funcionando el espacio
+                string dias = diasSeleccionados.Value; // <== Accede directamente al valor del input oculto
+
+                if (!string.IsNullOrWhiteSpace(dias))
+                {
+                    string[] diasArray = dias.Split(',');
+
+                    foreach (string diaSem in diasArray)
+                    {
+                        eDiaSemana diaSemParsed = new eDiaSemana();
+                        eDiaSemana.TryParse<eDiaSemana>(diaSem, out diaSemParsed);
+                        // Insertamos cada día que se escogió
+                        espacioDiaSem espacioDiaSem = new espacioDiaSem()
+                        {
+                            idEspacio = insertado,
+                            dia = diaSemParsed
+                        };
+
+                        Boolean diaInsertado = diaSemWS.insertarDia(new insertarDiaRequest()).@return;
+                        if (!diaInsertado)
+                        {
+                            // Mensaje de fallo
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "modalErrorEspacio",
+                                "mostrarModalError('ERROR AL INSERTAR DIA de SEMANA','Se produjo un error al insertar el día de la semana del espacio.');", true);
+                        }
+                    }
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "modalConfirmacion",
+                        "mostrarModalConfirmacion('Éxito','Días insertados correctamente');", true);
+                }
+
                 // Mensaje de éxito
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertSuccess",
-                    "alert('Espacio guardado exitosamente');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalConfirmacionEspacio",
+                    "mostrarModalConfirmacion('ESPACIO INSERTADO CON ÉXITO','Se ha guardado el espacio satisfactoriamente.');", true);
                 CargarEspacios();
             }
             else
             {
                 // Mensaje de fallo
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertSuccess",
-                    "alert('Se produjo un error al insertar el espacio');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalErrorEspacio",
+                    "mostrarModalError('ERROR AL INSERTAR ESPACIO','Se produjo un error al insertar el espacio.');", true);
             }
         }
 

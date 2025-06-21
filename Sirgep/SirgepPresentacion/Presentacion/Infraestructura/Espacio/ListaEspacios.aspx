@@ -209,8 +209,9 @@
                 </div>
 
                 <div class="modal-footer">
+                    <input type="hidden" id="diasSeleccionados" name="diasSeleccionados" runat="server" />
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button CssClass="active" ID="btnGuardarInsertado" runat="server" Text="Guardar" OnClick="btnGuardarInsertado_Click"/>
+                    <asp:Button CssClass="active" ID="btnGuardarInsertado" runat="server" Text="Guardar" OnClientClick="guardarDiasSeleccionados(); return true;" OnClick="btnGuardarInsertado_Click"/>
                 </div>
             </div>
         </div>
@@ -457,6 +458,20 @@
 
             // Mostrar el modal
             modalEliminar.show();
+        }
+        function obtenerDiasSeleccionados() {
+            const dias = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+            const seleccionados = [];
+
+            dias.forEach(dia => {
+                const checkbox = document.getElementById(dia);
+                if (checkbox && checkbox.checked) {
+                    seleccionados.push(dia.toUpperCase()); // Ej: "LUNES"
+                }
+            });
+
+            console.log("Días seleccionados:", seleccionados);
+            return seleccionados;
         }
     </script>
 
