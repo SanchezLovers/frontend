@@ -17,12 +17,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                //int numReserva = 2;
-                int numReserva = int.Parse(Request.QueryString["numReserva"]);
-                CargarDatosEnPantalla(numReserva);
+                //int idConstancia = 2;
+                int idConstancia = int.Parse(Request.QueryString["idConstancia"]);
+                CargarDatosEnPantalla(idConstancia);
             }
         }
-        protected void CargarDatosEnPantalla(int numReserva)
+        protected void CargarDatosEnPantalla(int idConstancia)
         {
             /*
             reserva reservaDomain = reservaWS.buscarReserva(numReserva);
@@ -30,7 +30,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
             distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
             */
-            constanciaReservaDTO constanciaReservaDTO = reservaWS.buscarConstanciaReserva(numReserva);
+            constanciaReservaDTO constanciaReservaDTO = reservaWS.buscarConstanciaReserva(idConstancia);
             // Datos del espacio
             lblEspacio.Text = constanciaReservaDTO.detalleReserva.nombreEspacio;
             lblTipoEspacio.Text = constanciaReservaDTO.detalleReserva.categoria;

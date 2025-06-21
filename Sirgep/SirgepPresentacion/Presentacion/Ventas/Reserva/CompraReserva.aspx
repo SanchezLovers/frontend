@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="DetalleReserva.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.DetalleReserva" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="CompraReserva.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.CompraReserva" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
 </asp:Content>
