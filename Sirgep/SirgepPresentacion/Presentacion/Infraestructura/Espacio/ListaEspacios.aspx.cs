@@ -1,13 +1,16 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
+﻿using DocumentFormat.OpenXml.Wordprocessing;
+using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ListItem = System.Web.UI.WebControls.ListItem;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 {
@@ -17,6 +20,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         private DistritoWS distritoWS;
         private DepartamentoWS departamentoWS;
         private ProvinciaWS provinciaWS;
+        private EspacioDiaSemWS diaSemWS;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -24,6 +28,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             distritoWS = new DistritoWSClient();
             departamentoWS = new DepartamentoWSClient();
             provinciaWS = new ProvinciaWSClient();
+            diaSemWS = new EspacioDiaSemWSClient();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,11 +37,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             {
                 CargarEspacios();
                 CargarDistritos();
-
-                //ddlTipoEspacio.Items.Add("Cancha de Grass");
-                //ddlTipoEspacio.Items.Add("Cancha de Cemento");
-                //ddlTipoEspacio.Items.Add("Auditorio");
-
             }
 
         }
@@ -44,8 +44,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         private void CargarDistritos()
         {
             // por ahora, solo distritos de LIMA
-            const int LIMA = 1;
-            ddlDistrito.DataSource = distritoWS.listarDistritosFiltrados(new listarDistritosFiltradosRequest(LIMA)).@return;
+            ddlDistrito.DataSource = distritoWS.listarTodosDistritos(new listarTodosDistritosRequest()).@return;
             ddlDistrito.DataTextField = "Nombre";
             ddlDistrito.DataValueField = "IdDistrito";
             ddlDistrito.DataBind();
@@ -90,75 +89,77 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlProvinciaAgregar.Items.Insert(0, new ListItem("Seleccione una provincia", ""));
             ddlDistritoAgregar.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
             // Mostrar el modal usando JavaScript
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+            abrirModalAgregarEspacio();
         }
+        public void MarcarDiasCheck(espacioDiaSem[] dias)
+        {
+            // Crear una tabla hash con los días atendidos (en mayúsculas para estandarizar)
+            HashSet<string> diasAtendidos = new HashSet<string>();
+            foreach (espacioDiaSem e in dias)
+            {
+                diasAtendidos.Add(e.dia.ToString().ToUpperInvariant());
+            }
 
-
+            // Marcar los checkboxes si el día está en el HashSet
+            lunesEdit.Checked = diasAtendidos.Contains("LUNES");
+            martesEdit.Checked = diasAtendidos.Contains("MARTES");
+            miercolesEdit.Checked = diasAtendidos.Contains("MIERCOLES");
+            juevesEdit.Checked = diasAtendidos.Contains("JUEVES");
+            viernesEdit.Checked = diasAtendidos.Contains("VIERNES");
+            sabadoEdit.Checked = diasAtendidos.Contains("SABADO");
+            domingoEdit.Checked = diasAtendidos.Contains("DOMINGO");
+        }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
 
             /*CARGAR DATOS*/
             int idEspacio = int.Parse(((Button)sender).CommandArgument.ToString());
-            buscarEspacioResponse response = espacioWS.buscarEspacio(new buscarEspacioRequest(idEspacio));
-
             hiddenIdEspacio.Value = idEspacio.ToString();
 
-            espacio espCargar = response.@return;
-            distrito disCargar = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espCargar.distrito.idDistrito)).@return;
-            provincia provCargar = provinciaWS.buscarProvinciaPorId(new buscarProvinciaPorIdRequest(disCargar.provincia.idProvincia)).@return;
-            departamento depCargar = departamentoWS.buscarDepaPorId(new buscarDepaPorIdRequest(provCargar.departamento.idDepartamento)).@return;
-
-            hiddenIdDistrito.Value = disCargar.idDistrito.ToString();
+            espacioDTO espDTO = espacioWS.obtenerEspacioDTO(new obtenerEspacioDTORequest(idEspacio)).@return;
+            hiddenIdDistrito.Value = espDTO.idDistrito.ToString();
 
             /* Hardcodeado pq' no lo tenemos en nuestra BD, además hay pocos datos */
-            ddlTipoEspacioEdit.Items.Insert(0, new ListItem(espCargar.tipoEspacio.ToString(), espCargar.tipoEspacio.ToString()));
+            ddlTipoEspacioEdit.Items.Clear();
+            ddlTipoEspacioEdit.Items.Insert(0, new ListItem(espDTO.tipo.ToString(), espDTO.tipo.ToString()));
             ddlTipoEspacioEdit.Items.Insert(1, new ListItem("Teatros", "TEATRO"));
             ddlTipoEspacioEdit.Items.Insert(2, new ListItem("Canchas", "CANCHA"));
             ddlTipoEspacioEdit.Items.Insert(3, new ListItem("Salones", "SALON"));
             ddlTipoEspacioEdit.Items.Insert(4, new ListItem("Parques", "PARQUE"));
 
             // Leer el valor
-            txtNombreEdit.Text = espCargar.nombre;
-            txtUbicacionEdit.Text = espCargar.ubicacion;
-            txtSuperficieEdit.Text = espCargar.superficie.ToString();
-            txtPrecioEdit.Text = espCargar.precioReserva.ToString();
+            txtNombreEdit.Text = espDTO.nombre;
+            txtUbicacionEdit.Text = espDTO.ubicacion;
+            txtSuperficieEdit.Text = espDTO.superficie.ToString();
+            txtPrecioEdit.Text = espDTO.precioReserva.ToString();
             
-            ddlDepartamentoEdit.DataSource = departamentoWS.listarDepas(new listarDepasRequest()).@return;
+            ddlDepartamentoEdit.DataSource = espDTO.departamentos;
             ddlDepartamentoEdit.DataTextField = "Nombre";
             ddlDepartamentoEdit.DataValueField = "IdDepartamento";
             ddlDepartamentoEdit.DataBind();
-            ddlDepartamentoEdit.SelectedValue = depCargar.idDepartamento.ToString();
+            ddlDepartamentoEdit.SelectedValue = espDTO.idDepartamento.ToString();
 
-            ddlProvinciaEdit.DataSource = provinciaWS.listarProvinciaPorDepa(new listarProvinciaPorDepaRequest(depCargar.idDepartamento)).@return;
+            ddlProvinciaEdit.DataSource = espDTO.provincias;
             ddlProvinciaEdit.DataTextField = "Nombre";
             ddlProvinciaEdit.DataValueField = "IdProvincia";
             ddlProvinciaEdit.DataBind();
-            ddlProvinciaEdit.SelectedValue = provCargar.idProvincia.ToString();
+            ddlProvinciaEdit.SelectedValue = espDTO.idProvincia.ToString();
 
-            ddlDistritoEdit.DataSource = distritoWS.listarDistritosFiltrados(new listarDistritosFiltradosRequest(provCargar.idProvincia)).@return;
+            ddlDistritoEdit.DataSource = espDTO.distritos;
             ddlDistritoEdit.DataTextField = "Nombre";
             ddlDistritoEdit.DataValueField = "IdDistrito";
             ddlDistritoEdit.DataBind();
-            ddlDistritoEdit.SelectedValue = disCargar.idDistrito.ToString();
+            ddlDistritoEdit.SelectedValue = espDTO.idDistrito.ToString();
 
-            txtHoraInicioEdit.Text = espCargar.horarioInicioAtencion.ToString();
-            txtHoraFinEdit.Text = espCargar.horarioFinAtencion.ToString();
+            txtHoraInicioEdit.Text = espDTO.horaInicio.ToString();
+            txtHoraFinEdit.Text = espDTO.horaFin.ToString();
+
+            // Cargar los días que el Espacio atiende
+            espacioDiaSem[] diasSem = espDTO.dias;
+            MarcarDiasCheck(diasSem);
 
             // Mostrar el modal usando JavaScript
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEdicion",
-                "var modalEdicion = new bootstrap.Modal(document.getElementById('modalEdicionEspacio')); modalEdicion.show();", true);
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            var btn = (Button)sender;
-            int id = int.Parse(btn.CommandArgument.ToString());
-
-            // Lógica para eliminar el espacio con el ID proporcionado
-            eliminarLogicoResponse response = espacioWS.eliminarLogico(new eliminarLogicoRequest(id));
-            // Por ejemplo: EliminarEspacioPorId(int.Parse(id));
-            CargarEspacios(); // Recargar la lista después de eliminar
+            abrirModalEditarEspacio();
         }
 
         protected void btnConsultar_Click(object sender, EventArgs e)
@@ -199,16 +200,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             if (estado)
             {
-                CargarEspacios(); // Refresca la tabla
-
-                // Opcional: Mostrar mensaje de éxito
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
-                    "alert('Espacio eliminado exitosamente');", true);
+                // debemos eliminar también los días de la semana del espacio
+                Boolean diaEliminado = diaSemWS.eliminarDiasPorEspacio(new eliminarDiasPorEspacioRequest(id)).@return;
+                if (diaEliminado)
+                {
+                    mostrarModalExitoEsp("ÉXITO AL ELIMINAR EL ESPACIO", "Los días del espacio y el espacio mismo han sido eliminados satisfactoriamente.");
+                    CargarEspacios(); // Refresca la tabla
+                }
+                else
+                {
+                    mostrarModalErrorEsp("FALLO AL ELIMINAR Dias del Espacio", "Ocurrió un error al momento de eliminar los días del espacio.");
+                }
+                
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
-                    "alert('Ocurrió un problema al eliminar el espacio');", true);
+                mostrarModalErrorEsp("FALLO AL ELIMINAR ESPACIO", "Ocurrió un error al momento de eliminar el espacio.");
             }
 
         }
@@ -242,8 +249,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             }
 
             // Para mantener el modal abierto tras el postback
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+            abrirModalAgregarEspacio();
+            
         }
 
         protected void ddlProvinciaAgregar_SelectedIndexChanged(object sender, EventArgs e)
@@ -268,8 +275,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             }
 
             // Para que el modal siga abierto
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+            abrirModalAgregarEspacio();
         }
 
         protected void btnActualizarEspacioEdit_Click(object sender, EventArgs e)
@@ -317,14 +323,12 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             if (actualizado)
             {
+                mostrarModalExitoEsp("ACTUALIZACIÓN EXITOSA", "Espacio actualizado exitosamente.");
                 CargarEspacios();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertActualizar",
-                    "alert('Espacio actualizado exitosamente');", true);
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertActualizar",
-                    "alert('Ocurrió un problema al actualizar el espacio');", true);
+                mostrarModalErrorEsp("ERROR AL ACTUALIZAR ESPACIO", "Ocurrió un error al momento de actualizar el espacio.");
             }
         }
 
@@ -365,16 +369,43 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             if (insertado > 0)
             {
+                // Ahora debemos insertar los días en los que estará funcionando el espacio
+                string dias = diasSeleccionados.Value; // <== Accede directamente al valor del input oculto
+
+                if (!string.IsNullOrWhiteSpace(dias))
+                {
+                    string[] diasArray = dias.Split(',');
+
+                    foreach (string diaSem in diasArray)
+                    {
+                        eDiaSemana diaSemParsed;
+                        eDiaSemana.TryParse<eDiaSemana>(diaSem, ignoreCase: true, out diaSemParsed);
+                        // Insertamos cada día que se escogió
+                        espacioDiaSem espacioDiaSem = new espacioDiaSem()
+                        {
+                            idEspacio = insertado,
+                            dia = diaSemParsed
+                        };
+                        espacioDiaSem.diaSpecified = true;
+                        Boolean diaInsertado = diaSemWS.insertarDia(new insertarDiaRequest(espacioDiaSem)).@return;
+                        if (!diaInsertado)
+                        {
+                            // Mensaje de fallo
+                            mostrarModalErrorEsp("ERROR AL INSERTAR DIA de SEMANA", "Se produjo un error al insertar el día de la semana del espacio.");
+                            return;
+                        }
+                    }
+                    //mostrarModalExitoEsp("ÉXITO", "Días insertados correctamente.");
+                }
+
                 // Mensaje de éxito
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertSuccess",
-                    "alert('Espacio guardado exitosamente');", true);
+                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente.");
                 CargarEspacios();
             }
             else
             {
                 // Mensaje de fallo
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertSuccess",
-                    "alert('Se produjo un error al insertar el espacio');", true);
+                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
             }
         }
 
@@ -393,13 +424,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             {
                 lblError.Text = "Las horas no pueden estar vacías.";
                 // Para que el modal siga abierto
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                abrirModalAgregarEspacio();
+                return;
+            }
+
+            TimeSpan horaInicio = TimeSpan.Parse(txtHoraInicioInsert.Text);
+            TimeSpan horaFin = TimeSpan.Parse(txtHoraFinInsert.Text);
+
+            if (horaInicio.Minutes != 0 || horaFin.Minutes != 0)
+            {
+                lblError.Text = "Las horas deben finalizar en :00";
+                // Para que el modal siga abierto
+                abrirModalAgregarEspacio();
                 return;
             }
 
             // Parsear a TimeSpan
-            TimeSpan horaInicio, horaFin;
 
             bool inicioOk = TimeSpan.TryParse(horaInicioStr, out horaInicio);
             bool finOk = TimeSpan.TryParse(horaFinStr, out horaFin);
@@ -408,8 +448,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             {
                 lblError.Text = "Formato de hora no válido.";
                 // Para que el modal siga abierto
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                abrirModalAgregarEspacio();
                 return;
             }
 
@@ -418,16 +457,102 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             {
                 lblError.Text = "La hora de inicio debe ser menor que la hora de fin.";
                 // Para que el modal siga abierto
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                abrirModalAgregarEspacio();
                 return;
             }
 
             // Si todo está bien, borrar el error
             lblError.Text = "";
             // Para que el modal siga abierto
+            abrirModalAgregarEspacio();
+        }
+        public void abrirModalAgregarEspacio()
+        {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
-                "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+                    "var modal1 = new bootstrap.Modal(document.getElementById('modalPaso1')); modal1.show();", true);
+        }
+
+        public void abrirModalEditarEspacio()
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEdicion",
+                "var modalEdicion = new bootstrap.Modal(document.getElementById('modalEdicionEspacio')); modalEdicion.show();", true);
+        }
+
+        public void mostrarModalExitoEsp(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalExito", script, true);
+        }
+
+        public void mostrarModalErrorEsp(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);
+        }
+
+        protected void ddlDepartamentoEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ddlDepartamentoEdit.SelectedValue))
+            {
+                int idDepartamento = int.Parse(ddlDepartamentoEdit.SelectedValue);
+                listarProvinciaPorDepaResponse responseProvincia = provinciaWS.listarProvinciaPorDepa(
+                    new listarProvinciaPorDepaRequest(idDepartamento)
+                );
+
+                ddlProvinciaEdit.DataSource = responseProvincia.@return;
+                ddlProvinciaEdit.DataTextField = "Nombre";
+                ddlProvinciaEdit.DataValueField = "IdProvincia";
+                ddlProvinciaEdit.DataBind();
+                ddlProvinciaEdit.Items.Insert(0, new ListItem("Seleccione una provincia", ""));
+                ddlDistritoEdit.Items.Clear();
+                ddlDistritoEdit.Items.Insert(0, new ListItem("Seleccione una provincia primero", ""));
+            }
+            else
+            {
+                ddlProvinciaEdit.Items.Clear();
+                ddlProvinciaEdit.Items.Insert(0, new ListItem("Seleccione un departamento primero", ""));
+            }
+
+            // Para mantener el modal abierto tras el postback
+            abrirModalEditarEspacio();
+        }
+
+        protected void ddlProvinciaEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ddlProvinciaEdit.SelectedValue))
+            {
+                int idProvincia = int.Parse(ddlProvinciaEdit.SelectedValue);
+                listarDistritosFiltradosResponse responseDistrito = distritoWS.listarDistritosFiltrados(
+                    new listarDistritosFiltradosRequest(idProvincia)
+                );
+
+                ddlDistritoEdit.DataSource = responseDistrito.@return;
+                ddlDistritoEdit.DataTextField = "Nombre";
+                ddlDistritoEdit.DataValueField = "IdDistrito";
+                ddlDistritoEdit.DataBind();
+                ddlDistritoEdit.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
+            }
+            else
+            {
+                ddlDistritoEdit.Items.Clear();
+                ddlDistritoEdit.Items.Insert(0, new ListItem("Seleccione una provincia primero", ""));
+            }
+
+            // Para que el modal siga abierto
+            abrirModalEditarEspacio();
+        }
+
+        protected void ddlDistritoEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            hiddenIdDistrito.Value = ddlDistritoEdit.SelectedValue.ToString();
         }
     }
 }

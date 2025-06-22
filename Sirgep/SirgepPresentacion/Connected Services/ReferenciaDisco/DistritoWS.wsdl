@@ -16,6 +16,11 @@
   </message>
   <message name="listarDistritosFiltradosResponse">
     <part name="parameters" element="tns:listarDistritosFiltradosResponse" />
+  <message name="listarDistritosPorProvincia">
+    <part name="parameters" element="tns:listarDistritosPorProvincia" />
+  </message>
+  <message name="listarDistritosPorProvinciaResponse">
+    <part name="parameters" element="tns:listarDistritosPorProvinciaResponse" />
   </message>
   <message name="listarTodosDistritos">
     <part name="parameters" element="tns:listarTodosDistritos" />
@@ -31,6 +36,9 @@
     <operation name="listarDistritosFiltrados">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest" message="tns:listarDistritosFiltrados" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse" message="tns:listarDistritosFiltradosResponse" />
+    <operation name="listarDistritosPorProvincia">
+      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaRequest" message="tns:listarDistritosPorProvincia" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaResponse" message="tns:listarDistritosPorProvinciaResponse" />
     </operation>
     <operation name="listarTodosDistritos">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosRequest" message="tns:listarTodosDistritos" />
@@ -49,6 +57,15 @@
       </output>
     </operation>
     <operation name="listarDistritosFiltrados">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDistritosPorProvincia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
