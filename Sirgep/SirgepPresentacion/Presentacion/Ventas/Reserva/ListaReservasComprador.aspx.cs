@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using SirgepPresentacion.ReferenciaDisco;
 
@@ -43,6 +44,22 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             //string numEntrada = btn.CommandArgument;
             string numReserva = "2";
             Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?NumReserva=" + numReserva);
+        }
+
+        protected void btnConfirmarAccion_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hdnReservaAEliminar.Value);
+
+            reservaWS.cancelarReserva(id);
+
+            // Boolean estado = response.@return;
+            CargarDatos(); // Refresca la tabla
+
+            // Opcional: Mostrar mensaje de éxito
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
+                "alert('Reserva Cancelada exitosamente');", true);
+
+
         }
     }
 }
