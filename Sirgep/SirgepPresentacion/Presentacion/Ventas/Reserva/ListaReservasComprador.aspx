@@ -33,7 +33,7 @@
             <asp:TemplateField HeaderText="Abrir">
                 <ItemTemplate>
                     <asp:LinkButton ID="BtnAbrir" runat="server"
-                        CommandArgument='<%# Eval("NumReserva") %>'
+                        CommandArgument='<%# Eval("IdConstancia") %>'
                         OnClick="BtnAbrir_Click"
                         CssClass="btn btn-link"
                         ToolTip="Abrir Reserva">
