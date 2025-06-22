@@ -6,6 +6,7 @@ using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -42,9 +43,10 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Administrador
             var reservas = Session["ReservasCalendario"] as reserva[];
             if (reservas == null)
             {
-                reservas = new ReservaWSClient().listarReservas();
+                reservas = new ReservaWSClient().listarReservas(); //Solo se listan activos
                 Session["ReservasCalendario"] = reservas;
             }
+
 
             var eventos = new List<object>();
             foreach (var r in reservas)
@@ -80,27 +82,41 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Administrador
             var reservas = Session["ReservasCalendario"] as reserva[];
             if (reservas == null || reservas.Length == 0)
             {
-                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Primero debe cargar las reservas.');", true);
+                //Mostrar el modal de error
+                string script = "mostrarModalError('Error de carga','No se han cargado reservas, pruebe recargar la página.');";
+                ClientScript.RegisterStartupScript(GetType(), "mostrarModalError", script, true);
                 return;
             }
 
             string rutaHtml = Server.MapPath("~/Resources/Pdfs/CalendarioReservasPdf.html");
             string paginaHTML_Texto = File.ReadAllText(rutaHtml, Encoding.UTF8);
 
+            var reservasPorMes = reservas.GroupBy(r => new { r.fechaReserva.Year, r.fechaReserva.Month })
+                                         .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month);
+
             StringBuilder filas = new StringBuilder();
-            foreach (var r in reservas)
+
+            foreach (var grupo in reservasPorMes)
             {
-                filas.Append("<tr>");
-                filas.Append($"<td>{r.numReserva}</td>");
-                filas.Append($"<td>{r.fechaReserva:yyyy-MM-dd}</td>");
-                filas.Append($"<td>{r.iniString}</td>");
-                filas.Append($"<td>{r.finString}</td>");
-                filas.Append($"<td>{r.espacio?.nombre}</td>");
-                filas.Append($"<td>{r.persona?.nombres}</td>");
-                filas.Append($"<td>{r.persona?.primerApellido + ' ' + r.persona?.segundoApellido}</td>");
-                filas.Append($"<td>{r.persona?.tipoDocumento}</td>");
-                filas.Append($"<td>{r.persona?.numDocumento}</td>");
-                filas.Append("</tr>");
+                string mesNombre = new DateTime(grupo.Key.Year, grupo.Key.Month, 1)
+                    .ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))
+                    .ToUpperInvariant();
+
+                filas.Append($"<tr><td colspan='9' style='background:#f10909;color:#fff;font-weight:bold;font-size:1.1em;text-align:left;padding:8px 4px'>{mesNombre}</td></tr>");
+                foreach (var r in grupo)
+                {
+                    filas.Append("<tr>");
+                    filas.Append($"<td>{r.numReserva}</td>");
+                    filas.Append($"<td>{r.fechaReserva:yyyy-MM-dd}</td>");
+                    filas.Append($"<td>{r.iniString}</td>");
+                    filas.Append($"<td>{r.finString}</td>");
+                    filas.Append($"<td>{r.espacio?.nombre}</td>");
+                    filas.Append($"<td>{r.persona?.nombres}</td>");
+                    filas.Append($"<td>{r.persona?.primerApellido + " " + r.persona?.segundoApellido}</td>");
+                    filas.Append($"<td>{r.persona?.tipoDocumento}</td>");
+                    filas.Append($"<td>{r.persona?.numDocumento}</td>");
+                    filas.Append("</tr>");
+                }
             }
 
 
@@ -136,39 +152,88 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Administrador
             var reservas = Session["ReservasCalendario"] as reserva[];
             if (reservas == null || reservas.Length == 0)
             {
-                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Primero debe cargar las reservas.');", true);
+                //Mostrar el modal de error
+                string script = "mostrarModalError('Error de carga','No se han cargado reservas, pruebe recargar la página.');";
+                ClientScript.RegisterStartupScript(GetType(), "mostrarModalError", script, true);
                 return;
             }
 
             using (var workbook = new XLWorkbook())
             {
                 var ws = workbook.Worksheets.Add("Reservas");
-                ws.Cell(1, 1).Value = "N° Reserva";
-                ws.Cell(1, 2).Value = "Fecha";
-                ws.Cell(1, 3).Value = "Hora Inicio";
-                ws.Cell(1, 4).Value = "Hora Fin";
-                ws.Cell(1, 5).Value = "Espacio";
-                ws.Cell(1, 6).Value = "Nombres";
-                ws.Cell(1, 7).Value = "Apellidos";
-                ws.Cell(1, 8).Value = "Tipo Doc";
-                ws.Cell(1, 9).Value = "N° Documento";
 
+                int fila = 1;
 
-                int fila = 2;
-                foreach (var r in reservas)
+                // 1. Insertar imagen (logo)
+                string rutaLogo = Server.MapPath("~/Images/grl/Escudo_Región_Lima_recortado.PNG");
+                if (File.Exists(rutaLogo))
                 {
-                    ws.Cell(fila, 1).Value = r.numReserva;
-                    ws.Cell(fila, 2).Value = r.fechaReserva.ToString("yyyy-MM-dd");
-                    ws.Cell(fila, 3).Value = r.iniString;
-                    ws.Cell(fila, 4).Value = r.finString;
-                    ws.Cell(fila, 5).Value = r.espacio?.nombre;
-                    ws.Cell(fila, 6).Value = r.persona?.nombres;
-                    ws.Cell(fila, 7).Value = r.persona?.primerApellido + " " + r.persona?.segundoApellido;
-                    ws.Cell(fila, 8).Value = r.persona?.tipoDocumento.ToString();
-                    ws.Cell(fila, 9).Value = r.persona?.numDocumento;
+                    var imagen = ws.AddPicture(rutaLogo)
+                                   .MoveTo(ws.Cell(fila, 1))
+                                   .WithSize(80, 80); // ancho, alto
+                }
+
+                // 2. Insertar título
+                ws.Cell(fila, 2).Value = "GOBIERNO REGIONAL DE LIMA | SIRGEP";
+                ws.Range(fila, 2, fila, 9).Merge();
+                ws.Range(fila, 2, fila, 9).Style.Font.Bold = true;
+                ws.Range(fila, 2, fila, 9).Style.Font.FontSize = 16;
+                ws.Range(fila, 2, fila, 9).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                fila += 2;
+
+                ws.Cell(fila, 1).Value = "CALENDARIO DE RESERVAS";
+                ws.Range(fila, 1, fila, 9).Merge();
+                ws.Range(fila, 1, fila, 9).Style.Font.Bold = true;
+                ws.Range(fila, 1, fila, 9).Style.Font.FontSize = 14;
+                ws.Range(fila, 1, fila, 9).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                fila += 2;
+
+                var reservasPorMes = reservas.GroupBy(r => new { r.fechaReserva.Year, r.fechaReserva.Month })
+                                             .OrderBy(g => g.Key.Year).ThenBy(g => g.Key.Month);
+
+                foreach (var grupo in reservasPorMes)
+                {
+                    string mesNombre = new DateTime(grupo.Key.Year, grupo.Key.Month, 1)
+                        .ToString("MMMM yyyy", new System.Globalization.CultureInfo("es-ES"))
+                        .ToUpperInvariant();
+
+                    ws.Cell(fila, 1).Value = mesNombre;
+                    ws.Range(fila, 1, fila, 9).Merge().Style.Fill.BackgroundColor = XLColor.Red;
+                    ws.Range(fila, 1, fila, 9).Style.Font.FontColor = XLColor.White;
+                    ws.Range(fila, 1, fila, 9).Style.Font.Bold = true;
+                    fila++;
+
+                    ws.Cell(fila, 1).Value = "N° Reserva";
+                    ws.Cell(fila, 2).Value = "Fecha";
+                    ws.Cell(fila, 3).Value = "Hora Inicio";
+                    ws.Cell(fila, 4).Value = "Hora Fin";
+                    ws.Cell(fila, 5).Value = "Espacio";
+                    ws.Cell(fila, 6).Value = "Nombres";
+                    ws.Cell(fila, 7).Value = "Apellidos";
+                    ws.Cell(fila, 8).Value = "Tipo Doc";
+                    ws.Cell(fila, 9).Value = "N° Documento";
+                    ws.Range(fila, 1, fila, 9).Style.Font.Bold = true;
+                    ws.Range(fila, 1, fila, 9).Style.Fill.BackgroundColor = XLColor.LightGray;
+                    fila++;
+
+                    foreach (var r in grupo)
+                    {
+                        ws.Cell(fila, 1).Value = r.numReserva;
+                        ws.Cell(fila, 2).Value = r.fechaReserva.ToString("yyyy-MM-dd");
+                        ws.Cell(fila, 3).Value = r.iniString;
+                        ws.Cell(fila, 4).Value = r.finString;
+                        ws.Cell(fila, 5).Value = r.espacio?.nombre;
+                        ws.Cell(fila, 6).Value = r.persona?.nombres;
+                        ws.Cell(fila, 7).Value = r.persona?.primerApellido + " " + r.persona?.segundoApellido;
+                        ws.Cell(fila, 8).Value = r.persona?.tipoDocumento.ToString();
+                        ws.Cell(fila, 9).Value = r.persona?.numDocumento;
+                        fila++;
+                    }
 
                     fila++;
                 }
+
+                ws.Columns().AdjustToContents();
 
                 using (MemoryStream ms = new MemoryStream())
                 {

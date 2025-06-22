@@ -37,7 +37,7 @@
             <asp:TemplateField HeaderText="Abrir">
                  <ItemTemplate>
                     <asp:LinkButton ID="BtnAbrir" runat="server"
-                        CommandArgument='<%# Eval("NumReserva") %>'
+                        CommandArgument='<%# Eval("IdConstancia") %>'
                         OnClick="BtnAbrir_Click"
                         CssClass="btn btn-link"
                         ToolTip="Abrir Reserva">
@@ -114,7 +114,7 @@
         var diferenciaDias = Math.floor((fechaReserva - hoy) / (1000 * 60 * 60 * 24));
 
         if (fechaReserva <= hoy) {
-            texto = "No se puede eliminar una que ya haya pasado.";
+            texto = "No se puede cancelar una resreva que ya haya pasado.";
             btnConfirmar.style.display = "none";
         } else if (diferenciaDias < 2) {
             texto = "La reserva debe cancelarse con un mínimo de 2 días de anticipación.";

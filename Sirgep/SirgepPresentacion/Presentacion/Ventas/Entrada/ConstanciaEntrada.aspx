@@ -19,9 +19,6 @@
                 <div class="col-12 col-md-4">
                     <strong>Distrito:</strong> <asp:Label ID="lblDistrito" runat="server" CssClass="ms-2" />
                 </div>
-                <div class="col-12">
-                    <strong>Referencias:</strong> <asp:Label ID="lblReferencias" runat="server" CssClass="ms-2" />
-                </div>
             </div>
         </div>
 

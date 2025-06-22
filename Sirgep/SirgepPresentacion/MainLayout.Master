@@ -17,6 +17,7 @@
     <!-- Bootstrap JS (opcional) -->
     <script src="/Scripts/bootstrap.bundle.min.js"></script>
 
+
     <asp:ContentPlaceHolder ID="Encabezado" runat="server" />
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">

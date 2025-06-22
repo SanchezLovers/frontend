@@ -367,10 +367,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito",
-                "mostrarModalPorId('modalExito');", true);
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoEliminarEvento", $"alert('Evento eliminado EXITOSAMENTE');", true);
+                string script = "setTimeout(function(){ mostrarModalExito('Eliminación exitosa','Evento eliminado exitosamente'); }, 300);";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
             }
             CargarEventos();
         }

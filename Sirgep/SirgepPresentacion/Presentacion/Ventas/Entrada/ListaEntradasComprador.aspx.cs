@@ -34,10 +34,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
-            //LinkButton btn = (LinkButton)sender;
-            //string numEntrada = btn.CommandArgument;
-            string numEntrada = "2";
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?NumEntrada=" + numEntrada);
+            LinkButton btn = (LinkButton)sender;
+            string idConstancia = btn.CommandArgument;
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
     }
 }
