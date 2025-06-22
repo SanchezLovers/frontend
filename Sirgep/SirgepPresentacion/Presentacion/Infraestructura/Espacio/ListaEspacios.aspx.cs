@@ -193,9 +193,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         {
             int id = int.Parse(hdnIdAEliminar.Value);
 
-            // Aquí va la lógica para eliminar el espacio
-            // Ejemplo: EliminarEspacioPorId(id);
-
             eliminarLogicoResponse response = espacioWS.eliminarLogico(new eliminarLogicoRequest(id));
 
             Boolean estado = response.@return;
