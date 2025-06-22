@@ -2258,6 +2258,7 @@
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
+    <Content Include="Presentacion\Ventas\Entrada\ListaEntradasAdministrador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\ConstanciaReserva.aspx" />
     <Content Include="Presentacion\Ventas\Reserva\CompraReserva.aspx" />
@@ -2370,6 +2371,13 @@
     </Compile>
     <Compile Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx.designer.cs">
       <DependentUpon>ConstanciaEntrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasAdministrador.aspx.cs">
+      <DependentUpon>ListaEntradasAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasAdministrador.aspx.designer.cs">
+      <DependentUpon>ListaEntradasAdministrador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ventas\Entrada\ListaEntradasComprador.aspx.cs">
       <DependentUpon>ListaEntradasComprador.aspx</DependentUpon>
@@ -2771,6 +2779,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.cancelarReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

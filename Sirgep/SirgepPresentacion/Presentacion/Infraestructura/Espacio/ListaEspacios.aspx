@@ -452,12 +452,11 @@
             return true;
         }
         function mostrarConfEspacio(id) {
-        // Obtener correctamente el ID generado por ASP.NET
-        var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
+            // Obtener correctamente el ID generado por ASP.NET
+            var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
             if (hiddenField) {
                 hiddenField.value = id;
-            // Mostrar el modal aquí si lo necesitas
-            console.log("ID asignado:", id);
+            
             } else {
                     console.error("No se encontró el campo oculto.");
                 return; // Importante: salir de la función si no se encuentra el campo oculto
