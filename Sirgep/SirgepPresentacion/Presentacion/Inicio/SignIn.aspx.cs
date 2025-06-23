@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -89,18 +90,18 @@ namespace SirgepPresentacion.Presentacion.Inicio
             switch (tipo)
             {
                 case "DNI":
-                    args.IsValid = numero.Length == 8;
-                    if (!args.IsValid) mensaje = "El DNI debe tener 8 dígitos.";
+                    args.IsValid = numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$");
+                    if (!args.IsValid) mensaje = "El DNI debe tener exactamente 8 dígitos numéricos.";
                     break;
 
                 case "CARNETEXTRANJERIA":
-                    args.IsValid = numero.Length == 12;
-                    if (!args.IsValid) mensaje = "El Carnet de Extranjería debe tener 12 dígitos.";
+                    args.IsValid = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
+                    if (!args.IsValid) mensaje = "El Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.";
                     break;
 
                 case "PASAPORTE":
-                    args.IsValid = numero.Length >=8 && numero.Length <=12;
-                    if (!args.IsValid) mensaje = "El Pasaporte debe tener entre 8 y 12 dígitos.";
+                    args.IsValid = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
+                    if (!args.IsValid) mensaje = "El Pasaporte debe tener entre 8 y 12 caracteres alfanuméricos (sin símbolos).";
                     break;
 
                 default:
@@ -108,7 +109,7 @@ namespace SirgepPresentacion.Presentacion.Inicio
                     mensaje = "Seleccione un tipo de documento válido.";
                     break;
             }
-            //mensaje
+
             ((CustomValidator)source).ErrorMessage = mensaje;
         }
 

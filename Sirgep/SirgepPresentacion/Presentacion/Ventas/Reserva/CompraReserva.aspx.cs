@@ -72,7 +72,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
+               // string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) || -- no es obligatorio
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
@@ -121,13 +121,16 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),
+                    // segundoApellido = txtApellidoMaterno.Text.Trim(),  no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
                     tipoDocumentoSpecified = true,
                     registrado = 0,
                 };
+                if (txtApellidoMaterno.Text.Length > 0)
+                    nuevo.segundoApellido = txtApellidoMaterno.Text.Trim();
+
                 identificadorPersona = compraService.insertarComprador(nuevo);
                 compradorFinal = nuevo; // Guardar el nuevo comprador para usarlo más adelante
             }
