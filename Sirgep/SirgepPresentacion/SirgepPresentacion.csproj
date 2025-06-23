@@ -117,16 +117,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ReferenciaDisco\CompradorWS.wsdl" />
-<<<<<<< HEAD
-    <None Include="Connected Services\ReferenciaDisco\CompradorWS.xsd">
-=======
+
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\EspacioWS.xsd">
->>>>>>> 3d0be164a685bdda3701a1981b760211d50f391f
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS1.wsdl" />
