@@ -12,12 +12,13 @@
             <div class="row">
                 <!--izquierda-->
                 <div class="col-md-6 text-center bg-dark text-white py-4 rounded-start">
-                    <h2 class="mb-4">Gobierno Regional de Lima</h2>
+                    <h2 class="container mb-4">Gobierno Regional de Lima</h2>
                     <img src="/Images/grl/Escudo_Región_Lima_recortado.PNG" alt="Logo GRL" class="img-fluid" style="max-height: 250px;" />
                     <p class="mt-3">Verdad, Firmeza y Lealtad</p>
                 </div>
                 <!--derecha-->
                 <divv class="col-md-6 px-4">
+                    <div class="container mt-4">
                     <h4 class="text-center mb-4 fw-bold">Sistema Integral de Reservas y Gestión de Espacios Públicos</h4>
 
                     <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" />
@@ -53,6 +54,7 @@
                     <div class="text-center mt-3">
                         ¿No tienes una cuenta? <a href="#" class="text-decoration-none">Regístrese</a>
                     </div>
+                </div>
                 </divv>
             </div>
         </div>

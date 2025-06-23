@@ -2255,6 +2255,7 @@
     <Content Include="Presentacion\Inicio\LogIn.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
+    <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
@@ -2337,6 +2338,13 @@
     </Compile>
     <Compile Include="Presentacion\Inicio\PrincipalInvitado.aspx.designer.cs">
       <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx.cs">
       <DependentUpon>EligeDistrito.aspx</DependentUpon>
