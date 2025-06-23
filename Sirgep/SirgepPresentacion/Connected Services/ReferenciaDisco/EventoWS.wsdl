@@ -11,6 +11,12 @@
   <message name="eliminarFuncionesDeEventoResponse">
     <part name="parameters" element="tns:eliminarFuncionesDeEventoResponse" />
   </message>
+  <message name="listarEventoPorDistrito">
+    <part name="parameters" element="tns:listarEventoPorDistrito" />
+  </message>
+  <message name="listarEventoPorDistritoResponse">
+    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
+  </message>
   <message name="buscarEventosPorFechas">
     <part name="parameters" element="tns:buscarEventosPorFechas" />
   </message>
@@ -29,23 +35,17 @@
   <message name="listarFuncionesDeEventoResponse">
     <part name="parameters" element="tns:listarFuncionesDeEventoResponse" />
   </message>
-  <message name="listarEventoPorDistrito">
-    <part name="parameters" element="tns:listarEventoPorDistrito" />
+  <message name="listarEvento">
+    <part name="parameters" element="tns:listarEvento" />
   </message>
-  <message name="listarEventoPorDistritoResponse">
-    <part name="parameters" element="tns:listarEventoPorDistritoResponse" />
+  <message name="listarEventoResponse">
+    <part name="parameters" element="tns:listarEventoResponse" />
   </message>
-  <message name="obtenerCantEntradasDisponibles">
-    <part name="parameters" element="tns:obtenerCantEntradasDisponibles" />
+  <message name="insertarEvento">
+    <part name="parameters" element="tns:insertarEvento" />
   </message>
-  <message name="obtenerCantEntradasDisponiblesResponse">
-    <part name="parameters" element="tns:obtenerCantEntradasDisponiblesResponse" />
-  </message>
-  <message name="eliminarLogico">
-    <part name="parameters" element="tns:eliminarLogico" />
-  </message>
-  <message name="eliminarLogicoResponse">
-    <part name="parameters" element="tns:eliminarLogicoResponse" />
+  <message name="insertarEventoResponse">
+    <part name="parameters" element="tns:insertarEventoResponse" />
   </message>
   <message name="buscarEventoPorID">
     <part name="parameters" element="tns:buscarEventoPorID" />
@@ -59,22 +59,26 @@
   <message name="actualizarEventoResponse">
     <part name="parameters" element="tns:actualizarEventoResponse" />
   </message>
-  <message name="insertarEvento">
-    <part name="parameters" element="tns:insertarEvento" />
+  <message name="eliminarLogico">
+    <part name="parameters" element="tns:eliminarLogico" />
   </message>
-  <message name="insertarEventoResponse">
-    <part name="parameters" element="tns:insertarEventoResponse" />
+  <message name="eliminarLogicoResponse">
+    <part name="parameters" element="tns:eliminarLogicoResponse" />
   </message>
-  <message name="listarEvento">
-    <part name="parameters" element="tns:listarEvento" />
+  <message name="obtenerCantEntradasDisponibles">
+    <part name="parameters" element="tns:obtenerCantEntradasDisponibles" />
   </message>
-  <message name="listarEventoResponse">
-    <part name="parameters" element="tns:listarEventoResponse" />
+  <message name="obtenerCantEntradasDisponiblesResponse">
+    <part name="parameters" element="tns:obtenerCantEntradasDisponiblesResponse" />
   </message>
   <portType name="EventoWS">
     <operation name="eliminarFuncionesDeEvento">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoRequest" message="tns:eliminarFuncionesDeEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoResponse" message="tns:eliminarFuncionesDeEventoResponse" />
+    </operation>
+    <operation name="listarEventoPorDistrito">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
     </operation>
     <operation name="buscarEventosPorFechas">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasRequest" message="tns:buscarEventosPorFechas" />
@@ -88,17 +92,13 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest" message="tns:listarFuncionesDeEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse" message="tns:listarFuncionesDeEventoResponse" />
     </operation>
-    <operation name="listarEventoPorDistrito">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest" message="tns:listarEventoPorDistrito" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse" message="tns:listarEventoPorDistritoResponse" />
+    <operation name="listarEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
     </operation>
-    <operation name="obtenerCantEntradasDisponibles">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest" message="tns:obtenerCantEntradasDisponibles" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse" message="tns:obtenerCantEntradasDisponiblesResponse" />
-    </operation>
-    <operation name="eliminarLogico">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
+    <operation name="insertarEvento">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
     </operation>
     <operation name="buscarEventoPorID">
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDRequest" message="tns:buscarEventoPorID" />
@@ -108,18 +108,27 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoRequest" message="tns:actualizarEvento" />
       <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoResponse" message="tns:actualizarEventoResponse" />
     </operation>
-    <operation name="insertarEvento">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/insertarEventoRequest" message="tns:insertarEvento" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/insertarEventoResponse" message="tns:insertarEventoResponse" />
+    <operation name="eliminarLogico">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoRequest" message="tns:eliminarLogico" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoResponse" message="tns:eliminarLogicoResponse" />
     </operation>
-    <operation name="listarEvento">
-      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest" message="tns:listarEvento" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse" message="tns:listarEventoResponse" />
+    <operation name="obtenerCantEntradasDisponibles">
+      <input wsam:Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest" message="tns:obtenerCantEntradasDisponibles" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse" message="tns:obtenerCantEntradasDisponiblesResponse" />
     </operation>
   </portType>
   <binding name="EventoWSPortBinding" type="tns:EventoWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="eliminarFuncionesDeEvento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEventoPorDistrito">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -155,7 +164,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEventoPorDistrito">
+    <operation name="listarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -164,16 +173,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerCantEntradasDisponibles">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="eliminarLogico">
+    <operation name="insertarEvento">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -200,7 +200,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarEvento">
+    <operation name="eliminarLogico">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -209,7 +209,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarEvento">
+    <operation name="obtenerCantEntradasDisponibles">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

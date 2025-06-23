@@ -11,9 +11,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
     public partial class ListaReservasAdministrador : System.Web.UI.Page
     {
         private const int ReservasPorPagina = 20;
-        private List<reservaDTO> Reservas
+        private List<constanciaReserva> Reservas
         {
-            get => ViewState["Reservas"] as List<reservaDTO> ?? new List<reservaDTO>();
+            get => ViewState["Reservas"] as List<constanciaReserva> ?? new List<constanciaReserva>();
             set => ViewState["Reservas"] = value;
         }
 
@@ -110,7 +110,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             try
             {
-                List<reservaDTO> filtradas = new List<reservaDTO>();
+                List<constanciaReserva> filtradas = new List<constanciaReserva>();
                 if (filtro == "fecha" && !string.IsNullOrWhiteSpace(txtFecha.Text))
                 {
                     if (DateTime.TryParseExact(txtFecha.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
@@ -127,7 +127,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 else
                 {
                     var todas = client.listarTodasReservas().ToList();
-                    filtradas = activo ? todas.Where(r => (char)r.activo == 'A').ToList() : todas;
+                    filtradas = activo ? todas.Where(r => (char)r.detalleEntrada.activo == 'A').ToList() : todas;
                 }
 
                 Reservas = filtradas;
@@ -136,7 +136,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             }
             catch
             {
-                Reservas = new List<reservaDTO>();
+                Reservas = new List<constanciaReserva>();
                 CargarPagina();
             }
         }
@@ -153,11 +153,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 if (!string.IsNullOrEmpty(textoBusqueda))
                 {
                     listadoActual = listadoActual.Where(r =>
-                        ("#" + r.codigo.ToString("D3")).ToLower().Contains(textoBusqueda) ||
-                        r.fecha.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
-                        (r.distrito?.ToLower().Contains(textoBusqueda) ?? false) ||
-                        (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||
-                        (r.correo?.ToLower().Contains(textoBusqueda) ?? false)
+                        ("#" + r.detalleEntrada.numReserva.ToString("D3")).ToLower().Contains(textoBusqueda) ||
+                        r.detalleEntrada.fecha.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
+                        (r.detalleEntrada.nombreDistrito?.ToLower().Contains(textoBusqueda) ?? false) ||
+                        (r.detalleEntrada.nombreEspacio?.ToLower().Contains(textoBusqueda) ?? false) ||
+                        (r.detalleComprador.comprador.correo?.ToLower().Contains(textoBusqueda) ?? false)
                     ).ToList();
                 }
                 else
@@ -171,7 +171,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             }
             catch
             {
-                Reservas = new List<reservaDTO>();
+                Reservas = new List<constanciaReserva>();
                 CargarPagina();
             }
         }
