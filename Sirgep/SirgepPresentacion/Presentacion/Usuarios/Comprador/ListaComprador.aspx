@@ -27,7 +27,7 @@
             <asp:BoundField DataField="tipoDocumento" HeaderText="Tipo Documento" />
             <asp:BoundField DataField="numeroDocumento" HeaderText="N° Documento" />
             <asp:BoundField DataField="correo" HeaderText="Correo" />
-            <asp:BoundField DataField="UltimaCompra" HeaderText="Última Compra" />
+            <asp:BoundField DataField="fechaUltimaCompra" HeaderText="Última Compra" />
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
                     <asp:Button ID="btnEliminar" runat="server" CssClass='<%# (bool)Eval("PuedeEliminar") ? "btn btn-danger btn-sm fw-bold" : "btn btn-danger btn-sm fw-bold disabled opacity-50" %>'

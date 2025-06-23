@@ -44,21 +44,11 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
                 )
                 .Select(c =>
                 {
-                    var requestUltimaCompra = new obtenerUltimaCompraPorDocumentoRequest();
-                    requestUltimaCompra.numeroDocumento = c.numeroDocumento;
-
-                    var responseUltimaCompra = compradorWS.obtenerUltimaCompraPorDocumento(requestUltimaCompra);
-                    string fechaUltimaCompraStr = responseUltimaCompra.@return;
-
                     DateTime? fechaUltimaCompra = null;
-                    if (DateTime.TryParse(fechaUltimaCompraStr, out DateTime fecha))
+                    if (DateTime.TryParse(c.fechaUltimaCompra, out DateTime fecha))
                         fechaUltimaCompra = fecha;
 
                     bool puedeEliminar = PuedeEliminar(fechaUltimaCompra);
-
-                    string ultimaCompraStr = fechaUltimaCompra.HasValue
-                    ? fechaUltimaCompra.Value.ToString("yyyy-MM-dd")
-                    : "No ha comprado aún";
 
                     return new
                     {
@@ -69,7 +59,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
                         c.tipoDocumento,
                         c.numeroDocumento,
                         c.correo,
-                        UltimaCompra = ultimaCompraStr,
+                        fechaUltimaCompra = c.fechaUltimaCompra ?? "No ha comprado aún",
                         PuedeEliminar = puedeEliminar
                     };
                 })
@@ -113,7 +103,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             //Recargar la lista
             CargarUsuarios();
         }
-
+        
 
     }
 }
