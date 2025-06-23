@@ -37,7 +37,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 PaginaActual = 1;
                 CargarEntradas();
-                
             }
         }
         public void CargarEntradas()
@@ -62,7 +61,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             string texto = txtBusqueda.Text;
-            if (texto == "")
+            if (texto == "" || texto==null)
             {
                 CargarEntradas();
                 return;
@@ -93,7 +92,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 CargarEntradas();
             }
         }
-
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             PaginaActual++;
@@ -108,7 +106,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             ";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalExito", script, true);
         }
-
         public void mostrarModalErrorEntrada(string titulo, string mensaje)
         {
             string script = $@"
@@ -118,13 +115,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             ";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);
         }
-
         public void mostrarModalConfEntrada()
         {
             string script = "mostrarModalConfEntrada();";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModal", script, true);
         }
-
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             string commandArg = ((Button)sender).CommandArgument;
@@ -136,12 +131,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             hdnEntrada.Value = idEntrada;
             mostrarModalConfEntrada(); // Confirmación real de eliminación
         }
-
         protected void btnProbarModal_Click(object sender, EventArgs e)
         {
             mostrarModalExitoEntrada("Éxito", "El modal se está mostrando correctamente.");
         }
-
         protected void rptEntradas_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
