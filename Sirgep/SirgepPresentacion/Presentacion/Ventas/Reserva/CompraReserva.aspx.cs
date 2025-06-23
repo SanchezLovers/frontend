@@ -98,12 +98,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
 
-            // ---------- Datos que necesitas ----------
-            int cantidad = 2;
+            //int cantidad = 1;
 
-
-            double precio = espacioService.buscarEspacio(1).precioReserva;
-            double totalAPagar = precio * cantidad;
+            int idEspacio = int.Parse(Request.QueryString["idEspacio"]);
+            double totalAPagar = double.Parse(LblTotalReserva.Text);
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
@@ -177,7 +175,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             reserva nuevaReserva = new reserva
             {
                 // Campos heredados de constancia
-                fecha = DateTime.Now,
+                fecha = DateTime.Now, //fecha pago
                 fechaSpecified = true,
                 metodoPago = mp,
                 metodoPagoSpecified = true,
@@ -217,7 +215,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     idPersona = identificadorPersona, // Usar el ID del comprador existente o nuevo
 
                 }, // el objeto comprador
-                espacio = espacioService.buscarEspacio(1)        // el objeto espacio
+                espacio = espacioService.buscarEspacio(idEspacio)        // el objeto espacio
             };
 
             //int idReserva = reservaService.insertarReserva(nuevaReserva);
