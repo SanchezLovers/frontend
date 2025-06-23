@@ -401,6 +401,123 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 // Mensaje de éxito
                 mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente.");
                 CargarEspacios();
+                string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
+                string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
+                string contenido = $@"
+                    <html>
+                    <head>
+                      <style>
+                        body {{
+                          font-family: 'Segoe UI', sans-serif;
+                          background-color: #f8f9fa;
+                          margin: 0;
+                          padding: 0;
+                        }}
+                        .container {{
+                          max-width: 600px;
+                          margin: 20px auto;
+                          background-color: #fff;
+                          border: 1px solid #dee2e6;
+                          border-radius: 8px;
+                          padding: 30px;
+                          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                        }}
+                        .header {{
+                          background-color: #f10909;
+                          color: white;
+                          padding: 15px;
+                          border-radius: 6px 6px 0 0;
+                          text-align: center;
+                        }}
+                        .header h2 {{
+                          margin: 0;
+                          font-size: 22px;
+                          color: white;
+                        }}
+                        .body {{
+                          color: #212529;
+                          padding: 20px 0;
+                          font-size: 16px;
+                        }}
+                        .details {{
+                          background-color: #f1f3f5;
+                          border-radius: 6px;
+                          padding: 15px;
+                          margin-bottom: 20px;
+                          list-style: none;
+                        }}
+                        .details li {{
+                          margin-bottom: 10px;
+                          font-size: 15px;
+                        }}
+                        .details li strong {{
+                          color: #000;
+                          font-weight: bold;
+                        }}
+                        .cta {{
+                          display: inline-block;
+                          background-color: #f10909;
+                          color: #fff !important;
+                          padding: 10px 20px;
+                          border-radius: 5px;
+                          text-decoration: none;
+                          font-weight: bold;
+                          margin-top: 10px;
+                        }}
+                        .cta:hover {{
+                          background-color: #c40808;
+                        }}
+                        .logo {{
+                          text-align: center;
+                          margin-top: 20px;
+                        }}
+                        .logo img {{
+                          width: 100px;
+                        }}
+                        .footer {{
+                          text-align: center;
+                          font-size: 12px;
+                          color: #6c757d;
+                          margin-top: 20px;
+                        }}
+                      </style>
+                    </head>
+                    <body>
+                      <div class='container'>
+                        <div class='header'>
+                          <h2>¡Nuevo espacio en tu distrito favorito {nombreDistrito}!</h2>
+                        </div>
+                        <div class='body'>
+                          <p>Estimado usuario,</p>
+                          <p>Nos complace informarte que se ha registrado un nuevo espacio disponible en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
+                          <ul class='details'>
+                            <li><strong>📌 Nombre:</strong> {espacioInsertar.nombre}</li>
+                            <li><strong>🏷 Tipo:</strong> {espacioInsertar.tipoEspacio}</li>
+                            <li><strong>📍 Ubicación:</strong> {espacioInsertar.ubicacion}</li>
+                            <li><strong>📐 Superficie:</strong> {espacioInsertar.superficie} m²</li>
+                            <li><strong>💵 Precio de Reserva:</strong> S/ {espacioInsertar.precioReserva}</li>
+                            <li><strong>⏰ Horario de Atención:</strong> {espacioInsertar.horarioInicioAtencion} - {espacioInsertar.horarioFinAtencion}</li>
+                          </ul>
+                          <p>Si estás interesado, te invitamos a revisar más detalles o reservar tu espacio.</p>
+                          <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+                        </div>
+                        <div class='logo'>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
+                        </div>
+                        <div class='footer'>
+                          Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
+                          © 2025 Gobierno Regional de Lima
+                        </div>
+                      </div>
+                    </body>
+                    </html>";
+                bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
+                if (resultado)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
+                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
+                        "}, 1000);", true);
+                }
             }
             else
             {
