@@ -27,15 +27,15 @@
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
                     <ItemTemplate>
-                        <a href='<%# "ConstanciaReserva.aspx?numReserva=" + Eval("codigo") %>'>
+                        <a href='<%# "ConstanciaReserva.aspx?numReserva=" + Eval("numReserva") %>'>
                             <img src="/Images/icons/open-link.png" alt="Abrir" class="icono-abrir" />
                         </a>
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <asp:TemplateField HeaderText="Código">
+                <asp:TemplateField HeaderText="#Reserva">
                     <ItemTemplate>
-                        <%# "#" + Convert.ToInt32(Eval("codigo")).ToString("D3") %>
+                        <%# "#" + Convert.ToInt32(Eval("numReserva")).ToString("D3") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />

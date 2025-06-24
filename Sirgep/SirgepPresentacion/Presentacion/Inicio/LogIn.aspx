@@ -52,7 +52,7 @@
                     <small class="d-block mt-2 text-muted">*Campo Requerido</small>
 
                     <div class="text-center mt-3">
-                        ¿No tienes una cuenta? <a href="#" class="text-decoration-none">Regístrese</a>
+                        ¿No tienes una cuenta? <a href="SignIn.aspx" class="text-decoration-none">Regístrese</a>
                     </div>
                 </div>
                 </divv>
