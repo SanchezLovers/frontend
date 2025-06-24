@@ -15,67 +15,70 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Administrador
 {
     public partial class CalendarioReservas : System.Web.UI.Page
     {
+        public ReservaWSClient reservaWS = new ReservaWSClient();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["action"] == "getReservas")
+            int mes, anio;
+            if (!IsPostBack)
             {
-                CargarReservasJson();
+                // Lee mes y año de la URL o usa el actual
+                if (!int.TryParse(Request.QueryString["mes"], out mes))
+                    mes = DateTime.Now.Month;
+                if (!int.TryParse(Request.QueryString["anio"], out anio))
+                    anio = DateTime.Now.Year;
+
+                hdnMes.Value = mes.ToString();
+                hdnAnio.Value = anio.ToString();
+
+                CargarReservasJson(mes, anio);
+            }
+        }
+
+
+
+        private void CargarReservasJson(int mes, int anio)
+        {
+            reserva[] reservas = reservaWS.listarPorMesYAnio(mes, anio);
+
+            if (reservas == null || reservas.Length == 0)
+            {
+                lblSinReservas.Visible = true;
+                btnExportarPDF.Enabled = false;
+                btnExportarExcel.Enabled = false;
+                hdnReservasJson.Value = "[]";
                 return;
             }
 
-            if (!IsPostBack)
+            lblSinReservas.Visible = false;
+            btnExportarPDF.Enabled = true;
+            btnExportarExcel.Enabled = true;
+
+            Session["ReservasCalendario"] = reservas;
+
+            var eventos = reservas.Select(r => new
             {
-                // Cargar reservas una sola vez al entrar a la página
-                var reservas = new ReservaWSClient().listarReservas();
-                Session["ReservasCalendario"] = reservas;
-
-                // Habilitar los botones de exportar solo si hay datos
-                btnExportarPDF.Enabled = reservas != null && reservas.Length > 0;
-                btnExportarExcel.Enabled = reservas != null && reservas.Length > 0;
-            }
-        }
-
-        private void CargarReservasJson()
-        {
-            Response.Clear();
-            Response.ContentType = "application/json";
-
-            var reservas = Session["ReservasCalendario"] as reserva[];
-            if (reservas == null)
-            {
-                reservas = new ReservaWSClient().listarReservas(); //Solo se listan activos
-                Session["ReservasCalendario"] = reservas;
-            }
-
-
-            var eventos = new List<object>();
-            foreach (var r in reservas)
-            {
-                eventos.Add(new
+                title = $"{r.espacio?.nombre} - {r.persona?.nombres} {r.persona?.primerApellido} {r.persona?.segundoApellido}",
+                start = r.fechaReserva.ToString("yyyy-MM-dd") + "T" + r.iniString.PadLeft(5, '0'),
+                end = r.fechaReserva.ToString("yyyy-MM-dd") + "T" + r.finString.PadLeft(5, '0'),
+                extendedProps = new
                 {
-                    title = $"{r.espacio?.nombre} - {r.persona?.nombres} {r.persona?.primerApellido + ' ' + r.persona?.segundoApellido}",
-                    start = r.fechaReserva.ToString("yyyy-MM-dd") + "T" + r.iniString,
-                    end = r.fechaReserva.ToString("yyyy-MM-dd") + "T" + r.finString,
-                    extendedProps = new
-                    {
-                        numReserva = r.numReserva,
-                        espacio = r.espacio?.nombre,
-                        fecha = r.fechaReserva.ToString("yyyy-MM-dd"),
-                        horaInicio = r.iniString,
-                        horaFin = r.finString,
-                        nombres = r.persona?.nombres,
-                        apellidos = r.persona?.primerApellido + " " + r.persona?.segundoApellido,
-                        tipoDocumento = r.persona?.tipoDocumento.ToString(),
-                        numDocumento = r.persona?.numDocumento
-                    }
-                });
-            }
+                    numReserva = r.numReserva,
+                    espacio = r.espacio?.nombre,
+                    fecha = r.fechaReserva.ToString("yyyy-MM-dd"),
+                    horaInicio = r.iniString,
+                    horaFin = r.finString,
+                    nombres = r.persona?.nombres,
+                    apellidos = $"{r.persona?.primerApellido} {r.persona?.segundoApellido}",
+                    tipoDoc = r.persona?.tipoDocumento.ToString(),
+                    numDoc = r.persona?.numDocumento
+                }
+            }).ToList();
 
-
-            var serializer = new JavaScriptSerializer();
-            Response.Write(serializer.Serialize(eventos));
-            Response.End();
+            var jsSerializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            hdnReservasJson.Value = jsSerializer.Serialize(eventos);
         }
+
+
 
         protected void btnExportarPDF_Click(object sender, EventArgs e)
         {
@@ -127,7 +130,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Administrador
 
             using (MemoryStream ms = new MemoryStream())
             {
-                Document pdfDoc = new Document(PageSize.A4, 30, 30, 30, 30);
+                Document pdfDoc = new Document(PageSize.A4.Rotate(), 30, 30, 30, 30);
                 PdfWriter writer = PdfWriter.GetInstance(pdfDoc, ms);
                 pdfDoc.Open();
                 using (StringReader stringReader = new StringReader(paginaHTML_Texto))

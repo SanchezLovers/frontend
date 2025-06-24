@@ -1,18 +1,11 @@
-
-﻿using System;
+using System;
 using System.IO;
-
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using SirgepPresentacion.ReferenciaDisco;
-
-
 using System.Text;
 using System.Text.RegularExpressions;
-
-
-
 
 namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 {
@@ -22,10 +15,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                //int idConstancia = 1;
+                //int idConstancia = 2;
                 int idConstancia = int.Parse(Request.QueryString["idConstancia"]);
                 CargarDatosEnPantalla(idConstancia);
             }
@@ -41,9 +35,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             //lblReferencias.Text = constanciaEntradaDTO.detalleEntrada.referencia;
             lblDistrito.Text = constanciaEntradaDTO.detalleEntrada.nombreDistrito;
             // Datos de la funcion
+<<<<<<< HEAD
             lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fechaFuncion.ToString();
             lblHoraInicio.Text = constanciaEntradaDTO.detalleEntrada.horaInicio.ToString();
             lblHoraFin.Text = constanciaEntradaDTO.detalleEntrada.horaFin.ToString();
+=======
+            lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fecha.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = constanciaEntradaDTO.detalleEntrada.horaInicio.ToString("HH:mm");
+            lblHoraFin.Text = constanciaEntradaDTO.detalleEntrada.horaFin.ToString("HH:mm");
+>>>>>>> dev
             //Datos del comprador
             lblNombres.Text = constanciaEntradaDTO.nombresComprador;
             lblApellidos.Text = constanciaEntradaDTO.apellidosComprador;
@@ -51,7 +51,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             lblTNumDocumento.Text = constanciaEntradaDTO.numDocumento.ToString();
             lblCorreo.Text = constanciaEntradaDTO.correo;
             // Datos de la constancia del pago
-            lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            lblFechaConstancia.Text = constanciaEntradaDTO.fecha.ToString("dd/MM/yyyy");
             lblMetodoPago.Text = constanciaEntradaDTO.metodoPago.ToString();
             lblDetallePago.Text = constanciaEntradaDTO.detallePago.ToString();
             //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");

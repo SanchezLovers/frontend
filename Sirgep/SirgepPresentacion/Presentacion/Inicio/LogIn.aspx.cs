@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Inicio
@@ -42,15 +43,15 @@ namespace SirgepPresentacion.Presentacion.Inicio
                     ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalError", script, true);
                     break;
                 case 1:
-                    // Usuario es administrador
                     Session["tipoUsuario"] = "administrador";
                     Session["idUsuario"] = id;
+                    Session["nombreUsuario"] = personaWS.obtenerNombreUsuario(id);
                     Response.Redirect("/Presentacion/Inicio/PrincipalAdministrador.aspx");
                     break;
                 case 2:
-                    // Usuario es cliente
                     Session["tipoUsuario"] = "comprador";
                     Session["idUsuario"] = id;
+                    Session["nombreUsuario"] = personaWS.obtenerNombreUsuario(id);
                     Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
                 case -1:
@@ -65,5 +66,31 @@ namespace SirgepPresentacion.Presentacion.Inicio
                     break;
             }
         }
+
+        private void setNombreMenu(int id, string controlId)
+        {
+            string nombre = personaWS.obtenerNombreUsuario(id);
+            HtmlAnchor menuAnchor = (HtmlAnchor)BuscarControlRecursive(Master, controlId);
+
+
+            if (menuAnchor != null)
+            {
+                menuAnchor.InnerText = string.IsNullOrEmpty(nombre) ? "Usuario" : nombre;
+            }
+        }
+        private Control BuscarControlRecursive(Control raiz, string id)
+        {
+            if (raiz.ID == id)
+                return raiz;
+
+            foreach (Control ctrl in raiz.Controls)
+            {
+                Control encontrado = BuscarControlRecursive(ctrl, id);
+                if (encontrado != null)
+                    return encontrado;
+            }
+            return null;
+        }
+
     }
 }

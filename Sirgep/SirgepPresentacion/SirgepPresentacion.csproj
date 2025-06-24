@@ -126,6 +126,10 @@
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS2.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
     <None Include="Connected Services\ReferenciaDisco\configuration91.svcinfo" />
     <None Include="Connected Services\ReferenciaDisco\configuration.svcinfo" />
@@ -2253,8 +2257,10 @@
     <Content Include="Presentacion\Inicio\LogIn.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
+    <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
+    <Content Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
@@ -2337,6 +2343,13 @@
     <Compile Include="Presentacion\Inicio\PrincipalInvitado.aspx.designer.cs">
       <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Presentacion\Inicio\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx.cs">
       <DependentUpon>EligeDistrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2350,6 +2363,13 @@
     </Compile>
     <Compile Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx.designer.cs">
       <DependentUpon>CalendarioReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.cs">
+      <DependentUpon>ListaComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.designer.cs">
+      <DependentUpon>ListaComprador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx.cs">
       <DependentUpon>PerfilComprador.aspx</DependentUpon>
@@ -2595,6 +2615,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.calificarServicioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.cancelarReservaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.comprador.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2602,6 +2625,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearCuentaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse.datasource">
@@ -2650,6 +2676,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEspacioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacio.datasource">
@@ -2742,6 +2771,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarHorariosDelEspacioYDiaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarPorMesYAnioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2775,19 +2807,29 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCorreoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.cancelarReservaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.compradorDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eliminarUsuarioCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarCompradoresDTOResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.obtenerNombreUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

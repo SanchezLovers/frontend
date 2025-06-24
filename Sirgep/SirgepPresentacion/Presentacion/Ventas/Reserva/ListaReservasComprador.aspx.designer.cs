@@ -24,6 +24,24 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected global::System.Web.UI.WebControls.Button btnDescargarMostrarModal;
 
         /// <summary>
+        /// Control hdnReservaAEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnReservaAEliminar;
+
+        /// <summary>
+        /// Control hdnFechaEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFechaEliminar;
+
+        /// <summary>
         /// Control GvListaReservasComprador.
         /// </summary>
         /// <remarks>
@@ -31,5 +49,23 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GvListaReservasComprador;
+
+        /// <summary>
+        /// Control modalConfirmacionCuerpo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label modalConfirmacionCuerpo;
+
+        /// <summary>
+        /// Control btnConfirmarAccion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarAccion;
     }
 }

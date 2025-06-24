@@ -20,15 +20,16 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void CargarDatos()
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             GvListaEntradasComprador.DataSource = entradaWS.listarDetalleEntradasPorComprador(idComprador);
             detalleEntradaDTO detalleEntradaDTO = new detalleEntradaDTO();
-
             GvListaEntradasComprador.DataBind();
         }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             entradaWS.crearLibroExcelEntradas(idComprador);
         }
 

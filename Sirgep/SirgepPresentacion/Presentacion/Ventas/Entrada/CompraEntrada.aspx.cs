@@ -1,7 +1,9 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
+﻿using DocumentFormat.OpenXml.Math;
+using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,13 +27,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
             if (!IsPostBack)
             {
                 //if (Request.QueryString["idEvento"] != null)
                 //{
                 //int idEntrada = int.Parse((sender as Button).CommandArgument);
 
-                   
                 //int idFuncion = 1; // Simular ID elegido
                 int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
                 var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
@@ -53,7 +56,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 string fecha = funcion.fecha.ToString();
                 string horaIni = funcion.horaInicio.ToString();
                 string horaFin = funcion.horaFin.ToString();
-                string cantidad = "1"; //siempre es 1
+                string cantidad = "1"; //siempre se compra 1 entrada
 
 
                 lblHorario.Text = $"{horaIni} - {horaFin}";
@@ -70,14 +73,52 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 //}
             }
         }
+        protected void documentoNoValido(object sender, EventArgs e)
+        {
+            string tipo = ddlTipoDocumento.SelectedValue;
+            string numero = txtDNI.Text.Trim();
+            string script = "";
+            bool v;
+            switch (tipo)
+            {
+                case "DNI":
+                    if (!(numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$")))
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el DNI debe tener exactamente 8 dígitos numéricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
 
+                case "CARNETEXTRANJERIA":
+                    v = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
+                    if (!v)
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
+                case "PASAPORTE":
+                    v = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
+                    if (!v)
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','El número de pasaporte debe tener entre 8 y 12 dígitos alfanuméricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
+                default:
+                    script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','Elija un tipo de documento.'); }, 300);";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    break;
+            }
+
+        }
         protected void btnPagar_Click(object sender, EventArgs e)
         {
             // Validar campos obligatorios
             //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
+                //string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
@@ -86,6 +127,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 return;
 
             }
+            documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -94,8 +136,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
-
-
 
 
 
@@ -121,13 +161,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),
+                    //segundoApellido = txtApellidoMaterno.Text.Trim(),
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
                     tipoDocumentoSpecified = true,
-                    registrado = 0,
+                    registrado = 0, //se guarda un comprador no registrado
                 };
+                if (txtApellidoMaterno.Text.Length > 0) nuevo.segundoApellido = txtApellidoMaterno.Text.Trim();
                 idPersona1 = compraService.insertarComprador(nuevo);
                 //idPersona1 = nuevo.idPersona; // Obtener el ID del nuevo comprador
             }
@@ -137,8 +178,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 compraService.actualizarComprador(compradorExistente);
                 idPersona1 = compradorExistente.idPersona;
             }
-
-
 
 
 
@@ -156,12 +195,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             }
             //int idFuncion = 1; // Simular ID elegido
             int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
-            var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
+            var funcion = fWs.buscarFuncionId(idFuncion); // bsuscar función
             evento evento = compraService.buscarEventos(funcion.evento.idEvento);
             int numE = evento.cantEntradasVendidas+1;
             evento.cantEntradasVendidas= numE;
+
             // Actualizar el evento con la nueva cantidad de entradas vendidas
-            //evento.canti
             eventoWS.actualizarEvento(evento);
             // ---------- Insertar constancia ----------
 
@@ -193,5 +232,42 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
             Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
+
+        protected void cvDocumento_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+            string tipo = ddlTipoDocumento.SelectedValue;
+            string numero = txtDNI.Text.Trim();
+            string mensaje = "";
+
+            switch (tipo)
+            {
+                case "DNI":
+                    args.IsValid = numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$");
+                    if (!args.IsValid) mensaje = "El DNI debe tener exactamente 8 dígitos numéricos.";
+                    break;
+
+                case "CARNETEXTRANJERIA":
+                    args.IsValid = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
+                    if (!args.IsValid) mensaje = "El Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.";
+                    break;
+
+                case "PASAPORTE":
+                    args.IsValid = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
+                    if (!args.IsValid) mensaje = "El Pasaporte debe tener entre 8 y 12 caracteres alfanuméricos (sin símbolos).";
+                    break;
+
+                default:
+                    args.IsValid = false;
+                    mensaje = "Seleccione un tipo de documento válido.";
+                    break;
+            }
+
+            ((CustomValidator)source).ErrorMessage = mensaje;
+        }
+
+
     }
+
 }

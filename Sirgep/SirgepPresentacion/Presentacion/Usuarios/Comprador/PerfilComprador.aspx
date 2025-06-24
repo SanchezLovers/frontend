@@ -34,24 +34,26 @@
         </div>
         <!-- DATOS DE UBICACION-->
         <div class="card mb-3">
-            <div class="card-header modal-header-rojo text-white">Datos de Ubicacion</div>
+            <div class="card-header modal-header-rojo text-white">Datos de Ubicación</div>
             <div class="card-body row g-3">
-                <div class="col-12 col-md-4">
-                    <strong>Departamento:</strong> <asp:Label ID="lblDepartamento" runat="server" CssClass="ms-2" />
+                <!-- Departamento -->
+                <div class="col-12 col-md-4 d-flex align-items-center">
+                    <strong>Departamento:</strong>
+                    <asp:Label ID="lblDepartamento" runat="server" CssClass="ms-2" />
                 </div>
-                <div class="col-12 col-md-4">
-                    <strong>Provincia:</strong> <asp:Label ID="lblProvincia" runat="server" CssClass="ms-2" />
+                <!-- Provincia -->
+                <div class="col-12 col-md-4 d-flex align-items-center">
+                    <strong>Provincia:</strong>
+                    <asp:Label ID="lblProvincia" runat="server" CssClass="ms-2" />
                 </div>
-    <div class="col-12 col-md-4">
-        <strong>Distrito:</strong><br />
-        <asp:TextBox ID="txtDistrito" runat="server"
-            CssClass="form-control form-control-sm text-dark mb-2" />
-
-        <asp:Button ID="btnGuardarDistrito" runat="server"
-            Text="Guardar"
-            CssClass="btn btn-dark btn-sm"
-            OnClick="btnGuardarDistrito_Click" />
-    </div>
+                <!-- Distrito -->
+                <div class="col-12 col-md-4">
+                    <div class="d-flex align-items-center gap-2">
+                        <strong>Distrito:</strong>
+                        <asp:TextBox ID="txtDistrito" runat="server" CssClass="form-control form-control-sm text-dark" Style="width: 120px;" />
+                        <asp:Button ID="btnGuardarDistrito" runat="server" Text="Actualizar" CssClass="btn btn-dark btn-sm" OnClick="btnGuardarDistrito_Click" />
+                    </div>
+                </div>
             </div>
         </div>
         <!-- DATOS DE CUENTA-->
@@ -67,5 +69,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>

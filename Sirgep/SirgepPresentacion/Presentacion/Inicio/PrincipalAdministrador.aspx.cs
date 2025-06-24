@@ -35,5 +35,12 @@ namespace SirgepPresentacion.Presentacion.Inicio
             //ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
             Response.Redirect("/Presentacion/Ventas/Entrada/ListaEntradasAdministrador.aspx"); 
         }
+
+        protected void btnAdministrarCompradores_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Presentacion/Usuarios/Comprador/ListaComprador.aspx");
+        }
+
+
     }
 }
