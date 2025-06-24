@@ -153,7 +153,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 if (!string.IsNullOrEmpty(textoBusqueda))
                 {
                     listadoActual = listadoActual.Where(r =>
-                        ("#" + r.codigo.ToString("D3")).ToLower().Contains(textoBusqueda) ||
+                        ("#" + r.numReserva.ToString("D3")).ToLower().Contains(textoBusqueda) ||
                         r.fecha.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
                         (r.distrito?.ToLower().Contains(textoBusqueda) ?? false) ||
                         (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||

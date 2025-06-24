@@ -2256,6 +2256,7 @@
     <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
+    <Content Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\ConstanciaEntrada.aspx" />
@@ -2357,6 +2358,13 @@
     </Compile>
     <Compile Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx.designer.cs">
       <DependentUpon>CalendarioReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.cs">
+      <DependentUpon>ListaComprador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.designer.cs">
+      <DependentUpon>ListaComprador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx.cs">
       <DependentUpon>PerfilComprador.aspx</DependentUpon>
@@ -2794,6 +2802,15 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.compradorDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eliminarUsuarioCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarCompradoresDTOResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

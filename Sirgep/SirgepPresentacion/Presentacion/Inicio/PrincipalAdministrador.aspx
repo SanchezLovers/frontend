@@ -27,6 +27,19 @@
                         <asp:Button ID="btnConsultarEntradas" runat="server" CssClass="btn btn-dark w-100" Text="Consultar Entradas" OnClick="btnConsultarEntradas_Click" />
                     </div>
                 </div>
+
+                <h5 class="fw-semibold mb-3">Gestionar Cuentas de Compradores</h5>
+                <div class="row mb-4">
+                    <div class="col-6 mb-2">
+                        <asp:Button ID="btnAdministrarCompradores" runat="server"
+                            CssClass="btn btn-dark w-100"
+                            Text="Administrar Compradores"
+                            OnClick="btnAdministrarCompradores_Click" />
+                    </div>
+                </div>
+
+
+
             </div>
             <!-- Columna derecha: imagen -->
             <div class="col-md-6 d-flex justify-content-center align-items-start">
