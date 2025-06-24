@@ -45,9 +45,9 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
                 int idComprador = 3;
                 //int idComprador = int.Parse(Session["idUsuario"].ToString());
                 bool resultado = compradorWS.actualizarDistritoFavoritoPorIdComprador(nuevoDistrito, idComprador);
+                cargarPerfil();
                 if (resultado)
                 {
-                    cargarPerfil();
                     nuevoDistrito = txtDistrito.Text.Trim();
                     nuevoDistrito = nuevoDistrito.Replace("'", "\\'");
                     TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
