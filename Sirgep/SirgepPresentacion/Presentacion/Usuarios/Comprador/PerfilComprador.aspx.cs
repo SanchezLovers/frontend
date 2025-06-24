@@ -21,15 +21,15 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
         }
         protected void cargarPerfil()
         {
-            //int idComprador = int.Parse(Request.QueryString["NumEntrada"]);
-            int idComprador = 2;
+            //int idComprador = 3;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
             detalleComprador detalleCompradorDTO = compradorWS.buscarDetalleCompradorPorId(idComprador);
             lblNombres.Text = detalleCompradorDTO.nombres;
             lblPrimerApellido.Text = detalleCompradorDTO.primerApellido;
             lblSegundoApellido.Text = detalleCompradorDTO.segundoApellido;
             lblTipoDocumento.Text = detalleCompradorDTO.tipoDocumento;
             lblNumeroDocumento.Text = detalleCompradorDTO.numeroDocumento;
-            lblMontoBilletera.Text = detalleCompradorDTO.montoBilletera.ToString();
+            lblMontoBilletera.Text = "S/. " + detalleCompradorDTO.montoBilletera.ToString();
             lblDepartamento.Text = detalleCompradorDTO.departamentoFavorito;
             lblProvincia.Text = detalleCompradorDTO.provinciaFavorita;
             txtDistrito.Text = detalleCompradorDTO.distritoFavorito.ToUpper();
@@ -41,11 +41,13 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             string nuevoDistrito = txtDistrito.Text.ToUpper();
             if (!string.IsNullOrEmpty(nuevoDistrito))
             {
-                int idComprador = 2;
-                bool resultado=compradorWS.actualizarDistritoFavoritoPorIdComprador(nuevoDistrito, idComprador);
+                //int idComprador = 3;
+                int idComprador = int.Parse(Session["idUsuario"].ToString());
+                bool resultado = compradorWS.actualizarDistritoFavoritoPorIdComprador(nuevoDistrito, idComprador);
                 if (resultado)
                 {
-                    txtDistrito.Text = txtDistrito.Text.ToUpper();
+                    cargarPerfil();
+                    //txtDistrito.Text = txtDistrito.Text.ToUpper();
                 }
                 else
                 {

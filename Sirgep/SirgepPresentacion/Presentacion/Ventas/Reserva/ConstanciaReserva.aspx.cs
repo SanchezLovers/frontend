@@ -17,7 +17,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 reservaWS = new ReservaWSClient();
-                //int idConstancia = 2;
+                //int idConstancia = 1;
                 int idConstancia = int.Parse(Request.QueryString["idConstancia"]);
                 CargarDatosEnPantalla(idConstancia);
             }
@@ -40,8 +40,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             // Datos de la Reserva
             lblNumReserva.Text = constanciaReservaDTO.detalleReserva.numReserva.ToString();
             lblFechaReserva.Text = constanciaReservaDTO.detalleReserva.fecha.ToString("dd/MM/yyyy");
-            lblHoraInicio.Text = constanciaReservaDTO.detalleReserva.horaInicio.ToString("hh:mm:ss");
-            lblHoraFin.Text = constanciaReservaDTO.detalleReserva.horaFin.ToString("hh:mm:ss");
+            lblHoraInicio.Text = constanciaReservaDTO.detalleReserva.horaInicio.ToString("HH:mm");
+            lblHoraFin.Text = constanciaReservaDTO.detalleReserva.horaFin.ToString("HH:mm");
             //Datos del comprador
             lblNombres.Text = constanciaReservaDTO.nombresComprador;
             lblApellidos.Text = constanciaReservaDTO.apellidosComprador;
@@ -50,10 +50,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             lblCorreo.Text = constanciaReservaDTO.correo;
             // Datos de la constancia del pago
             lblFechaConstancia.Text = constanciaReservaDTO.fecha.ToString("dd/MM/yyyy");
-            //lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
             lblMetodoPago.Text = constanciaReservaDTO.metodoPago;
             lblDetallePago.Text = constanciaReservaDTO.detallePago;
-            //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
             lblTotal.Text = "S/. " + constanciaReservaDTO.monto.ToString();
         }
 
