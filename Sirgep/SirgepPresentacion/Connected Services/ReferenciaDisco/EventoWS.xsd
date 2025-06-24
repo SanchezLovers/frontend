@@ -12,6 +12,8 @@
   <xs:element name="eliminarFuncionesDeEventoResponse" type="tns:eliminarFuncionesDeEventoResponse" />
   <xs:element name="eliminarLogico" type="tns:eliminarLogico" />
   <xs:element name="eliminarLogicoResponse" type="tns:eliminarLogicoResponse" />
+  <xs:element name="enviarCorreosCompradoresPorDistritoDeEvento" type="tns:enviarCorreosCompradoresPorDistritoDeEvento" />
+  <xs:element name="enviarCorreosCompradoresPorDistritoDeEventoResponse" type="tns:enviarCorreosCompradoresPorDistritoDeEventoResponse" />
   <xs:element name="insertarEvento" type="tns:insertarEvento" />
   <xs:element name="insertarEventoResponse" type="tns:insertarEventoResponse" />
   <xs:element name="listarEvento" type="tns:listarEvento" />
@@ -22,16 +24,6 @@
   <xs:element name="listarFuncionesDeEventoResponse" type="tns:listarFuncionesDeEventoResponse" />
   <xs:element name="obtenerCantEntradasDisponibles" type="tns:obtenerCantEntradasDisponibles" />
   <xs:element name="obtenerCantEntradasDisponiblesResponse" type="tns:obtenerCantEntradasDisponiblesResponse" />
-  <xs:complexType name="eliminarFuncionesDeEvento">
-    <xs:sequence>
-      <xs:element name="arg0" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarFuncionesDeEventoResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="buscarEventosPorFechas">
     <xs:sequence>
       <xs:element minOccurs="0" name="fecha_inicio" type="xs:string" />
@@ -164,6 +156,28 @@
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="eliminarFuncionesDeEvento">
+    <xs:sequence>
+      <xs:element name="arg0" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarFuncionesDeEventoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEvento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asunto" type="xs:string" />
+      <xs:element minOccurs="0" name="contenido" type="xs:string" />
+      <xs:element name="idDistrito" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEventoResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarEventoPorDistrito">
     <xs:sequence>
       <xs:element name="Id" type="xs:int" />
@@ -172,6 +186,16 @@
   <xs:complexType name="listarEventoPorDistritoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEventoPorID">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEventoPorIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarEventoPorTexto">
@@ -192,16 +216,6 @@
   <xs:complexType name="listarFuncionesDeEventoResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:funcion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEventoPorID">
-    <xs:sequence>
-      <xs:element name="id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEventoPorIDResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:evento" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarEvento">

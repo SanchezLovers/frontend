@@ -20,6 +20,8 @@
   <xs:element name="listarEspacioPorDistrito" type="tns:listarEspacioPorDistrito" />
   <xs:element name="listarEspacioPorDistritoResponse" type="tns:listarEspacioPorDistritoResponse" />
   <xs:element name="listarEspacioResponse" type="tns:listarEspacioResponse" />
+  <xs:element name="obtenerEspacioDTO" type="tns:obtenerEspacioDTO" />
+  <xs:element name="obtenerEspacioDTOResponse" type="tns:obtenerEspacioDTOResponse" />
   <xs:complexType name="insertarEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
@@ -161,6 +163,18 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asunto" type="xs:string" />
+      <xs:element minOccurs="0" name="contenido" type="xs:string" />
+      <xs:element name="idDistrito" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacioResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarEspacio">
     <xs:sequence />
   </xs:complexType>
@@ -169,12 +183,51 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacio">
+  <xs:complexType name="obtenerEspacioDTO">
+    <xs:sequence>
+      <xs:element name="idEspacio" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEspacioDTOResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:espacioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="espacioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="departamentos" nillable="true" type="tns:departamento" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="dias" nillable="true" type="tns:espacioDiaSem" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="distritos" nillable="true" type="tns:distrito" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:string" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:string" />
+      <xs:element name="idDepartamento" type="xs:int" />
+      <xs:element name="idDistrito" type="xs:int" />
+      <xs:element name="idEspacio" type="xs:int" />
+      <xs:element name="idProvincia" type="xs:int" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreDepartamento" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreDistrito" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreProvincia" type="xs:string" />
+      <xs:element name="precioReserva" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="provincias" nillable="true" type="tns:provincia" />
+      <xs:element name="superficie" type="xs:double" />
+      <xs:element minOccurs="0" name="tipo" type="tns:eTipoEspacio" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="espacioDiaSem">
+    <xs:sequence>
+      <xs:element name="activo" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="dia" type="tns:eDiaSemana" />
+      <xs:element name="idEspacio" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="actualizarEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacioResponse">
+  <xs:complexType name="actualizarEspacioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
@@ -187,16 +240,6 @@
   <xs:complexType name="buscarEspacioResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="actualizarEspacio">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="actualizarEspacioResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarLogico">

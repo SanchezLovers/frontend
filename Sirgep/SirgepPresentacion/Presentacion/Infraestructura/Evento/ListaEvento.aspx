@@ -21,7 +21,7 @@
             <div class="col-md-6 mb-4 d-flex justify-content-center">
                 <div class="evento-card">
                     <div class="evento-img">
-                        <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("archivoImagen")) %>' alt="Imagen" />
+                       <%-- <img src='<%# "data:image/jpg;base64," + Convert.ToBase64String((byte[])Eval("archivoImagen")) %>' alt="Imagen" />--%>
                     </div>
                     <div class="evento-info">
                         <div>
