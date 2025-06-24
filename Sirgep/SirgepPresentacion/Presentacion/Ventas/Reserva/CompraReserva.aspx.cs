@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 using SirgepPresentacion.ReferenciaDisco;
 using static SirgepPresentacion.Presentacion.Ventas.Reserva.FormularioEspacio;
 
@@ -19,11 +21,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //string url = $"/Presentacion/Ventas/Reserva/CompraReserva.aspx?idEspacio={idEspacio}&fecha={fecha}&horaIni={horaIni}&horaFin={horaFin}&cant={cant}";
+            Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
 
             if (!IsPostBack)
             {
-                //int idEspacio = 1; // Simular ID elegido
                 int idEspacio = int.Parse(Request.QueryString["idEspacio"]);
                 string fechaR = Request.QueryString["fecha"];
                 string horaIni = Request.QueryString["horaIni"];
@@ -33,19 +34,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 LblEspacio.Text = espacio.nombre;
                 LblUbicacionReserva.Text = espacio.ubicacion;
                 TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
-                //string fechaR = "20/06/2025";
-                //string horaIni = "15:00";
-                //string horaFin = "17:00";
-                //DateTime fecha = DateTime.Parse("20/06/2025");
-                // DateTime horaIni = fecha.Date.AddHours(15); // 15:00
-                //DateTime horaFin = fecha.Date.AddHours(17); // 17:00
 
-                //int cantidadHoras = 2;
 
                 LblHorarioReserva.Text = $"{horaIni} - {tFin.ToString()}";
                 LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
-
-                //double cantidadHoras = (DateTime.Parse(horaFin) - DateTime.Parse(horaIni)).TotalHours;
 
                 lblPrecioHora.Text = espacio.precioReserva.ToString();
                 LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
@@ -54,25 +46,58 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             }
         }
+        protected void documentoNoValido(object sender, EventArgs e)
+        {
+            string tipo = ddlTipoDocumento.SelectedValue;
+            string numero = txtDNI.Text.Trim();
+            string script = "";
+            bool v;
+            switch (tipo)
+            {
+                case "DNI":
+                    if (!(numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$")))
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el DNI debe tener exactamente 8 dígitos numéricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
+
+                case "CARNETEXTRANJERIA":
+                    v = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
+                    if (!v)
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
+                case "PASAPORTE":
+                    v = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
+                    if (!v)
+                    {
+                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','El número de pasaporte debe tener entre 8 y 12 dígitos alfanuméricos.'); }, 300);";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    }
+                    break;
+                default:
+                    script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','Elija un tipo de documento.'); }, 300);";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
+                    break;
+            }
+
+        }
 
         protected void btnPagar_Click(object sender, EventArgs e)
 
         {
-            //string fechaR = "20/06/2025";
-            //var horaIni = "15:00";
-            //var horaFin = "17:00";
             string fechaR = Request.QueryString["fecha"];
             string horaIni = Request.QueryString["horaIni"];
             string horaFin = Request.QueryString["horaFin"];
             TimeSpan tIni = TimeSpan.Parse(horaIni);
             TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
-            //TimeSpan horarioIni = TimeSpan.Parse(horaIni);
-            //TimeSpan horarioFin = TimeSpan.Parse(horaFin);
-            // Validar campos obligatorios
-            //aqui el if
+            
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
+               // string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) || -- no es obligatorio
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
@@ -82,6 +107,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 return;
 
             }
+
+            documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -98,12 +125,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
 
-            // ---------- Datos que necesitas ----------
-            int cantidad = 2;
+            //int cantidad = 1;
 
-
-            double precio = espacioService.buscarEspacio(1).precioReserva;
-            double totalAPagar = precio * cantidad;
+            int idEspacio = int.Parse(Request.QueryString["idEspacio"]);
+            double totalAPagar = double.Parse(LblTotalReserva.Text);
 
             // ---------- Comprobación de saldo ----------
             if (compradorExistente != null && compradorExistente.monto < totalAPagar)
@@ -123,13 +148,16 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),
+                    // segundoApellido = txtApellidoMaterno.Text.Trim(),  no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
                     tipoDocumentoSpecified = true,
                     registrado = 0,
                 };
+                if (txtApellidoMaterno.Text.Length > 0)
+                    nuevo.segundoApellido = txtApellidoMaterno.Text.Trim();
+
                 identificadorPersona = compraService.insertarComprador(nuevo);
                 compradorFinal = nuevo; // Guardar el nuevo comprador para usarlo más adelante
             }
@@ -177,7 +205,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             reserva nuevaReserva = new reserva
             {
                 // Campos heredados de constancia
-                fecha = DateTime.Now,
+                fecha = DateTime.Now, //fecha pago
                 fechaSpecified = true,
                 metodoPago = mp,
                 metodoPagoSpecified = true,
@@ -217,7 +245,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     idPersona = identificadorPersona, // Usar el ID del comprador existente o nuevo
 
                 }, // el objeto comprador
-                espacio = espacioService.buscarEspacio(1)        // el objeto espacio
+                espacio = espacioService.buscarEspacio(idEspacio)        // el objeto espacio
             };
 
             //int idReserva = reservaService.insertarReserva(nuevaReserva);
@@ -238,6 +266,40 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
 
             //Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
+        }
+
+        protected void cvDocumento_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            Page.UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
+
+            string tipo = ddlTipoDocumento.SelectedValue;
+            string numero = txtDNI.Text.Trim();
+            string mensaje = "";
+
+            switch (tipo)
+            {
+                case "DNI":
+                    args.IsValid = numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$");
+                    if (!args.IsValid) mensaje = "El DNI debe tener exactamente 8 dígitos numéricos.";
+                    break;
+
+                case "CARNETEXTRANJERIA":
+                    args.IsValid = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
+                    if (!args.IsValid) mensaje = "El Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.";
+                    break;
+
+                case "PASAPORTE":
+                    args.IsValid = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
+                    if (!args.IsValid) mensaje = "El Pasaporte debe tener entre 8 y 12 caracteres alfanuméricos (sin símbolos).";
+                    break;
+
+                default:
+                    args.IsValid = false;
+                    mensaje = "Seleccione un tipo de documento válido.";
+                    break;
+            }
+
+            ((CustomValidator)source).ErrorMessage = mensaje;
         }
 
 

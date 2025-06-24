@@ -11,11 +11,11 @@
   <message name="listarTodosDistritosResponse">
     <part name="parameters" element="tns:listarTodosDistritosResponse" />
   </message>
-  <message name="listarDistritosPorProvincia">
-    <part name="parameters" element="tns:listarDistritosPorProvincia" />
+  <message name="listarDistritosFiltrados">
+    <part name="parameters" element="tns:listarDistritosFiltrados" />
   </message>
-  <message name="listarDistritosPorProvinciaResponse">
-    <part name="parameters" element="tns:listarDistritosPorProvinciaResponse" />
+  <message name="listarDistritosFiltradosResponse">
+    <part name="parameters" element="tns:listarDistritosFiltradosResponse" />
   </message>
   <message name="buscarDistPorId">
     <part name="parameters" element="tns:buscarDistPorId" />
@@ -23,28 +23,28 @@
   <message name="buscarDistPorIdResponse">
     <part name="parameters" element="tns:buscarDistPorIdResponse" />
   </message>
-  <message name="listarDistritosFiltrados">
-    <part name="parameters" element="tns:listarDistritosFiltrados" />
+  <message name="listarDistritosPorProvincia">
+    <part name="parameters" element="tns:listarDistritosPorProvincia" />
   </message>
-  <message name="listarDistritosFiltradosResponse">
-    <part name="parameters" element="tns:listarDistritosFiltradosResponse" />
+  <message name="listarDistritosPorProvinciaResponse">
+    <part name="parameters" element="tns:listarDistritosPorProvinciaResponse" />
   </message>
   <portType name="DistritoWS">
     <operation name="listarTodosDistritos">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosRequest" message="tns:listarTodosDistritos" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosResponse" message="tns:listarTodosDistritosResponse" />
     </operation>
-    <operation name="listarDistritosPorProvincia">
-      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaRequest" message="tns:listarDistritosPorProvincia" />
-      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaResponse" message="tns:listarDistritosPorProvinciaResponse" />
+    <operation name="listarDistritosFiltrados">
+      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest" message="tns:listarDistritosFiltrados" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse" message="tns:listarDistritosFiltradosResponse" />
     </operation>
     <operation name="buscarDistPorId">
       <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest" message="tns:buscarDistPorId" />
       <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse" message="tns:buscarDistPorIdResponse" />
     </operation>
-    <operation name="listarDistritosFiltrados">
-      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest" message="tns:listarDistritosFiltrados" />
-      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse" message="tns:listarDistritosFiltradosResponse" />
+    <operation name="listarDistritosPorProvincia">
+      <input wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaRequest" message="tns:listarDistritosPorProvincia" />
+      <output wsam:Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaResponse" message="tns:listarDistritosPorProvinciaResponse" />
     </operation>
   </portType>
   <binding name="DistritoWSPortBinding" type="tns:DistritoWS">
@@ -58,7 +58,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDistritosPorProvincia">
+    <operation name="listarDistritosFiltrados">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -76,7 +76,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDistritosFiltrados">
+    <operation name="listarDistritosPorProvincia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

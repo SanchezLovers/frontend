@@ -7,56 +7,56 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace SirgepPresentacion.Presentacion.Inicio
+namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
 {
 
 
-    public partial class PrincipalAdministrador
+    public partial class ListaComprador
     {
 
         /// <summary>
-        /// Control btnManejarEspacios.
+        /// Control hdnIdAEliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManejarEspacios;
+        protected global::System.Web.UI.WebControls.HiddenField hdnIdAEliminar;
 
         /// <summary>
-        /// Control btnConsultarReservas.
+        /// Control txtBusqueda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConsultarReservas;
+        protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
 
         /// <summary>
-        /// Control btnManejarEventos.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnManejarEventos;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control btnConsultarEntradas.
+        /// Control GvListaCompradores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConsultarEntradas;
+        protected global::System.Web.UI.WebControls.GridView GvListaCompradores;
 
         /// <summary>
-        /// Control btnAdministrarCompradores.
+        /// Control btnConfirmarAccion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdministrarCompradores;
+        protected global::System.Web.UI.WebControls.Button btnConfirmarAccion;
     }
 }
