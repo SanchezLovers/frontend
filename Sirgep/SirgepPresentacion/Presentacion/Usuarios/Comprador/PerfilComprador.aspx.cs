@@ -1,10 +1,11 @@
-﻿using System;
+﻿using SirgepPresentacion.ReferenciaDisco;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
 {
@@ -21,8 +22,8 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
         }
         protected void cargarPerfil()
         {
-            //int idComprador = 3;
-            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            int idComprador = 3;
+            //int idComprador = int.Parse(Session["idUsuario"].ToString());
             detalleComprador detalleCompradorDTO = compradorWS.buscarDetalleCompradorPorId(idComprador);
             lblNombres.Text = detalleCompradorDTO.nombres;
             lblPrimerApellido.Text = detalleCompradorDTO.primerApellido;
@@ -32,26 +33,36 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             lblMontoBilletera.Text = "S/. " + detalleCompradorDTO.montoBilletera.ToString();
             lblDepartamento.Text = detalleCompradorDTO.departamentoFavorito;
             lblProvincia.Text = detalleCompradorDTO.provinciaFavorita;
-            txtDistrito.Text = detalleCompradorDTO.distritoFavorito.ToUpper();
+            txtDistrito.Text = detalleCompradorDTO.distritoFavorito;
             lblCorreo.Text = detalleCompradorDTO.correo;
             lblContrasenia.Text = new string('*', detalleCompradorDTO.contrasenia.Length);
         }
         protected void btnGuardarDistrito_Click(object sender, EventArgs e)
         {
-            string nuevoDistrito = txtDistrito.Text.ToUpper();
+            string nuevoDistrito = txtDistrito.Text;
             if (!string.IsNullOrEmpty(nuevoDistrito))
             {
-                //int idComprador = 3;
-                int idComprador = int.Parse(Session["idUsuario"].ToString());
+                int idComprador = 3;
+                //int idComprador = int.Parse(Session["idUsuario"].ToString());
                 bool resultado = compradorWS.actualizarDistritoFavoritoPorIdComprador(nuevoDistrito, idComprador);
+                cargarPerfil();
                 if (resultado)
                 {
-                    cargarPerfil();
-                    //txtDistrito.Text = txtDistrito.Text.ToUpper();
+                    nuevoDistrito = txtDistrito.Text.Trim();
+                    nuevoDistrito = nuevoDistrito.Replace("'", "\\'");
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+                    string distritoFormateado = ti.ToTitleCase(nuevoDistrito.ToLower());
+                    string titulo = "¡Distrito favorito actualizado!";
+                    string mensaje = $"Tu nuevo distrito favorito es {distritoFormateado}.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $@"setTimeout(function() {{
+                    mostrarModalExito('{titulo}', '{mensaje}');}}, 1000);", true);
                 }
                 else
                 {
-                    Response.Write("<script>alert('El nombre del distrito es incorrecto');</script>");
+                    string titulo = "¡Error al actualizar distrito favorito!";
+                    string mensaje = $"El distrito {nuevoDistrito} que ingresaste no es válido. Porfavor, ingresa nuevamente un distrito válido.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $@"setTimeout(function() {{
+                    mostrarModalExito('{titulo}', '{mensaje}');}}, 1000);", true);
                 }
             }
         }
