@@ -51,7 +51,7 @@
                     <div class="d-flex align-items-center gap-2">
                         <strong>Distrito:</strong>
                         <asp:TextBox ID="txtDistrito" runat="server" CssClass="form-control form-control-sm text-dark" Style="width: 120px;" />
-                        <asp:Button ID="btnGuardarDistrito" runat="server" Text="Guardar" CssClass="btn btn-dark btn-sm" OnClick="btnGuardarDistrito_Click" />
+                        <asp:Button ID="btnGuardarDistrito" runat="server" Text="Actualizar" CssClass="btn btn-dark btn-sm" OnClick="btnGuardarDistrito_Click" />
                     </div>
                 </div>
             </div>
