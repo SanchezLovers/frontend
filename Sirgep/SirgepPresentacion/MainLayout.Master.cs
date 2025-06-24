@@ -17,6 +17,21 @@ namespace SirgepPresentacion
                 Session["tipoUsuario"] = "invitado"; // puedes asignarlo si deseas
             }
 
+            string nombreUsuario = Session["nombreUsuario"] as string;
+
+            if (tipoUsuario == "administrador")
+            {
+                liAdminMenu.Visible = true;
+                adminMenu.InnerText = "Administrador: " + nombreUsuario ?? "Administrador";
+                adminMenu.HRef = "/Presentacion/Inicio/PrincipalAdministrador.aspx";
+            }
+            else if (tipoUsuario == "comprador")
+            {
+                liUsuarioMenu.Visible = true;
+                compradorMenu.InnerText = "Comprador: "+nombreUsuario ?? "Comprador";
+                compradorMenu.HRef = "/Presentacion/Inicio/PrincipalComprador.aspx";
+            }
+
             switch (tipoUsuario.ToLower())
             {
                 case "administrador":

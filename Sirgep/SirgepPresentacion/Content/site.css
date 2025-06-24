@@ -1,4 +1,4 @@
-﻿/*
+﻿﻿ /*
     Aca va el CSS personalizado de la aplicacion (si hiciera falta)
 */
 .table th, .table td {
@@ -164,17 +164,17 @@ body {
     text-align: center;
 }
 
-.btn-metodo.selected, .btn-metodo:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px #007bff33;
-}
+    .btn-metodo.selected, .btn-metodo:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px #007bff33;
+    }
 
-.btn-metodo img {
-    display: block;
-    margin: 0 auto 5px auto;
-}
+    .btn-metodo img {
+        display: block;
+        margin: 0 auto 5px auto;
+    }
 
-.columna-peq{
+.columna-peq {
     width: 35px;
 }
 
@@ -207,17 +207,17 @@ body {
     transition: border-color 0.2s;
 }
 
-.input-busqueda:focus {
-    border-color: #b71c1c;
-    outline: none;
-}
+    .input-busqueda:focus {
+        border-color: #b71c1c;
+        outline: none;
+    }
 
-.input-busqueda.deshabilitado {
-    background: #e0e0e0;
-    border-color: #999;
-    color: #666;
-    cursor: not-allowed;
-}
+    .input-busqueda.deshabilitado {
+        background: #e0e0e0;
+        border-color: #999;
+        color: #666;
+        cursor: not-allowed;
+    }
 
 .filtros-label {
     font-weight: bold;
@@ -269,10 +269,10 @@ body {
 }
 
 
-.checkbox-filtro input[type="checkbox"] {
-    transform: scale(1.9);
-    cursor: pointer;
-}
+    .checkbox-filtro input[type="checkbox"] {
+        transform: scale(1.9);
+        cursor: pointer;
+    }
 
 
 /* === ESTILO UNIFICADO PARA TABLA DE RESERVAS Y GRIDVIEW === */
@@ -285,19 +285,19 @@ body {
     overflow: hidden;
 }
 
-.tabla-reservas th,
-.tabla-reservas td {
-    border: 1px solid #e0e0e0;
-    padding: 16px 12px;
-    text-align: center;
-    vertical-align: middle;
-}
+    .tabla-reservas th,
+    .tabla-reservas td {
+        border: 1px solid #e0e0e0;
+        padding: 16px 12px;
+        text-align: center;
+        vertical-align: middle;
+    }
 
-.tabla-reservas th {
-    background: #e0e0e0;
-    font-weight: bold;
-    font-size: 1.08em;
-}
+    .tabla-reservas th {
+        background: #e0e0e0;
+        font-weight: bold;
+        font-size: 1.08em;
+    }
 
 /* Íconos */
 .icono-abrir {
@@ -313,6 +313,7 @@ body {
     width: 130px;
     background: #fff;
 }
+
 #calendar-block {
     background: #fff;
     border: 1px solid #d1d1d1;
@@ -328,7 +329,7 @@ body {
 #calendar {
     width: 100%;
     min-height: 400px;
-    height: auto; 
+    height: auto;
     max-width: 98vw;
     margin: 0 auto;
     transition: max-width 0.3s, height 0.3s;

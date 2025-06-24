@@ -175,5 +175,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 CargarPagina();
             }
         }
+
+        protected void btnVerCalendario_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuarios/Administrador/CalendarioReservas.aspx");
+        }
     }
 }
