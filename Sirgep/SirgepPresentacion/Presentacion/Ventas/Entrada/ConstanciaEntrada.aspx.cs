@@ -35,15 +35,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             //lblReferencias.Text = constanciaEntradaDTO.detalleEntrada.referencia;
             lblDistrito.Text = constanciaEntradaDTO.detalleEntrada.nombreDistrito;
             // Datos de la funcion
-<<<<<<< HEAD
-            lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fechaFuncion.ToString();
-            lblHoraInicio.Text = constanciaEntradaDTO.detalleEntrada.horaInicio.ToString();
-            lblHoraFin.Text = constanciaEntradaDTO.detalleEntrada.horaFin.ToString();
-=======
-            lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fecha.ToString("dd/MM/yyyy");
+            lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fechaFuncion.ToString("dd/MM/yyyy");
             lblHoraInicio.Text = constanciaEntradaDTO.detalleEntrada.horaInicio.ToString("HH:mm");
             lblHoraFin.Text = constanciaEntradaDTO.detalleEntrada.horaFin.ToString("HH:mm");
->>>>>>> dev
+
             //Datos del comprador
             lblNombres.Text = constanciaEntradaDTO.nombresComprador;
             lblApellidos.Text = constanciaEntradaDTO.apellidosComprador;

@@ -147,18 +147,19 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             txtPrecioEdit.Text = espDTO.precioReserva.ToString();
             
             ddlDepartamentoEdit.SelectedValue = espDTO.idDepartamento.ToString();
+            ddlDepartamentoEdit.Enabled = false;
 
-            ddlProvinciaEdit.DataSource = espDTO.provincias;
             ddlProvinciaEdit.DataTextField = "Nombre";
             ddlProvinciaEdit.DataValueField = "IdProvincia";
-            ddlProvinciaEdit.DataBind();
+            ddlProvinciaEdit.Items.Insert(0, new ListItem(espDTO.nombreProvincia.ToString(), espDTO.idProvincia.ToString()));
             ddlProvinciaEdit.SelectedValue = espDTO.idProvincia.ToString();
+            ddlProvinciaEdit.Enabled = false;
 
-            ddlDistritoEdit.DataSource = espDTO.distritos;
             ddlDistritoEdit.DataTextField = "Nombre";
             ddlDistritoEdit.DataValueField = "IdDistrito";
-            ddlDistritoEdit.DataBind();
+            ddlDistritoEdit.Items.Insert(0, new ListItem(espDTO.nombreDistrito.ToString(), espDTO.idDistrito.ToString()));
             ddlDistritoEdit.SelectedValue = espDTO.idDistrito.ToString();
+            ddlDistritoEdit.Enabled = false;
 
             txtHoraInicioEdit.Text = espDTO.horaInicio.ToString();
             txtHoraFinEdit.Text = espDTO.horaFin.ToString();
@@ -632,7 +633,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 listarProvinciaPorDepaResponse responseProvincia = provinciaWS.listarProvinciaPorDepa(
                     new listarProvinciaPorDepaRequest(idDepartamento)
                 );
-
+                if (ddlProvinciaEdit.Enabled == false) ddlProvinciaEdit.Enabled = true;
                 ddlProvinciaEdit.DataSource = responseProvincia.@return;
                 ddlProvinciaEdit.DataTextField = "Nombre";
                 ddlProvinciaEdit.DataValueField = "IdProvincia";
@@ -659,7 +660,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 listarDistritosFiltradosResponse responseDistrito = distritoWS.listarDistritosFiltrados(
                     new listarDistritosFiltradosRequest(idProvincia)
                 );
-
+                if (ddlDistritoEdit.Enabled == false) ddlDistritoEdit.Enabled = true;
                 ddlDistritoEdit.DataSource = responseDistrito.@return;
                 ddlDistritoEdit.DataTextField = "Nombre";
                 ddlDistritoEdit.DataValueField = "IdDistrito";
@@ -679,6 +680,12 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected void ddlDistritoEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             hiddenIdDistrito.Value = ddlDistritoEdit.SelectedValue.ToString();
+        }
+
+        protected void btnEditUbigeo_Click(object sender, EventArgs e)
+        {
+            ddlDepartamentoEdit.Enabled = true;
+            abrirModalEditarEspacio();
         }
     }
 }

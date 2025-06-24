@@ -241,7 +241,7 @@
                             <label>Nombre del espacio</label>
                             <asp:TextBox ID="txtNombreEdit" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Tipo de espacio</label>
                             <asp:DropDownList ID="ddlTipoEspacioEdit" runat="server" CssClass="form-select">
                             </asp:DropDownList>
@@ -253,12 +253,19 @@
                             <label>Ubicación</label>
                             <asp:TextBox ID="txtUbicacionEdit" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Departamento</label>
-                            <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select" AutoPostBack="true"
-                                OnSelectedIndexChanged="ddlDepartamentoEdit_SelectedIndexChanged">
-                            </asp:DropDownList>
+                            <div class="d-flex align-items-center gap-2">
+                                <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select me-2" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlDepartamentoEdit_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success"
+                                    ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </asp:LinkButton>
+                            </div>
                         </div>
+                        
                     </div>
 
                     <div class="row">
@@ -266,7 +273,7 @@
                             <label>Superficie (m²)</label>
                             <asp:TextBox ID="txtSuperficieEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Provincia</label>
                             <asp:DropDownList ID="ddlProvinciaEdit" runat="server" CssClass="form-select" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlProvinciaEdit_SelectedIndexChanged">
@@ -280,7 +287,7 @@
                             <label>Precio de reserva por hora</label>
                             <asp:TextBox ID="txtPrecioEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Distrito</label>
                             <asp:DropDownList ID="ddlDistritoEdit" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistritoEdit_SelectedIndexChanged">
                             </asp:DropDownList>
