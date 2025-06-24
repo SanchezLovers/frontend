@@ -78,8 +78,20 @@
             <div class="mb-2">
                 <asp:TextBox ID="txtApellidoMaterno" runat="server" CssClass="form-control" placeholder="Apellido materno" />
             </div>
+            <!-- validación de Documento de Identificacion -->
             <div class="mb-2">
-                <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" placeholder="DNI" />
+                <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-select">
+                    <asp:ListItem Text="Seleccione tipo de documento" Value="" />
+                    <asp:ListItem Text="DNI" Value="DNI" />
+                    <asp:ListItem Text="Carnet de Extranjería" Value="CARNETEXTRANJERIA" />
+                    <asp:ListItem Text="Pasaporte" Value="PASAPORTE" />
+                </asp:DropDownList>
+                <asp:RequiredFieldValidator ControlToValidate="ddlTipoDocumento" InitialValue="" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
+            </div>
+            <div class="mb-2">
+                <asp:TextBox ID="txtDNI" runat="server" CssClass="form-control" placeholder="Número de Documento"></asp:TextBox>
+                <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="txtDNI" CssClass="text-danger" Display="Dynamic" OnServerValidate="cvDocumento_ServerValidate" ValidateEmptyText="true" />
+                <asp:RequiredFieldValidator ControlToValidate="txtDNI" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
             </div>
             <div class="mb-2">
                 <asp:TextBox

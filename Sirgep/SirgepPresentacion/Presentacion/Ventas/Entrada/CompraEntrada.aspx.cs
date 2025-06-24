@@ -199,8 +199,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             evento evento = compraService.buscarEventos(funcion.evento.idEvento);
             int numE = evento.cantEntradasVendidas+1;
             evento.cantEntradasVendidas= numE;
+
             // Actualizar el evento con la nueva cantidad de entradas vendidas
-            //evento.canti
             eventoWS.actualizarEvento(evento);
             // ---------- Insertar constancia ----------
 
