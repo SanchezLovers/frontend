@@ -315,5 +315,5 @@
         var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
         myModal.show();
     }
-    </script>
+</script>
 </html>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Municipalidad > Reservas" Language="C#" MasterPageFile="~/MainLayout.Master" AutoEventWireup="true" CodeBehind="ListaReservasAdministrador.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Ventas.Reserva.ListaReservasAdministrador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <div class="container-reservas">
         <h1 class="titulo-principal">Municipalidad &gt; Reservas</h1>
         <div class="busqueda-filtros">
@@ -24,7 +25,7 @@
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark mx-2" OnClick="btnFiltrar_Click" />
             </div>
         </div>
-        <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None">
+        <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None" OnRowDataBound="gvReservas_RowDataBound">
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
                     <ItemTemplate>
@@ -39,10 +40,17 @@
                         <%# "#" + Convert.ToInt32(Eval("numReserva")).ToString("D3") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="FechaConstancia" HeaderText="Fecha de Constancia" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="Distrito" HeaderText="Distrito" />
                 <asp:BoundField DataField="Espacio" HeaderText="Espacio" />
                 <asp:BoundField DataField="Correo" HeaderText="Correo del usuario" />
+                <asp:TemplateField HeaderText="Acciones">
+                    <ItemTemplate>
+                        <asp:Button ID="btnEliminarReserva" runat="server" Text="Eliminar" CssClass="btn btn-danger btn-sm"
+                            OnClick="btnEliminarReserva_Click"
+                            CommandArgument='<%# Eval("numReserva") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="¿Activo?">
                     <ItemTemplate>
                         <%# Eval("Activo").ToString() == "65" ? "Sí" : "No" %>

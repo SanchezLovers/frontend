@@ -382,15 +382,21 @@ body {
     cursor: pointer !important;
 }
 
-    /* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
-    .fc-event a {
-        color: inherit !important;
-        text-decoration: none !important;
-        cursor: pointer !important;
-    }
+/* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
+.fc-event a {
+	color: inherit !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
+}
 
-    .fc-event:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        background-color: #e9ecef;
-        cursor: pointer !important;
-    }
+.fc-event:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	background-color: #e9ecef;
+	cursor: pointer !important;
+}
+
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
