@@ -7,6 +7,7 @@
             <div class="busqueda">
                 <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display:none" />
+                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />            
             </div>
             <div class="filtros">
                 <label class="filtros-label">Filtros:</label>
