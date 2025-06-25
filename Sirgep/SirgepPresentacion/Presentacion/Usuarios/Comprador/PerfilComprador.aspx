@@ -5,12 +5,20 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
-        <h1 class="mb-4">
-            Informacion Registrada
-        </h1>
+       <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">Informacion Registrada</h1>
+            <asp:Button ID="btnEliminarCuenta" runat="server"
+            Text="Eliminar cuenta"
+            CssClass="btn btn-danger btn-sm fw-bold"
+            OnClick="btnEliminarCuenta_Click"
+            OnClientClick="mostrarModalConfirmacion('Eliminar cuenta', '¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.'); return false;" />
+       </div>
         <!-- DATOS DEL PERFIL-->
         <div class="card mb-3">
-            <div class="card-header modal-header-rojo text-white">Datos del Perfil</div>
+            <div class="card-header modal-header-rojo text-white d-flex justify-content-between align-items-center">
+                <span>Datos del Perfil</span>
+                
+            </div>
             <div class="card-body row g-3">
                 <div class="col-12 col-md-4">
                     <strong>Nombres:</strong> <asp:Label ID="lblNombres" runat="server" CssClass="ms-2" />
@@ -69,4 +77,14 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnConfirmar = document.getElementById('btnConfirmarAccion');
+            if (btnConfirmar) {
+                btnConfirmar.onclick = function () {
+                    __doPostBack('<%= btnEliminarCuenta.UniqueID %>', '');
+                };
+            }
+        });
+    </script>
 </asp:Content>
