@@ -75,6 +75,7 @@ TestResults/
 **/Connected Services/**/*.disco
 **/Connected Services/**/*.wsdl
 **/Connected Services/**/*.xsd
+Connected Services/**/Reference.cs
 *.svcinfo
 *.disco
 *.svcmap

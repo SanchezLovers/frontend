@@ -20,24 +20,24 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void CargarDatos()
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             GvListaEntradasComprador.DataSource = entradaWS.listarDetalleEntradasPorComprador(idComprador);
             detalleEntradaDTO detalleEntradaDTO = new detalleEntradaDTO();
-
             GvListaEntradasComprador.DataBind();
         }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             entradaWS.crearLibroExcelEntradas(idComprador);
         }
 
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
-            //LinkButton btn = (LinkButton)sender;
-            //string numEntrada = btn.CommandArgument;
-            string numEntrada = "2";
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?NumEntrada=" + numEntrada);
+            LinkButton btn = (LinkButton)sender;
+            string idConstancia = btn.CommandArgument;
+            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
     }
 }

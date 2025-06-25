@@ -11,6 +11,12 @@
   <message name="validarCuentaResponse">
     <part name="parameters" element="tns:validarCuentaResponse" />
   </message>
+  <message name="obtenerNombreUsuario">
+    <part name="parameters" element="tns:obtenerNombreUsuario" />
+  </message>
+  <message name="obtenerNombreUsuarioResponse">
+    <part name="parameters" element="tns:obtenerNombreUsuarioResponse" />
+  </message>
   <message name="validarCuentaString">
     <part name="parameters" element="tns:validarCuentaString" />
   </message>
@@ -22,6 +28,10 @@
       <input wsam:Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaRequest" message="tns:validarCuenta" />
       <output wsam:Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaResponse" message="tns:validarCuentaResponse" />
     </operation>
+    <operation name="obtenerNombreUsuario">
+      <input wsam:Action="pe.edu.pucp.sirgep/PersonaWS/obtenerNombreUsuarioRequest" message="tns:obtenerNombreUsuario" />
+      <output wsam:Action="pe.edu.pucp.sirgep/PersonaWS/obtenerNombreUsuarioResponse" message="tns:obtenerNombreUsuarioResponse" />
+    </operation>
     <operation name="validarCuentaString">
       <input wsam:Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaStringRequest" message="tns:validarCuentaString" />
       <output wsam:Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaStringResponse" message="tns:validarCuentaStringResponse" />
@@ -30,6 +40,15 @@
   <binding name="PersonaWSPortBinding" type="tns:PersonaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="validarCuenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerNombreUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

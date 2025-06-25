@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/FuncionWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
+  <message name="buscarFuncionId">
+    <part name="parameters" element="tns:buscarFuncionId" />
+  </message>
+  <message name="buscarFuncionIdResponse">
+    <part name="parameters" element="tns:buscarFuncionIdResponse" />
+  </message>
   <message name="insertarFuncion">
     <part name="parameters" element="tns:insertarFuncion" />
   </message>
@@ -18,6 +24,10 @@
     <part name="parameters" element="tns:listarFuncionesPorIdEventoResponse" />
   </message>
   <portType name="FuncionWS">
+    <operation name="buscarFuncionId">
+      <input wsam:Action="pe.edu.pucp.sirgep/FuncionWS/buscarFuncionIdRequest" message="tns:buscarFuncionId" />
+      <output wsam:Action="pe.edu.pucp.sirgep/FuncionWS/buscarFuncionIdResponse" message="tns:buscarFuncionIdResponse" />
+    </operation>
     <operation name="insertarFuncion">
       <input wsam:Action="pe.edu.pucp.sirgep/FuncionWS/insertarFuncionRequest" message="tns:insertarFuncion" />
       <output wsam:Action="pe.edu.pucp.sirgep/FuncionWS/insertarFuncionResponse" message="tns:insertarFuncionResponse" />
@@ -29,6 +39,15 @@
   </portType>
   <binding name="FuncionWSPortBinding" type="tns:FuncionWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="buscarFuncionId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="insertarFuncion">
       <soap:operation soapAction="" />
       <input>

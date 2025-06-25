@@ -37,7 +37,7 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:string" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -63,6 +63,7 @@
   <xs:complexType name="espacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="foto" type="xs:string" />
       <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
       <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
       <xs:element name="idEspacio" type="xs:int" />
@@ -228,16 +229,6 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="insertarEvento">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="evento" type="tns:evento" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarEventoResponse">
-    <xs:sequence>
-      <xs:element name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerCantEntradasDisponibles">
     <xs:sequence>
       <xs:element name="IdFuncion" type="xs:int" />
@@ -245,6 +236,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerCantEntradasDisponiblesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEvento">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="evento" type="tns:evento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarEventoResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:int" />
     </xs:sequence>

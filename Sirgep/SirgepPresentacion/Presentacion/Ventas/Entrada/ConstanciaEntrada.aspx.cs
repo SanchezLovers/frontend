@@ -1,18 +1,11 @@
-
-﻿using System;
+using System;
 using System.IO;
-
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using SirgepPresentacion.ReferenciaDisco;
-
-
 using System.Text;
 using System.Text.RegularExpressions;
-
-
-
 
 namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 {
@@ -22,45 +15,42 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 entradaWS = new EntradaWSClient();
-                //int NumEntrada = 1;
-                //int NumEntrada = int.Parse((sender as Button).CommandArgument);
-                int numEntrada = int.Parse(Request.QueryString["NumEntrada"]);
-                CargarDatosEnPantalla(numEntrada);
+                //int idConstancia = 2;
+                int idConstancia = int.Parse(Request.QueryString["idConstancia"]);
+                CargarDatosEnPantalla(idConstancia);
             }
         }
-        protected void CargarDatosEnPantalla(int numEntrada)
+        protected void CargarDatosEnPantalla(int idConstancia)
         {
-            entrada entradaDomain = entradaWS.buscarEntrada(numEntrada);
-            comprador compradorDomain = entradaWS.buscarCompradorDeEntrada(entradaDomain.persona.idPersona);
-            funcion funcionDomain = entradaWS.buscarFuncionDeEntrada(entradaDomain.funcion.idFuncion);
-            evento eventoDomain = entradaWS.buscarEventoDeEntrada(funcionDomain.evento.idEvento);
-            distrito distritoDomain = entradaWS.buscarDistritoDeEntrada(eventoDomain.distrito.idDistrito);
+            constanciaEntradaDTO constanciaEntradaDTO = entradaWS.buscarConstanciaEntrada(idConstancia);
             // Datos de la entrada
-            lblNumEntrada.Text = entradaDomain.numEntrada.ToString();
+            lblNumEntrada.Text = constanciaEntradaDTO.detalleEntrada.numEntrada.ToString();
             // Datos del evento
-            lblEvento.Text = eventoDomain.nombre;
-            lblUbicacion.Text = eventoDomain.ubicacion;
-            lblReferencias.Text = eventoDomain.referencia;
-            lblDistrito.Text = distritoDomain.nombre;
+            lblEvento.Text = constanciaEntradaDTO.detalleEntrada.nombreEvento;
+            lblUbicacion.Text = constanciaEntradaDTO.detalleEntrada.ubicacion;
+            //lblReferencias.Text = constanciaEntradaDTO.detalleEntrada.referencia;
+            lblDistrito.Text = constanciaEntradaDTO.detalleEntrada.nombreDistrito;
             // Datos de la funcion
-            lblFechaFuncion.Text = funcionDomain.fecha.ToString();
-            lblHoraInicio.Text = funcionDomain.horaInicio.ToString();
-            lblHoraFin.Text = funcionDomain.horaFin.ToString();
+            lblFechaFuncion.Text = constanciaEntradaDTO.detalleEntrada.fechaFuncion.ToString("dd/MM/yyyy");
+            lblHoraInicio.Text = constanciaEntradaDTO.detalleEntrada.horaInicio.ToString("HH:mm");
+            lblHoraFin.Text = constanciaEntradaDTO.detalleEntrada.horaFin.ToString("HH:mm");
+
             //Datos del comprador
-            lblNombres.Text = compradorDomain.nombres;
-            lblApellidos.Text = compradorDomain.primerApellido + " " + compradorDomain.segundoApellido;
-            lblTipoDocumento.Text = compradorDomain.tipoDocumento.ToString();
-            lblTNumDocumento.Text = compradorDomain.numDocumento.ToString();
-            lblCorreo.Text = compradorDomain.correo;
+            lblNombres.Text = constanciaEntradaDTO.nombresComprador;
+            lblApellidos.Text = constanciaEntradaDTO.apellidosComprador;
+            lblTipoDocumento.Text = constanciaEntradaDTO.tipoDocumento.ToString();
+            lblTNumDocumento.Text = constanciaEntradaDTO.numDocumento.ToString();
+            lblCorreo.Text = constanciaEntradaDTO.correo;
             // Datos de la constancia del pago
-            lblFechaConstancia.Text = DateTime.Today.ToString("dd/MM/yyyy");
-            lblMetodoPago.Text = entradaDomain.metodoPago.ToString();
-            lblDetallePago.Text = entradaDomain.detallePago.ToString();
+            lblFechaConstancia.Text = constanciaEntradaDTO.fecha.ToString("dd/MM/yyyy");
+            lblMetodoPago.Text = constanciaEntradaDTO.metodoPago.ToString();
+            lblDetallePago.Text = constanciaEntradaDTO.detallePago.ToString();
             //lblPrecio.Text = eventoDomain.precioEntrada.ToString("C2");
-            lblTotal.Text = "S/. " + entradaDomain.total.ToString();
+            lblTotal.Text = "S/. " + constanciaEntradaDTO.monto.ToString();
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -110,7 +100,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             paginaHTML_Texto = paginaHTML_Texto.Replace("{NOMBRE_EVENTO}", lblEvento.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{UBICACION}", lblUbicacion.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{DISTRITO}", lblDistrito.Text);
-            paginaHTML_Texto = paginaHTML_Texto.Replace("{REFERENCIAS}", lblReferencias.Text);
+            //paginaHTML_Texto = paginaHTML_Texto.Replace("{REFERENCIAS}", lblReferencias.Text);
             // Datos del evento
             paginaHTML_Texto = paginaHTML_Texto.Replace("{FECHA_FUNCION}", lblFechaFuncion.Text);
             paginaHTML_Texto = paginaHTML_Texto.Replace("{HORA_INICIO}", lblHoraInicio.Text);

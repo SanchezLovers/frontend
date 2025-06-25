@@ -1,4 +1,4 @@
-﻿/*
+﻿﻿ /*
     Aca va el CSS personalizado de la aplicacion (si hiciera falta)
 */
 .table th, .table td {
@@ -164,17 +164,17 @@ body {
     text-align: center;
 }
 
-.btn-metodo.selected, .btn-metodo:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px #007bff33;
-}
+    .btn-metodo.selected, .btn-metodo:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px #007bff33;
+    }
 
-.btn-metodo img {
-    display: block;
-    margin: 0 auto 5px auto;
-}
+    .btn-metodo img {
+        display: block;
+        margin: 0 auto 5px auto;
+    }
 
-.columna-peq{
+.columna-peq {
     width: 35px;
 }
 
@@ -207,17 +207,17 @@ body {
     transition: border-color 0.2s;
 }
 
-.input-busqueda:focus {
-    border-color: #b71c1c;
-    outline: none;
-}
+    .input-busqueda:focus {
+        border-color: #b71c1c;
+        outline: none;
+    }
 
-.input-busqueda.deshabilitado {
-    background: #e0e0e0;
-    border-color: #999;
-    color: #666;
-    cursor: not-allowed;
-}
+    .input-busqueda.deshabilitado {
+        background: #e0e0e0;
+        border-color: #999;
+        color: #666;
+        cursor: not-allowed;
+    }
 
 .filtros-label {
     font-weight: bold;
@@ -269,10 +269,10 @@ body {
 }
 
 
-.checkbox-filtro input[type="checkbox"] {
-    transform: scale(1.9);
-    cursor: pointer;
-}
+    .checkbox-filtro input[type="checkbox"] {
+        transform: scale(1.9);
+        cursor: pointer;
+    }
 
 
 /* === ESTILO UNIFICADO PARA TABLA DE RESERVAS Y GRIDVIEW === */
@@ -285,19 +285,19 @@ body {
     overflow: hidden;
 }
 
-.tabla-reservas th,
-.tabla-reservas td {
-    border: 1px solid #e0e0e0;
-    padding: 16px 12px;
-    text-align: center;
-    vertical-align: middle;
-}
+    .tabla-reservas th,
+    .tabla-reservas td {
+        border: 1px solid #e0e0e0;
+        padding: 16px 12px;
+        text-align: center;
+        vertical-align: middle;
+    }
 
-.tabla-reservas th {
-    background: #e0e0e0;
-    font-weight: bold;
-    font-size: 1.08em;
-}
+    .tabla-reservas th {
+        background: #e0e0e0;
+        font-weight: bold;
+        font-size: 1.08em;
+    }
 
 /* Íconos */
 .icono-abrir {
@@ -313,6 +313,7 @@ body {
     width: 130px;
     background: #fff;
 }
+
 #calendar-block {
     background: #fff;
     border: 1px solid #d1d1d1;
@@ -322,26 +323,39 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     width: 100%;
+    overflow-x: auto;
 }
 
 #calendar {
     width: 100%;
-    height: 60vh; 
     min-height: 400px;
+    height: auto;
     max-width: 98vw;
     margin: 0 auto;
     transition: max-width 0.3s, height 0.3s;
     box-sizing: border-box;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 768px) {
     #calendar-block {
-        max-width: 98vw;
-        padding: 12px 2vw 12px 2vw;
+        padding: 2px 0 2px 0;
+        max-width: 100vw;
+        min-width: 0;
     }
 
     #calendar {
-        max-width: 98vw;
+        min-width: 340px;
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .fc-toolbar-title {
+        font-size: 1em !important;
+    }
+
+    .fc .fc-button {
+        padding: 0.2em 0.4em !important;
+        font-size: 0.9em !important;
     }
 }
 
@@ -368,97 +382,21 @@ body {
     cursor: pointer !important;
 }
 
-    /* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
-    .fc-event a {
-        color: inherit !important;
-        text-decoration: none !important;
-        cursor: pointer !important;
-    }
-
-    .fc-event:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        background-color: #e9ecef;
-        cursor: pointer !important;
-    }
-
-/* Estilo para la card de evento */
-.evento-card {
-    display: flex;
-    border: 2px solid #222;
-    border-radius: 8px;
-    padding: 16px 20px 16px 20px;
-    background: #fff;
-    align-items: center;
-    min-height: 160px;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    margin-bottom: 24px;
+/* Asegura que los enlaces dentro del evento no tengan subrayado ni color azul */
+.fc-event a {
+	color: inherit !important;
+	text-decoration: none !important;
+	cursor: pointer !important;
 }
 
-.evento-img {
-    flex: 0 0 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.fc-event:hover {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	background-color: #e9ecef;
+	cursor: pointer !important;
 }
 
-    .evento-img img {
-        width: 120px;
-        height: 110px;
-        object-fit: cover;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-.evento-info {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    margin-left: 18px;
-    padding-bottom: 48px;
+.disabled-button {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
-
-.evento-titulo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
-}
-
-.evento-ubicacion {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #222;
-}
-
-.evento-descripcion {
-    font-size: 0.95rem;
-    color: #444;
-    margin-bottom: 1rem;
-}
-
-.evento-btn-wrapper {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    width: auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-.evento-btn-comprar {
-    background: #23252a;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 6px 16px;
-    border: none;
-    font-weight: 400;
-    transition: background 0.2s;
-    margin-top: 0;
-}
-
-    .evento-btn-comprar:hover {
-        background: #111217;
-    }

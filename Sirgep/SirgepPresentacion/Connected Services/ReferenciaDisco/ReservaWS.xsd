@@ -107,7 +107,8 @@
       <xs:element minOccurs="0" name="correo" type="xs:string" />
       <xs:element minOccurs="0" name="distrito" type="xs:string" />
       <xs:element minOccurs="0" name="espacio" type="xs:string" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaConstancia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
       <xs:element name="idConstancia" type="xs:int" />
       <xs:element name="numReserva" type="xs:int" />
     </xs:sequence>
@@ -153,6 +154,7 @@
   <xs:complexType name="espacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="foto" type="xs:string" />
       <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
       <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
       <xs:element name="idEspacio" type="xs:int" />
@@ -176,7 +178,7 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:string" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />

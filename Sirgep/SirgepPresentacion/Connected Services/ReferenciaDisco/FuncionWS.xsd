@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="pe.edu.pucp.sirgep" targetNamespace="pe.edu.pucp.sirgep" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="buscarFuncionId" type="tns:buscarFuncionId" />
+  <xs:element name="buscarFuncionIdResponse" type="tns:buscarFuncionIdResponse" />
   <xs:element name="insertarFuncion" type="tns:insertarFuncion" />
   <xs:element name="insertarFuncionResponse" type="tns:insertarFuncionResponse" />
   <xs:element name="listarFuncionesPorIdEvento" type="tns:listarFuncionesPorIdEvento" />
   <xs:element name="listarFuncionesPorIdEventoResponse" type="tns:listarFuncionesPorIdEventoResponse" />
-  <xs:complexType name="insertarFuncion">
+  <xs:complexType name="buscarFuncionId">
     <xs:sequence>
-      <xs:element minOccurs="0" name="funcion" type="tns:funcion" />
+      <xs:element name="idFuncion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarFuncionIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:funcion" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="funcion">
@@ -60,10 +67,13 @@
     <xs:complexContent mixed="false">
       <xs:extension base="tns:constancia">
         <xs:sequence>
+          <xs:element name="activo" type="xs:unsignedShort" />
           <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
           <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="finString" type="xs:string" />
           <xs:element minOccurs="0" name="horarioFin" type="tns:localTime" />
           <xs:element minOccurs="0" name="horarioIni" type="tns:localTime" />
+          <xs:element minOccurs="0" name="iniString" type="xs:string" />
           <xs:element name="numReserva" type="xs:int" />
           <xs:element minOccurs="0" name="persona" type="tns:persona" />
         </xs:sequence>
@@ -73,6 +83,7 @@
   <xs:complexType name="espacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="foto" type="xs:string" />
       <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
       <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
       <xs:element name="idEspacio" type="xs:int" />
@@ -96,7 +107,7 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:string" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -126,6 +137,11 @@
   </xs:complexType>
   <xs:complexType name="localTime" final="extension restriction">
     <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="insertarFuncion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="funcion" type="tns:funcion" />
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarFuncionResponse">
     <xs:sequence>

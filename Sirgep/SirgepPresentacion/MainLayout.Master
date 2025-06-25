@@ -51,7 +51,7 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Menú Administrador -->
                     <li id="liAdminMenu" runat="server" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+                        <a  runat="server" class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <asp:LinkButton ID="lnkPerfilAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
@@ -65,7 +65,7 @@
                     </li>
                     <!-- Menú Usuario -->
                     <li id="liUsuarioMenu" runat="server" class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
+                        <a runat="server" class="nav-link dropdown-toggle" id="compradorMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Comprador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <asp:LinkButton ID="lnkPerfilComprador" runat="server" CssClass="dropdown-item" OnClick="lnkPerfil_Click">Perfil</asp:LinkButton></li>
@@ -310,10 +310,10 @@
     function mostrarModalConfirmacion(titulo, mensaje) {
         // Cambia el título y mensaje del modal de éxito
         document.getElementById("modalConfirmacionLabel").innerText = titulo;
-        document.getElementById("modalconfirmacionBody").innerText = mensaje;
+        document.getElementById("modalConfirmacionBody").innerText = mensaje;
         // Muestra el modal
         var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
         myModal.show();
     }
-    </script>
+</script>
 </html>

@@ -5,17 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/CompraWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="insertarComprador">
-    <part name="parameters" element="tns:insertarComprador" />
+  <message name="insertarConstancia">
+    <part name="parameters" element="tns:insertarConstancia" />
   </message>
-  <message name="insertarCompradorResponse">
-    <part name="parameters" element="tns:insertarCompradorResponse" />
-  </message>
-  <message name="buscarComprador">
-    <part name="parameters" element="tns:buscarComprador" />
-  </message>
-  <message name="buscarCompradorResponse">
-    <part name="parameters" element="tns:buscarCompradorResponse" />
+  <message name="insertarConstanciaResponse">
+    <part name="parameters" element="tns:insertarConstanciaResponse" />
   </message>
   <message name="buscarEventos">
     <part name="parameters" element="tns:buscarEventos" />
@@ -23,11 +17,17 @@
   <message name="buscarEventosResponse">
     <part name="parameters" element="tns:buscarEventosResponse" />
   </message>
-  <message name="insertarConstancia">
-    <part name="parameters" element="tns:insertarConstancia" />
+  <message name="buscarComprador">
+    <part name="parameters" element="tns:buscarComprador" />
   </message>
-  <message name="insertarConstanciaResponse">
-    <part name="parameters" element="tns:insertarConstanciaResponse" />
+  <message name="buscarCompradorResponse">
+    <part name="parameters" element="tns:buscarCompradorResponse" />
+  </message>
+  <message name="insertarComprador">
+    <part name="parameters" element="tns:insertarComprador" />
+  </message>
+  <message name="insertarCompradorResponse">
+    <part name="parameters" element="tns:insertarCompradorResponse" />
   </message>
   <message name="actualizarComprador">
     <part name="parameters" element="tns:actualizarComprador" />
@@ -42,21 +42,21 @@
     <part name="parameters" element="tns:buscarCompradorPorDniResponse" />
   </message>
   <portType name="CompraWS">
-    <operation name="insertarComprador">
-      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorRequest" message="tns:insertarComprador" />
-      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorResponse" message="tns:insertarCompradorResponse" />
-    </operation>
-    <operation name="buscarComprador">
-      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorRequest" message="tns:buscarComprador" />
-      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorResponse" message="tns:buscarCompradorResponse" />
+    <operation name="insertarConstancia">
+      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest" message="tns:insertarConstancia" />
+      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse" message="tns:insertarConstanciaResponse" />
     </operation>
     <operation name="buscarEventos">
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest" message="tns:buscarEventos" />
       <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse" message="tns:buscarEventosResponse" />
     </operation>
-    <operation name="insertarConstancia">
-      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest" message="tns:insertarConstancia" />
-      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse" message="tns:insertarConstanciaResponse" />
+    <operation name="buscarComprador">
+      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorRequest" message="tns:buscarComprador" />
+      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorResponse" message="tns:buscarCompradorResponse" />
+    </operation>
+    <operation name="insertarComprador">
+      <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorRequest" message="tns:insertarComprador" />
+      <output wsam:Action="pe.edu.pucp.sirgep/CompraWS/insertarCompradorResponse" message="tns:insertarCompradorResponse" />
     </operation>
     <operation name="actualizarComprador">
       <input wsam:Action="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorRequest" message="tns:actualizarComprador" />
@@ -69,16 +69,7 @@
   </portType>
   <binding name="CompraWSPortBinding" type="tns:CompraWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarComprador">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarComprador">
+    <operation name="insertarConstancia">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -96,7 +87,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarConstancia">
+    <operation name="buscarComprador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarComprador">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

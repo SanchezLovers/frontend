@@ -8,7 +8,6 @@
     <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
     <!-- Título principal -->
     <h2 class="fw-bold mb-4">Municipalidad &gt; Espacios</h2>
-
     <!-- Búsqueda -->
     <div class="mb-3">
         <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true"/>
@@ -135,82 +134,88 @@
                         </div>
                     </div>
 
+                    <!-- Horarios -->
                     <div>
-                        <h6>Añadir horario de atención</h6>
+                        <h6 class="mb-3 fw-semibold">Añadir horario de atención</h6>
                     </div>
 
-                    <div class="row">
-                        <div class="mb-3 col-md-2">
-                            <label>Hora Inicio</label>
-                            <asp:TextBox ID="txtHoraInicioInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" AutoPostBack="true" Placeholder="00:00"></asp:TextBox>
-
+                    <div class="row align-items-end">
+                        <div class="col-md-3 mb-3">
+                            <label for="txtHoraInicioInsert" class="form-label">Hora Inicio</label>
+                            <asp:TextBox
+                                ID="txtHoraInicioInsert"
+                                runat="server"
+                                TextMode="Time"
+                                CssClass="form-control"
+                                OnTextChanged="txtHoraFinInsert_TextChanged"
+                                AutoPostBack="true"
+                                placeholder="00:00">
+                            </asp:TextBox>
                         </div>
-                        <div class="mb-3 col-md-2">
-                            <label>Hora Fin</label>
-                            <asp:TextBox ID="txtHoraFinInsert" runat="server" TextMode="Time" OnTextChanged="txtHoraFinInsert_TextChanged" Placeholder="00:00" AutoPostBack="true"></asp:TextBox>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtHoraFinInsert" class="form-label">Hora Fin</label>
+                            <asp:TextBox
+                                ID="txtHoraFinInsert"
+                                runat="server"
+                                TextMode="Time"
+                                CssClass="form-control"
+                                OnTextChanged="txtHoraFinInsert_TextChanged"
+                                AutoPostBack="true"
+                                placeholder="00:00">
+                            </asp:TextBox>
                         </div>
 
-                        <asp:Label ID="lblError" runat="server" ForeColor="Red" />
+                        <div class="col-md-6 mb-3">
+                            <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
+                        </div>
                     </div>
-
-                    <div>
-                        <h6>Añadir días de atención</h6>
-                    </div>
+                    <!-- Fin de Horarios -->
 
                     <!-- Caja de los Días de Atención -->
-                    <div class="card p-3 mb-3">
-                        <div class="row">
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lunes">
-                                    <label class="form-check-label" for="lunes">Lunes</label>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server" />
+                    <asp:UpdatePanel runat="server" ID="updDias">
+                        <ContentTemplate>
+                            <div class="card p-3 mb-3">
+                                <div class="row">
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkLunes" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkLunes.ClientID %>">Lunes</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkMartes" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkMartes.ClientID %>">Martes</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkMiercoles" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkMiercoles.ClientID %>">Miércoles</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkJueves" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkJueves.ClientID %>">Jueves</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkViernes" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkViernes.ClientID %>">Viernes</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkSabado" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkSabado.ClientID %>">Sábado</label>
+                                    </div>
+                                    <div class="col-6 col-md-4">
+                                        <asp:CheckBox ID="chkDomingo" runat="server" CssClass="form-check-input" />
+                                        <label for="<%= chkDomingo.ClientID %>">Domingo</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="martes">
-                                    <label class="form-check-label" for="martes">Martes</label>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="miercoles">
-                                    <label class="form-check-label" for="miercoles">Miércoles</label>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="jueves">
-                                    <label class="form-check-label" for="jueves">Jueves</label>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="viernes">
-                                    <label class="form-check-label" for="viernes">Viernes</label>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="sabado">
-                                    <label class="form-check-label" for="sabado">Sábado</label>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="domingo">
-                                    <label class="form-check-label" for="domingo">Domingo</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- FIN DE Caja de los Días de Atención -->
-
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
-
+                    <!-- FIN DE Caja de los Días de Atención -->
                 <div class="modal-footer">
+                    <input type="hidden" id="diasSeleccionados" name="diasSeleccionados" runat="server" />
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button CssClass="active" ID="btnGuardarInsertado" runat="server" Text="Guardar" OnClick="btnGuardarInsertado_Click"/>
+                    <asp:Button CssClass="btn btn-success" ID="btnGuardarInsertado" runat="server" Text="Guardar" OnClientClick="guardarDiasSeleccionados(); return true;" OnClick="btnGuardarInsertado_Click"/>
                 </div>
             </div>
         </div>
@@ -236,7 +241,7 @@
                             <label>Nombre del espacio</label>
                             <asp:TextBox ID="txtNombreEdit" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Tipo de espacio</label>
                             <asp:DropDownList ID="ddlTipoEspacioEdit" runat="server" CssClass="form-select">
                             </asp:DropDownList>
@@ -248,12 +253,19 @@
                             <label>Ubicación</label>
                             <asp:TextBox ID="txtUbicacionEdit" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Departamento</label>
-                            <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select" AutoPostBack="true"
-                                OnSelectedIndexChanged="ddlDepartamentoAgregar_SelectedIndexChanged">
-                            </asp:DropDownList>
+                            <div class="d-flex align-items-center gap-2">
+                                <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select me-2" AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlDepartamentoEdit_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success"
+                                    ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </asp:LinkButton>
+                            </div>
                         </div>
+                        
                     </div>
 
                     <div class="row">
@@ -261,10 +273,10 @@
                             <label>Superficie (m²)</label>
                             <asp:TextBox ID="txtSuperficieEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Provincia</label>
                             <asp:DropDownList ID="ddlProvinciaEdit" runat="server" CssClass="form-select" AutoPostBack="true"
-                                OnSelectedIndexChanged="ddlProvinciaAgregar_SelectedIndexChanged">
+                                OnSelectedIndexChanged="ddlProvinciaEdit_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -275,31 +287,44 @@
                             <label>Precio de reserva por hora</label>
                             <asp:TextBox ID="txtPrecioEdit" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Distrito</label>
-                            <asp:DropDownList ID="ddlDistritoEdit" runat="server" CssClass="form-select">
+                            <asp:DropDownList ID="ddlDistritoEdit" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistritoEdit_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                     </div>
 
+                    <!-- Horarios -->
                     <div>
-                        <h6>Añadir horario de atención</h6>
+                        <h6 class="mb-3 fw-semibold">Editar horario de atención</h6>
                     </div>
 
-                    <div class="row">
-                        <div class="mb-3 col-md-2">
-                            <label>Hora Inicio</label>
-                            <asp:TextBox ID="txtHoraInicioEdit" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
-
+                    <div class="row align-items-end">
+                        <div class="col-md-3 mb-3">
+                            <label for="txtHoraInicioEdit" class="form-label">Hora Inicio</label>
+                            <asp:TextBox
+                                ID="txtHoraInicioEdit"
+                                runat="server"
+                                TextMode="Time"
+                                CssClass="form-control"
+                                Placeholder="00:00">
+                            </asp:TextBox>
                         </div>
-                        <div class="mb-3 col-md-2">
-                            <label>Hora Fin</label>
-                            <asp:TextBox ID="txtHoraFinEdit" runat="server" TextMode="Time" Placeholder="00:00"></asp:TextBox>
+
+                        <div class="col-md-3 mb-3">
+                            <label for="txtHoraFinEdit" class="form-label">Hora Fin</label>
+                            <asp:TextBox
+                                ID="txtHoraFinEdit"
+                                runat="server"
+                                TextMode="Time"
+                                CssClass="form-control"
+                                Placeholder="00:00">
+                            </asp:TextBox>
                         </div>
                     </div>
-
+                    <!-- Fin de Horarios -->
                     <div>
-                        <h6>Añadir días de atención</h6>
+                        <h6>Visualizar días de atención</h6>
                     </div>
 
                     <!-- Caja de los Días de Atención -->
@@ -307,43 +332,43 @@
                         <div class="row">
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="lunesEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="lunesEdit">
                                     <label class="form-check-label" for="lunes">Lunes</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="martesEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="martesEdit">
                                     <label class="form-check-label" for="martes">Martes</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="miercolesEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="miercolesEdit">
                                     <label class="form-check-label" for="miercoles">Miércoles</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="juevesEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="juevesEdit">
                                     <label class="form-check-label" for="jueves">Jueves</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="viernesEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="viernesEdit">
                                     <label class="form-check-label" for="viernes">Viernes</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="sabadoEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="sabadoEdit">
                                     <label class="form-check-label" for="sabado">Sábado</label>
                                 </div>
                             </div>
                             <div class="col-6 col-md-4">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="domingoEdit">
+                                    <input class="form-check-input" disabled="disabled" runat="server" type="checkbox" id="domingoEdit">
                                     <label class="form-check-label" for="domingo">Domingo</label>
                                 </div>
                             </div>
@@ -358,7 +383,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button CssClass="alert-success" ID="btnActualizarEspacioEdit" runat="server" Text="Actualizar" OnClick="btnActualizarEspacioEdit_Click" CommandArgument='<%# Eval("idEspacio") %>'/>
+                    <asp:Button CssClass="btn btn-success" ID="btnActualizarEspacioEdit" runat="server" Text="Actualizar" OnClick="btnActualizarEspacioEdit_Click" CommandArgument='<%# Eval("idEspacio") %>'/>
                 </div>
             </div>
         </div>
@@ -434,12 +459,11 @@
             return true;
         }
         function mostrarConfEspacio(id) {
-        // Obtener correctamente el ID generado por ASP.NET
-        var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
+            // Obtener correctamente el ID generado por ASP.NET
+            var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
             if (hiddenField) {
                 hiddenField.value = id;
-            // Mostrar el modal aquí si lo necesitas
-            console.log("ID asignado:", id);
+            
             } else {
                     console.error("No se encontró el campo oculto.");
                 return; // Importante: salir de la función si no se encuentra el campo oculto
@@ -457,6 +481,28 @@
 
             // Mostrar el modal
             modalEliminar.show();
+        }
+        function guardarDiasSeleccionados() {
+            const dias = [];
+            const ids = {
+            lunes: '<%= chkLunes.ClientID %>',
+            martes: '<%= chkMartes.ClientID %>',
+            miercoles: '<%= chkMiercoles.ClientID %>',
+            jueves: '<%= chkJueves.ClientID %>',
+            viernes: '<%= chkViernes.ClientID %>',
+            sabado: '<%= chkSabado.ClientID %>',
+            domingo: '<%= chkDomingo.ClientID %>'
+            };
+
+            for (let dia in ids) {
+                const chk = document.getElementById(ids[dia]);
+                if (chk && chk.checked) {
+                    dias.push(dia.toUpperCase()); // o el valor que desees
+                }
+            }
+
+            // Guardamos en el hidden
+            document.getElementById('<%= diasSeleccionados.ClientID %>').value = dias.join(',');
         }
     </script>
 

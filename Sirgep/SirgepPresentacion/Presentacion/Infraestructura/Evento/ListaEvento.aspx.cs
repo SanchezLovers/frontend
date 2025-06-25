@@ -80,5 +80,17 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 ViewState["PaginaActual"] = paginaActual + 1;
             CargarEventos();
         }
+
+
+        //Este seria el boton de compra de eventos que deberia de dirigir a la pantalla de compra
+        protected void btnComprar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Infraestructura/Evento/DetalleEvento.aspx?idEvento=" + ((Button)sender).CommandArgument);
+        }
+
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Ubicacion/Distrito/EligeDistrito.aspx");
+        }
     }
 }

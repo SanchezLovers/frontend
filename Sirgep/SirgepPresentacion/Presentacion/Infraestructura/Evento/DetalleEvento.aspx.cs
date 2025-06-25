@@ -55,7 +55,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 foreach (var funcion in funciones)
                 {
                     cantFunciones++;
-                    ddlFunciones.Items.Add(new ListItem($"{funcion.horaInicio}", funcion.idFuncion.ToString()));
+                    ddlFunciones.Items.Add(new ListItem($"{funcion.fecha} - {funcion.horaInicio}", funcion.idFuncion.ToString()));
                 }
                 int cg = int.Parse(cantGeneralInvisible.Value);
                 int a = cg / cantFunciones;

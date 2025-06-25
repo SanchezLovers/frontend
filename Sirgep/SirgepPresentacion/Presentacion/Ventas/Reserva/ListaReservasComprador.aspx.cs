@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using SirgepPresentacion.ReferenciaDisco;
 
@@ -16,6 +17,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             if (!IsPostBack)
             {
+
             }
         }
         protected void GvListaReservasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -26,23 +28,34 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void CargarDatos()
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
-
             GvListaReservasComprador.DataBind();
         }
 
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            int idComprador = 2;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             reservaWS.crearLibroExcelReservas(idComprador);
         }
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
-            //LinkButton btn = (LinkButton)sender;
-            //string numEntrada = btn.CommandArgument;
-            string numReserva = "2";
-            Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?NumReserva=" + numReserva);
+            LinkButton btn = (LinkButton)sender;
+            string idConstancia = btn.CommandArgument;
+            Response.Redirect("/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia);
+        }
+
+        protected void btnConfirmarAccion_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(hdnReservaAEliminar.Value);
+            reservaWS.cancelarReserva(id);
+            // Boolean estado = response.@return;
+            CargarDatos(); // Refresca la tabla
+            // Opcional: Mostrar mensaje de éxito
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
+                "alert('Reserva Cancelada exitosamente');", true);
         }
     }
 }

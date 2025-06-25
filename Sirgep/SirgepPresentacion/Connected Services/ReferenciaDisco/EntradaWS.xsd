@@ -10,6 +10,8 @@
   <xs:element name="buscarDistritoDeEntradaResponse" type="tns:buscarDistritoDeEntradaResponse" />
   <xs:element name="buscarEntrada" type="tns:buscarEntrada" />
   <xs:element name="buscarEntradaResponse" type="tns:buscarEntradaResponse" />
+  <xs:element name="buscarEntradasPorTexto" type="tns:buscarEntradasPorTexto" />
+  <xs:element name="buscarEntradasPorTextoResponse" type="tns:buscarEntradasPorTextoResponse" />
   <xs:element name="buscarEventoDeEntrada" type="tns:buscarEventoDeEntrada" />
   <xs:element name="buscarEventoDeEntradaResponse" type="tns:buscarEventoDeEntradaResponse" />
   <xs:element name="buscarFuncionDeEntrada" type="tns:buscarFuncionDeEntrada" />
@@ -22,8 +24,10 @@
   <xs:element name="eliminarLogicoEntradaResponse" type="tns:eliminarLogicoEntradaResponse" />
   <xs:element name="insertarEntrada" type="tns:insertarEntrada" />
   <xs:element name="insertarEntradaResponse" type="tns:insertarEntradaResponse" />
+  <xs:element name="listarDetalleEntradas" type="tns:listarDetalleEntradas" />
   <xs:element name="listarDetalleEntradasPorComprador" type="tns:listarDetalleEntradasPorComprador" />
   <xs:element name="listarDetalleEntradasPorCompradorResponse" type="tns:listarDetalleEntradasPorCompradorResponse" />
+  <xs:element name="listarDetalleEntradasResponse" type="tns:listarDetalleEntradasResponse" />
   <xs:element name="listarEntradasActivas" type="tns:listarEntradasActivas" />
   <xs:element name="listarEntradasActivasResponse" type="tns:listarEntradasActivasResponse" />
   <xs:complexType name="buscarEntrada">
@@ -70,7 +74,7 @@
   </xs:complexType>
   <xs:complexType name="evento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="archivoImagen" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="archivoImagen" type="xs:string" />
       <xs:element name="cantEntradasDispo" type="xs:int" />
       <xs:element name="cantEntradasVendidas" type="xs:int" />
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
@@ -96,6 +100,7 @@
   <xs:complexType name="espacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="distrito" type="tns:distrito" />
+      <xs:element minOccurs="0" name="foto" type="xs:string" />
       <xs:element minOccurs="0" name="horarioFinAtencion" type="xs:string" />
       <xs:element minOccurs="0" name="horarioInicioAtencion" type="xs:string" />
       <xs:element name="idEspacio" type="xs:int" />
@@ -256,7 +261,8 @@
   <xs:complexType name="detalleEntradaDTO">
     <xs:sequence>
       <xs:element name="estado" type="xs:unsignedShort" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaConstancia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaFuncion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
       <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
       <xs:element name="idConstancia" type="xs:int" />
@@ -299,6 +305,16 @@
       <xs:element minOccurs="0" name="tipoDocumento" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="buscarEntradasPorTexto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="texto" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEntradasPorTextoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleEntradaDTO" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="buscarFuncionDeEntrada">
     <xs:sequence>
       <xs:element name="idFuncion" type="xs:int" />
@@ -307,6 +323,14 @@
   <xs:complexType name="buscarFuncionDeEntradaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:funcion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDetalleEntradas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarDetalleEntradasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleEntradaDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="buscarDistritoDeEntrada">

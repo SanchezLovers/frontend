@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static SirgepPresentacion.Presentacion.Ventas.Reserva.FormularioEspacio;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
@@ -59,9 +60,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void btnMostrarModalAgregarEvento_Click(object sender, EventArgs e)
         {
             cargarUbicacion();
-
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
-        "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
+            abrirModalAgregar();
         }
 
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
@@ -84,9 +83,103 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtVendidas.Text = "";
             txtReferencia.Text = "";
         }
+        private bool ValidarDatosEvento()
+        {
+            // Validación de existencia de fecha mínima
+            if (Session["fechaMinima"] == null)
+            {
+                MostrarError("Debe agregar al menos 1 función.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            // Validar campos obligatorios de texto
+            if (string.IsNullOrWhiteSpace(txtNomEvent.Text))
+            {
+                MostrarError("Debe ingresar el nombre del evento.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDescAgregar.Text))
+            {
+                MostrarError("Debe ingresar la descripción del evento.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtUbicacionAgregar.Text))
+            {
+                MostrarError("Debe ingresar la ubicación del evento.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlDepaAgregar.SelectedValue) || ddlDepaAgregar.SelectedValue == "0")
+            {
+                MostrarError("Debe seleccionar un departamento.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlProvAgregar.SelectedValue) || ddlProvAgregar.SelectedValue == "0")
+            {
+                MostrarError("Debe seleccionar una provincia.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlDistAgregar.SelectedValue) || ddlDistAgregar.SelectedValue == "0")
+            {
+                MostrarError("Debe seleccionar un distrito.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtReferencia.Text))
+            {
+                MostrarError("Debe ingresar la referencia del evento.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            // Validar números: Precio, Disponibles, Vendidas
+            if (!int.TryParse(txtPrecioEntrada.Text, out int precio) || precio < 0 || precio > 1000)
+            {
+                MostrarError("El precio de la entrada debe ser un número entre 0 y 1000.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if (!int.TryParse(txtDisponibles.Text, out int disponibles) || disponibles < 0 || disponibles > 1000)
+            {
+                MostrarError("La cantidad disponible debe ser un número entre 0 y 1000.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            int.TryParse(txtVendidas.Text, out int vendidas);
+            if (vendidas < 0 || vendidas > 1000)
+            {
+                MostrarError("La cantidad vendida debe ser un número entre 0 y 1000.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            if(vendidas > disponibles)
+            {
+                MostrarError("La cantidad vendida debe ser menor que la cantidad disponible.");
+                abrirModalAgregar();
+                return false;
+            }
+
+            // Si todo es válido, retornar true
+            return true;
+        }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (!ValidarDatosEvento()) return;
             string fechaInicioEvento = Session["fechaMinima"].ToString();
             string fechaFinEvento = Session["fechaMaxima"].ToString();
             string nombreEvento = txtNomEvent.Text;
@@ -153,22 +246,134 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
                     if (idFuncion < 1)
                     {
-                        Console.WriteLine("Error al insertar la función con ID: " + idFuncion);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "modalError",
-                        "var modalEvento = bootstrap.Modal.getInstance(document.getElementById('modalError')); modalEvento.show();", true);
+                        Console.WriteLine();
+                        mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función con ID: " + idFuncion);
                         return;
                     }
                 }
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalExito",
-                    "var modalEvento = bootstrap.Modal.getInstance(document.getElementById('modalExito')); modalEvento.hide();", true);
-                CargarEventos();
+                string nombreDistrito = distWS.buscarDistPorId(new buscarDistPorIdRequest(eventoAgregar.distrito.idDistrito)).@return.nombre;
+                string asunto = $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {eventoAgregar.nombre}!";
+                string contenido = $@"
+                    <html>
+                    <head>
+                      <style>
+                        body {{
+                          font-family: 'Segoe UI', sans-serif;
+                          background-color: #f8f9fa;
+                          margin: 0;
+                          padding: 0;
+                        }}
+                        .container {{
+                          max-width: 600px;
+                          margin: 20px auto;
+                          background-color: #fff;
+                          border: 1px solid #dee2e6;
+                          border-radius: 8px;
+                          padding: 30px;
+                          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                        }}
+                        .header {{
+                          background-color: #f10909;
+                          color: white;
+                          padding: 15px;
+                          border-radius: 6px 6px 0 0;
+                          text-align: center;
+                        }}
+                        .header h2 {{
+                          margin: 0;
+                          font-size: 22px;
+                          color: white;
+                        }}
+                        .body {{
+                          color: #212529;
+                          padding: 20px 0;
+                          font-size: 16px;
+                        }}
+                        .details {{
+                          background-color: #f1f3f5;
+                          border-radius: 6px;
+                          padding: 15px;
+                          margin-bottom: 20px;
+                          list-style: none;
+                        }}
+                        .details li {{
+                          margin-bottom: 10px;
+                          font-size: 15px;
+                        }}
+                        .details li strong {{
+                          color: #000;
+                          font-weight: bold;
+                        }}
+                        .cta {{
+                          display: inline-block;
+                          background-color: #f10909;
+                          color: #fff !important;
+                          padding: 10px 20px;
+                          border-radius: 5px;
+                          text-decoration: none;
+                          font-weight: bold;
+                          margin-top: 10px;
+                        }}
+                        .cta:hover {{
+                          background-color: #c40808;
+                        }}
+                        .logo {{
+                          text-align: center;
+                          margin-top: 20px;
+                        }}
+                        .logo img {{
+                          width: 100px;
+                        }}
+                        .footer {{
+                          text-align: center;
+                          font-size: 12px;
+                          color: #6c757d;
+                          margin-top: 20px;
+                        }}
+                      </style>
+                    </head>
+                    <body>
+                      <div class='container'>
+                        <div class='header'>
+                          <h2>¡No te pierdas este evento en tu distrito favorito {nombreDistrito}!</h2>
+                        </div>
+                        <div class='body'>
+                          <p>Nos alegra informarte que se ha registrado un nuevo evento en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
+                          <ul class='details'>
+                            <li><strong>🎉 Nombre del evento:</strong> {eventoAgregar.nombre}</li>
+                            <li><strong>📅 Fecha:</strong> {eventoAgregar.fecha_inicio} al {eventoAgregar.fecha_fin}</li>
+                            <li><strong>📍 Ubicación:</strong> {eventoAgregar.ubicacion}</li>
+                            <li><strong>🗺 Referencia:</strong> {eventoAgregar.referencia}</li>
+                            <li><strong>🎟 Entradas disponibles:</strong> {eventoAgregar.cantEntradasDispo}</li>
+                            <li><strong>💵 Precio por entrada:</strong> S/ {eventoAgregar.precioEntrada}</li>
+                          </ul>
+                          <p>Si deseas más información o comprar entradas, haz clic en el botón de abajo:</p>
+                          <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+                        </div>
+                        <div class='logo'>
+                          <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
+                        </div>
+                        <div class='footer'>
+                          Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
+                          © 2025 Gobierno Regional de Lima
+                        </div>
+                      </div>
+                    </body>
+                    </html>";
+                bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)).@return;
+                if (resultado)
+                {
+                    mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
+                    CargarEventos();
+                    return;
+                }
+                mostrarModalErrorEvento("VENTANA DE ERROR", "No se pudo enviar los correos apropiadamente, pero sí se insertó el EVENTO.");
             }
             else
             {
                 // error al insertar
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "modalError",
-                    "var modalEvento = bootstrap.Modal.getInstance(document.getElementById('modalError')); modalEvento.show();", true);
+                mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar el evento");
             }
 
             LimpiarDatosAgregados();
@@ -197,8 +402,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
 
             // Para mantener el modal abierto tras el postback
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
-            "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
+            abrirModalAgregar();
         }
 
         protected void ddlDepaAgregar_SelectedIndexChanged(object sender, EventArgs e)
@@ -223,12 +427,18 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
 
             // Para mantener el modal abierto tras el postback
+            abrirModalAgregar();
+        }
+
+        public void abrirModalAgregar()
+        {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
             "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
         }
 
         protected void btnAgregarFuncion_Click(object sender, EventArgs e)
         {
+            lblErrorAgregar.Text = "";
             string fecha = txtFechaFuncion.Text.Trim();
             string horaInicio = txtHoraIniFuncion.Text.Trim();
             string horaFin = txtHoraFinFuncion.Text.Trim();
@@ -236,52 +446,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string valor = $"{fecha}_{horaInicio}_{horaFin}";
             string texto = $"{fecha} - {horaInicio} a {horaFin}";
 
-            // Validación: campos vacíos
-            if (string.IsNullOrWhiteSpace(fecha) || string.IsNullOrWhiteSpace(horaInicio) || string.IsNullOrWhiteSpace(horaFin))
-            {
-                MostrarError("Por favor complete todos los campos de la función.");
-                return;
-            }
-
-            // Validación: fecha en el mismo año y no pasada
-            if (!DateTime.TryParse(fecha, out DateTime fechaSeleccionada))
-            {
-                MostrarError("La fecha no tiene un formato válido.");
-                return;
-            }
-
-            DateTime hoy = DateTime.Today;
-            if (fechaSeleccionada.Year != hoy.Year)
-            {
-                MostrarError("La fecha debe estar en el año actual.");
-                return;
-            }
-
-            if (fechaSeleccionada < hoy)
-            {
-                MostrarError("La fecha no puede ser anterior a hoy.");
-                return;
-            }
-
-            // Validación: hora inicio < hora fin
-            if (!TimeSpan.TryParse(horaInicio, out TimeSpan tsInicio) || !TimeSpan.TryParse(horaFin, out TimeSpan tsFin))
-            {
-                MostrarError("Las horas no tienen un formato válido.");
-                return;
-            }
-
-            if (tsInicio >= tsFin)
-            {
-                MostrarError("La hora de inicio debe ser menor a la hora de fin.");
-                return;
-            }
-
-            // validación de duplicados
-            if (ddlFuncionesAgregar.Items.Cast<ListItem>().Any(i => i.Value == valor))
-            {
-                MostrarError("Esa función ya ha sido agregada.");
-                return;
-            }
+            if (!ValidaFuncion(fecha,horaInicio,horaFin,valor)) return;
+            DateTime.TryParse(fecha, out DateTime fechaSeleccionada);
 
             ddlFuncionesAgregar.Items.Add(new ListItem(texto, valor));
             ActualizarFechasMinMax(fechaSeleccionada);
@@ -289,6 +455,64 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             // Para mantener el modal abierto tras el postback
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
             "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
+        }
+
+        private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor)
+        {
+            // Validación: campos vacíos
+            if (string.IsNullOrWhiteSpace(fecha) || string.IsNullOrWhiteSpace(horaInicio) || string.IsNullOrWhiteSpace(horaFin))
+            {
+                MostrarError("Por favor complete todos los campos de la función.");
+                return false;
+            }
+
+            // Validación: fecha en el mismo año y no pasada
+            if (!DateTime.TryParse(fecha, out DateTime fechaSeleccionada))
+            {
+                MostrarError("La fecha no tiene un formato válido.");
+                return false;
+            }
+
+            DateTime hoy = DateTime.Today;
+            if (fechaSeleccionada.Year != hoy.Year)
+            {
+                MostrarError("La fecha debe estar en el año actual.");
+                return false;
+            }
+
+            if (fechaSeleccionada < hoy)
+            {
+                MostrarError("La fecha no puede ser anterior a hoy.");
+                return false;
+            }
+
+            // Validación: hora inicio < hora fin
+            if (!TimeSpan.TryParse(horaInicio, out TimeSpan tsInicio) || !TimeSpan.TryParse(horaFin, out TimeSpan tsFin))
+            {
+                MostrarError("Las horas no tienen un formato válido.");
+                return false;
+            }
+
+            if (tsInicio >= tsFin)
+            {
+                MostrarError("La hora de inicio debe ser menor a la hora de fin.");
+                return false;
+            }
+
+            if (tsInicio.ToString().Substring(2) != ":00:00" || tsFin.ToString().Substring(2) != ":00:00")
+            {
+                MostrarError("La horas deben terminar en :00.");
+                return false;
+            }
+
+            // validación de duplicados
+            if (ddlFuncionesAgregar.Items.Cast<ListItem>().Any(i => i.Value == valor))
+            {
+                MostrarError("Esa función ya ha sido agregada.");
+                return false;
+            }
+
+            return true;
         }
 
         public void LimpiarFunciones()
@@ -304,10 +528,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         private void MostrarError(string mensaje)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "errorMsg", $"alert('{mensaje}');", true);
-            // Para mantener el modal abierto tras el postback
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEvento",
-            "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
+            lblErrorAgregar.Text = mensaje;
+            abrirModalAgregar();
         }
 
         private void ActualizarFechasMinMax(DateTime fecha)
@@ -367,10 +589,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito",
-                "mostrarModalPorId('modalExito');", true);
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoEliminarEvento", $"alert('Evento eliminado EXITOSAMENTE');", true);
+                string script = "setTimeout(function(){ mostrarModalExito('Eliminación exitosa','Evento eliminado exitosamente'); }, 300);";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
             }
             CargarEventos();
         }
@@ -634,15 +854,32 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
             if (actualizado)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertActualizar",
-                    "alert('EVENTO actualizado exitosamente');", true);
+                mostrarModalExitoEvento("VENTANA DE ÉXITO", "EVENTO actualizado exitosamente");
                 CargarEventos();
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertActualizar",
-                    "alert('Ocurrió un problema al actualizar el EVENTO');", true);
+                mostrarModalErrorEvento("VENTANA DE ERROR", "Ocurrió un problema al actualizar el EVENTO");
             }
+        }
+        public void mostrarModalExitoEvento(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalExito", script, true);
+        }
+
+        public void mostrarModalErrorEvento(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);
         }
     }
 }
