@@ -166,6 +166,13 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return false;
             }
 
+            if(vendidas > disponibles)
+            {
+                MostrarError("La cantidad vendida debe ser menor que la cantidad disponible.");
+                abrirModalAgregar();
+                return false;
+            }
+
             // Si todo es válido, retornar true
             return true;
         }
@@ -245,8 +252,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                     }
                 }
 
-                mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
-                CargarEventos();
                 string nombreDistrito = distWS.buscarDistPorId(new buscarDistPorIdRequest(eventoAgregar.distrito.idDistrito)).@return.nombre;
                 string asunto = $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {eventoAgregar.nombre}!";
                 string contenido = $@"
@@ -359,10 +364,11 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)).@return;
                 if (resultado)
                 {
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
-                    //    "mostrarModalExito('Correos enviados exitosamente', ''); " +
-                    //    "}, 1000);", true);
+                    mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
+                    CargarEventos();
+                    return;
                 }
+                mostrarModalErrorEvento("VENTANA DE ERROR", "No se pudo enviar los correos apropiadamente, pero sí se insertó el EVENTO.");
             }
             else
             {
