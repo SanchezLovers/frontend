@@ -1,4 +1,5 @@
-﻿using SirgepPresentacion.ReferenciaDisco;
+﻿using DocumentFormat.OpenXml.Office2016.Drawing.Charts;
+using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,8 +25,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             client = new ReservaWSClient();
             distrClient = new DistritoWSClient();
-            CargarPagina();
-
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -154,7 +153,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 {
                     listadoActual = listadoActual.Where(r =>
                         ("#" + r.numReserva.ToString("D3")).ToLower().Contains(textoBusqueda) ||
-                        r.fecha.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
+                        r.fechaReserva.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
                         (r.distrito?.ToLower().Contains(textoBusqueda) ?? false) ||
                         (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||
                         (r.correo?.ToLower().Contains(textoBusqueda) ?? false)
@@ -179,6 +178,69 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnVerCalendario_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Presentacion/Usuarios/Administrador/CalendarioReservas.aspx");
+        }
+
+        protected void btnEliminarReserva_Click(object sender, EventArgs e)
+        {
+            int idReserva = int.Parse(((Button)sender).CommandArgument);
+            Boolean reservaEliminada = client.eliminarLogicoReserva(idReserva);
+
+            if (reservaEliminada)
+            {
+                mostrarModalExitoReserva("VENTANA DE CONFIRMACION", "La reserva ha sido eliminada correctamente.");
+                CargarPagina();
+                return;
+            }
+            mostrarModalErrorReserva("VENTANA DE ERROR", "Ocurrió un problema al eliminar la reserva.");
+            CargarPagina();
+        }
+
+        public void mostrarModalExitoReserva(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalExito", script, true);
+        }
+
+        public void mostrarModalErrorReserva(string titulo, string mensaje)
+        {
+            string script = $@"
+                Sys.Application.add_load(function () {{
+                    mostrarModalExito('{titulo}', '{mensaje}');
+                }});
+            ";
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);
+        }
+
+        protected void gvReservas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var reserva = (reservaDTO)e.Row.DataItem;
+
+                // Asegúrate de que fechaConstancia sea una propiedad DateTime válida
+                DateTime fechaConstancia = reserva.fechaConstancia;
+
+                Button btnEliminar = (Button)e.Row.FindControl("btnEliminarReserva");
+
+                ushort a = reserva.activo;
+
+                char aChar = ((char)a);
+
+                if (btnEliminar != null)
+                {
+                    bool habilitado = fechaConstancia.AddYears(5) <= DateTime.Now && reserva.activo=='A';
+                    btnEliminar.Enabled = habilitado;
+
+                    // Opcional: agrega un tooltip explicativo
+                    btnEliminar.ToolTip = habilitado
+                        ? "Puedes eliminar esta entrada, ya que han pasado 5 años desde la constancia"
+                        : "No puedes eliminar esta entrada. Aún no han pasado 5 años desde la constancia";
+                }
+            }
         }
     }
 }

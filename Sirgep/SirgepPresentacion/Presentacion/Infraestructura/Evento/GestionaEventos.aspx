@@ -5,6 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <!-- Título principal -->
     <h2 class="fw-bold mb-4" style="font-size: 2.8rem;">Municipalidad &gt; Eventos</h2>
 
@@ -249,6 +250,7 @@
                         <div class="col-md-2">
                             <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncion_Click" />
                         </div>
+                        <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
                 </div>
 

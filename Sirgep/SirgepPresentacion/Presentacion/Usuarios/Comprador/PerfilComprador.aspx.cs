@@ -22,8 +22,8 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
         }
         protected void cargarPerfil()
         {
-            int idComprador = 3;
-            //int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
             detalleComprador detalleCompradorDTO = compradorWS.buscarDetalleCompradorPorId(idComprador);
             lblNombres.Text = detalleCompradorDTO.nombres;
             lblPrimerApellido.Text = detalleCompradorDTO.primerApellido;
@@ -42,8 +42,8 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             string nuevoDistrito = txtDistrito.Text;
             if (!string.IsNullOrEmpty(nuevoDistrito))
             {
-                int idComprador = 3;
-                //int idComprador = int.Parse(Session["idUsuario"].ToString());
+                //int idComprador = 3;
+                int idComprador = int.Parse(Session["idUsuario"].ToString());
                 bool resultado = compradorWS.actualizarDistritoFavoritoPorIdComprador(nuevoDistrito, idComprador);
                 cargarPerfil();
                 if (resultado)
@@ -66,5 +66,16 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
                 }
             }
         }
+
+        protected void btnEliminarCuenta_Click(object sender, EventArgs e)
+        {
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+           
+            compradorWS.eliminarUsuarioComprador(idComprador);
+
+            Session.Clear();
+            Response.Redirect("~/Presentacion/Inicio/LogIn.aspx");
+        }
+
     }
 }

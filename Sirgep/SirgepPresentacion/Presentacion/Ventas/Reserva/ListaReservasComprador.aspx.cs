@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SirgepPresentacion.ReferenciaDisco;
+using System;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SirgepPresentacion.ReferenciaDisco;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 {
@@ -28,8 +29,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void CargarDatos()
         {
-            int idComprador = int.Parse(Session["idUsuario"].ToString());
-            //int idComprador = 3;
+            //int idComprador = int.Parse(Session["idUsuario"].ToString());
+            int idComprador = 3;
             GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
             GvListaReservasComprador.DataBind();
         }
@@ -56,6 +57,53 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             // Opcional: Mostrar mensaje de éxito
             ScriptManager.RegisterStartupScript(this, this.GetType(), "alertEliminar",
                 "alert('Reserva Cancelada exitosamente');", true);
+        }
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string textoBusqueda = input_busqueda.Value.Trim().ToLower();
+            /*
+            try
+            {
+                // Usar el listado actual ya filtrado (almacenado en ViewState)
+                var listadoActual = Reservas;
+
+                // Aplicar filtro de búsqueda solo si hay texto
+                if (!string.IsNullOrEmpty(textoBusqueda))
+                {
+                    listadoActual = listadoActual.Where(r =>
+                        ("#" + r.numReserva.ToString("D3")).ToLower().Contains(textoBusqueda) ||
+                        r.fechaReserva.ToString("yyyy-MM-dd").Contains(textoBusqueda) ||
+                        (r.distrito?.ToLower().Contains(textoBusqueda) ?? false) ||
+                        (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||
+                        (r.correo?.ToLower().Contains(textoBusqueda) ?? false)
+                    ).ToList();
+                }
+                else
+                {
+                    listadoActual = client.listarTodasReservas().ToList();
+                }
+
+                Reservas = listadoActual;
+                ViewState["PaginaActual"] = 1;
+                CargarPagina();
+            }
+            catch
+            {
+                Reservas = new List<reservaDTO>();
+                CargarPagina();
+            }
+            */
+        }
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            List<string> estadosSeleccionados = new List<string>();
+            if (chkVigentes.Checked)
+                estadosSeleccionados.Add("Vigente");
+            if (chkFinalizadas.Checked)
+                estadosSeleccionados.Add("Completada");
+            if (chkCanceladas.Checked)
+                estadosSeleccionados.Add("Cancelada");
         }
     }
 }
