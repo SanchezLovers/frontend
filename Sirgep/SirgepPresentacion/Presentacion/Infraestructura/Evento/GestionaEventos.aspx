@@ -250,7 +250,7 @@
                         <div class="col-md-2">
                             <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncion_Click" />
                         </div>
-                        <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-bg-danger"></asp:Label>
+                        <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
                 </div>
 
