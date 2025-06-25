@@ -109,12 +109,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             ddlEspacio.DataTextField = "Nombre";
             ddlEspacio.DataValueField = "idEspacio";
             ddlEspacio.DataBind();
+            lblError.Visible = true;
             ddlEspacio.Enabled = true;
             ddlEspacio.Items.Insert(0, new ListItem("Seleccione Espacio", ""));
         }
 
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ddlEspacio.Text.Equals("Seleccione Provincia")) return;
             int idEspacio = int.Parse(ddlEspacio.SelectedValue.ToString());
             espacio es = espacioWS.buscarEspacio(idEspacio);
             lblPrecioHora.Text =es.precioReserva.ToString();
