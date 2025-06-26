@@ -29,8 +29,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void CargarDatos()
         {
-            //int idComprador = int.Parse(Session["idUsuario"].ToString());
-            int idComprador = 3;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 3;
             GvListaReservasComprador.DataSource = reservaWS.listarDetalleReservasPorComprador(idComprador);
             GvListaReservasComprador.DataBind();
         }
