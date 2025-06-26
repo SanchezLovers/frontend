@@ -16,8 +16,59 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface EventoWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse buscarEventosPorFechas(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> buscarEventosPorFechasAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse listarEventoPorDistrito(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> listarEventoPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse buscarEventoPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> buscarEventoPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse listarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> listarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse eliminarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> eliminarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/enviarCorreosCompradoresPorDistritoDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/enviarCorreosCompradoresPorDistritoDeEventoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
         SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoResponse enviarCorreosCompradoresPorDistritoDeEvento(SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoRequest request);
         
@@ -25,24 +76,14 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoResponse> enviarCorreosCompradoresPorDistritoDeEventoAsync(SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/actualizarEventoResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse actualizarEvento(SirgepPresentacion.ReferenciaDisco.actualizarEventoRequest request);
+        SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse obtenerCantEntradasDisponibles(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/actualizarEventoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse> actualizarEventoAsync(SirgepPresentacion.ReferenciaDisco.actualizarEventoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse buscarEventoPorID(SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse> buscarEventoPorIDAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> obtenerCantEntradasDisponiblesAsync(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarEventoResponse")]
@@ -65,6 +106,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEventoResponse> insertarEventoAsync(SirgepPresentacion.ReferenciaDisco.insertarEventoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/actualizarEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse actualizarEvento(SirgepPresentacion.ReferenciaDisco.actualizarEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/actualizarEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/actualizarEventoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEventoResponse> actualizarEventoAsync(SirgepPresentacion.ReferenciaDisco.actualizarEventoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse buscarEventoPorID(SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorIDResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse> buscarEventoPorIDAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -73,112 +134,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarLogicoResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> eliminarLogicoAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse listarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarFuncionesDeEventoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> listarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse buscarEventoPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventoPorTextoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> buscarEventoPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse buscarEventosPorFechas(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/buscarEventosPorFechasResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> buscarEventosPorFechasAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse eliminarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/eliminarFuncionesDeEventoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> eliminarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse listarEventoPorDistrito(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/listarEventoPorDistritoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> listarEventoPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse obtenerCantEntradasDisponibles(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesRequest", ReplyAction="pe.edu.pucp.sirgep/EventoWS/obtenerCantEntradasDisponiblesResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> obtenerCantEntradasDisponiblesAsync(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class enviarCorreosCompradoresPorDistritoDeEventoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string asunto;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string contenido;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idDistrito;
-        
-        public enviarCorreosCompradoresPorDistritoDeEventoRequest() {
-        }
-        
-        public enviarCorreosCompradoresPorDistritoDeEventoRequest(string asunto, string contenido, int idDistrito) {
-            this.asunto = asunto;
-            this.contenido = contenido;
-            this.idDistrito = idDistrito;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class enviarCorreosCompradoresPorDistritoDeEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public enviarCorreosCompradoresPorDistritoDeEventoResponse() {
-        }
-        
-        public enviarCorreosCompradoresPorDistritoDeEventoResponse(bool @return) {
-            this.@return = @return;
-        }
     }
     
     /// <remarks/>
@@ -1172,6 +1127,164 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
+    public partial class reservaDTO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private ushort activoField;
+        
+        private string correoField;
+        
+        private string distritoField;
+        
+        private string espacioField;
+        
+        private System.DateTime fechaConstanciaField;
+        
+        private bool fechaConstanciaFieldSpecified;
+        
+        private System.DateTime fechaReservaField;
+        
+        private bool fechaReservaFieldSpecified;
+        
+        private int idConstanciaField;
+        
+        private int numReservaField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public ushort activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                this.activoField = value;
+                this.RaisePropertyChanged("activo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                this.correoField = value;
+                this.RaisePropertyChanged("correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string distrito {
+            get {
+                return this.distritoField;
+            }
+            set {
+                this.distritoField = value;
+                this.RaisePropertyChanged("distrito");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string espacio {
+            get {
+                return this.espacioField;
+            }
+            set {
+                this.espacioField = value;
+                this.RaisePropertyChanged("espacio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public System.DateTime fechaConstancia {
+            get {
+                return this.fechaConstanciaField;
+            }
+            set {
+                this.fechaConstanciaField = value;
+                this.RaisePropertyChanged("fechaConstancia");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaConstanciaSpecified {
+            get {
+                return this.fechaConstanciaFieldSpecified;
+            }
+            set {
+                this.fechaConstanciaFieldSpecified = value;
+                this.RaisePropertyChanged("fechaConstanciaSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public System.DateTime fechaReserva {
+            get {
+                return this.fechaReservaField;
+            }
+            set {
+                this.fechaReservaField = value;
+                this.RaisePropertyChanged("fechaReserva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaReservaSpecified {
+            get {
+                return this.fechaReservaFieldSpecified;
+            }
+            set {
+                this.fechaReservaFieldSpecified = value;
+                this.RaisePropertyChanged("fechaReservaSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public int idConstancia {
+            get {
+                return this.idConstanciaField;
+            }
+            set {
+                this.idConstanciaField = value;
+                this.RaisePropertyChanged("idConstancia");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public int numReserva {
+            get {
+                return this.numReservaField;
+            }
+            set {
+                this.numReservaField = value;
+                this.RaisePropertyChanged("numReserva");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
     public partial class detalleEntradaDTO : object, System.ComponentModel.INotifyPropertyChanged {
         
         private ushort estadoField;
@@ -1360,220 +1473,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public string ubicacion {
-            get {
-                return this.ubicacionField;
-            }
-            set {
-                this.ubicacionField = value;
-                this.RaisePropertyChanged("ubicacion");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9037.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
-    public partial class detalleReservaDTO : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string categoriaField;
-        
-        private ushort estadoField;
-        
-        private System.DateTime fechaField;
-        
-        private bool fechaFieldSpecified;
-        
-        private System.DateTime horaFinField;
-        
-        private bool horaFinFieldSpecified;
-        
-        private System.DateTime horaInicioField;
-        
-        private bool horaInicioFieldSpecified;
-        
-        private int idConstanciaField;
-        
-        private string nombreDistritoField;
-        
-        private string nombreEspacioField;
-        
-        private int numReservaField;
-        
-        private double superficieField;
-        
-        private string ubicacionField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string categoria {
-            get {
-                return this.categoriaField;
-            }
-            set {
-                this.categoriaField = value;
-                this.RaisePropertyChanged("categoria");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public ushort estado {
-            get {
-                return this.estadoField;
-            }
-            set {
-                this.estadoField = value;
-                this.RaisePropertyChanged("estado");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public System.DateTime fecha {
-            get {
-                return this.fechaField;
-            }
-            set {
-                this.fechaField = value;
-                this.RaisePropertyChanged("fecha");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaSpecified {
-            get {
-                return this.fechaFieldSpecified;
-            }
-            set {
-                this.fechaFieldSpecified = value;
-                this.RaisePropertyChanged("fechaSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public System.DateTime horaFin {
-            get {
-                return this.horaFinField;
-            }
-            set {
-                this.horaFinField = value;
-                this.RaisePropertyChanged("horaFin");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool horaFinSpecified {
-            get {
-                return this.horaFinFieldSpecified;
-            }
-            set {
-                this.horaFinFieldSpecified = value;
-                this.RaisePropertyChanged("horaFinSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public System.DateTime horaInicio {
-            get {
-                return this.horaInicioField;
-            }
-            set {
-                this.horaInicioField = value;
-                this.RaisePropertyChanged("horaInicio");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool horaInicioSpecified {
-            get {
-                return this.horaInicioFieldSpecified;
-            }
-            set {
-                this.horaInicioFieldSpecified = value;
-                this.RaisePropertyChanged("horaInicioSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public int idConstancia {
-            get {
-                return this.idConstanciaField;
-            }
-            set {
-                this.idConstanciaField = value;
-                this.RaisePropertyChanged("idConstancia");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string nombreDistrito {
-            get {
-                return this.nombreDistritoField;
-            }
-            set {
-                this.nombreDistritoField = value;
-                this.RaisePropertyChanged("nombreDistrito");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public string nombreEspacio {
-            get {
-                return this.nombreEspacioField;
-            }
-            set {
-                this.nombreEspacioField = value;
-                this.RaisePropertyChanged("nombreEspacio");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
-        public int numReserva {
-            get {
-                return this.numReservaField;
-            }
-            set {
-                this.numReservaField = value;
-                this.RaisePropertyChanged("numReserva");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
-        public double superficie {
-            get {
-                return this.superficieField;
-            }
-            set {
-                this.superficieField = value;
-                this.RaisePropertyChanged("superficie");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
         public string ubicacion {
             get {
                 return this.ubicacionField;
@@ -1820,126 +1719,134 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="pe.edu.pucp.sirgep")]
-    public partial class reservaDTO : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class detalleReservaDTO : object, System.ComponentModel.INotifyPropertyChanged {
         
-        private ushort activoField;
+        private string categoriaField;
         
-        private string correoField;
+        private ushort estadoField;
         
-        private string distritoField;
+        private System.DateTime fechaField;
         
-        private string espacioField;
+        private bool fechaFieldSpecified;
         
-        private System.DateTime fechaConstanciaField;
+        private System.DateTime horaFinField;
         
-        private bool fechaConstanciaFieldSpecified;
+        private bool horaFinFieldSpecified;
         
-        private System.DateTime fechaReservaField;
+        private System.DateTime horaInicioField;
         
-        private bool fechaReservaFieldSpecified;
+        private bool horaInicioFieldSpecified;
         
         private int idConstanciaField;
         
+        private string nombreDistritoField;
+        
+        private string nombreEspacioField;
+        
         private int numReservaField;
+        
+        private double superficieField;
+        
+        private string ubicacionField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public ushort activo {
+        public string categoria {
             get {
-                return this.activoField;
+                return this.categoriaField;
             }
             set {
-                this.activoField = value;
-                this.RaisePropertyChanged("activo");
+                this.categoriaField = value;
+                this.RaisePropertyChanged("categoria");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string correo {
+        public ushort estado {
             get {
-                return this.correoField;
+                return this.estadoField;
             }
             set {
-                this.correoField = value;
-                this.RaisePropertyChanged("correo");
+                this.estadoField = value;
+                this.RaisePropertyChanged("estado");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string distrito {
+        public System.DateTime fecha {
             get {
-                return this.distritoField;
+                return this.fechaField;
             }
             set {
-                this.distritoField = value;
-                this.RaisePropertyChanged("distrito");
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool fechaSpecified {
+            get {
+                return this.fechaFieldSpecified;
+            }
+            set {
+                this.fechaFieldSpecified = value;
+                this.RaisePropertyChanged("fechaSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string espacio {
+        public System.DateTime horaFin {
             get {
-                return this.espacioField;
+                return this.horaFinField;
             }
             set {
-                this.espacioField = value;
-                this.RaisePropertyChanged("espacio");
+                this.horaFinField = value;
+                this.RaisePropertyChanged("horaFin");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool horaFinSpecified {
+            get {
+                return this.horaFinFieldSpecified;
+            }
+            set {
+                this.horaFinFieldSpecified = value;
+                this.RaisePropertyChanged("horaFinSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public System.DateTime fechaConstancia {
+        public System.DateTime horaInicio {
             get {
-                return this.fechaConstanciaField;
+                return this.horaInicioField;
             }
             set {
-                this.fechaConstanciaField = value;
-                this.RaisePropertyChanged("fechaConstancia");
+                this.horaInicioField = value;
+                this.RaisePropertyChanged("horaInicio");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaConstanciaSpecified {
+        public bool horaInicioSpecified {
             get {
-                return this.fechaConstanciaFieldSpecified;
+                return this.horaInicioFieldSpecified;
             }
             set {
-                this.fechaConstanciaFieldSpecified = value;
-                this.RaisePropertyChanged("fechaConstanciaSpecified");
+                this.horaInicioFieldSpecified = value;
+                this.RaisePropertyChanged("horaInicioSpecified");
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public System.DateTime fechaReserva {
-            get {
-                return this.fechaReservaField;
-            }
-            set {
-                this.fechaReservaField = value;
-                this.RaisePropertyChanged("fechaReserva");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool fechaReservaSpecified {
-            get {
-                return this.fechaReservaFieldSpecified;
-            }
-            set {
-                this.fechaReservaFieldSpecified = value;
-                this.RaisePropertyChanged("fechaReservaSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
         public int idConstancia {
             get {
                 return this.idConstanciaField;
@@ -1951,7 +1858,31 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string nombreDistrito {
+            get {
+                return this.nombreDistritoField;
+            }
+            set {
+                this.nombreDistritoField = value;
+                this.RaisePropertyChanged("nombreDistrito");
+            }
+        }
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public string nombreEspacio {
+            get {
+                return this.nombreEspacioField;
+            }
+            set {
+                this.nombreEspacioField = value;
+                this.RaisePropertyChanged("nombreEspacio");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=8)]
         public int numReserva {
             get {
                 return this.numReservaField;
@@ -1959,6 +1890,30 @@ namespace SirgepPresentacion.ReferenciaDisco {
             set {
                 this.numReservaField = value;
                 this.RaisePropertyChanged("numReserva");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=9)]
+        public double superficie {
+            get {
+                return this.superficieField;
+            }
+            set {
+                this.superficieField = value;
+                this.RaisePropertyChanged("superficie");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=10)]
+        public string ubicacion {
+            get {
+                return this.ubicacionField;
+            }
+            set {
+                this.ubicacionField = value;
+                this.RaisePropertyChanged("ubicacion");
             }
         }
         
@@ -3045,6 +3000,342 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosPorFechas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventosPorFechasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fecha_inicio;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fecha_fin;
+        
+        public buscarEventosPorFechasRequest() {
+        }
+        
+        public buscarEventosPorFechasRequest(string fecha_inicio, string fecha_fin) {
+            this.fecha_inicio = fecha_inicio;
+            this.fecha_fin = fecha_fin;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosPorFechasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventosPorFechasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
+        
+        public buscarEventosPorFechasResponse() {
+        }
+        
+        public buscarEventosPorFechasResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoPorDistrito", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEventoPorDistritoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int Id;
+        
+        public listarEventoPorDistritoRequest() {
+        }
+        
+        public listarEventoPorDistritoRequest(int Id) {
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoPorDistritoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEventoPorDistritoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
+        
+        public listarEventoPorDistritoResponse() {
+        }
+        
+        public listarEventoPorDistritoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoPorTexto", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventoPorTextoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string texto;
+        
+        public buscarEventoPorTextoRequest() {
+        }
+        
+        public buscarEventoPorTextoRequest(string texto) {
+            this.texto = texto;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoPorTextoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventoPorTextoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
+        
+        public buscarEventoPorTextoResponse() {
+        }
+        
+        public buscarEventoPorTextoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarFuncionesDeEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int Id;
+        
+        public listarFuncionesDeEventoRequest() {
+        }
+        
+        public listarFuncionesDeEventoRequest(int Id) {
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarFuncionesDeEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.funcion[] @return;
+        
+        public listarFuncionesDeEventoResponse() {
+        }
+        
+        public listarFuncionesDeEventoResponse(SirgepPresentacion.ReferenciaDisco.funcion[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFuncionesDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarFuncionesDeEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public eliminarFuncionesDeEventoRequest() {
+        }
+        
+        public eliminarFuncionesDeEventoRequest(int arg0) {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFuncionesDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarFuncionesDeEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public eliminarFuncionesDeEventoResponse() {
+        }
+        
+        public eliminarFuncionesDeEventoResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class enviarCorreosCompradoresPorDistritoDeEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string asunto;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string contenido;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idDistrito;
+        
+        public enviarCorreosCompradoresPorDistritoDeEventoRequest() {
+        }
+        
+        public enviarCorreosCompradoresPorDistritoDeEventoRequest(string asunto, string contenido, int idDistrito) {
+            this.asunto = asunto;
+            this.contenido = contenido;
+            this.idDistrito = idDistrito;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class enviarCorreosCompradoresPorDistritoDeEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public enviarCorreosCompradoresPorDistritoDeEventoResponse() {
+        }
+        
+        public enviarCorreosCompradoresPorDistritoDeEventoResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCantEntradasDisponibles", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class obtenerCantEntradasDisponiblesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int IdFuncion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int obtenerCantEDisponibles;
+        
+        public obtenerCantEntradasDisponiblesRequest() {
+        }
+        
+        public obtenerCantEntradasDisponiblesRequest(int IdFuncion, int obtenerCantEDisponibles) {
+            this.IdFuncion = IdFuncion;
+            this.obtenerCantEDisponibles = obtenerCantEDisponibles;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCantEntradasDisponiblesResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class obtenerCantEntradasDisponiblesResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public obtenerCantEntradasDisponiblesResponse() {
+        }
+        
+        public obtenerCantEntradasDisponiblesResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEventoRequest {
+        
+        public listarEventoRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
+        
+        public listarEventoResponse() {
+        }
+        
+        public listarEventoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEventoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento evento;
+        
+        public insertarEventoRequest() {
+        }
+        
+        public insertarEventoRequest(SirgepPresentacion.ReferenciaDisco.evento evento) {
+            this.evento = evento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEventoResponse() {
+        }
+        
+        public insertarEventoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
     public partial class actualizarEventoRequest {
         
@@ -3117,70 +3408,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEventoRequest {
-        
-        public listarEventoRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
-        
-        public listarEventoResponse() {
-        }
-        
-        public listarEventoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEventoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento evento;
-        
-        public insertarEventoRequest() {
-        }
-        
-        public insertarEventoRequest(SirgepPresentacion.ReferenciaDisco.evento evento) {
-            this.evento = evento;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarEventoResponse() {
-        }
-        
-        public insertarEventoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogico", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
     public partial class eliminarLogicoRequest {
         
@@ -3214,232 +3441,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarFuncionesDeEventoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int Id;
-        
-        public listarFuncionesDeEventoRequest() {
-        }
-        
-        public listarFuncionesDeEventoRequest(int Id) {
-            this.Id = Id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarFuncionesDeEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.funcion[] @return;
-        
-        public listarFuncionesDeEventoResponse() {
-        }
-        
-        public listarFuncionesDeEventoResponse(SirgepPresentacion.ReferenciaDisco.funcion[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoPorTexto", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventoPorTextoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string texto;
-        
-        public buscarEventoPorTextoRequest() {
-        }
-        
-        public buscarEventoPorTextoRequest(string texto) {
-            this.texto = texto;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoPorTextoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventoPorTextoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
-        
-        public buscarEventoPorTextoResponse() {
-        }
-        
-        public buscarEventoPorTextoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosPorFechas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventosPorFechasRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha_inicio;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha_fin;
-        
-        public buscarEventosPorFechasRequest() {
-        }
-        
-        public buscarEventosPorFechasRequest(string fecha_inicio, string fecha_fin) {
-            this.fecha_inicio = fecha_inicio;
-            this.fecha_fin = fecha_fin;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosPorFechasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventosPorFechasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
-        
-        public buscarEventosPorFechasResponse() {
-        }
-        
-        public buscarEventosPorFechasResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFuncionesDeEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarFuncionesDeEventoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
-        
-        public eliminarFuncionesDeEventoRequest() {
-        }
-        
-        public eliminarFuncionesDeEventoRequest(int arg0) {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFuncionesDeEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarFuncionesDeEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public eliminarFuncionesDeEventoResponse() {
-        }
-        
-        public eliminarFuncionesDeEventoResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoPorDistrito", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEventoPorDistritoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int Id;
-        
-        public listarEventoPorDistritoRequest() {
-        }
-        
-        public listarEventoPorDistritoRequest(int Id) {
-            this.Id = Id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEventoPorDistritoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEventoPorDistritoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento[] @return;
-        
-        public listarEventoPorDistritoResponse() {
-        }
-        
-        public listarEventoPorDistritoResponse(SirgepPresentacion.ReferenciaDisco.evento[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCantEntradasDisponibles", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class obtenerCantEntradasDisponiblesRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int IdFuncion;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int obtenerCantEDisponibles;
-        
-        public obtenerCantEntradasDisponiblesRequest() {
-        }
-        
-        public obtenerCantEntradasDisponiblesRequest(int IdFuncion, int obtenerCantEDisponibles) {
-            this.IdFuncion = IdFuncion;
-            this.obtenerCantEDisponibles = obtenerCantEDisponibles;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCantEntradasDisponiblesResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class obtenerCantEntradasDisponiblesResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public obtenerCantEntradasDisponiblesResponse() {
-        }
-        
-        public obtenerCantEntradasDisponiblesResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface EventoWSChannel : SirgepPresentacion.ReferenciaDisco.EventoWS, System.ServiceModel.IClientChannel {
     }
@@ -3468,6 +3469,123 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventosPorFechas(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request) {
+            return base.Channel.buscarEventosPorFechas(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento[] buscarEventosPorFechas(string fecha_inicio, string fecha_fin) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest();
+            inValue.fecha_inicio = fecha_inicio;
+            inValue.fecha_fin = fecha_fin;
+            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventosPorFechas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventosPorFechasAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request) {
+            return base.Channel.buscarEventosPorFechasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> buscarEventosPorFechasAsync(string fecha_inicio, string fecha_fin) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest();
+            inValue.fecha_inicio = fecha_inicio;
+            inValue.fecha_fin = fecha_fin;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventosPorFechasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoPorDistrito(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request) {
+            return base.Channel.listarEventoPorDistrito(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento[] listarEventoPorDistrito(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest();
+            inValue.Id = Id;
+            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoPorDistrito(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request) {
+            return base.Channel.listarEventoPorDistritoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> listarEventoPorDistritoAsync(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest();
+            inValue.Id = Id;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoPorDistritoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventoPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request) {
+            return base.Channel.buscarEventoPorTexto(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento[] buscarEventoPorTexto(string texto) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest();
+            inValue.texto = texto;
+            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventoPorTexto(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventoPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request) {
+            return base.Channel.buscarEventoPorTextoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> buscarEventoPorTextoAsync(string texto) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest();
+            inValue.texto = texto;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventoPorTextoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request) {
+            return base.Channel.listarFuncionesDeEvento(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.funcion[] listarFuncionesDeEvento(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest();
+            inValue.Id = Id;
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarFuncionesDeEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request) {
+            return base.Channel.listarFuncionesDeEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> listarFuncionesDeEventoAsync(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest();
+            inValue.Id = Id;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarFuncionesDeEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.eliminarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request) {
+            return base.Channel.eliminarFuncionesDeEvento(request);
+        }
+        
+        public bool eliminarFuncionesDeEvento(int arg0) {
+            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest();
+            inValue.arg0 = arg0;
+            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).eliminarFuncionesDeEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.eliminarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request) {
+            return base.Channel.eliminarFuncionesDeEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> eliminarFuncionesDeEventoAsync(int arg0) {
+            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest();
+            inValue.arg0 = arg0;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).eliminarFuncionesDeEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.enviarCorreosCompradoresPorDistritoDeEvento(SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEventoRequest request) {
             return base.Channel.enviarCorreosCompradoresPorDistritoDeEvento(request);
         }
@@ -3492,6 +3610,75 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.contenido = contenido;
             inValue.idDistrito = idDistrito;
             return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).enviarCorreosCompradoresPorDistritoDeEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse SirgepPresentacion.ReferenciaDisco.EventoWS.obtenerCantEntradasDisponibles(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request) {
+            return base.Channel.obtenerCantEntradasDisponibles(request);
+        }
+        
+        public int obtenerCantEntradasDisponibles(int IdFuncion, int obtenerCantEDisponibles) {
+            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest();
+            inValue.IdFuncion = IdFuncion;
+            inValue.obtenerCantEDisponibles = obtenerCantEDisponibles;
+            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).obtenerCantEntradasDisponibles(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.obtenerCantEntradasDisponiblesAsync(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request) {
+            return base.Channel.obtenerCantEntradasDisponiblesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> obtenerCantEntradasDisponiblesAsync(int IdFuncion, int obtenerCantEDisponibles) {
+            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest();
+            inValue.IdFuncion = IdFuncion;
+            inValue.obtenerCantEDisponibles = obtenerCantEDisponibles;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).obtenerCantEntradasDisponiblesAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarEvento(SirgepPresentacion.ReferenciaDisco.listarEventoRequest request) {
+            return base.Channel.listarEvento(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento[] listarEvento() {
+            SirgepPresentacion.ReferenciaDisco.listarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoRequest();
+            SirgepPresentacion.ReferenciaDisco.listarEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoRequest request) {
+            return base.Channel.listarEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoResponse> listarEventoAsync() {
+            SirgepPresentacion.ReferenciaDisco.listarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoRequest();
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.insertarEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.insertarEvento(SirgepPresentacion.ReferenciaDisco.insertarEventoRequest request) {
+            return base.Channel.insertarEvento(request);
+        }
+        
+        public int insertarEvento(SirgepPresentacion.ReferenciaDisco.evento evento) {
+            SirgepPresentacion.ReferenciaDisco.insertarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEventoRequest();
+            inValue.evento = evento;
+            SirgepPresentacion.ReferenciaDisco.insertarEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).insertarEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.insertarEventoAsync(SirgepPresentacion.ReferenciaDisco.insertarEventoRequest request) {
+            return base.Channel.insertarEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEventoResponse> insertarEventoAsync(SirgepPresentacion.ReferenciaDisco.evento evento) {
+            SirgepPresentacion.ReferenciaDisco.insertarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEventoRequest();
+            inValue.evento = evento;
+            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).insertarEventoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -3541,50 +3728,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarEvento(SirgepPresentacion.ReferenciaDisco.listarEventoRequest request) {
-            return base.Channel.listarEvento(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.evento[] listarEvento() {
-            SirgepPresentacion.ReferenciaDisco.listarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoRequest();
-            SirgepPresentacion.ReferenciaDisco.listarEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEvento(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoRequest request) {
-            return base.Channel.listarEventoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoResponse> listarEventoAsync() {
-            SirgepPresentacion.ReferenciaDisco.listarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoRequest();
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.insertarEvento(SirgepPresentacion.ReferenciaDisco.insertarEventoRequest request) {
-            return base.Channel.insertarEvento(request);
-        }
-        
-        public int insertarEvento(SirgepPresentacion.ReferenciaDisco.evento evento) {
-            SirgepPresentacion.ReferenciaDisco.insertarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEventoRequest();
-            inValue.evento = evento;
-            SirgepPresentacion.ReferenciaDisco.insertarEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).insertarEvento(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.insertarEventoAsync(SirgepPresentacion.ReferenciaDisco.insertarEventoRequest request) {
-            return base.Channel.insertarEventoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEventoResponse> insertarEventoAsync(SirgepPresentacion.ReferenciaDisco.evento evento) {
-            SirgepPresentacion.ReferenciaDisco.insertarEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEventoRequest();
-            inValue.evento = evento;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).insertarEventoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.eliminarLogico(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request) {
             return base.Channel.eliminarLogico(request);
         }
@@ -3606,163 +3749,11 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.id = id;
             return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).eliminarLogicoAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request) {
-            return base.Channel.listarFuncionesDeEvento(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.funcion[] listarFuncionesDeEvento(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest();
-            inValue.Id = Id;
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarFuncionesDeEvento(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest request) {
-            return base.Channel.listarFuncionesDeEventoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoResponse> listarFuncionesDeEventoAsync(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesDeEventoRequest();
-            inValue.Id = Id;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarFuncionesDeEventoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventoPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request) {
-            return base.Channel.buscarEventoPorTexto(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.evento[] buscarEventoPorTexto(string texto) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest();
-            inValue.texto = texto;
-            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventoPorTexto(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventoPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest request) {
-            return base.Channel.buscarEventoPorTextoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoResponse> buscarEventoPorTextoAsync(string texto) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoPorTextoRequest();
-            inValue.texto = texto;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventoPorTextoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventosPorFechas(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request) {
-            return base.Channel.buscarEventosPorFechas(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.evento[] buscarEventosPorFechas(string fecha_inicio, string fecha_fin) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest();
-            inValue.fecha_inicio = fecha_inicio;
-            inValue.fecha_fin = fecha_fin;
-            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventosPorFechas(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.buscarEventosPorFechasAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest request) {
-            return base.Channel.buscarEventosPorFechasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasResponse> buscarEventosPorFechasAsync(string fecha_inicio, string fecha_fin) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosPorFechasRequest();
-            inValue.fecha_inicio = fecha_inicio;
-            inValue.fecha_fin = fecha_fin;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).buscarEventosPorFechasAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.eliminarFuncionesDeEvento(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request) {
-            return base.Channel.eliminarFuncionesDeEvento(request);
-        }
-        
-        public bool eliminarFuncionesDeEvento(int arg0) {
-            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest();
-            inValue.arg0 = arg0;
-            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).eliminarFuncionesDeEvento(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.eliminarFuncionesDeEventoAsync(SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest request) {
-            return base.Channel.eliminarFuncionesDeEventoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoResponse> eliminarFuncionesDeEventoAsync(int arg0) {
-            SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFuncionesDeEventoRequest();
-            inValue.arg0 = arg0;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).eliminarFuncionesDeEventoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoPorDistrito(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request) {
-            return base.Channel.listarEventoPorDistrito(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.evento[] listarEventoPorDistrito(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest();
-            inValue.Id = Id;
-            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoPorDistrito(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.listarEventoPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest request) {
-            return base.Channel.listarEventoPorDistritoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoResponse> listarEventoPorDistritoAsync(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEventoPorDistritoRequest();
-            inValue.Id = Id;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).listarEventoPorDistritoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse SirgepPresentacion.ReferenciaDisco.EventoWS.obtenerCantEntradasDisponibles(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request) {
-            return base.Channel.obtenerCantEntradasDisponibles(request);
-        }
-        
-        public int obtenerCantEntradasDisponibles(int IdFuncion, int obtenerCantEDisponibles) {
-            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest();
-            inValue.IdFuncion = IdFuncion;
-            inValue.obtenerCantEDisponibles = obtenerCantEDisponibles;
-            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).obtenerCantEntradasDisponibles(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> SirgepPresentacion.ReferenciaDisco.EventoWS.obtenerCantEntradasDisponiblesAsync(SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest request) {
-            return base.Channel.obtenerCantEntradasDisponiblesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesResponse> obtenerCantEntradasDisponiblesAsync(int IdFuncion, int obtenerCantEDisponibles) {
-            SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerCantEntradasDisponiblesRequest();
-            inValue.IdFuncion = IdFuncion;
-            inValue.obtenerCantEDisponibles = obtenerCantEDisponibles;
-            return ((SirgepPresentacion.ReferenciaDisco.EventoWS)(this)).obtenerCantEntradasDisponiblesAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.sirgep", ConfigurationName="ReferenciaDisco.ProvinciaWS")]
     public interface ProvinciaWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse buscarProvinciaPorId(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> buscarProvinciaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaResponse")]
@@ -3773,42 +3764,16 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/listarProvinciaPorDepaResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaResponse> listarProvinciaPorDepaAsync(SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarProvinciaPorId", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarProvinciaPorIdRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idProvincia;
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse buscarProvinciaPorId(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request);
         
-        public buscarProvinciaPorIdRequest() {
-        }
-        
-        public buscarProvinciaPorIdRequest(int idProvincia) {
-            this.idProvincia = idProvincia;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarProvinciaPorIdResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarProvinciaPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.provincia @return;
-        
-        public buscarProvinciaPorIdResponse() {
-        }
-        
-        public buscarProvinciaPorIdResponse(SirgepPresentacion.ReferenciaDisco.provincia @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/ProvinciaWS/buscarProvinciaPorIdResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> buscarProvinciaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -3847,6 +3812,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarProvinciaPorId", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarProvinciaPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idProvincia;
+        
+        public buscarProvinciaPorIdRequest() {
+        }
+        
+        public buscarProvinciaPorIdRequest(int idProvincia) {
+            this.idProvincia = idProvincia;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarProvinciaPorIdResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarProvinciaPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.provincia @return;
+        
+        public buscarProvinciaPorIdResponse() {
+        }
+        
+        public buscarProvinciaPorIdResponse(SirgepPresentacion.ReferenciaDisco.provincia @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ProvinciaWSChannel : SirgepPresentacion.ReferenciaDisco.ProvinciaWS, System.ServiceModel.IClientChannel {
     }
@@ -3875,29 +3876,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse SirgepPresentacion.ReferenciaDisco.ProvinciaWS.buscarProvinciaPorId(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request) {
-            return base.Channel.buscarProvinciaPorId(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.provincia buscarProvinciaPorId(int idProvincia) {
-            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest();
-            inValue.idProvincia = idProvincia;
-            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ProvinciaWS)(this)).buscarProvinciaPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> SirgepPresentacion.ReferenciaDisco.ProvinciaWS.buscarProvinciaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request) {
-            return base.Channel.buscarProvinciaPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> buscarProvinciaPorIdAsync(int idProvincia) {
-            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest();
-            inValue.idProvincia = idProvincia;
-            return ((SirgepPresentacion.ReferenciaDisco.ProvinciaWS)(this)).buscarProvinciaPorIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaResponse SirgepPresentacion.ReferenciaDisco.ProvinciaWS.listarProvinciaPorDepa(SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaRequest request) {
             return base.Channel.listarProvinciaPorDepa(request);
         }
@@ -3918,6 +3896,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
             SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarProvinciaPorDepaRequest();
             inValue.Id = Id;
             return ((SirgepPresentacion.ReferenciaDisco.ProvinciaWS)(this)).listarProvinciaPorDepaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse SirgepPresentacion.ReferenciaDisco.ProvinciaWS.buscarProvinciaPorId(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request) {
+            return base.Channel.buscarProvinciaPorId(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.provincia buscarProvinciaPorId(int idProvincia) {
+            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest();
+            inValue.idProvincia = idProvincia;
+            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ProvinciaWS)(this)).buscarProvinciaPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> SirgepPresentacion.ReferenciaDisco.ProvinciaWS.buscarProvinciaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest request) {
+            return base.Channel.buscarProvinciaPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdResponse> buscarProvinciaPorIdAsync(int idProvincia) {
+            SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarProvinciaPorIdRequest();
+            inValue.idProvincia = idProvincia;
+            return ((SirgepPresentacion.ReferenciaDisco.ProvinciaWS)(this)).buscarProvinciaPorIdAsync(inValue);
         }
     }
     
@@ -4035,56 +4036,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface EspacioWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarEspacioResponse listarEspacio(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> listarEspacioAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse buscarEspacio(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> buscarEspacioAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse actualizarEspacio(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse insertarEspacio(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse eliminarLogico(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> eliminarLogicoAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/enviarCorreosCompradoresPorDistritoDeEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/enviarCorreosCompradoresPorDistritoDeEspacioResponse" +
             "")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -4097,6 +4048,56 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEspacioResponse> enviarCorreosCompradoresPorDistritoDeEspacioAsync(SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEspacioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse insertarEspacio(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/insertarEspacioResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse actualizarEspacio(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/actualizarEspacioResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarEspacioResponse listarEspacio(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> listarEspacioAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse eliminarLogico(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/eliminarLogicoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> eliminarLogicoAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse buscarEspacio(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> buscarEspacioAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/buscarEspacioPorTextoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -4107,14 +4108,14 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioPorTextoResponse> buscarEspacioPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioPorTextoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTORequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTOResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse listarEspacioPorCategoria(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request);
+        SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse obtenerEspacioDTO(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> listarEspacioPorCategoriaAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTORequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTOResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> obtenerEspacioDTOAsync(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorDistritoResponse")]
@@ -4127,6 +4128,16 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorDistritoResponse> listarEspacioPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioPorDistritoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse listarEspacioPorCategoria(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioPorCategoriaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> listarEspacioPorCategoriaAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -4135,16 +4146,124 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/listarEspacioDistyCatResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatResponse> listarEspacioDistyCatAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class enviarCorreosCompradoresPorDistritoDeEspacioRequest {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTORequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTOResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse obtenerEspacioDTO(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string asunto;
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTORequest", ReplyAction="pe.edu.pucp.sirgep/EspacioWS/obtenerEspacioDTOResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> obtenerEspacioDTOAsync(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string contenido;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idDistrito;
+        
+        public enviarCorreosCompradoresPorDistritoDeEspacioRequest() {
+        }
+        
+        public enviarCorreosCompradoresPorDistritoDeEspacioRequest(string asunto, string contenido, int idDistrito) {
+            this.asunto = asunto;
+            this.contenido = contenido;
+            this.idDistrito = idDistrito;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class enviarCorreosCompradoresPorDistritoDeEspacioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public enviarCorreosCompradoresPorDistritoDeEspacioResponse() {
+        }
+        
+        public enviarCorreosCompradoresPorDistritoDeEspacioResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEspacioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.espacio espacio;
+        
+        public insertarEspacioRequest() {
+        }
+        
+        public insertarEspacioRequest(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            this.espacio = espacio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEspacioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEspacioResponse() {
+        }
+        
+        public insertarEspacioResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarEspacioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.espacio espacio;
+        
+        public actualizarEspacioRequest() {
+        }
+        
+        public actualizarEspacioRequest(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            this.espacio = espacio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarEspacioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public actualizarEspacioResponse() {
+        }
+        
+        public actualizarEspacioResponse(bool @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4214,124 +4333,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarEspacioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacio espacio;
-        
-        public actualizarEspacioRequest() {
-        }
-        
-        public actualizarEspacioRequest(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            this.espacio = espacio;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarEspacioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public actualizarEspacioResponse() {
-        }
-        
-        public actualizarEspacioResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEspacioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacio espacio;
-        
-        public insertarEspacioRequest() {
-        }
-        
-        public insertarEspacioRequest(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            this.espacio = espacio;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEspacioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarEspacioResponse() {
-        }
-        
-        public insertarEspacioResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class enviarCorreosCompradoresPorDistritoDeEspacioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string asunto;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string contenido;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idDistrito;
-        
-        public enviarCorreosCompradoresPorDistritoDeEspacioRequest() {
-        }
-        
-        public enviarCorreosCompradoresPorDistritoDeEspacioRequest(string asunto, string contenido, int idDistrito) {
-            this.asunto = asunto;
-            this.contenido = contenido;
-            this.idDistrito = idDistrito;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="enviarCorreosCompradoresPorDistritoDeEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class enviarCorreosCompradoresPorDistritoDeEspacioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public enviarCorreosCompradoresPorDistritoDeEspacioResponse() {
-        }
-        
-        public enviarCorreosCompradoresPorDistritoDeEspacioResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEspacioPorTexto", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
     public partial class buscarEspacioPorTextoRequest {
         
@@ -4368,35 +4369,35 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEspacioPorCategoria", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEspacioPorCategoriaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerEspacioDTO", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class obtenerEspacioDTORequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombreCategoria;
+        public int idEspacio;
         
-        public listarEspacioPorCategoriaRequest() {
+        public obtenerEspacioDTORequest() {
         }
         
-        public listarEspacioPorCategoriaRequest(string nombreCategoria) {
-            this.nombreCategoria = nombreCategoria;
+        public obtenerEspacioDTORequest(int idEspacio) {
+            this.idEspacio = idEspacio;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEspacioPorCategoriaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarEspacioPorCategoriaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerEspacioDTOResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class obtenerEspacioDTOResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacio[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.espacioDTO @return;
         
-        public listarEspacioPorCategoriaResponse() {
+        public obtenerEspacioDTOResponse() {
         }
         
-        public listarEspacioPorCategoriaResponse(SirgepPresentacion.ReferenciaDisco.espacio[] @return) {
+        public obtenerEspacioDTOResponse(SirgepPresentacion.ReferenciaDisco.espacioDTO @return) {
             this.@return = @return;
         }
     }
@@ -4433,6 +4434,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         public listarEspacioPorDistritoResponse(SirgepPresentacion.ReferenciaDisco.espacio[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEspacioPorCategoria", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEspacioPorCategoriaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string nombreCategoria;
+        
+        public listarEspacioPorCategoriaRequest() {
+        }
+        
+        public listarEspacioPorCategoriaRequest(string nombreCategoria) {
+            this.nombreCategoria = nombreCategoria;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarEspacioPorCategoriaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarEspacioPorCategoriaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.espacio[] @return;
+        
+        public listarEspacioPorCategoriaResponse() {
+        }
+        
+        public listarEspacioPorCategoriaResponse(SirgepPresentacion.ReferenciaDisco.espacio[] @return) {
             this.@return = @return;
         }
     }
@@ -4478,42 +4515,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerEspacioDTO", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class obtenerEspacioDTORequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEspacio;
-        
-        public obtenerEspacioDTORequest() {
-        }
-        
-        public obtenerEspacioDTORequest(int idEspacio) {
-            this.idEspacio = idEspacio;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerEspacioDTOResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class obtenerEspacioDTOResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacioDTO @return;
-        
-        public obtenerEspacioDTOResponse() {
-        }
-        
-        public obtenerEspacioDTOResponse(SirgepPresentacion.ReferenciaDisco.espacioDTO @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface EspacioWSChannel : SirgepPresentacion.ReferenciaDisco.EspacioWS, System.ServiceModel.IClientChannel {
     }
@@ -4539,119 +4540,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         public EspacioWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacio(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request) {
-            return base.Channel.listarEspacio(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.espacio[] listarEspacio() {
-            SirgepPresentacion.ReferenciaDisco.listarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioRequest();
-            SirgepPresentacion.ReferenciaDisco.listarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacio(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request) {
-            return base.Channel.listarEspacioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> listarEspacioAsync() {
-            SirgepPresentacion.ReferenciaDisco.listarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioRequest();
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.buscarEspacio(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request) {
-            return base.Channel.buscarEspacio(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.espacio buscarEspacio(int id) {
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest();
-            inValue.id = id;
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).buscarEspacio(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.buscarEspacioAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request) {
-            return base.Channel.buscarEspacioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> buscarEspacioAsync(int id) {
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest();
-            inValue.id = id;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).buscarEspacioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.actualizarEspacio(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request) {
-            return base.Channel.actualizarEspacio(request);
-        }
-        
-        public bool actualizarEspacio(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest();
-            inValue.espacio = espacio;
-            SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).actualizarEspacio(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request) {
-            return base.Channel.actualizarEspacioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest();
-            inValue.espacio = espacio;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).actualizarEspacioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.insertarEspacio(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request) {
-            return base.Channel.insertarEspacio(request);
-        }
-        
-        public int insertarEspacio(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest();
-            inValue.espacio = espacio;
-            SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).insertarEspacio(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request) {
-            return base.Channel.insertarEspacioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
-            SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest();
-            inValue.espacio = espacio;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).insertarEspacioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.eliminarLogico(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request) {
-            return base.Channel.eliminarLogico(request);
-        }
-        
-        public bool eliminarLogico(int id) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest();
-            inValue.id = id;
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).eliminarLogico(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.eliminarLogicoAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request) {
-            return base.Channel.eliminarLogicoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> eliminarLogicoAsync(int id) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest();
-            inValue.id = id;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).eliminarLogicoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4682,6 +4570,119 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.insertarEspacio(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request) {
+            return base.Channel.insertarEspacio(request);
+        }
+        
+        public int insertarEspacio(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest();
+            inValue.espacio = espacio;
+            SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).insertarEspacio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest request) {
+            return base.Channel.insertarEspacioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEspacioResponse> insertarEspacioAsync(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEspacioRequest();
+            inValue.espacio = espacio;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).insertarEspacioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.actualizarEspacio(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request) {
+            return base.Channel.actualizarEspacio(request);
+        }
+        
+        public bool actualizarEspacio(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest();
+            inValue.espacio = espacio;
+            SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).actualizarEspacio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest request) {
+            return base.Channel.actualizarEspacioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEspacioResponse> actualizarEspacioAsync(SirgepPresentacion.ReferenciaDisco.espacio espacio) {
+            SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEspacioRequest();
+            inValue.espacio = espacio;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).actualizarEspacioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacio(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request) {
+            return base.Channel.listarEspacio(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.espacio[] listarEspacio() {
+            SirgepPresentacion.ReferenciaDisco.listarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioRequest();
+            SirgepPresentacion.ReferenciaDisco.listarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioRequest request) {
+            return base.Channel.listarEspacioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioResponse> listarEspacioAsync() {
+            SirgepPresentacion.ReferenciaDisco.listarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioRequest();
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.eliminarLogico(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request) {
+            return base.Channel.eliminarLogico(request);
+        }
+        
+        public bool eliminarLogico(int id) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest();
+            inValue.id = id;
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).eliminarLogico(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.eliminarLogicoAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest request) {
+            return base.Channel.eliminarLogicoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoResponse> eliminarLogicoAsync(int id) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoRequest();
+            inValue.id = id;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).eliminarLogicoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.buscarEspacio(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request) {
+            return base.Channel.buscarEspacio(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.espacio buscarEspacio(int id) {
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest();
+            inValue.id = id;
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).buscarEspacio(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.buscarEspacioAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest request) {
+            return base.Channel.buscarEspacioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioResponse> buscarEspacioAsync(int id) {
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioRequest();
+            inValue.id = id;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).buscarEspacioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.buscarEspacioPorTextoResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.buscarEspacioPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEspacioPorTextoRequest request) {
             return base.Channel.buscarEspacioPorTexto(request);
         }
@@ -4705,26 +4706,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioPorCategoria(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request) {
-            return base.Channel.listarEspacioPorCategoria(request);
+        SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.obtenerEspacioDTO(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request) {
+            return base.Channel.obtenerEspacioDTO(request);
         }
         
-        public SirgepPresentacion.ReferenciaDisco.espacio[] listarEspacioPorCategoria(string nombreCategoria) {
-            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest();
-            inValue.nombreCategoria = nombreCategoria;
-            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioPorCategoria(inValue);
+        public SirgepPresentacion.ReferenciaDisco.espacioDTO obtenerEspacioDTO(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest();
+            inValue.idEspacio = idEspacio;
+            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).obtenerEspacioDTO(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioPorCategoriaAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request) {
-            return base.Channel.listarEspacioPorCategoriaAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.obtenerEspacioDTOAsync(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request) {
+            return base.Channel.obtenerEspacioDTOAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> listarEspacioPorCategoriaAsync(string nombreCategoria) {
-            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest();
-            inValue.nombreCategoria = nombreCategoria;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioPorCategoriaAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> obtenerEspacioDTOAsync(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest();
+            inValue.idEspacio = idEspacio;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).obtenerEspacioDTOAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -4751,6 +4752,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioPorCategoria(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request) {
+            return base.Channel.listarEspacioPorCategoria(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.espacio[] listarEspacioPorCategoria(string nombreCategoria) {
+            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest();
+            inValue.nombreCategoria = nombreCategoria;
+            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioPorCategoria(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioPorCategoriaAsync(SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest request) {
+            return base.Channel.listarEspacioPorCategoriaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaResponse> listarEspacioPorCategoriaAsync(string nombreCategoria) {
+            SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEspacioPorCategoriaRequest();
+            inValue.nombreCategoria = nombreCategoria;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioPorCategoriaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.listarEspacioDistyCat(SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatRequest request) {
             return base.Channel.listarEspacioDistyCat(request);
         }
@@ -4774,29 +4798,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.nombreCategoria = nombreCategoria;
             return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).listarEspacioDistyCatAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse SirgepPresentacion.ReferenciaDisco.EspacioWS.obtenerEspacioDTO(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request) {
-            return base.Channel.obtenerEspacioDTO(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.espacioDTO obtenerEspacioDTO(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest();
-            inValue.idEspacio = idEspacio;
-            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).obtenerEspacioDTO(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> SirgepPresentacion.ReferenciaDisco.EspacioWS.obtenerEspacioDTOAsync(SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest request) {
-            return base.Channel.obtenerEspacioDTOAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTOResponse> obtenerEspacioDTOAsync(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest inValue = new SirgepPresentacion.ReferenciaDisco.obtenerEspacioDTORequest();
-            inValue.idEspacio = idEspacio;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioWS)(this)).obtenerEspacioDTOAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -4804,14 +4805,34 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface CompraWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse insertarConstancia(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request);
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse buscarCompradorPorDni(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> buscarCompradorPorDniAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse actualizarComprador(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEventosResponse buscarEventos(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> buscarEventosAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarCompradorResponse")]
@@ -4834,50 +4855,30 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarCompradorResponse> insertarCompradorAsync(SirgepPresentacion.ReferenciaDisco.insertarCompradorRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEventosResponse buscarEventos(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request);
+        SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse insertarConstancia(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarEventosRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarEventosResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> buscarEventosAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse buscarCompradorPorDni(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/buscarCompradorPorDniResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> buscarCompradorPorDniAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse actualizarComprador(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/actualizarCompradorResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaRequest", ReplyAction="pe.edu.pucp.sirgep/CompraWS/insertarConstanciaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarConstancia", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarConstanciaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorPorDni", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorPorDniRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.constancia arg0;
+        public string arg0;
         
-        public insertarConstanciaRequest() {
+        public buscarCompradorPorDniRequest() {
         }
         
-        public insertarConstanciaRequest(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
+        public buscarCompradorPorDniRequest(string arg0) {
             this.arg0 = arg0;
         }
     }
@@ -4885,17 +4886,89 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarConstanciaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarConstanciaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorPorDniResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorPorDniResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        public SirgepPresentacion.ReferenciaDisco.comprador @return;
         
-        public insertarConstanciaResponse() {
+        public buscarCompradorPorDniResponse() {
         }
         
-        public insertarConstanciaResponse(int @return) {
+        public buscarCompradorPorDniResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarCompradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.comprador arg0;
+        
+        public actualizarCompradorRequest() {
+        }
+        
+        public actualizarCompradorRequest(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarCompradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public actualizarCompradorResponse() {
+        }
+        
+        public actualizarCompradorResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventos", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventosRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int arg0;
+        
+        public buscarEventosRequest() {
+        }
+        
+        public buscarEventosRequest(int arg0) {
+            this.arg0 = arg0;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento @return;
+        
+        public buscarEventosResponse() {
+        }
+        
+        public buscarEventosResponse(SirgepPresentacion.ReferenciaDisco.evento @return) {
             this.@return = @return;
         }
     }
@@ -4975,17 +5048,17 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventos", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventosRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarConstancia", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarConstanciaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int arg0;
+        public SirgepPresentacion.ReferenciaDisco.constancia arg0;
         
-        public buscarEventosRequest() {
+        public insertarConstanciaRequest() {
         }
         
-        public buscarEventosRequest(int arg0) {
+        public insertarConstanciaRequest(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
             this.arg0 = arg0;
         }
     }
@@ -4993,89 +5066,17 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventosResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventosResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarConstanciaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarConstanciaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento @return;
+        public int @return;
         
-        public buscarEventosResponse() {
+        public insertarConstanciaResponse() {
         }
         
-        public buscarEventosResponse(SirgepPresentacion.ReferenciaDisco.evento @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorPorDni", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorPorDniRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg0;
-        
-        public buscarCompradorPorDniRequest() {
-        }
-        
-        public buscarCompradorPorDniRequest(string arg0) {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorPorDniResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorPorDniResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.comprador @return;
-        
-        public buscarCompradorPorDniResponse() {
-        }
-        
-        public buscarCompradorPorDniResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarCompradorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.comprador arg0;
-        
-        public actualizarCompradorRequest() {
-        }
-        
-        public actualizarCompradorRequest(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
-            this.arg0 = arg0;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarCompradorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public actualizarCompradorResponse() {
-        }
-        
-        public actualizarCompradorResponse(bool @return) {
+        public insertarConstanciaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -5108,26 +5109,72 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse SirgepPresentacion.ReferenciaDisco.CompraWS.insertarConstancia(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request) {
-            return base.Channel.insertarConstancia(request);
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse SirgepPresentacion.ReferenciaDisco.CompraWS.buscarCompradorPorDni(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request) {
+            return base.Channel.buscarCompradorPorDni(request);
         }
         
-        public int insertarConstancia(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
-            SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest();
+        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorPorDni(string arg0) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest();
             inValue.arg0 = arg0;
-            SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).insertarConstancia(inValue);
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarCompradorPorDni(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request) {
-            return base.Channel.insertarConstanciaAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.buscarCompradorPorDniAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request) {
+            return base.Channel.buscarCompradorPorDniAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
-            SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest();
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> buscarCompradorPorDniAsync(string arg0) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest();
             inValue.arg0 = arg0;
-            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).insertarConstanciaAsync(inValue);
+            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarCompradorPorDniAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse SirgepPresentacion.ReferenciaDisco.CompraWS.actualizarComprador(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request) {
+            return base.Channel.actualizarComprador(request);
+        }
+        
+        public bool actualizarComprador(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
+            SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest();
+            inValue.arg0 = arg0;
+            SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).actualizarComprador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request) {
+            return base.Channel.actualizarCompradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
+            SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest();
+            inValue.arg0 = arg0;
+            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).actualizarCompradorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEventosResponse SirgepPresentacion.ReferenciaDisco.CompraWS.buscarEventos(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request) {
+            return base.Channel.buscarEventos(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento buscarEventos(int arg0) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventosRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosRequest();
+            inValue.arg0 = arg0;
+            SirgepPresentacion.ReferenciaDisco.buscarEventosResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarEventos(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.buscarEventosAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request) {
+            return base.Channel.buscarEventosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> buscarEventosAsync(int arg0) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventosRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosRequest();
+            inValue.arg0 = arg0;
+            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarEventosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5177,72 +5224,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEventosResponse SirgepPresentacion.ReferenciaDisco.CompraWS.buscarEventos(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request) {
-            return base.Channel.buscarEventos(request);
+        SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse SirgepPresentacion.ReferenciaDisco.CompraWS.insertarConstancia(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request) {
+            return base.Channel.insertarConstancia(request);
         }
         
-        public SirgepPresentacion.ReferenciaDisco.evento buscarEventos(int arg0) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventosRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosRequest();
+        public int insertarConstancia(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
+            SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest();
             inValue.arg0 = arg0;
-            SirgepPresentacion.ReferenciaDisco.buscarEventosResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarEventos(inValue);
+            SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).insertarConstancia(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.buscarEventosAsync(SirgepPresentacion.ReferenciaDisco.buscarEventosRequest request) {
-            return base.Channel.buscarEventosAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest request) {
+            return base.Channel.insertarConstanciaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventosResponse> buscarEventosAsync(int arg0) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventosRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventosRequest();
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarConstanciaResponse> insertarConstanciaAsync(SirgepPresentacion.ReferenciaDisco.constancia arg0) {
+            SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarConstanciaRequest();
             inValue.arg0 = arg0;
-            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarEventosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse SirgepPresentacion.ReferenciaDisco.CompraWS.buscarCompradorPorDni(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request) {
-            return base.Channel.buscarCompradorPorDni(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorPorDni(string arg0) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest();
-            inValue.arg0 = arg0;
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarCompradorPorDni(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.buscarCompradorPorDniAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest request) {
-            return base.Channel.buscarCompradorPorDniAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniResponse> buscarCompradorPorDniAsync(string arg0) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorPorDniRequest();
-            inValue.arg0 = arg0;
-            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).buscarCompradorPorDniAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse SirgepPresentacion.ReferenciaDisco.CompraWS.actualizarComprador(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request) {
-            return base.Channel.actualizarComprador(request);
-        }
-        
-        public bool actualizarComprador(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
-            SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest();
-            inValue.arg0 = arg0;
-            SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).actualizarComprador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> SirgepPresentacion.ReferenciaDisco.CompraWS.actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest request) {
-            return base.Channel.actualizarCompradorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse> actualizarCompradorAsync(SirgepPresentacion.ReferenciaDisco.comprador arg0) {
-            SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarCompradorRequest();
-            inValue.arg0 = arg0;
-            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).actualizarCompradorAsync(inValue);
+            return ((SirgepPresentacion.ReferenciaDisco.CompraWS)(this)).insertarConstanciaAsync(inValue);
         }
     }
     
@@ -5396,26 +5397,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface DistritoWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse buscarDistPorId(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> buscarDistPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse listarDistritosFiltrados(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> listarDistritosFiltradosAsync(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarTodosDistritosResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -5434,78 +5415,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarDistritosPorProvinciaResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosPorProvinciaResponse> listarDistritosPorProvinciaAsync(SirgepPresentacion.ReferenciaDisco.listarDistritosPorProvinciaRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistPorId", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarDistPorIdRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idDistrito;
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse listarDistritosFiltrados(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request);
         
-        public buscarDistPorIdRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/listarDistritosFiltradosResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> listarDistritosFiltradosAsync(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request);
         
-        public buscarDistPorIdRequest(int idDistrito) {
-            this.idDistrito = idDistrito;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistPorIdResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarDistPorIdResponse {
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse buscarDistPorId(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.distrito @return;
-        
-        public buscarDistPorIdResponse() {
-        }
-        
-        public buscarDistPorIdResponse(SirgepPresentacion.ReferenciaDisco.distrito @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDistritosFiltrados", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDistritosFiltradosRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int Id;
-        
-        public listarDistritosFiltradosRequest() {
-        }
-        
-        public listarDistritosFiltradosRequest(int Id) {
-            this.Id = Id;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDistritosFiltradosResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDistritosFiltradosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.distrito[] @return;
-        
-        public listarDistritosFiltradosResponse() {
-        }
-        
-        public listarDistritosFiltradosResponse(SirgepPresentacion.ReferenciaDisco.distrito[] @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DistritoWS/buscarDistPorIdResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> buscarDistPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -5572,6 +5501,78 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDistritosFiltrados", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDistritosFiltradosRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int Id;
+        
+        public listarDistritosFiltradosRequest() {
+        }
+        
+        public listarDistritosFiltradosRequest(int Id) {
+            this.Id = Id;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDistritosFiltradosResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDistritosFiltradosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.distrito[] @return;
+        
+        public listarDistritosFiltradosResponse() {
+        }
+        
+        public listarDistritosFiltradosResponse(SirgepPresentacion.ReferenciaDisco.distrito[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistPorId", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarDistPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idDistrito;
+        
+        public buscarDistPorIdRequest() {
+        }
+        
+        public buscarDistPorIdRequest(int idDistrito) {
+            this.idDistrito = idDistrito;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistPorIdResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarDistPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.distrito @return;
+        
+        public buscarDistPorIdResponse() {
+        }
+        
+        public buscarDistPorIdResponse(SirgepPresentacion.ReferenciaDisco.distrito @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface DistritoWSChannel : SirgepPresentacion.ReferenciaDisco.DistritoWS, System.ServiceModel.IClientChannel {
     }
@@ -5597,52 +5598,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         public DistritoWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse SirgepPresentacion.ReferenciaDisco.DistritoWS.buscarDistPorId(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request) {
-            return base.Channel.buscarDistPorId(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.distrito buscarDistPorId(int idDistrito) {
-            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest();
-            inValue.idDistrito = idDistrito;
-            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).buscarDistPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> SirgepPresentacion.ReferenciaDisco.DistritoWS.buscarDistPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request) {
-            return base.Channel.buscarDistPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> buscarDistPorIdAsync(int idDistrito) {
-            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest();
-            inValue.idDistrito = idDistrito;
-            return ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).buscarDistPorIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse SirgepPresentacion.ReferenciaDisco.DistritoWS.listarDistritosFiltrados(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request) {
-            return base.Channel.listarDistritosFiltrados(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.distrito[] listarDistritosFiltrados(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest();
-            inValue.Id = Id;
-            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).listarDistritosFiltrados(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> SirgepPresentacion.ReferenciaDisco.DistritoWS.listarDistritosFiltradosAsync(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request) {
-            return base.Channel.listarDistritosFiltradosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> listarDistritosFiltradosAsync(int Id) {
-            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest();
-            inValue.Id = Id;
-            return ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).listarDistritosFiltradosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5688,6 +5643,52 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.IdProvincia = IdProvincia;
             return ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).listarDistritosPorProvinciaAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse SirgepPresentacion.ReferenciaDisco.DistritoWS.listarDistritosFiltrados(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request) {
+            return base.Channel.listarDistritosFiltrados(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.distrito[] listarDistritosFiltrados(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest();
+            inValue.Id = Id;
+            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).listarDistritosFiltrados(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> SirgepPresentacion.ReferenciaDisco.DistritoWS.listarDistritosFiltradosAsync(SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest request) {
+            return base.Channel.listarDistritosFiltradosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosResponse> listarDistritosFiltradosAsync(int Id) {
+            SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDistritosFiltradosRequest();
+            inValue.Id = Id;
+            return ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).listarDistritosFiltradosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse SirgepPresentacion.ReferenciaDisco.DistritoWS.buscarDistPorId(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request) {
+            return base.Channel.buscarDistPorId(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.distrito buscarDistPorId(int idDistrito) {
+            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest();
+            inValue.idDistrito = idDistrito;
+            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).buscarDistPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> SirgepPresentacion.ReferenciaDisco.DistritoWS.buscarDistPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest request) {
+            return base.Channel.buscarDistPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistPorIdResponse> buscarDistPorIdAsync(int idDistrito) {
+            SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistPorIdRequest();
+            inValue.idDistrito = idDistrito;
+            return ((SirgepPresentacion.ReferenciaDisco.DistritoWS)(this)).buscarDistPorIdAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -5695,14 +5696,14 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface EspacioDiaSemWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.insertarDiaResponse insertarDia(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request);
+        SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse eliminarDiasPorEspacio(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> eliminarDiasPorEspacioAsync(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/listarDiasSemDeEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/listarDiasSemDeEspacioResponse")]
@@ -5715,48 +5716,48 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDiasSemDeEspacioResponse> listarDiasSemDeEspacioAsync(SirgepPresentacion.ReferenciaDisco.listarDiasSemDeEspacioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse eliminarDiasPorEspacio(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request);
+        SirgepPresentacion.ReferenciaDisco.insertarDiaResponse insertarDia(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/eliminarDiasPorEspacioResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> eliminarDiasPorEspacioAsync(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaRequest", ReplyAction="pe.edu.pucp.sirgep/EspacioDiaSemWS/insertarDiaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarDia", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarDiaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarDiasPorEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarDiasPorEspacioRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem;
+        public int idEspacio;
         
-        public insertarDiaRequest() {
+        public eliminarDiasPorEspacioRequest() {
         }
         
-        public insertarDiaRequest(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
-            this.diaSem = diaSem;
+        public eliminarDiasPorEspacioRequest(int idEspacio) {
+            this.idEspacio = idEspacio;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarDiaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarDiaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarDiasPorEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarDiasPorEspacioResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool @return;
         
-        public insertarDiaResponse() {
+        public eliminarDiasPorEspacioResponse() {
         }
         
-        public insertarDiaResponse(bool @return) {
+        public eliminarDiasPorEspacioResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -5800,35 +5801,35 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarDiasPorEspacio", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarDiasPorEspacioRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarDia", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarDiaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEspacio;
+        public SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem;
         
-        public eliminarDiasPorEspacioRequest() {
+        public insertarDiaRequest() {
         }
         
-        public eliminarDiasPorEspacioRequest(int idEspacio) {
-            this.idEspacio = idEspacio;
+        public insertarDiaRequest(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
+            this.diaSem = diaSem;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarDiasPorEspacioResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarDiasPorEspacioResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarDiaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarDiaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool @return;
         
-        public eliminarDiasPorEspacioResponse() {
+        public insertarDiaResponse() {
         }
         
-        public eliminarDiasPorEspacioResponse(bool @return) {
+        public insertarDiaResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -5861,26 +5862,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarDiaResponse SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.insertarDia(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request) {
-            return base.Channel.insertarDia(request);
+        SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.eliminarDiasPorEspacio(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request) {
+            return base.Channel.eliminarDiasPorEspacio(request);
         }
         
-        public bool insertarDia(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
-            SirgepPresentacion.ReferenciaDisco.insertarDiaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarDiaRequest();
-            inValue.diaSem = diaSem;
-            SirgepPresentacion.ReferenciaDisco.insertarDiaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).insertarDia(inValue);
+        public bool eliminarDiasPorEspacio(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest();
+            inValue.idEspacio = idEspacio;
+            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).eliminarDiasPorEspacio(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request) {
-            return base.Channel.insertarDiaAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.eliminarDiasPorEspacioAsync(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request) {
+            return base.Channel.eliminarDiasPorEspacioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
-            SirgepPresentacion.ReferenciaDisco.insertarDiaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarDiaRequest();
-            inValue.diaSem = diaSem;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).insertarDiaAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> eliminarDiasPorEspacioAsync(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest();
+            inValue.idEspacio = idEspacio;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).eliminarDiasPorEspacioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -5907,26 +5908,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.eliminarDiasPorEspacio(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request) {
-            return base.Channel.eliminarDiasPorEspacio(request);
+        SirgepPresentacion.ReferenciaDisco.insertarDiaResponse SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.insertarDia(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request) {
+            return base.Channel.insertarDia(request);
         }
         
-        public bool eliminarDiasPorEspacio(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest();
-            inValue.idEspacio = idEspacio;
-            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).eliminarDiasPorEspacio(inValue);
+        public bool insertarDia(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
+            SirgepPresentacion.ReferenciaDisco.insertarDiaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarDiaRequest();
+            inValue.diaSem = diaSem;
+            SirgepPresentacion.ReferenciaDisco.insertarDiaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).insertarDia(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.eliminarDiasPorEspacioAsync(SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest request) {
-            return base.Channel.eliminarDiasPorEspacioAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS.insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.insertarDiaRequest request) {
+            return base.Channel.insertarDiaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioResponse> eliminarDiasPorEspacioAsync(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarDiasPorEspacioRequest();
-            inValue.idEspacio = idEspacio;
-            return ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).eliminarDiasPorEspacioAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarDiaResponse> insertarDiaAsync(SirgepPresentacion.ReferenciaDisco.espacioDiaSem diaSem) {
+            SirgepPresentacion.ReferenciaDisco.insertarDiaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarDiaRequest();
+            inValue.diaSem = diaSem;
+            return ((SirgepPresentacion.ReferenciaDisco.EspacioDiaSemWS)(this)).insertarDiaAsync(inValue);
         }
     }
     
@@ -5935,24 +5936,123 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface ReservaWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/insertarReservaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasFiltradaPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasFiltradaPorCompradorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.insertarReservaResponse insertarReserva(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request);
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse listarDetalleReservasFiltradaPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/insertarReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasFiltradaPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasFiltradaPorCompradorResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse> listarDetalleReservasFiltradaPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarReservasResponse listarReservas(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request);
+        SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse buscarDistritoDeReserva(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservasResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> listarReservasAsync(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> buscarDistritoDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request);
+        
+        // CODEGEN: El parámetro 'idComprador' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse crearLibroExcelReservas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> crearLibroExcelReservasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse buscarConstanciaReserva(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> buscarConstanciaReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse buscarCompradorDeReserva(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> buscarCompradorDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse eliminarLogicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> eliminarLogicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse listarReservaPorDistrito(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> listarReservaPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse listarTodasReservas(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> listarTodasReservasAsync(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse eliminarFisicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> eliminarFisicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse listarReservaPorFecha(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> listarReservaPorFechaAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse buscarEspacioDeReserva(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> buscarEspacioDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarPorMesYAnioRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarPorMesYAnioResponse")]
@@ -5975,6 +6075,16 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.cancelarReservaResponse> cancelarReservaAsync(SirgepPresentacion.ReferenciaDisco.cancelarReservaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/insertarReservaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.insertarReservaResponse insertarReserva(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/insertarReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/insertarReservaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarReservaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -5995,147 +6105,63 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarReservaResponse> actualizarReservaAsync(SirgepPresentacion.ReferenciaDisco.actualizarReservaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservasResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse listarTodasReservas(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request);
+        SirgepPresentacion.ReferenciaDisco.listarReservasResponse listarReservas(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarTodasReservasResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> listarTodasReservasAsync(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse buscarCompradorDeReserva(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarCompradorDeReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> buscarCompradorDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse buscarConstanciaReserva(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarConstanciaReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> buscarConstanciaReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse eliminarFisicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarFisicoReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> eliminarFisicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request);
-        
-        // CODEGEN: El parámetro 'idComprador' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse crearLibroExcelReservas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/crearLibroExcelReservasResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> crearLibroExcelReservasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse listarReservaPorDistrito(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorDistritoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> listarReservaPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse buscarEspacioDeReserva(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarEspacioDeReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> buscarEspacioDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse listarReservaPorFecha(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservaPorFechaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> listarReservaPorFechaAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse buscarDistritoDeReserva(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/buscarDistritoDeReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> buscarDistritoDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse eliminarLogicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/eliminarLogicoReservaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> eliminarLogicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarDetalleReservasPorCompradorResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/ReservaWS/listarReservasRequest", ReplyAction="pe.edu.pucp.sirgep/ReservaWS/listarReservasResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> listarReservasAsync(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarReservaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasFiltradaPorComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasFiltradaPorCompradorRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.reserva reserva;
+        public int idComprador;
         
-        public insertarReservaRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaInicio;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaFin;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute("estados", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] estados;
+        
+        public listarDetalleReservasFiltradaPorCompradorRequest() {
         }
         
-        public insertarReservaRequest(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
-            this.reserva = reserva;
+        public listarDetalleReservasFiltradaPorCompradorRequest(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            this.idComprador = idComprador;
+            this.fechaInicio = fechaInicio;
+            this.fechaFin = fechaFin;
+            this.estados = estados;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarReservaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasFiltradaPorCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasFiltradaPorCompradorResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return;
         
-        public insertarReservaResponse() {
+        public listarDetalleReservasFiltradaPorCompradorResponse() {
         }
         
-        public insertarReservaResponse(int @return) {
+        public listarDetalleReservasFiltradaPorCompradorResponse(SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -6143,27 +6169,389 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservasRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistritoDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarDistritoDeReservaRequest {
         
-        public listarReservasRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idReserva;
+        
+        public buscarDistritoDeReservaRequest() {
+        }
+        
+        public buscarDistritoDeReservaRequest(int idReserva) {
+            this.idReserva = idReserva;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservasResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistritoDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarDistritoDeReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.distrito @return;
+        
+        public buscarDistritoDeReservaResponse() {
+        }
+        
+        public buscarDistritoDeReservaResponse(SirgepPresentacion.ReferenciaDisco.distrito @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearLibroExcelReservasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idComprador;
+        
+        public crearLibroExcelReservasRequest() {
+        }
+        
+        public crearLibroExcelReservasRequest(int idComprador) {
+            this.idComprador = idComprador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearLibroExcelReservasResponse {
+        
+        public crearLibroExcelReservasResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarConstanciaReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarConstanciaReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idConstancia;
+        
+        public buscarConstanciaReservaRequest() {
+        }
+        
+        public buscarConstanciaReservaRequest(int idConstancia) {
+            this.idConstancia = idConstancia;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarConstanciaReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarConstanciaReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO @return;
+        
+        public buscarConstanciaReservaResponse() {
+        }
+        
+        public buscarConstanciaReservaResponse(SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorDeReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idComprador;
+        
+        public buscarCompradorDeReservaRequest() {
+        }
+        
+        public buscarCompradorDeReservaRequest(int idComprador) {
+            this.idComprador = idComprador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorDeReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.comprador @return;
+        
+        public buscarCompradorDeReservaResponse() {
+        }
+        
+        public buscarCompradorDeReservaResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarLogicoReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idReserva;
+        
+        public eliminarLogicoReservaRequest() {
+        }
+        
+        public eliminarLogicoReservaRequest(int idReserva) {
+            this.idReserva = idReserva;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarLogicoReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public eliminarLogicoReservaResponse() {
+        }
+        
+        public eliminarLogicoReservaResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorDistrito", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservaPorDistritoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idDistrito;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool activo;
+        
+        public listarReservaPorDistritoRequest() {
+        }
+        
+        public listarReservaPorDistritoRequest(int idDistrito, bool activo) {
+            this.idDistrito = idDistrito;
+            this.activo = activo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorDistritoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservaPorDistritoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.reserva[] @return;
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
         
-        public listarReservasResponse() {
+        public listarReservaPorDistritoResponse() {
         }
         
-        public listarReservasResponse(SirgepPresentacion.ReferenciaDisco.reserva[] @return) {
+        public listarReservaPorDistritoResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarTodasReservasRequest {
+        
+        public listarTodasReservasRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarTodasReservasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
+        
+        public listarTodasReservasResponse() {
+        }
+        
+        public listarTodasReservasResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFisicoReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarFisicoReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idReserva;
+        
+        public eliminarFisicoReservaRequest() {
+        }
+        
+        public eliminarFisicoReservaRequest(int idReserva) {
+            this.idReserva = idReserva;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFisicoReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarFisicoReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public eliminarFisicoReservaResponse() {
+        }
+        
+        public eliminarFisicoReservaResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorFecha", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservaPorFechaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fecha;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool activo;
+        
+        public listarReservaPorFechaRequest() {
+        }
+        
+        public listarReservaPorFechaRequest(string fecha, bool activo) {
+            this.fecha = fecha;
+            this.activo = activo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorFechaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservaPorFechaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
+        
+        public listarReservaPorFechaResponse() {
+        }
+        
+        public listarReservaPorFechaResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEspacioDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEspacioDeReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEspacio;
+        
+        public buscarEspacioDeReservaRequest() {
+        }
+        
+        public buscarEspacioDeReservaRequest(int idEspacio) {
+            this.idEspacio = idEspacio;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEspacioDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEspacioDeReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.espacio @return;
+        
+        public buscarEspacioDeReservaResponse() {
+        }
+        
+        public buscarEspacioDeReservaResponse(SirgepPresentacion.ReferenciaDisco.espacio @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasPorCompradorRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idComprador;
+        
+        public listarDetalleReservasPorCompradorRequest() {
+        }
+        
+        public listarDetalleReservasPorCompradorRequest(int idComprador) {
+            this.idComprador = idComprador;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleReservasPorCompradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return;
+        
+        public listarDetalleReservasPorCompradorResponse() {
+        }
+        
+        public listarDetalleReservasPorCompradorResponse(SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -6248,6 +6636,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarReservaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.reserva reserva;
+        
+        public insertarReservaRequest() {
+        }
+        
+        public insertarReservaRequest(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
+            this.reserva = reserva;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarReservaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarReservaResponse() {
+        }
+        
+        public insertarReservaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="buscarReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
     public partial class buscarReservaRequest {
         
@@ -6320,389 +6744,27 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarTodasReservasRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservasRequest {
         
-        public listarTodasReservasRequest() {
+        public listarReservasRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarTodasReservasResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarReservasResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
+        public SirgepPresentacion.ReferenciaDisco.reserva[] @return;
         
-        public listarTodasReservasResponse() {
+        public listarReservasResponse() {
         }
         
-        public listarTodasReservasResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorDeReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idComprador;
-        
-        public buscarCompradorDeReservaRequest() {
-        }
-        
-        public buscarCompradorDeReservaRequest(int idComprador) {
-            this.idComprador = idComprador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorDeReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.comprador @return;
-        
-        public buscarCompradorDeReservaResponse() {
-        }
-        
-        public buscarCompradorDeReservaResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarConstanciaReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarConstanciaReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idConstancia;
-        
-        public buscarConstanciaReservaRequest() {
-        }
-        
-        public buscarConstanciaReservaRequest(int idConstancia) {
-            this.idConstancia = idConstancia;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarConstanciaReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarConstanciaReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO @return;
-        
-        public buscarConstanciaReservaResponse() {
-        }
-        
-        public buscarConstanciaReservaResponse(SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFisicoReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarFisicoReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idReserva;
-        
-        public eliminarFisicoReservaRequest() {
-        }
-        
-        public eliminarFisicoReservaRequest(int idReserva) {
-            this.idReserva = idReserva;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarFisicoReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarFisicoReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public eliminarFisicoReservaResponse() {
-        }
-        
-        public eliminarFisicoReservaResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelReservas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearLibroExcelReservasRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idComprador;
-        
-        public crearLibroExcelReservasRequest() {
-        }
-        
-        public crearLibroExcelReservasRequest(int idComprador) {
-            this.idComprador = idComprador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelReservasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearLibroExcelReservasResponse {
-        
-        public crearLibroExcelReservasResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorDistrito", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservaPorDistritoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idDistrito;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool activo;
-        
-        public listarReservaPorDistritoRequest() {
-        }
-        
-        public listarReservaPorDistritoRequest(int idDistrito, bool activo) {
-            this.idDistrito = idDistrito;
-            this.activo = activo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorDistritoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservaPorDistritoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
-        
-        public listarReservaPorDistritoResponse() {
-        }
-        
-        public listarReservaPorDistritoResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEspacioDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEspacioDeReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEspacio;
-        
-        public buscarEspacioDeReservaRequest() {
-        }
-        
-        public buscarEspacioDeReservaRequest(int idEspacio) {
-            this.idEspacio = idEspacio;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEspacioDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEspacioDeReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.espacio @return;
-        
-        public buscarEspacioDeReservaResponse() {
-        }
-        
-        public buscarEspacioDeReservaResponse(SirgepPresentacion.ReferenciaDisco.espacio @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorFecha", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservaPorFechaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool activo;
-        
-        public listarReservaPorFechaRequest() {
-        }
-        
-        public listarReservaPorFechaRequest(string fecha, bool activo) {
-            this.fecha = fecha;
-            this.activo = activo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarReservaPorFechaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarReservaPorFechaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return;
-        
-        public listarReservaPorFechaResponse() {
-        }
-        
-        public listarReservaPorFechaResponse(SirgepPresentacion.ReferenciaDisco.reservaDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistritoDeReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarDistritoDeReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idReserva;
-        
-        public buscarDistritoDeReservaRequest() {
-        }
-        
-        public buscarDistritoDeReservaRequest(int idReserva) {
-            this.idReserva = idReserva;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarDistritoDeReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarDistritoDeReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.distrito @return;
-        
-        public buscarDistritoDeReservaResponse() {
-        }
-        
-        public buscarDistritoDeReservaResponse(SirgepPresentacion.ReferenciaDisco.distrito @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoReserva", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarLogicoReservaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idReserva;
-        
-        public eliminarLogicoReservaRequest() {
-        }
-        
-        public eliminarLogicoReservaRequest(int idReserva) {
-            this.idReserva = idReserva;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoReservaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarLogicoReservaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public eliminarLogicoReservaResponse() {
-        }
-        
-        public eliminarLogicoReservaResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDetalleReservasPorCompradorRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idComprador;
-        
-        public listarDetalleReservasPorCompradorRequest() {
-        }
-        
-        public listarDetalleReservasPorCompradorRequest(int idComprador) {
-            this.idComprador = idComprador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleReservasPorCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDetalleReservasPorCompradorResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return;
-        
-        public listarDetalleReservasPorCompradorResponse() {
-        }
-        
-        public listarDetalleReservasPorCompradorResponse(SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] @return) {
+        public listarReservasResponse(SirgepPresentacion.ReferenciaDisco.reserva[] @return) {
             this.@return = @return;
         }
     }
@@ -6735,47 +6797,286 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.insertarReserva(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request) {
-            return base.Channel.insertarReserva(request);
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasFiltradaPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasFiltradaPorComprador(request);
         }
         
-        public int insertarReserva(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
-            SirgepPresentacion.ReferenciaDisco.insertarReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarReservaRequest();
-            inValue.reserva = reserva;
-            SirgepPresentacion.ReferenciaDisco.insertarReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).insertarReserva(inValue);
+        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] listarDetalleReservasFiltradaPorComprador(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            inValue.estados = estados;
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasFiltradaPorComprador(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request) {
-            return base.Channel.insertarReservaAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasFiltradaPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasFiltradaPorCompradorAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
-            SirgepPresentacion.ReferenciaDisco.insertarReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarReservaRequest();
-            inValue.reserva = reserva;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).insertarReservaAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse> listarDetalleReservasFiltradaPorCompradorAsync(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            inValue.estados = estados;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasFiltradaPorCompradorAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservas(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request) {
-            return base.Channel.listarReservas(request);
+        SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarDistritoDeReserva(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request) {
+            return base.Channel.buscarDistritoDeReserva(request);
         }
         
-        public SirgepPresentacion.ReferenciaDisco.reserva[] listarReservas() {
-            SirgepPresentacion.ReferenciaDisco.listarReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservasRequest();
-            SirgepPresentacion.ReferenciaDisco.listarReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservas(inValue);
+        public SirgepPresentacion.ReferenciaDisco.distrito buscarDistritoDeReserva(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest();
+            inValue.idReserva = idReserva;
+            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarDistritoDeReserva(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservasAsync(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request) {
-            return base.Channel.listarReservasAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarDistritoDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request) {
+            return base.Channel.buscarDistritoDeReservaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> listarReservasAsync() {
-            SirgepPresentacion.ReferenciaDisco.listarReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservasRequest();
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservasAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> buscarDistritoDeReservaAsync(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest();
+            inValue.idReserva = idReserva;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarDistritoDeReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.crearLibroExcelReservas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request) {
+            return base.Channel.crearLibroExcelReservas(request);
+        }
+        
+        public void crearLibroExcelReservas(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).crearLibroExcelReservas(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.crearLibroExcelReservasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request) {
+            return base.Channel.crearLibroExcelReservasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> crearLibroExcelReservasAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).crearLibroExcelReservasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarConstanciaReserva(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request) {
+            return base.Channel.buscarConstanciaReserva(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO buscarConstanciaReserva(int idConstancia) {
+            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest();
+            inValue.idConstancia = idConstancia;
+            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarConstanciaReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarConstanciaReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request) {
+            return base.Channel.buscarConstanciaReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> buscarConstanciaReservaAsync(int idConstancia) {
+            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest();
+            inValue.idConstancia = idConstancia;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarConstanciaReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarCompradorDeReserva(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request) {
+            return base.Channel.buscarCompradorDeReserva(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorDeReserva(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarCompradorDeReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarCompradorDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request) {
+            return base.Channel.buscarCompradorDeReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> buscarCompradorDeReservaAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarCompradorDeReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarLogicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request) {
+            return base.Channel.eliminarLogicoReserva(request);
+        }
+        
+        public bool eliminarLogicoReserva(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest();
+            inValue.idReserva = idReserva;
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarLogicoReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarLogicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request) {
+            return base.Channel.eliminarLogicoReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> eliminarLogicoReservaAsync(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest();
+            inValue.idReserva = idReserva;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarLogicoReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorDistrito(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request) {
+            return base.Channel.listarReservaPorDistrito(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarReservaPorDistrito(int idDistrito, bool activo) {
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest();
+            inValue.idDistrito = idDistrito;
+            inValue.activo = activo;
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorDistrito(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request) {
+            return base.Channel.listarReservaPorDistritoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> listarReservaPorDistritoAsync(int idDistrito, bool activo) {
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest();
+            inValue.idDistrito = idDistrito;
+            inValue.activo = activo;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorDistritoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarTodasReservas(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request) {
+            return base.Channel.listarTodasReservas(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarTodasReservas() {
+            SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest();
+            SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarTodasReservas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarTodasReservasAsync(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request) {
+            return base.Channel.listarTodasReservasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> listarTodasReservasAsync() {
+            SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest();
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarTodasReservasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarFisicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request) {
+            return base.Channel.eliminarFisicoReserva(request);
+        }
+        
+        public bool eliminarFisicoReserva(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest();
+            inValue.idReserva = idReserva;
+            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarFisicoReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarFisicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request) {
+            return base.Channel.eliminarFisicoReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> eliminarFisicoReservaAsync(int idReserva) {
+            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest();
+            inValue.idReserva = idReserva;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarFisicoReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorFecha(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request) {
+            return base.Channel.listarReservaPorFecha(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarReservaPorFecha(string fecha, bool activo) {
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest();
+            inValue.fecha = fecha;
+            inValue.activo = activo;
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorFecha(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorFechaAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request) {
+            return base.Channel.listarReservaPorFechaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> listarReservaPorFechaAsync(string fecha, bool activo) {
+            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest();
+            inValue.fecha = fecha;
+            inValue.activo = activo;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorFechaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarEspacioDeReserva(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request) {
+            return base.Channel.buscarEspacioDeReserva(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.espacio buscarEspacioDeReserva(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest();
+            inValue.idEspacio = idEspacio;
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarEspacioDeReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarEspacioDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request) {
+            return base.Channel.buscarEspacioDeReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> buscarEspacioDeReservaAsync(int idEspacio) {
+            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest();
+            inValue.idEspacio = idEspacio;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarEspacioDeReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasPorComprador(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] listarDetalleReservasPorComprador(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorComprador(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
+            return base.Channel.listarDetalleReservasPorCompradorAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorCompradorAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -6827,6 +7128,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.insertarReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.insertarReserva(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request) {
+            return base.Channel.insertarReserva(request);
+        }
+        
+        public int insertarReserva(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
+            SirgepPresentacion.ReferenciaDisco.insertarReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarReservaRequest();
+            inValue.reserva = reserva;
+            SirgepPresentacion.ReferenciaDisco.insertarReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).insertarReserva(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.insertarReservaRequest request) {
+            return base.Channel.insertarReservaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarReservaResponse> insertarReservaAsync(SirgepPresentacion.ReferenciaDisco.reserva reserva) {
+            SirgepPresentacion.ReferenciaDisco.insertarReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarReservaRequest();
+            inValue.reserva = reserva;
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).insertarReservaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.buscarReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarReserva(SirgepPresentacion.ReferenciaDisco.buscarReservaRequest request) {
             return base.Channel.buscarReserva(request);
         }
@@ -6873,257 +7197,24 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarTodasReservas(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request) {
-            return base.Channel.listarTodasReservas(request);
+        SirgepPresentacion.ReferenciaDisco.listarReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservas(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request) {
+            return base.Channel.listarReservas(request);
         }
         
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarTodasReservas() {
-            SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest();
-            SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarTodasReservas(inValue);
+        public SirgepPresentacion.ReferenciaDisco.reserva[] listarReservas() {
+            SirgepPresentacion.ReferenciaDisco.listarReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservasRequest();
+            SirgepPresentacion.ReferenciaDisco.listarReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservas(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarTodasReservasAsync(SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest request) {
-            return base.Channel.listarTodasReservasAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservasAsync(SirgepPresentacion.ReferenciaDisco.listarReservasRequest request) {
+            return base.Channel.listarReservasAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarTodasReservasResponse> listarTodasReservasAsync() {
-            SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarTodasReservasRequest();
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarTodasReservasAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarCompradorDeReserva(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request) {
-            return base.Channel.buscarCompradorDeReserva(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorDeReserva(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest();
-            inValue.idComprador = idComprador;
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarCompradorDeReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarCompradorDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest request) {
-            return base.Channel.buscarCompradorDeReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaResponse> buscarCompradorDeReservaAsync(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeReservaRequest();
-            inValue.idComprador = idComprador;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarCompradorDeReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarConstanciaReserva(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request) {
-            return base.Channel.buscarConstanciaReserva(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.constanciaReservaDTO buscarConstanciaReserva(int idConstancia) {
-            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest();
-            inValue.idConstancia = idConstancia;
-            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarConstanciaReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarConstanciaReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest request) {
-            return base.Channel.buscarConstanciaReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaResponse> buscarConstanciaReservaAsync(int idConstancia) {
-            SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarConstanciaReservaRequest();
-            inValue.idConstancia = idConstancia;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarConstanciaReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarFisicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request) {
-            return base.Channel.eliminarFisicoReserva(request);
-        }
-        
-        public bool eliminarFisicoReserva(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest();
-            inValue.idReserva = idReserva;
-            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarFisicoReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarFisicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest request) {
-            return base.Channel.eliminarFisicoReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaResponse> eliminarFisicoReservaAsync(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarFisicoReservaRequest();
-            inValue.idReserva = idReserva;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarFisicoReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.crearLibroExcelReservas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request) {
-            return base.Channel.crearLibroExcelReservas(request);
-        }
-        
-        public void crearLibroExcelReservas(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest();
-            inValue.idComprador = idComprador;
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).crearLibroExcelReservas(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.crearLibroExcelReservasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest request) {
-            return base.Channel.crearLibroExcelReservasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasResponse> crearLibroExcelReservasAsync(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelReservasRequest();
-            inValue.idComprador = idComprador;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).crearLibroExcelReservasAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorDistrito(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request) {
-            return base.Channel.listarReservaPorDistrito(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarReservaPorDistrito(int idDistrito, bool activo) {
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest();
-            inValue.idDistrito = idDistrito;
-            inValue.activo = activo;
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorDistrito(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorDistritoAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest request) {
-            return base.Channel.listarReservaPorDistritoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoResponse> listarReservaPorDistritoAsync(int idDistrito, bool activo) {
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorDistritoRequest();
-            inValue.idDistrito = idDistrito;
-            inValue.activo = activo;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorDistritoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarEspacioDeReserva(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request) {
-            return base.Channel.buscarEspacioDeReserva(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.espacio buscarEspacioDeReserva(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest();
-            inValue.idEspacio = idEspacio;
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarEspacioDeReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarEspacioDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest request) {
-            return base.Channel.buscarEspacioDeReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaResponse> buscarEspacioDeReservaAsync(int idEspacio) {
-            SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEspacioDeReservaRequest();
-            inValue.idEspacio = idEspacio;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarEspacioDeReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorFecha(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request) {
-            return base.Channel.listarReservaPorFecha(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.reservaDTO[] listarReservaPorFecha(string fecha, bool activo) {
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest();
-            inValue.fecha = fecha;
-            inValue.activo = activo;
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorFecha(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarReservaPorFechaAsync(SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest request) {
-            return base.Channel.listarReservaPorFechaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse> listarReservaPorFechaAsync(string fecha, bool activo) {
-            SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaRequest();
-            inValue.fecha = fecha;
-            inValue.activo = activo;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservaPorFechaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarDistritoDeReserva(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request) {
-            return base.Channel.buscarDistritoDeReserva(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.distrito buscarDistritoDeReserva(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest();
-            inValue.idReserva = idReserva;
-            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarDistritoDeReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.buscarDistritoDeReservaAsync(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest request) {
-            return base.Channel.buscarDistritoDeReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaResponse> buscarDistritoDeReservaAsync(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarDistritoDeReservaRequest();
-            inValue.idReserva = idReserva;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).buscarDistritoDeReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarLogicoReserva(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request) {
-            return base.Channel.eliminarLogicoReserva(request);
-        }
-        
-        public bool eliminarLogicoReserva(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest();
-            inValue.idReserva = idReserva;
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarLogicoReserva(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.eliminarLogicoReservaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest request) {
-            return base.Channel.eliminarLogicoReservaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaResponse> eliminarLogicoReservaAsync(int idReserva) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoReservaRequest();
-            inValue.idReserva = idReserva;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).eliminarLogicoReservaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
-            return base.Channel.listarDetalleReservasPorComprador(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.detalleReservaDTO[] listarDetalleReservasPorComprador(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
-            inValue.idComprador = idComprador;
-            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorComprador(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> SirgepPresentacion.ReferenciaDisco.ReservaWS.listarDetalleReservasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest request) {
-            return base.Channel.listarDetalleReservasPorCompradorAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse> listarDetalleReservasPorCompradorAsync(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorRequest();
-            inValue.idComprador = idComprador;
-            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarDetalleReservasPorCompradorAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarReservasResponse> listarReservasAsync() {
+            SirgepPresentacion.ReferenciaDisco.listarReservasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarReservasRequest();
+            return ((SirgepPresentacion.ReferenciaDisco.ReservaWS)(this)).listarReservasAsync(inValue);
         }
     }
     
@@ -7132,53 +7223,24 @@ namespace SirgepPresentacion.ReferenciaDisco {
     public interface EntradaWS {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasFiltradaPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasFiltradaPorCompradorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse insertarEntrada(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request);
+        SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse listarDetalleEntradasFiltradaPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasFiltradaPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasFiltradaPorCompradorResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse> listarDetalleEntradasFiltradaPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse actualizarEntrada(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request);
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse buscarCompradorDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse buscarEntrada(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> buscarEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse buscarEventoDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> buscarEventoDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request);
-        
-        // CODEGEN: El parámetro 'idComprador' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse crearLibroExcelEntradas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> crearLibroExcelEntradasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> buscarCompradorDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasResponse")]
@@ -7200,15 +7262,14 @@ namespace SirgepPresentacion.ReferenciaDisco {
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarFisicoEntradaResponse> eliminarFisicoEntradaAsync(SirgepPresentacion.ReferenciaDisco.eliminarFisicoEntradaRequest request);
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoResponse")]
+        // CODEGEN: El parámetro 'idComprador' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse buscarEntradasPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request);
+        SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse crearLibroExcelEntradas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> buscarEntradasPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> crearLibroExcelEntradasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarConstanciaEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarConstanciaEntradaResponse")]
@@ -7221,34 +7282,14 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarConstanciaEntradaResponse> buscarConstanciaEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarConstanciaEntradaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse eliminarLogicoEntrada(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request);
+        SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse buscarEntradasPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> eliminarLogicoEntradaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse buscarCompradorDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> buscarCompradorDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse buscarFuncionDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> buscarFuncionDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> buscarEntradasPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaResponse")]
@@ -7261,6 +7302,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDistritoDeEntradaResponse> buscarDistritoDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarDistritoDeEntradaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse buscarEventoDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> buscarEventoDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse buscarFuncionDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> buscarFuncionDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -7271,6 +7332,16 @@ namespace SirgepPresentacion.ReferenciaDisco {
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse> listarEntradasActivasAsync(SirgepPresentacion.ReferenciaDisco.listarEntradasActivasRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse eliminarLogicoEntrada(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> eliminarLogicoEntradaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
@@ -7279,166 +7350,103 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorResponse> listarDetalleEntradasPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasPorCompradorRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse actualizarEntrada(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse insertarEntrada(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse buscarEntrada(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest", ReplyAction="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> buscarEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.entrada entrada;
-        
-        public insertarEntradaRequest() {
-        }
-        
-        public insertarEntradaRequest(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            this.entrada = entrada;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class insertarEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public insertarEntradaResponse() {
-        }
-        
-        public insertarEntradaResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.entrada entrada;
-        
-        public actualizarEntradaRequest() {
-        }
-        
-        public actualizarEntradaRequest(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            this.entrada = entrada;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class actualizarEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public actualizarEntradaResponse() {
-        }
-        
-        public actualizarEntradaResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEntrada;
-        
-        public buscarEntradaRequest() {
-        }
-        
-        public buscarEntradaRequest(int idEntrada) {
-            this.idEntrada = idEntrada;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.entrada @return;
-        
-        public buscarEntradaResponse() {
-        }
-        
-        public buscarEntradaResponse(SirgepPresentacion.ReferenciaDisco.entrada @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventoDeEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEntrada;
-        
-        public buscarEventoDeEntradaRequest() {
-        }
-        
-        public buscarEventoDeEntradaRequest(int idEntrada) {
-            this.idEntrada = idEntrada;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEventoDeEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.evento @return;
-        
-        public buscarEventoDeEntradaResponse() {
-        }
-        
-        public buscarEventoDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.evento @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelEntradas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearLibroExcelEntradasRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleEntradasFiltradaPorComprador", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleEntradasFiltradaPorCompradorRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int idComprador;
         
-        public crearLibroExcelEntradasRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaInicio;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaFin;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute("estados", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string[] estados;
+        
+        public listarDetalleEntradasFiltradaPorCompradorRequest() {
         }
         
-        public crearLibroExcelEntradasRequest(int idComprador) {
+        public listarDetalleEntradasFiltradaPorCompradorRequest(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            this.idComprador = idComprador;
+            this.fechaInicio = fechaInicio;
+            this.fechaFin = fechaFin;
+            this.estados = estados;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDetalleEntradasFiltradaPorCompradorResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDetalleEntradasFiltradaPorCompradorResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return;
+        
+        public listarDetalleEntradasFiltradaPorCompradorResponse() {
+        }
+        
+        public listarDetalleEntradasFiltradaPorCompradorResponse(SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorDeEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idComprador;
+        
+        public buscarCompradorDeEntradaRequest() {
+        }
+        
+        public buscarCompradorDeEntradaRequest(int idComprador) {
             this.idComprador = idComprador;
         }
     }
@@ -7446,10 +7454,18 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelEntradasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearLibroExcelEntradasResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarCompradorDeEntradaResponse {
         
-        public crearLibroExcelEntradasResponse() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.comprador @return;
+        
+        public buscarCompradorDeEntradaResponse() {
+        }
+        
+        public buscarCompradorDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
+            this.@return = @return;
         }
     }
     
@@ -7520,36 +7536,28 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradasPorTexto", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEntradasPorTextoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelEntradas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearLibroExcelEntradasRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string texto;
+        public int idComprador;
         
-        public buscarEntradasPorTextoRequest() {
+        public crearLibroExcelEntradasRequest() {
         }
         
-        public buscarEntradasPorTextoRequest(string texto) {
-            this.texto = texto;
+        public crearLibroExcelEntradasRequest(int idComprador) {
+            this.idComprador = idComprador;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradasPorTextoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarEntradasPorTextoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearLibroExcelEntradasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearLibroExcelEntradasResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return;
-        
-        public buscarEntradasPorTextoResponse() {
-        }
-        
-        public buscarEntradasPorTextoResponse(SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return) {
-            this.@return = @return;
+        public crearLibroExcelEntradasResponse() {
         }
     }
     
@@ -7592,107 +7600,35 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarLogicoEntradaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradasPorTexto", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEntradasPorTextoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEntrada;
+        public string texto;
         
-        public eliminarLogicoEntradaRequest() {
+        public buscarEntradasPorTextoRequest() {
         }
         
-        public eliminarLogicoEntradaRequest(int idEntrada) {
-            this.idEntrada = idEntrada;
+        public buscarEntradasPorTextoRequest(string texto) {
+            this.texto = texto;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class eliminarLogicoEntradaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradasPorTextoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEntradasPorTextoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return;
         
-        public eliminarLogicoEntradaResponse() {
+        public buscarEntradasPorTextoResponse() {
         }
         
-        public eliminarLogicoEntradaResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorDeEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idComprador;
-        
-        public buscarCompradorDeEntradaRequest() {
-        }
-        
-        public buscarCompradorDeEntradaRequest(int idComprador) {
-            this.idComprador = idComprador;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarCompradorDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarCompradorDeEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.comprador @return;
-        
-        public buscarCompradorDeEntradaResponse() {
-        }
-        
-        public buscarCompradorDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.comprador @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarFuncionDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarFuncionDeEntradaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idFuncion;
-        
-        public buscarFuncionDeEntradaRequest() {
-        }
-        
-        public buscarFuncionDeEntradaRequest(int idFuncion) {
-            this.idFuncion = idFuncion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarFuncionDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class buscarFuncionDeEntradaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.funcion @return;
-        
-        public buscarFuncionDeEntradaResponse() {
-        }
-        
-        public buscarFuncionDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.funcion @return) {
+        public buscarEntradasPorTextoResponse(SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -7736,6 +7672,78 @@ namespace SirgepPresentacion.ReferenciaDisco {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventoDeEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEntrada;
+        
+        public buscarEventoDeEntradaRequest() {
+        }
+        
+        public buscarEventoDeEntradaRequest(int idEntrada) {
+            this.idEntrada = idEntrada;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEventoDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEventoDeEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.evento @return;
+        
+        public buscarEventoDeEntradaResponse() {
+        }
+        
+        public buscarEventoDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.evento @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarFuncionDeEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarFuncionDeEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idFuncion;
+        
+        public buscarFuncionDeEntradaRequest() {
+        }
+        
+        public buscarFuncionDeEntradaRequest(int idFuncion) {
+            this.idFuncion = idFuncion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarFuncionDeEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarFuncionDeEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.funcion @return;
+        
+        public buscarFuncionDeEntradaResponse() {
+        }
+        
+        public buscarFuncionDeEntradaResponse(SirgepPresentacion.ReferenciaDisco.funcion @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarEntradasActivas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
     public partial class listarEntradasActivasRequest {
         
@@ -7757,6 +7765,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         public listarEntradasActivasResponse(SirgepPresentacion.ReferenciaDisco.entrada[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarLogicoEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEntrada;
+        
+        public eliminarLogicoEntradaRequest() {
+        }
+        
+        public eliminarLogicoEntradaRequest(int idEntrada) {
+            this.idEntrada = idEntrada;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarLogicoEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class eliminarLogicoEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public eliminarLogicoEntradaResponse() {
+        }
+        
+        public eliminarLogicoEntradaResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -7797,6 +7841,114 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.entrada entrada;
+        
+        public actualizarEntradaRequest() {
+        }
+        
+        public actualizarEntradaRequest(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            this.entrada = entrada;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="actualizarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class actualizarEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public actualizarEntradaResponse() {
+        }
+        
+        public actualizarEntradaResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.entrada entrada;
+        
+        public insertarEntradaRequest() {
+        }
+        
+        public insertarEntradaRequest(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            this.entrada = entrada;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class insertarEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarEntradaResponse() {
+        }
+        
+        public insertarEntradaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntrada", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEntradaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEntrada;
+        
+        public buscarEntradaRequest() {
+        }
+        
+        public buscarEntradaRequest(int idEntrada) {
+            this.idEntrada = idEntrada;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="buscarEntradaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class buscarEntradaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.entrada @return;
+        
+        public buscarEntradaResponse() {
+        }
+        
+        public buscarEntradaResponse(SirgepPresentacion.ReferenciaDisco.entrada @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface EntradaWSChannel : SirgepPresentacion.ReferenciaDisco.EntradaWS, System.ServiceModel.IClientChannel {
     }
@@ -7825,117 +7977,55 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.insertarEntrada(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request) {
-            return base.Channel.insertarEntrada(request);
+        SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.listarDetalleEntradasFiltradaPorComprador(SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest request) {
+            return base.Channel.listarDetalleEntradasFiltradaPorComprador(request);
         }
         
-        public int insertarEntrada(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest();
-            inValue.entrada = entrada;
-            SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).insertarEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request) {
-            return base.Channel.insertarEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest();
-            inValue.entrada = entrada;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).insertarEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.actualizarEntrada(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request) {
-            return base.Channel.actualizarEntrada(request);
-        }
-        
-        public bool actualizarEntrada(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest();
-            inValue.entrada = entrada;
-            SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).actualizarEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request) {
-            return base.Channel.actualizarEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
-            SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest();
-            inValue.entrada = entrada;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).actualizarEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntrada(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request) {
-            return base.Channel.buscarEntrada(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.entrada buscarEntrada(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request) {
-            return base.Channel.buscarEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> buscarEntradaAsync(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEventoDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request) {
-            return base.Channel.buscarEventoDeEntrada(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.evento buscarEventoDeEntrada(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEventoDeEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEventoDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request) {
-            return base.Channel.buscarEventoDeEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> buscarEventoDeEntradaAsync(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEventoDeEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.crearLibroExcelEntradas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request) {
-            return base.Channel.crearLibroExcelEntradas(request);
-        }
-        
-        public void crearLibroExcelEntradas(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest();
+        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] listarDetalleEntradasFiltradaPorComprador(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest();
             inValue.idComprador = idComprador;
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).crearLibroExcelEntradas(inValue);
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            inValue.estados = estados;
+            SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).listarDetalleEntradasFiltradaPorComprador(inValue);
+            return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.crearLibroExcelEntradasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request) {
-            return base.Channel.crearLibroExcelEntradasAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.listarDetalleEntradasFiltradaPorCompradorAsync(SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest request) {
+            return base.Channel.listarDetalleEntradasFiltradaPorCompradorAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> crearLibroExcelEntradasAsync(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest();
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse> listarDetalleEntradasFiltradaPorCompradorAsync(int idComprador, string fechaInicio, string fechaFin, string[] estados) {
+            SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorRequest();
             inValue.idComprador = idComprador;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).crearLibroExcelEntradasAsync(inValue);
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            inValue.estados = estados;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).listarDetalleEntradasFiltradaPorCompradorAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarCompradorDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request) {
+            return base.Channel.buscarCompradorDeEntrada(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorDeEntrada(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarCompradorDeEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarCompradorDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request) {
+            return base.Channel.buscarCompradorDeEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> buscarCompradorDeEntradaAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarCompradorDeEntradaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -7983,26 +8073,25 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradasPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request) {
-            return base.Channel.buscarEntradasPorTexto(request);
+        SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.crearLibroExcelEntradas(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request) {
+            return base.Channel.crearLibroExcelEntradas(request);
         }
         
-        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] buscarEntradasPorTexto(string texto) {
-            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest();
-            inValue.texto = texto;
-            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradasPorTexto(inValue);
-            return retVal.@return;
+        public void crearLibroExcelEntradas(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest();
+            inValue.idComprador = idComprador;
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).crearLibroExcelEntradas(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradasPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request) {
-            return base.Channel.buscarEntradasPorTextoAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.crearLibroExcelEntradasAsync(SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest request) {
+            return base.Channel.crearLibroExcelEntradasAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> buscarEntradasPorTextoAsync(string texto) {
-            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest();
-            inValue.texto = texto;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradasPorTextoAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasResponse> crearLibroExcelEntradasAsync(int idComprador) {
+            SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearLibroExcelEntradasRequest();
+            inValue.idComprador = idComprador;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).crearLibroExcelEntradasAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -8029,72 +8118,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.eliminarLogicoEntrada(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request) {
-            return base.Channel.eliminarLogicoEntrada(request);
+        SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradasPorTexto(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request) {
+            return base.Channel.buscarEntradasPorTexto(request);
         }
         
-        public bool eliminarLogicoEntrada(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).eliminarLogicoEntrada(inValue);
+        public SirgepPresentacion.ReferenciaDisco.detalleEntradaDTO[] buscarEntradasPorTexto(string texto) {
+            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest();
+            inValue.texto = texto;
+            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradasPorTexto(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.eliminarLogicoEntradaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request) {
-            return base.Channel.eliminarLogicoEntradaAsync(request);
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradasPorTextoAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest request) {
+            return base.Channel.buscarEntradasPorTextoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> eliminarLogicoEntradaAsync(int idEntrada) {
-            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest();
-            inValue.idEntrada = idEntrada;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).eliminarLogicoEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarCompradorDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request) {
-            return base.Channel.buscarCompradorDeEntrada(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.comprador buscarCompradorDeEntrada(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest();
-            inValue.idComprador = idComprador;
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarCompradorDeEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarCompradorDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest request) {
-            return base.Channel.buscarCompradorDeEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaResponse> buscarCompradorDeEntradaAsync(int idComprador) {
-            SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarCompradorDeEntradaRequest();
-            inValue.idComprador = idComprador;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarCompradorDeEntradaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarFuncionDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request) {
-            return base.Channel.buscarFuncionDeEntrada(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.funcion buscarFuncionDeEntrada(int idFuncion) {
-            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest();
-            inValue.idFuncion = idFuncion;
-            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarFuncionDeEntrada(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarFuncionDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request) {
-            return base.Channel.buscarFuncionDeEntradaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> buscarFuncionDeEntradaAsync(int idFuncion) {
-            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest();
-            inValue.idFuncion = idFuncion;
-            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarFuncionDeEntradaAsync(inValue);
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoResponse> buscarEntradasPorTextoAsync(string texto) {
+            SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradasPorTextoRequest();
+            inValue.texto = texto;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradasPorTextoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -8121,6 +8164,52 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEventoDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request) {
+            return base.Channel.buscarEventoDeEntrada(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.evento buscarEventoDeEntrada(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEventoDeEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEventoDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest request) {
+            return base.Channel.buscarEventoDeEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse> buscarEventoDeEntradaAsync(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEventoDeEntradaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarFuncionDeEntrada(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request) {
+            return base.Channel.buscarFuncionDeEntrada(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.funcion buscarFuncionDeEntrada(int idFuncion) {
+            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest();
+            inValue.idFuncion = idFuncion;
+            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarFuncionDeEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarFuncionDeEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest request) {
+            return base.Channel.buscarFuncionDeEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaResponse> buscarFuncionDeEntradaAsync(int idFuncion) {
+            SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarFuncionDeEntradaRequest();
+            inValue.idFuncion = idFuncion;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarFuncionDeEntradaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.listarEntradasActivas(SirgepPresentacion.ReferenciaDisco.listarEntradasActivasRequest request) {
             return base.Channel.listarEntradasActivas(request);
         }
@@ -8139,6 +8228,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
         public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse> listarEntradasActivasAsync() {
             SirgepPresentacion.ReferenciaDisco.listarEntradasActivasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarEntradasActivasRequest();
             return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).listarEntradasActivasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.eliminarLogicoEntrada(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request) {
+            return base.Channel.eliminarLogicoEntrada(request);
+        }
+        
+        public bool eliminarLogicoEntrada(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).eliminarLogicoEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.eliminarLogicoEntradaAsync(SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest request) {
+            return base.Channel.eliminarLogicoEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaResponse> eliminarLogicoEntradaAsync(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.eliminarLogicoEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).eliminarLogicoEntradaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -8163,6 +8275,75 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.idComprador = idComprador;
             return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).listarDetalleEntradasPorCompradorAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.actualizarEntrada(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request) {
+            return base.Channel.actualizarEntrada(request);
+        }
+        
+        public bool actualizarEntrada(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest();
+            inValue.entrada = entrada;
+            SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).actualizarEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest request) {
+            return base.Channel.actualizarEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarEntradaResponse> actualizarEntradaAsync(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.actualizarEntradaRequest();
+            inValue.entrada = entrada;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).actualizarEntradaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.insertarEntrada(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request) {
+            return base.Channel.insertarEntrada(request);
+        }
+        
+        public int insertarEntrada(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest();
+            inValue.entrada = entrada;
+            SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).insertarEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest request) {
+            return base.Channel.insertarEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.insertarEntradaResponse> insertarEntradaAsync(SirgepPresentacion.ReferenciaDisco.entrada entrada) {
+            SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.insertarEntradaRequest();
+            inValue.entrada = entrada;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).insertarEntradaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntrada(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request) {
+            return base.Channel.buscarEntrada(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.entrada buscarEntrada(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntrada(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> SirgepPresentacion.ReferenciaDisco.EntradaWS.buscarEntradaAsync(SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest request) {
+            return base.Channel.buscarEntradaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarEntradaResponse> buscarEntradaAsync(int idEntrada) {
+            SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarEntradaRequest();
+            inValue.idEntrada = idEntrada;
+            return ((SirgepPresentacion.ReferenciaDisco.EntradaWS)(this)).buscarEntradaAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -8178,26 +8359,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/actualizarDistritoFavoritoPorIdCompradorRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/actualizarDistritoFavoritoPorIdCompradorResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.actualizarDistritoFavoritoPorIdCompradorResponse> actualizarDistritoFavoritoPorIdCompradorAsync(SirgepPresentacion.ReferenciaDisco.actualizarDistritoFavoritoPorIdCompradorRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/validarCorreoRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/validarCorreoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.validarCorreoResponse validarCorreo(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/validarCorreoRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/validarCorreoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> validarCorreoAsync(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/crearCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/crearCuentaResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.crearCuentaResponse crearCuenta(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/crearCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/crearCuentaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/listarCompradoresDTORequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/listarCompradoresDTOResponse")]
@@ -8228,6 +8389,26 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/buscarDetalleCompradorPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/buscarDetalleCompradorPorIdResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDetalleCompradorPorIdResponse> buscarDetalleCompradorPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDetalleCompradorPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/crearCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/crearCuentaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.crearCuentaResponse crearCuenta(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/crearCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/crearCuentaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/validarCorreoRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/validarCorreoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.validarCorreoResponse validarCorreo(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/CompradorWS/validarCorreoRequest", ReplyAction="pe.edu.pucp.sirgep/CompradorWS/validarCorreoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> validarCorreoAsync(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -8267,88 +8448,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         public actualizarDistritoFavoritoPorIdCompradorResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="validarCorreo", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class validarCorreoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string correo;
-        
-        public validarCorreoRequest() {
-        }
-        
-        public validarCorreoRequest(string correo) {
-            this.correo = correo;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="validarCorreoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class validarCorreoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public validarCorreoResponse() {
-        }
-        
-        public validarCorreoResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearCuenta", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearCuentaRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.comprador comprador;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string tipoID;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string distrito;
-        
-        public crearCuentaRequest() {
-        }
-        
-        public crearCuentaRequest(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
-            this.comprador = comprador;
-            this.tipoID = tipoID;
-            this.distrito = distrito;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="crearCuentaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class crearCuentaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public crearCuentaResponse() {
-        }
-        
-        public crearCuentaResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -8453,6 +8552,88 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearCuenta", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearCuentaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.comprador comprador;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string tipoID;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string distrito;
+        
+        public crearCuentaRequest() {
+        }
+        
+        public crearCuentaRequest(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
+            this.comprador = comprador;
+            this.tipoID = tipoID;
+            this.distrito = distrito;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="crearCuentaResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class crearCuentaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public crearCuentaResponse() {
+        }
+        
+        public crearCuentaResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="validarCorreo", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class validarCorreoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string correo;
+        
+        public validarCorreoRequest() {
+        }
+        
+        public validarCorreoRequest(string correo) {
+            this.correo = correo;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="validarCorreoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class validarCorreoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public validarCorreoResponse() {
+        }
+        
+        public validarCorreoResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface CompradorWSChannel : SirgepPresentacion.ReferenciaDisco.CompradorWS, System.ServiceModel.IClientChannel {
     }
@@ -8503,56 +8684,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.nuevoDistrito = nuevoDistrito;
             inValue.idComprador = idComprador;
             return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).actualizarDistritoFavoritoPorIdCompradorAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.validarCorreoResponse SirgepPresentacion.ReferenciaDisco.CompradorWS.validarCorreo(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request) {
-            return base.Channel.validarCorreo(request);
-        }
-        
-        public bool validarCorreo(string correo) {
-            SirgepPresentacion.ReferenciaDisco.validarCorreoRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCorreoRequest();
-            inValue.correo = correo;
-            SirgepPresentacion.ReferenciaDisco.validarCorreoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).validarCorreo(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> SirgepPresentacion.ReferenciaDisco.CompradorWS.validarCorreoAsync(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request) {
-            return base.Channel.validarCorreoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> validarCorreoAsync(string correo) {
-            SirgepPresentacion.ReferenciaDisco.validarCorreoRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCorreoRequest();
-            inValue.correo = correo;
-            return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).validarCorreoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.crearCuentaResponse SirgepPresentacion.ReferenciaDisco.CompradorWS.crearCuenta(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request) {
-            return base.Channel.crearCuenta(request);
-        }
-        
-        public int crearCuenta(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
-            SirgepPresentacion.ReferenciaDisco.crearCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearCuentaRequest();
-            inValue.comprador = comprador;
-            inValue.tipoID = tipoID;
-            inValue.distrito = distrito;
-            SirgepPresentacion.ReferenciaDisco.crearCuentaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).crearCuenta(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> SirgepPresentacion.ReferenciaDisco.CompradorWS.crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request) {
-            return base.Channel.crearCuentaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
-            SirgepPresentacion.ReferenciaDisco.crearCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearCuentaRequest();
-            inValue.comprador = comprador;
-            inValue.tipoID = tipoID;
-            inValue.distrito = distrito;
-            return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).crearCuentaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -8621,21 +8752,61 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.idComprador = idComprador;
             return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).buscarDetalleCompradorPorIdAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.crearCuentaResponse SirgepPresentacion.ReferenciaDisco.CompradorWS.crearCuenta(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request) {
+            return base.Channel.crearCuenta(request);
+        }
+        
+        public int crearCuenta(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
+            SirgepPresentacion.ReferenciaDisco.crearCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearCuentaRequest();
+            inValue.comprador = comprador;
+            inValue.tipoID = tipoID;
+            inValue.distrito = distrito;
+            SirgepPresentacion.ReferenciaDisco.crearCuentaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).crearCuenta(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> SirgepPresentacion.ReferenciaDisco.CompradorWS.crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.crearCuentaRequest request) {
+            return base.Channel.crearCuentaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.crearCuentaResponse> crearCuentaAsync(SirgepPresentacion.ReferenciaDisco.comprador comprador, string tipoID, string distrito) {
+            SirgepPresentacion.ReferenciaDisco.crearCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.crearCuentaRequest();
+            inValue.comprador = comprador;
+            inValue.tipoID = tipoID;
+            inValue.distrito = distrito;
+            return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).crearCuentaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.validarCorreoResponse SirgepPresentacion.ReferenciaDisco.CompradorWS.validarCorreo(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request) {
+            return base.Channel.validarCorreo(request);
+        }
+        
+        public bool validarCorreo(string correo) {
+            SirgepPresentacion.ReferenciaDisco.validarCorreoRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCorreoRequest();
+            inValue.correo = correo;
+            SirgepPresentacion.ReferenciaDisco.validarCorreoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).validarCorreo(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> SirgepPresentacion.ReferenciaDisco.CompradorWS.validarCorreoAsync(SirgepPresentacion.ReferenciaDisco.validarCorreoRequest request) {
+            return base.Channel.validarCorreoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCorreoResponse> validarCorreoAsync(string correo) {
+            SirgepPresentacion.ReferenciaDisco.validarCorreoRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCorreoRequest();
+            inValue.correo = correo;
+            return ((SirgepPresentacion.ReferenciaDisco.CompradorWS)(this)).validarCorreoAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.sirgep", ConfigurationName="ReferenciaDisco.DepartamentoWS")]
     public interface DepartamentoWS {
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse buscarDepaPorId(SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse> buscarDepaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasResponse")]
@@ -8646,6 +8817,44 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/listarDepasResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDepasResponse> listarDepasAsync(SirgepPresentacion.ReferenciaDisco.listarDepasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse buscarDepaPorId(SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdRequest", ReplyAction="pe.edu.pucp.sirgep/DepartamentoWS/buscarDepaPorIdResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse> buscarDepaPorIdAsync(SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDepas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDepasRequest {
+        
+        public listarDepasRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDepasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarDepasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.departamento[] @return;
+        
+        public listarDepasResponse() {
+        }
+        
+        public listarDepasResponse(SirgepPresentacion.ReferenciaDisco.departamento[] @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -8684,34 +8893,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDepas", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDepasRequest {
-        
-        public listarDepasRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDepasResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarDepasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.departamento[] @return;
-        
-        public listarDepasResponse() {
-        }
-        
-        public listarDepasResponse(SirgepPresentacion.ReferenciaDisco.departamento[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface DepartamentoWSChannel : SirgepPresentacion.ReferenciaDisco.DepartamentoWS, System.ServiceModel.IClientChannel {
     }
@@ -8740,6 +8921,27 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarDepasResponse SirgepPresentacion.ReferenciaDisco.DepartamentoWS.listarDepas(SirgepPresentacion.ReferenciaDisco.listarDepasRequest request) {
+            return base.Channel.listarDepas(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.departamento[] listarDepas() {
+            SirgepPresentacion.ReferenciaDisco.listarDepasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDepasRequest();
+            SirgepPresentacion.ReferenciaDisco.listarDepasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DepartamentoWS)(this)).listarDepas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDepasResponse> SirgepPresentacion.ReferenciaDisco.DepartamentoWS.listarDepasAsync(SirgepPresentacion.ReferenciaDisco.listarDepasRequest request) {
+            return base.Channel.listarDepasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDepasResponse> listarDepasAsync() {
+            SirgepPresentacion.ReferenciaDisco.listarDepasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDepasRequest();
+            return ((SirgepPresentacion.ReferenciaDisco.DepartamentoWS)(this)).listarDepasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdResponse SirgepPresentacion.ReferenciaDisco.DepartamentoWS.buscarDepaPorId(SirgepPresentacion.ReferenciaDisco.buscarDepaPorIdRequest request) {
             return base.Channel.buscarDepaPorId(request);
         }
@@ -8761,39 +8963,11 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.idDepartamento = idDepartamento;
             return ((SirgepPresentacion.ReferenciaDisco.DepartamentoWS)(this)).buscarDepaPorIdAsync(inValue);
         }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarDepasResponse SirgepPresentacion.ReferenciaDisco.DepartamentoWS.listarDepas(SirgepPresentacion.ReferenciaDisco.listarDepasRequest request) {
-            return base.Channel.listarDepas(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.departamento[] listarDepas() {
-            SirgepPresentacion.ReferenciaDisco.listarDepasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDepasRequest();
-            SirgepPresentacion.ReferenciaDisco.listarDepasResponse retVal = ((SirgepPresentacion.ReferenciaDisco.DepartamentoWS)(this)).listarDepas(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDepasResponse> SirgepPresentacion.ReferenciaDisco.DepartamentoWS.listarDepasAsync(SirgepPresentacion.ReferenciaDisco.listarDepasRequest request) {
-            return base.Channel.listarDepasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarDepasResponse> listarDepasAsync() {
-            SirgepPresentacion.ReferenciaDisco.listarDepasRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarDepasRequest();
-            return ((SirgepPresentacion.ReferenciaDisco.DepartamentoWS)(this)).listarDepasAsync(inValue);
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.sirgep", ConfigurationName="ReferenciaDisco.PersonaWS")]
     public interface PersonaWS {
-        
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento correo del espacio de nombres  no está marcado para aceptar valores nil.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/validarCuentaResponse")]
-        SirgepPresentacion.ReferenciaDisco.validarCuentaResponse validarCuenta(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/validarCuentaResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> validarCuentaAsync(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request);
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento return del espacio de nombres  no está marcado para aceptar valores nil.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/obtenerNombreUsuarioRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/obtenerNombreUsuarioResponse")]
@@ -8808,78 +8982,13 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaStringRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/validarCuentaStringResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse> validarCuentaStringAsync(SirgepPresentacion.ReferenciaDisco.validarCuentaStringRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class validarCuentaRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="validarCuenta", Namespace="pe.edu.pucp.sirgep", Order=0)]
-        public SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody Body;
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el nombre de elemento correo del espacio de nombres  no está marcado para aceptar valores nil.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/validarCuentaResponse")]
+        SirgepPresentacion.ReferenciaDisco.validarCuentaResponse validarCuenta(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request);
         
-        public validarCuentaRequest() {
-        }
-        
-        public validarCuentaRequest(SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
-    public partial class validarCuentaRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string correo;
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
-        public string passcode;
-        
-        public validarCuentaRequestBody() {
-        }
-        
-        public validarCuentaRequestBody(string correo, string passcode) {
-            this.correo = correo;
-            this.passcode = passcode;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class validarCuentaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="validarCuentaResponse", Namespace="pe.edu.pucp.sirgep", Order=0)]
-        public SirgepPresentacion.ReferenciaDisco.validarCuentaResponseBody Body;
-        
-        public validarCuentaResponse() {
-        }
-        
-        public validarCuentaResponse(SirgepPresentacion.ReferenciaDisco.validarCuentaResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
-    public partial class validarCuentaResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
-        public int @return;
-        
-        public validarCuentaResponseBody() {
-        }
-        
-        public validarCuentaResponseBody(int @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/PersonaWS/validarCuentaRequest", ReplyAction="pe.edu.pucp.sirgep/PersonaWS/validarCuentaResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> validarCuentaAsync(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -9022,6 +9131,78 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class validarCuentaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="validarCuenta", Namespace="pe.edu.pucp.sirgep", Order=0)]
+        public SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody Body;
+        
+        public validarCuentaRequest() {
+        }
+        
+        public validarCuentaRequest(SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
+    public partial class validarCuentaRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string correo;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string passcode;
+        
+        public validarCuentaRequestBody() {
+        }
+        
+        public validarCuentaRequestBody(string correo, string passcode) {
+            this.correo = correo;
+            this.passcode = passcode;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class validarCuentaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="validarCuentaResponse", Namespace="pe.edu.pucp.sirgep", Order=0)]
+        public SirgepPresentacion.ReferenciaDisco.validarCuentaResponseBody Body;
+        
+        public validarCuentaResponse() {
+        }
+        
+        public validarCuentaResponse(SirgepPresentacion.ReferenciaDisco.validarCuentaResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="")]
+    public partial class validarCuentaResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
+        public int @return;
+        
+        public validarCuentaResponseBody() {
+        }
+        
+        public validarCuentaResponseBody(int @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface PersonaWSChannel : SirgepPresentacion.ReferenciaDisco.PersonaWS, System.ServiceModel.IClientChannel {
     }
@@ -9047,33 +9228,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         public PersonaWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.validarCuentaResponse SirgepPresentacion.ReferenciaDisco.PersonaWS.validarCuenta(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request) {
-            return base.Channel.validarCuenta(request);
-        }
-        
-        public int validarCuenta(string correo, string passcode) {
-            SirgepPresentacion.ReferenciaDisco.validarCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequest();
-            inValue.Body = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody();
-            inValue.Body.correo = correo;
-            inValue.Body.passcode = passcode;
-            SirgepPresentacion.ReferenciaDisco.validarCuentaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.PersonaWS)(this)).validarCuenta(inValue);
-            return retVal.Body.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> SirgepPresentacion.ReferenciaDisco.PersonaWS.validarCuentaAsync(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request) {
-            return base.Channel.validarCuentaAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> validarCuentaAsync(string correo, string passcode) {
-            SirgepPresentacion.ReferenciaDisco.validarCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequest();
-            inValue.Body = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody();
-            inValue.Body.correo = correo;
-            inValue.Body.passcode = passcode;
-            return ((SirgepPresentacion.ReferenciaDisco.PersonaWS)(this)).validarCuentaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -9127,11 +9281,48 @@ namespace SirgepPresentacion.ReferenciaDisco {
             inValue.Body.passcode = passcode;
             return ((SirgepPresentacion.ReferenciaDisco.PersonaWS)(this)).validarCuentaStringAsync(inValue);
         }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.validarCuentaResponse SirgepPresentacion.ReferenciaDisco.PersonaWS.validarCuenta(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request) {
+            return base.Channel.validarCuenta(request);
+        }
+        
+        public int validarCuenta(string correo, string passcode) {
+            SirgepPresentacion.ReferenciaDisco.validarCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequest();
+            inValue.Body = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody();
+            inValue.Body.correo = correo;
+            inValue.Body.passcode = passcode;
+            SirgepPresentacion.ReferenciaDisco.validarCuentaResponse retVal = ((SirgepPresentacion.ReferenciaDisco.PersonaWS)(this)).validarCuenta(inValue);
+            return retVal.Body.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> SirgepPresentacion.ReferenciaDisco.PersonaWS.validarCuentaAsync(SirgepPresentacion.ReferenciaDisco.validarCuentaRequest request) {
+            return base.Channel.validarCuentaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.validarCuentaResponse> validarCuentaAsync(string correo, string passcode) {
+            SirgepPresentacion.ReferenciaDisco.validarCuentaRequest inValue = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequest();
+            inValue.Body = new SirgepPresentacion.ReferenciaDisco.validarCuentaRequestBody();
+            inValue.Body.correo = correo;
+            inValue.Body.passcode = passcode;
+            return ((SirgepPresentacion.ReferenciaDisco.PersonaWS)(this)).validarCuentaAsync(inValue);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="pe.edu.pucp.sirgep", ConfigurationName="ReferenciaDisco.FuncionWS")]
     public interface FuncionWS {
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse listarFuncionesPorIdEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoResponse")]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> listarFuncionesPorIdEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/insertarFuncionRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/insertarFuncionResponse")]
@@ -9152,16 +9343,42 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/buscarFuncionIdRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/buscarFuncionIdResponse")]
         System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.buscarFuncionIdResponse> buscarFuncionIdAsync(SirgepPresentacion.ReferenciaDisco.buscarFuncionIdRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesPorIdEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarFuncionesPorIdEventoRequest {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(detalleConstanciaDTO))]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse listarFuncionesPorIdEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int idEvento;
         
-        [System.ServiceModel.OperationContractAttribute(Action="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoRequest", ReplyAction="pe.edu.pucp.sirgep/FuncionWS/listarFuncionesPorIdEventoResponse")]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> listarFuncionesPorIdEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request);
+        public listarFuncionesPorIdEventoRequest() {
+        }
+        
+        public listarFuncionesPorIdEventoRequest(int idEvento) {
+            this.idEvento = idEvento;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesPorIdEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
+    public partial class listarFuncionesPorIdEventoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SirgepPresentacion.ReferenciaDisco.funcion[] @return;
+        
+        public listarFuncionesPorIdEventoResponse() {
+        }
+        
+        public listarFuncionesPorIdEventoResponse(SirgepPresentacion.ReferenciaDisco.funcion[] @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -9236,42 +9453,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesPorIdEvento", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarFuncionesPorIdEventoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int idEvento;
-        
-        public listarFuncionesPorIdEventoRequest() {
-        }
-        
-        public listarFuncionesPorIdEventoRequest(int idEvento) {
-            this.idEvento = idEvento;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarFuncionesPorIdEventoResponse", WrapperNamespace="pe.edu.pucp.sirgep", IsWrapped=true)]
-    public partial class listarFuncionesPorIdEventoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="pe.edu.pucp.sirgep", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SirgepPresentacion.ReferenciaDisco.funcion[] @return;
-        
-        public listarFuncionesPorIdEventoResponse() {
-        }
-        
-        public listarFuncionesPorIdEventoResponse(SirgepPresentacion.ReferenciaDisco.funcion[] @return) {
-            this.@return = @return;
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface FuncionWSChannel : SirgepPresentacion.ReferenciaDisco.FuncionWS, System.ServiceModel.IClientChannel {
     }
@@ -9297,6 +9478,29 @@ namespace SirgepPresentacion.ReferenciaDisco {
         
         public FuncionWSClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse SirgepPresentacion.ReferenciaDisco.FuncionWS.listarFuncionesPorIdEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request) {
+            return base.Channel.listarFuncionesPorIdEvento(request);
+        }
+        
+        public SirgepPresentacion.ReferenciaDisco.funcion[] listarFuncionesPorIdEvento(int idEvento) {
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest();
+            inValue.idEvento = idEvento;
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.FuncionWS)(this)).listarFuncionesPorIdEvento(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> SirgepPresentacion.ReferenciaDisco.FuncionWS.listarFuncionesPorIdEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request) {
+            return base.Channel.listarFuncionesPorIdEventoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> listarFuncionesPorIdEventoAsync(int idEvento) {
+            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest();
+            inValue.idEvento = idEvento;
+            return ((SirgepPresentacion.ReferenciaDisco.FuncionWS)(this)).listarFuncionesPorIdEventoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -9343,29 +9547,6 @@ namespace SirgepPresentacion.ReferenciaDisco {
             SirgepPresentacion.ReferenciaDisco.buscarFuncionIdRequest inValue = new SirgepPresentacion.ReferenciaDisco.buscarFuncionIdRequest();
             inValue.idFuncion = idFuncion;
             return ((SirgepPresentacion.ReferenciaDisco.FuncionWS)(this)).buscarFuncionIdAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse SirgepPresentacion.ReferenciaDisco.FuncionWS.listarFuncionesPorIdEvento(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request) {
-            return base.Channel.listarFuncionesPorIdEvento(request);
-        }
-        
-        public SirgepPresentacion.ReferenciaDisco.funcion[] listarFuncionesPorIdEvento(int idEvento) {
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest();
-            inValue.idEvento = idEvento;
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse retVal = ((SirgepPresentacion.ReferenciaDisco.FuncionWS)(this)).listarFuncionesPorIdEvento(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> SirgepPresentacion.ReferenciaDisco.FuncionWS.listarFuncionesPorIdEventoAsync(SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest request) {
-            return base.Channel.listarFuncionesPorIdEventoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoResponse> listarFuncionesPorIdEventoAsync(int idEvento) {
-            SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest inValue = new SirgepPresentacion.ReferenciaDisco.listarFuncionesPorIdEventoRequest();
-            inValue.idEvento = idEvento;
-            return ((SirgepPresentacion.ReferenciaDisco.FuncionWS)(this)).listarFuncionesPorIdEventoAsync(inValue);
         }
     }
 }
