@@ -9,10 +9,6 @@
     <h2 class="fw-bold mb-4">Entradas</h2>
     <!-- Búsqueda y Filtros -->
     <div class="busqueda-filtros mb-4">
-        <div class="busqueda mb-2">
-            <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display: none" />
-        </div>
         <div class="filtros d-flex align-items-center flex-wrap gap-3">
             <label class="fw-bold me-2 mb-0">Filtros:</label>
             <!-- Fecha Desde -->
@@ -40,8 +36,15 @@
     </div>
     <!-- Descarga -->
     <div class="container">
-        <div class="d-flex justify-content-between mb-3">
-            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Lista de Entradas" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de entradas fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Mensaje alineado a la izquierda, sin negrita -->
+            <asp:Label ID="lblMensaje" runat="server" CssClass="mb-0 text-dark" />
+            <!-- Botón alineado a la derecha -->
+            <asp:Button ID="btnDescargarMostrarModal" runat="server"
+                Text="Descargar Lista de Entradas"
+                OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de entradas fue descargada correctamente.'); }, 1000);"
+                OnClick="btnDescargar_Click"
+                CssClass="btn btn-dark" />
         </div>
     </div>
     <!-- GridView -->

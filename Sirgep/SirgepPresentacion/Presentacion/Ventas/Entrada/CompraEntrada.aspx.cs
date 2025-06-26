@@ -71,6 +71,27 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 //ViewState["HoraFin"] = horaFin;
                 //ViewState["Cantidad"] = cantidadStr;
                 //}
+
+                if (Session["idUsuario"] != null)
+                {
+                    int idPersona = (int)Session["idUsuario"];
+                    var comprador = compraService.buscarComprador(idPersona);
+                    if (comprador != null)
+                    {
+                        txtNombres.Text = comprador.nombres;
+                        txtNombres.ReadOnly = true;
+                        txtApellidoPaterno.Text = comprador.primerApellido;
+                        txtApellidoPaterno.ReadOnly = true;
+                        txtApellidoMaterno.Text = comprador.segundoApellido;
+                        txtApellidoMaterno.ReadOnly = true;
+                        txtDNI.Text = comprador.numDocumento;
+                        txtDNI.ReadOnly = true;
+                        txtCorreo.Text = comprador.correo;
+                        txtCorreo.ReadOnly = true;
+                        ddlTipoDocumento.SelectedValue = comprador.tipoDocumento.ToString();
+                        ddlTipoDocumento.Enabled = false;
+                    }
+                }
             }
         }
         protected void documentoNoValido(object sender, EventArgs e)
@@ -203,7 +224,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // Actualizar el evento con la nueva cantidad de entradas vendidas
             eventoWS.actualizarEvento(evento);
             // ---------- Insertar constancia ----------
-
+            //verificar si está en una cuenta registrada
+            int idPersonaSession = Session["idUsuario"] != null ? (int)Session["idUsuario"] : 0;
+            //si la cuenta está registrada, aunque lo haya comprado otra persona, se le asigna la compra a la cuenta
             entrada nEntrada = new entrada
             {
                 numEntrada = numE,
@@ -216,7 +239,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 igv = 0.18,
                 persona = new persona
                 {
-                    idPersona = idPersona1,
+                    idPersona = idPersonaSession > 0 ? idPersonaSession : idPersona1, // Si hay sesión, usar su ID, si no, usar el nuevo ID
                 },
                 funcion = new funcion
                 {
