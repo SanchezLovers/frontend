@@ -42,6 +42,26 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 lblPrecioHora.Text = espacio.precioReserva.ToString();
                 LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
 
+                if (Session["idUsuario"] != null)
+                {
+                    int idPersona = (int)Session["idUsuario"];
+                    var comprador = compraService.buscarComprador(idPersona);
+                    if (comprador != null)
+                    {
+                        txtNombres.Text = comprador.nombres;
+                        txtNombres.ReadOnly = true;
+                        txtApellidoPaterno.Text = comprador.primerApellido;
+                        txtApellidoPaterno.ReadOnly = true;
+                        txtApellidoMaterno.Text = comprador.segundoApellido;
+                        txtApellidoMaterno.ReadOnly = true;
+                        txtDNI.Text = comprador.numDocumento;
+                        txtDNI.ReadOnly = true;
+                        txtCorreo.Text = comprador.correo;
+                        txtCorreo.ReadOnly = true;
+                        ddlTipoDocumento.SelectedValue = comprador.tipoDocumento.ToString();
+                        ddlTipoDocumento.Enabled = false;
+                    }
+                }
 
 
             }
@@ -186,22 +206,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 return;
             }
 
-
-            // ---------- Insertar constancia ----------
-            //constancia nueva = new constancia
-            //{
-            //  fecha = DateTime.Now,
-            //  fechaSpecified = true,
-            //  metodoPago = mp,
-            //  metodoPagoSpecified = true,
-            //   igv = 0.18,
-            //  detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
-            //   total = totalAPagar,
-
-            // };
-
-            // int idConstancia = compraService.insertarConstancia(nueva);
-
+            int idPersonaSession = Session["idUsuario"] != null ? (int)Session["idUsuario"] : 0;
+            //si la cuenta está registrada, aunque lo haya comprado otra persona, se le asigna la compra a la cuenta
             reserva nuevaReserva = new reserva
             {
                 // Campos heredados de constancia
@@ -242,7 +248,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 persona = new persona
                 {
-                    idPersona = identificadorPersona, // Usar el ID del comprador existente o nuevo
+                    idPersona = idPersonaSession > 0 ? idPersonaSession : identificadorPersona, // Si hay sesión, usar su ID, si no, usar el nuevo ID
 
                 }, // el objeto comprador
                 espacio = espacioService.buscarEspacio(idEspacio)        // el objeto espacio

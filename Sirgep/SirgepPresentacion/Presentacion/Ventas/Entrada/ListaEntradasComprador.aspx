@@ -26,7 +26,7 @@
             <asp:BoundField DataField="NombreEvento" HeaderText="Evento" />
             <asp:BoundField DataField="Ubicacion" HeaderText="Ubicación" />
             <asp:BoundField DataField="NombreDistrito" HeaderText="Distrito" />
-            <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+            <asp:BoundField DataField="FechaFuncion" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
             <asp:BoundField DataField="HoraInicio" HeaderText="Hora Inicio" DataFormatString="{0:HH:mm}" HtmlEncode="false" />
             <asp:BoundField DataField="HoraFin" HeaderText="Hora Fin" DataFormatString="{0:HH:mm}" HtmlEncode="false" />
             <asp:TemplateField HeaderText="Abrir">

@@ -30,6 +30,10 @@
                 </div>
             </div>
 
+            <div>
+               <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
+            </div>
+
             <!-- 3. Fechas inicio / fin en una fila -->
             <div class="col-12 col-md-6 col-lg-3" id="filtrosFechas">
                 <div class="row gx-2">

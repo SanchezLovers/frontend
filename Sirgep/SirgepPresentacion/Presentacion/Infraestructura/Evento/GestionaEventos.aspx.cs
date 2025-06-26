@@ -42,7 +42,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void ddlFiltroFechas_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            lblError.Text = "";
         }
         public void cargarUbicacion()
         {
@@ -66,6 +66,12 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             buscarEventoPorTextoResponse response = eventoWS.buscarEventoPorTexto(new buscarEventoPorTextoRequest(txtBusqueda.Text));
+            if (response.@return == null)
+            {
+                lblError.Text = "No se encontraron eventos siguiendo el cirterio de los filtros seleccionados.";
+                return;
+            }
+            lblError.Text = "";
             rptEventos.DataSource = response.@return;
             rptEventos.DataBind();
         }
@@ -82,6 +88,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtDisponibles.Text = "";
             txtVendidas.Text = "";
             txtReferencia.Text = "";
+            lblError.Text = "";
         }
         private bool ValidarDatosEvento()
         {
@@ -556,8 +563,11 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
             else
             {
+                lblError.Text = "No se encontraron eventos siguiendo el cirterio de los filtros seleccionados.";
+                rptEventos.DataSource = null;
+                return;
                 MostrarError("Hubo un error al listar los eventos mediante el filtro de fechas");
-                CargarEventos();
+                //CargarEventos();
             }
         }
 
