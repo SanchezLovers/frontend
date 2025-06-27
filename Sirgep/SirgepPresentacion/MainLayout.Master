@@ -51,7 +51,7 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Menú Administrador -->
                     <li id="liAdminMenu" runat="server" class="nav-item dropdown">
-                        <a  runat="server" class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
+                        <a runat="server" class="nav-link dropdown-toggle" id="adminMenu" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                                 <asp:LinkButton ID="lnkEspaciosAdmin" runat="server" CssClass="dropdown-item" OnClick="lnkEspaciosAdmin_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Gestión de Espacios.');">Espacios</asp:LinkButton></li>
@@ -230,8 +230,26 @@
             </div>
         </div>
 
+        <!-- Modal de Sesión Expirada -->
+<div class="modal fade" id="modalSesionExpirada" tabindex="-1" aria-labelledby="modalSesionExpiradaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header modal-header-rojo text-white">
+                <h5 class="modal-title" id="modalSesionExpiradaLabel">Sesión a punto de expirar</h5>
+            </div>
+            <div class="modal-body text-center">
+                Tu sesión está a punto de expirar por inactividad.<br>
+                ¿Deseas continuar?
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-dark px-4" onclick="renovarSesion()">Continuar sesión</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <asp:HiddenField ID="hdnTipoUsuario" runat="server" />
+
+        <asp:HiddenField ID="hdnTipoUsuario" runat="server" />
     </form>
 </body>
 <!-- Pie de página -->
@@ -241,6 +259,28 @@
 
 
 <script>
+    //Funcion para cerrar los modals de carga
+    window.addEventListener("pageshow", function (event) {
+        // Evitar modal si vienes del historial
+        if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            cerrarModalCarga();
+
+            // 🔧 Remover backdrop y clase que deja Bootstrap
+            document.body.classList.remove("modal-open");
+
+            // Elimina backdrop si quedó alguno (por precaución)
+            document.querySelectorAll(".modal-backdrop").forEach(function (el) {
+                el.remove();
+            });
+
+            // Asegura que el modal esté oculto visualmente también
+            document.getElementById("modalCarga").classList.remove("show");
+            document.getElementById("modalCarga").style.display = "none";
+        }
+    });
+
+
+
     // Lógica para mostrar el modal de feedback
     function mostrarModalFeedback() {
         var modal = new bootstrap.Modal(document.getElementById('modalFeedback'));
@@ -260,8 +300,8 @@
             calificacionFeedback = this.getAttribute('data-valor');
             pintarEstrellasFeedback(calificacionFeedback);
             document.getElementById('<%= calificacionFeedback.ClientID %>').value = calificacionFeedback;
-                });
-            });
+        });
+    });
 
     function pintarEstrellasFeedback(valor) {
         document.querySelectorAll('#estrellasFeedback .estrellaFeedback').forEach(function (estrella) {
@@ -323,6 +363,8 @@
         myModal.show();
     }
     function mostrarModalCarga(titulo, mensaje) {
+        //Evita que aparezca al cargar de la cache (es decir, para que no se abra y se quede bloqueado al retroceder la pagina)
+        if (performance.getEntriesByType("navigation")[0].type === "back_forward") return;
         document.getElementById("modalCargaLabel").innerText = titulo;
         document.getElementById("modalCargaBody").innerText = mensaje;
         var myModal = new bootstrap.Modal(document.getElementById('modalCarga'));
@@ -336,5 +378,66 @@
             modalInstance.hide();
         }
     }
+
+    // --- Control de advertencia de expiración de sesión con reinicio por actividad ---
+
+    function mostrarModalSesionExpirada() {
+        var modal = new bootstrap.Modal(document.getElementById('modalSesionExpirada'));
+        modal.show();
+
+        // Si no responde en 30 segundos, cerramos sesión automáticamente
+        setTimeout(function () {
+            cerrarSesionPorInactividad();
+        }, 30 * 1000);
+    }
+
+    function renovarSesion() {
+        // Simplemente reinicia el temporizador
+        iniciarTemporizadorSesion();
+
+        // Cierra el modal si sigue visible
+        var modal = bootstrap.Modal.getInstance(document.getElementById('modalSesionExpirada'));
+        if (modal) modal.hide();
+    }
+
+    function cerrarSesionPorInactividad() {
+        // Puedes llamar a un botón que ya hace logout
+        var cerrarSesionBtn = document.getElementById('<%= lnkCerrarSesionAdmin.ClientID %>') || 
+            document.getElementById('<%= lnkCerrarSesionComprador.ClientID %>');
+        if (cerrarSesionBtn) {
+            cerrarSesionBtn.click();
+        } else {
+            // Si no hay botón, redirige por defecto
+            window.location.href = '/Presentacion/Inicio/LogIn.aspx';
+        }
+    }
+
+
+    // Tiempo de expiración en milisegundos (30 minutos)
+    var sessionTimeout = 30 * 60 * 1000;
+    // Mostrar el modal 30 segundos antes de expirar
+    var warningTime = sessionTimeout - (30 * 1000);
+
+    var sessionWarningTimer = null;
+
+    function iniciarTemporizadorSesion() {
+        if (sessionWarningTimer) clearTimeout(sessionWarningTimer);
+        sessionWarningTimer = setTimeout(function () {
+            mostrarModalSesionExpirada();
+        }, warningTime);
+    }
+
+    // Reinicia el temporizador con cualquier actividad relevante
+    function reiniciarTemporizadorSesion() {
+        iniciarTemporizadorSesion();
+    }
+
+    // Asociar eventos de usuario para reiniciar el temporizador
+    ['click', 'mousemove', 'keydown', 'mousedown', 'touchstart'].forEach(function (evt) {
+        document.addEventListener(evt, reiniciarTemporizadorSesion, true);
+    });
+
+    // Iniciar el temporizador al cargar la página
+    iniciarTemporizadorSesion();
 </script>
 </html>
