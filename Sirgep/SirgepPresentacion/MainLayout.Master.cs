@@ -138,12 +138,12 @@ namespace SirgepPresentacion
 
         protected void lnkEspaciosAdmin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEspacios.aspx");
+            Response.Redirect("/Presentacion/Infraestructura/Espacio/ListaEspacios.aspx");
         }
 
         protected void lnkEventosAdmin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Presentacion/Usuarios/Admin/ListaEventos.aspx");
+            Response.Redirect("/Presentacion/Infraestructura/Evento/GestionaEventos.aspx");
         }
         protected void btnEnviarFeedback_Click(object sender, EventArgs e)
         {
