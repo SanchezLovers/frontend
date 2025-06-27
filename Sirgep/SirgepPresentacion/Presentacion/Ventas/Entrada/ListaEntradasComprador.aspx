@@ -50,7 +50,7 @@
     </div>
     <!-- GridView -->
     <asp:GridView ID="GvListaEntradasComprador" runat="server" AutoGenerateColumns="false" ShowHeaderWhenEmpty="true"
-        AllowPaging="true" PageSize="10" OnPageIndexChanging="GvListaEntradasComprador_PageIndexChanging"
+        AllowPaging="true" PageSize="5" OnPageIndexChanging="GvListaEntradasComprador_PageIndexChanging"
         CssClass="table table-striped table-responsive table-hover text-center" HeaderStyle-HorizontalAlign="Center">
         <Columns>
             <asp:TemplateField HeaderText="Abrir">
