@@ -10,10 +10,10 @@
                     <p class="principal-subtitle">Reserva espacios públicos municipales de manera sencilla</p>
                     <div class="row mb-4 justify-content-center justify-content-md-start">
                         <div class="col-10 col-md-6 mb-2">
-                            <asp:Button ID="btnReservar" runat="server" CssClass="btn btn-dark w-100" Text="Reservar" OnClick="btnReservar_Click" />
+                            <asp:Button ID="btnReservar" runat="server" CssClass="btn btn-dark w-100" Text="Reservar" OnClick="btnReservar_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Formulario de Reservas.');" />
                         </div>
                         <div class="col-10 col-md-6 mb-2">
-                            <asp:Button ID="btnVerEventos" runat="server" CssClass="btn btn-dark w-100" Text="Ver Eventos" OnClick="btnVerEventos_Click" />
+                            <asp:Button ID="btnVerEventos" runat="server" CssClass="btn btn-dark w-100" Text="Ver Eventos" OnClick="btnVerEventos_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando a Buscador de Eventos.');"/>
                         </div>
                     </div>
                 </div>

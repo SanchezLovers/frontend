@@ -36,6 +36,8 @@ namespace SirgepPresentacion.Presentacion.Inicio
             int resultado = personaWS.validarCuenta(correo,contrasena);
             int id = resultado / 10;
             int tipo = resultado % 10;
+            // Cerrar modal de carga (que se abrió OnClientClick)
+            script = "setTimeout(function(){ cerrarModalCarga(); }, 300);";
             switch (tipo)
             {
                 case 0:
