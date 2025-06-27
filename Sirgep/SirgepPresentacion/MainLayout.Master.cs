@@ -1,5 +1,6 @@
 ﻿using SirgepPresentacion.ReferenciaDisco;
 using System;
+using System.Web.Security;
 using System.Web.UI;
 
 namespace SirgepPresentacion
@@ -10,11 +11,10 @@ namespace SirgepPresentacion
         {
             string tipoUsuario = Session["tipoUsuario"] as string;
 
-            if (tipoUsuario == null)
+            if (!Context.User.Identity.IsAuthenticated || tipoUsuario==null)
             {
-                // No ha iniciado sesión, es invitado por defecto
                 tipoUsuario = "invitado";
-                Session["tipoUsuario"] = "invitado"; // puedes asignarlo si deseas
+                Session["tipoUsuario"] = "invitado";
             }
 
             string nombreUsuario = Session["nombreUsuario"] as string;
@@ -132,7 +132,9 @@ namespace SirgepPresentacion
 
         protected void lnkCerrarSesion_Click(object sender, EventArgs e)
         {
-            Session.Abandon();
+            FormsAuthentication.SignOut(); // Elimina la cookie de autenticación
+            Session.Clear();               // Limpia todas las variables de sesión
+            Session.Abandon();             // Abandona la sesión
             Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
         }
 
