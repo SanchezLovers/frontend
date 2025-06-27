@@ -251,6 +251,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 ddlProvinciaAgregar.DataValueField = "IdProvincia";
                 ddlProvinciaAgregar.DataBind();
                 ddlProvinciaAgregar.Items.Insert(0, new ListItem("Seleccione una provincia", ""));
+                string lblErrorDepa = lblError.Text;
+                if (!string.IsNullOrEmpty(lblErrorDepa) && lblErrorDepa.Contains("departamento")) lblError.Text = "";
             }
             else
             {
@@ -277,6 +279,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 ddlDistritoAgregar.DataValueField = "IdDistrito";
                 ddlDistritoAgregar.DataBind();
                 ddlDistritoAgregar.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
+                string lblErrorProv = lblError.Text;
+                if (!string.IsNullOrEmpty(lblErrorProv) && lblErrorProv.Contains("provincia")) lblError.Text = "";
             }
             else
             {
@@ -290,7 +294,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
         protected void btnActualizarEspacioEdit_Click(object sender, EventArgs e)
         {
-
+            const int EDICION_ESPACIO = 2; // para abrir el omdal de edición al finalizar las validaciones
+            if (!validarEspacio(EDICION_ESPACIO)) return;
             // Capturar ID del espacio
             int idEspacio = int.Parse(hiddenIdEspacio.Value);
             int idDistritoHdn = int.Parse(hiddenIdDistrito.Value);
@@ -342,8 +347,117 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             }
         }
 
+        private bool validarEspacio(int current)
+        {
+            string nombreInsert = txtNombreEspacioAgregar.Text.Trim();
+            string ubicacionInsert = txtUbicacionAgregar.Text.Trim();
+            string superficieTexto = txtSuperficieAgregar.Text.Trim();
+            string precioTexto = txtPrecioReservaAgregar.Text.Trim();
+            string tipoEspacioInsumoInsert = ddlTipoEspacioAgregar.SelectedValue;
+            string horaIniInsert = txtHoraInicioInsert.Text.Trim();
+            string horaFinInsert = txtHoraFinInsert.Text.Trim();
+            string depa = ddlDepartamentoAgregar.Text.Trim();
+            string prov = ddlProvinciaAgregar.Text.Trim();
+            string dist = ddlDistritoAgregar.Text.Trim();
+            string dias = diasSeleccionados.Value;
+            string[] diasArray = dias.Split(',');
+
+            // Validar campos de texto obligatorios
+            if (string.IsNullOrWhiteSpace(nombreInsert))
+            {
+                MostrarError("Debe ingresar el nombre del espacio.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ubicacionInsert))
+            {
+                MostrarError("Debe ingresar la ubicación del espacio.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(tipoEspacioInsumoInsert) || tipoEspacioInsumoInsert == "0")
+            {
+                MostrarError("Debe seleccionar un tipo de espacio.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            // Validar superficie
+            if (!double.TryParse(superficieTexto, out double superficieInsert) || superficieInsert < 10 || superficieInsert > 1000)
+            {
+                MostrarError("La superficie debe ser un número positivo menor o igual a 1000 y como mínimo de 10 metros cuadrados.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            // Validar precio de reserva
+            if (!double.TryParse(precioTexto, out double precioReservaInsert) || precioReservaInsert <= 0 || precioReservaInsert > 1000)
+            {
+                MostrarError("El precio de reserva debe ser un número positivo menor o igual a 1000.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+            // Validar horas
+            if (string.IsNullOrWhiteSpace(horaIniInsert) || string.IsNullOrWhiteSpace(horaFinInsert))
+            {
+                MostrarError("Debe ingresar la hora de inicio y la hora de fin.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(depa))
+            {
+                MostrarError("Debe elegir un departamento.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(prov))
+            {
+                MostrarError("Debe elegir una provincia.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(dist))
+            {
+                MostrarError("Debe elegir un distrito.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (!(diasArray.Length > 0) || dias=="")
+            {
+                MostrarError("Debe seleccionar al menos 1 día de atención.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            // Todo validado correctamente
+            return true;
+        }
+
+        public void MostrarError(string mensaje)
+        {
+            lblError.Text = mensaje;
+        }
+
         protected void btnGuardarInsertado_Click(object sender, EventArgs e)
         {
+            const int AGREGAR_ESPACIO = 1; // código para abrir el modal de "Agregar Espacio" al final de las validaciones
+            if (!validarEspacio(AGREGAR_ESPACIO)) return;
             // Capturar ID del espacio
             int idDistritoHdn = int.Parse(hiddenIdDistrito.Value);
             // Leer datos actualizados desde controles del modal
@@ -539,6 +653,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected void ddlDistritoAgregar_SelectedIndexChanged(object sender, EventArgs e)
         {
             hiddenIdDistrito.Value = ddlDistritoAgregar.SelectedValue.ToString();
+            string lblErrorDist = lblError.Text;
+            if (!string.IsNullOrEmpty(lblErrorDist) && lblErrorDist.Contains("distrito")) lblError.Text = "";
         }
 
         protected void txtHoraFinInsert_TextChanged(object sender, EventArgs e)
@@ -641,6 +757,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 ddlProvinciaEdit.Items.Insert(0, new ListItem("Seleccione una provincia", ""));
                 ddlDistritoEdit.Items.Clear();
                 ddlDistritoEdit.Items.Insert(0, new ListItem("Seleccione una provincia primero", ""));
+
+                string lblErrorDepa = lblError.Text;
+                if (!string.IsNullOrEmpty(lblErrorDepa) && lblErrorDepa.Contains("departamento")) lblError.Text = "";
+                
             }
             else
             {
@@ -666,6 +786,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 ddlDistritoEdit.DataValueField = "IdDistrito";
                 ddlDistritoEdit.DataBind();
                 ddlDistritoEdit.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
+                string lblErrorProv = lblError.Text;
+                if (!string.IsNullOrEmpty(lblErrorProv) && lblErrorProv.Contains("provincia")) lblError.Text = "";
             }
             else
             {
@@ -680,6 +802,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected void ddlDistritoEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             hiddenIdDistrito.Value = ddlDistritoEdit.SelectedValue.ToString();
+            string lblErrorDist = lblError.Text;
+            if (!string.IsNullOrEmpty(lblErrorDist) && lblErrorDist.Contains("distrito")) lblError.Text = "";
         }
 
         protected void btnEditUbigeo_Click(object sender, EventArgs e)

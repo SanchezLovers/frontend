@@ -41,13 +41,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 ddlDistritos.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
                 ddlDistritos.Visible = false;
 
-                Reservas = client.listarTodasReservas().ToList();
+                
                 CargarPagina();
             }
         }
 
         protected void CargarPagina()
         {
+            Reservas = client.listarTodasReservas().ToList();
             int paginaActual = (int)(ViewState["PaginaActual"] ?? 1);
             var reservas = Reservas;
 
@@ -183,15 +184,41 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnEliminarReserva_Click(object sender, EventArgs e)
         {
             int idReserva = int.Parse(((Button)sender).CommandArgument);
-            Boolean reservaEliminada = client.eliminarLogicoReserva(idReserva);
+
+            // Buscar la reserva en la lista cargada
+            var reserva = Reservas.FirstOrDefault(r => r.numReserva == idReserva);
+
+            if (reserva == null)
+            {
+                mostrarModalErrorReserva("ERROR", "No se encontró la reserva.");
+                return;
+            }
+
+            // Validar si han pasado al menos 5 años desde la fecha de constancia
+            if (reserva.fechaConstancia.AddYears(5).Date > DateTime.Today)
+            {
+                mostrarModalErrorReserva("No permitido", "Solo se pueden eliminar reservas con más de 5 años de antigüedad.");
+                return;
+            }
+
+            // Validar si está activo (asumo que 'A' == activo)
+            /*if ((char)reserva.activo != 'A')
+            {
+                mostrarModalErrorReserva("No permitido", "La reserva no está activa.");
+                return;
+            }*/
+
+            bool reservaEliminada = client.eliminarLogicoReserva(idReserva);
 
             if (reservaEliminada)
             {
-                mostrarModalExitoReserva("VENTANA DE CONFIRMACION", "La reserva ha sido eliminada correctamente.");
-                CargarPagina();
-                return;
+                mostrarModalExitoReserva("Éxito", "La reserva ha sido eliminada correctamente.");
             }
-            mostrarModalErrorReserva("VENTANA DE ERROR", "Ocurrió un problema al eliminar la reserva.");
+            else
+            {
+                mostrarModalErrorReserva("Error", "Ocurrió un problema al eliminar la reserva.");
+            }
+
             CargarPagina();
         }
 
@@ -221,21 +248,16 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             {
                 var reserva = (reservaDTO)e.Row.DataItem;
 
-                // Asegúrate de que fechaConstancia sea una propiedad DateTime válida
                 DateTime fechaConstancia = reserva.fechaConstancia;
+                char estado = (char)reserva.activo;
 
                 Button btnEliminar = (Button)e.Row.FindControl("btnEliminarReserva");
 
-                ushort a = reserva.activo;
-
-                char aChar = ((char)a);
-
                 if (btnEliminar != null)
                 {
-                    bool habilitado = fechaConstancia.AddYears(5) <= DateTime.Now && reserva.activo=='A';
+                    bool habilitado = fechaConstancia.AddYears(5).Date <= DateTime.Today;
                     btnEliminar.Enabled = habilitado;
 
-                    // Opcional: agrega un tooltip explicativo
                     btnEliminar.ToolTip = habilitado
                         ? "Puedes eliminar esta entrada, ya que han pasado 5 años desde la constancia"
                         : "No puedes eliminar esta entrada. Aún no han pasado 5 años desde la constancia";

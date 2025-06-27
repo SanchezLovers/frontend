@@ -109,18 +109,26 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             ddlEspacio.DataTextField = "Nombre";
             ddlEspacio.DataValueField = "idEspacio";
             ddlEspacio.DataBind();
+            lblError.Visible = false;
             ddlEspacio.Enabled = true;
             ddlEspacio.Items.Insert(0, new ListItem("Seleccione Espacio", ""));
         }
 
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idEspacio = int.Parse(ddlEspacio.SelectedValue.ToString());
-            espacio es = espacioWS.buscarEspacio(idEspacio);
-            lblPrecioHora.Text =es.precioReserva.ToString();
-            lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString()}";
-            lblPrecioTotal.Text = "Precio total seleccionado: Seleccione un horario";
-            hdnPrecioHora.Value = es.precioReserva.ToString(CultureInfo.InvariantCulture);
+            if (ddlEspacio.SelectedValue.Equals(""))
+                return;
+            else
+            {
+                int idEspacio = int.Parse(ddlEspacio.SelectedValue.ToString());
+                espacio es = espacioWS.buscarEspacio(idEspacio);
+                lblError.Visible = false;
+                lblPrecioHora.Text = es.precioReserva.ToString();
+                lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString()}";
+                lblPrecioTotal.Text = "Precio total seleccionado: Seleccione un horario";
+                hdnPrecioHora.Value = es.precioReserva.ToString(CultureInfo.InvariantCulture);
+            }
+                
         }
 
         protected void ddlCategoria_SelectedIndexChanged(object sender, EventArgs e)
