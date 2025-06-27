@@ -1,4 +1,5 @@
-﻿using iTextSharp.text.pdf.codec.wmf;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.codec.wmf;
 using SirgepPresentacion.ReferenciaDisco;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void GvListaEntradasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GvListaEntradasComprador.PageIndex = e.NewPageIndex;
-            CargarDatos(null,null,null);
+            CargarDatos(null, null, null);
             //GvListaEntradasComprador.DataBind();
         }
         protected void CargarDatos(string fechaInicio, string fechaFin, string estado)
@@ -43,7 +44,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             detalleEntradaDTO[] listaDetalleEntradas = null;
             try
             {
-                listaDetalleEntradas = entradaWS.listarDetalleEntradasFiltradaPorComprador(idComprador, fechaInicio, fechaFin, estado);
+                listaDetalleEntradas = entradaWS.listarPorComprador(idComprador, fechaInicio, fechaFin, estado);
             }
             catch (FaultException ex)
             {
@@ -57,9 +58,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            int idComprador = int.Parse(Session["idUsuario"].ToString());
-            //int idComprador = 3;
-            entradaWS.crearLibroExcelEntradas(idComprador);
+            //int idComprador = int.Parse(Session["idUsuario"].ToString());
+            int idComprador = 3;
+            DateTime? fechaInicio, fechaFin;
+            string estado = null;
+            ObtenerFiltros(out fechaInicio, out fechaFin, out estado);
+            entradaWS.crearLibroExcelEntradas(idComprador, fechaInicio?.ToString("yyyy-MM-dd"), fechaFin?.ToString("yyyy-MM-dd"), estado);
+            txtFechaInicio.Text = txtFechaFin.Text = "";
+            rblEstados.ClearSelection();
         }
         protected void BtnAbrir_Click(object sender, EventArgs e)
         {
@@ -69,52 +75,37 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            DateTime? fechaInicio = DateTime.TryParse(txtFechaInicio.Text, out var fi) ? fi : (DateTime?)null;
-            DateTime? fechaFin = DateTime.TryParse(txtFechaFin.Text, out var ff) ? ff : (DateTime?)null;
-
-            // Validar que la fecha de inicio no sea mayor que la fecha de fin
+            DateTime? fechaInicio, fechaFin;
+            string estado = null;
+            ObtenerFiltros(out fechaInicio, out fechaFin, out estado);
             if (fechaInicio != null && fechaFin != null && fechaInicio > fechaFin)
             {
                 lblMensaje.Text = "La fecha de inicio no puede ser mayor que la fecha de fin.";
-                txtFechaInicio.Text = txtFechaFin.Text = "";
-                chkVigentes.Checked = chkFinalizadas.Checked = chkCanceladas.Checked = false;
                 return;
             }
-
-            // Obtener estados seleccionados
-            string estado=null;
-            if (chkVigentes.Checked) estado="Vigentes";
-            else if (chkFinalizadas.Checked) estado="Finalizadas";
-            else if (chkCanceladas.Checked) estado="Canceladas";
-
-            // Llamar a método de carga
-            CargarDatos(fechaInicio?.ToString("yyyy-MM-dd"), fechaFin?.ToString("yyyy-MM-dd"), estado);
-
-            // Limpiar filtros
-            txtFechaInicio.Text = txtFechaFin.Text = "";
-            chkVigentes.Checked = chkFinalizadas.Checked = chkCanceladas.Checked = false;
-
-            // Construir mensaje
-            StringBuilder mensaje = new StringBuilder("Entradas filtradas");
-
-            if (fechaInicio != null && fechaFin != null)
-            {
-                mensaje.Append($" entre {fechaInicio.Value:dd/MM/yyyy} y {fechaFin.Value:dd/MM/yyyy}");
-            }
-            else if (fechaInicio != null)
-            {
-                mensaje.Append($" desde {fechaInicio.Value:dd/MM/yyyy}");
-            }
-            else if (fechaFin != null)
-            {
-                mensaje.Append($" hasta {fechaFin.Value:dd/MM/yyyy}");
-            }
-
-            if (estado!=null)
-            {
-                mensaje.Append(" con estado " + estado);
-            }
-
+            CargarDatos(fechaInicio?.ToString("yyyy-MM-dd"),fechaFin?.ToString("yyyy-MM-dd"),estado);
+            MostrarMensaje(fechaInicio, fechaFin, estado);
+        }
+        protected void btnMostrarTodos_Click(object sender, EventArgs e)
+        {
+            txtFechaInicio.Text = txtFechaFin.Text="";
+            rblEstados.ClearSelection();
+            CargarDatos(null, null, null);
+            lblMensaje.Text = "Mostrando todas las entradas de hasta un año";
+        }
+        protected void ObtenerFiltros(out DateTime? fechaInicio, out DateTime? fechaFin, out string estado)
+        {
+            fechaInicio = DateTime.TryParse(txtFechaInicio.Text, out DateTime fi) ? fi : (DateTime?)null;
+            fechaFin = DateTime.TryParse(txtFechaFin.Text, out DateTime ff) ? ff : (DateTime?)null;
+            estado = rblEstados.SelectedValue;
+        }
+        protected void MostrarMensaje(DateTime? fechaInicio, DateTime? fechaFin, string estado)
+        {
+            StringBuilder mensaje = new StringBuilder("Entradas filtradas de hasta un año");
+            if (fechaInicio != null && fechaFin != null) mensaje.Append($" entre {fechaInicio:dd/MM/yyyy} y {fechaFin:dd/MM/yyyy}");
+            else if (fechaInicio != null) mensaje.Append($" desde {fechaInicio:dd/MM/yyyy}");
+            else if (fechaFin != null) mensaje.Append($" hasta {fechaFin:dd/MM/yyyy}");
+            if (!string.IsNullOrEmpty(estado)) mensaje.Append(" con estado " + estado);
             lblMensaje.Text = mensaje.ToString();
         }
     }
