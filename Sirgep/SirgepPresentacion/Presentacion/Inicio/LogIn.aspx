@@ -47,7 +47,7 @@
                         <a href="#" class="text-decoration-none">Olvidé mi contraseña</a>
                     </div>
 
-                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-dark w-100" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-dark w-100" OnClick="btnLogin_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Validando credenciales.');"/>
 
                     <small class="d-block mt-2 text-muted">*Campo Requerido</small>
 

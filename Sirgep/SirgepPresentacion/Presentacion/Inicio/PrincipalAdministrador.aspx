@@ -11,20 +11,20 @@
                 <h5 class="fw-semibold mb-3">Gestionar Espacios</h5>
                 <div class="row mb-4">
                     <div class="col-6 mb-2">
-                        <asp:Button ID="btnManejarEspacios" runat="server" CssClass="btn btn-dark w-100" Text="Manejar Espacios" OnClick="btnManejarEspacios_Click" />
+                        <asp:Button ID="btnManejarEspacios" runat="server" CssClass="btn btn-dark w-100" Text="Manejar Espacios" OnClick="btnManejarEspacios_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
                     </div>
                     <div class="col-6 mb-2">
-                        <asp:Button ID="btnConsultarReservas" runat="server" CssClass="btn btn-dark w-100" Text="Consultar Reservas" OnClick="btnConsultarReservas_Click" />
+                        <asp:Button ID="btnConsultarReservas" runat="server" CssClass="btn btn-dark w-100" Text="Consultar Reservas" OnClick="btnConsultarReservas_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
                     </div>
                 </div>
 
                 <h5 class="fw-semibold mb-3">Gestionar Eventos</h5>
                 <div class="row mb-4">
                     <div class="col-6 mb-2">
-                        <asp:Button ID="btnManejarEventos" runat="server" CssClass="btn btn-dark w-100" Text="Manejar Eventos" OnClick="btnManejarEventos_Click" />
+                        <asp:Button ID="btnManejarEventos" runat="server" CssClass="btn btn-dark w-100" Text="Manejar Eventos" OnClick="btnManejarEventos_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
                     </div>
                     <div class="col-6 mb-2">
-                        <asp:Button ID="btnConsultarEntradas" runat="server" CssClass="btn btn-dark w-100" Text="Consultar Entradas" OnClick="btnConsultarEntradas_Click" />
+                        <asp:Button ID="btnConsultarEntradas" runat="server" CssClass="btn btn-dark w-100" Text="Consultar Entradas" OnClick="btnConsultarEntradas_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
                     </div>
                 </div>
 
@@ -34,7 +34,8 @@
                         <asp:Button ID="btnAdministrarCompradores" runat="server"
                             CssClass="btn btn-dark w-100"
                             Text="Administrar Compradores"
-                            OnClick="btnAdministrarCompradores_Click" />
+                            OnClick="btnAdministrarCompradores_Click" 
+                            OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
                     </div>
                 </div>
 
