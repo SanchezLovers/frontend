@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SirgepPresentacion.Presentacion.Ventas.Entrada
@@ -59,11 +60,30 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
             //int idComprador = int.Parse(Session["idUsuario"].ToString());
-            int idComprador = 3;
+            int idComprador = 40;
             DateTime? fechaInicio, fechaFin;
             string estado = null;
             ObtenerFiltros(out fechaInicio, out fechaFin, out estado);
-            entradaWS.crearLibroExcelEntradas(idComprador, fechaInicio?.ToString("yyyy-MM-dd"), fechaFin?.ToString("yyyy-MM-dd"), estado);
+            bool resultado=entradaWS.crearLibroExcelEntradas(idComprador, fechaInicio?.ToString("yyyy-MM-dd"), fechaFin?.ToString("yyyy-MM-dd"), estado);
+            if (resultado)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $@"setTimeout(function() {{
+                    mostrarModalExito('Descarga exitosa', 'La lista de entradas fue descargada correctamente.');}}, 1000);", true);
+            }
+            else
+            {
+                string mensajeError = "";
+                if (fechaInicio!=null || fechaFin!=null || estado!=null)
+                {
+                    mensajeError = "No se pudo descargar la lista de entradas. Verifica los filtros seleccionados.";
+                }
+                else
+                {
+                    mensajeError = "No se pudo descargar la lista de entradas. No posees alguna entrada.";
+                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", $@"setTimeout(function() {{
+                    mostrarModalError('Error en la descarga', '{mensajeError}');}}, 1000);", true);
+            }
             txtFechaInicio.Text = txtFechaFin.Text = "";
             rblEstados.ClearSelection();
         }
