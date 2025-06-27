@@ -13,21 +13,19 @@
 
     <!-- Búsqueda -->
     <div class="mb-3">
-        <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true" />
+        <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="input-busqueda" Placeholder="🔍 Buscar" AutoPostBack="true" />
     </div>
-
-    <!-- Filtros -->
 
     <!-- Tabla -->
     <div class="table-responsive">
-        <table class="table table-bordered text-center">
+        <table class="table table-bordered text-center tabla-reservas">
             <thead class="table-light fw-bold">
                 <tr>
                     <th>Abrir</th>
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Distrito</th>
-                    <th>Fecha de la Función</th>
+                    <th>Fecha Constancia</th>
                     <th>Hora de Inicio</th>
                     <th>Hora de Fin</th>
                     <th>Acciones</th>
@@ -64,17 +62,17 @@
     <!-- Controles de paginación -->
     <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
         <asp:Button ID="btnAnterior" runat="server"
-            CssClass="btn btn-outline-primary btn-sm fw-semibold px-4"
-            Text="⟨ Anterior" OnClick="btnAnterior_Click" />
+            CssClass="btn btn-outline-secondary btn-sm me-4"
+            Text="←" OnClick="btnAnterior_Click" />
 
         <asp:Label ID="lblPaginaActual" runat="server"
             CssClass="fw-bold text-dark mx-2" />
 
         <asp:Button ID="btnSiguiente" runat="server"
-            CssClass="btn btn-outline-primary btn-sm fw-semibold px-4"
-            Text="Siguiente ⟩" OnClick="btnSiguiente_Click" />
+            CssClass="btn btn-outline-secondary btn-sm ms-4"
+            Text="→" OnClick="btnSiguiente_Click" />
     </div>
-
+    <div class="mb-3"></div>
     <!-- Modal de Confirmación -->
     <div class="modal fade" id="modalConfEntrada" tabindex="-1" aria-labelledby="modalConfEntradaLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

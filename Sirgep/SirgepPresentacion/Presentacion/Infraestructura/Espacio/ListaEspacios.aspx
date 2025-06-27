@@ -1,37 +1,57 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListaEspacios.aspx.cs" Inherits="SirgepPresentacion.Presentacion.Infraestructura.Espacio.ListaEspacios" MasterPageFile="~/MainLayout.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Municipalidad > Espacios
+    Municipalidad &gt; Espacios
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
     <!-- Título principal -->
-    <h2 class="fw-bold mb-4">Municipalidad &gt; Espacios</h2>
+    <h2 class="fw-bold mb-4" >Municipalidad &gt; Espacios</h2>
     <!-- Búsqueda -->
     <div class="mb-3">
-        <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true"/>
+        <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="input-busqueda" Placeholder="🔍 Buscar" AutoPostBack="true"/>
     </div>
 
     <!-- Filtros -->
     <div class="mb-4">
-        <label class="fw-bold">Filtros:</label>
-        <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select w-25 d-inline-block mx-2">
-                <asp:ListItem Text="Seleccione una categoría" Value="" />
-                <asp:ListItem Text="Teatros" Value="TEATRO" />
-                <asp:ListItem Text="Canchas" Value="CANCHA" />
-                <asp:ListItem Text="Salones" Value="SALON" />
-                <asp:ListItem Text="Parques" Value="PARQUE" />
-        </asp:DropDownList>
-        <asp:DropDownList ID="ddlDistrito" runat="server" CssClass="form-select w-25 d-inline-block mx-2">
-                <asp:ListItem Text="Seleccione un distrito" Value="" />
-        </asp:DropDownList>
-        <asp:Button ID="btnConsultar" runat="server" Text="Consultar" CssClass="btn btn-dark" OnClick="btnConsultar_Click" />
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <!-- Etiqueta "Filtros:" y dropdowns -->
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <label class="fw-bold mb-0">Filtros:</label>
+
+                <asp:DropDownList ID="ddlCategoria" runat="server"
+                    CssClass="filtro-fecha-espacio">
+                    <asp:ListItem Text="Seleccione una categoría" Value="" />
+                    <asp:ListItem Text="Teatros" Value="TEATRO" />
+                    <asp:ListItem Text="Canchas" Value="CANCHA" />
+                    <asp:ListItem Text="Salones" Value="SALON" />
+                    <asp:ListItem Text="Parques" Value="PARQUE" />
+                </asp:DropDownList>
+
+                <asp:DropDownList ID="ddlDistrito" runat="server"
+                    CssClass="filtro-fecha-espacio">
+                    <asp:ListItem Text="Seleccione un distrito" Value="" />
+                </asp:DropDownList>
+            </div>
+
+            <!-- Botones alineados a la derecha -->
+            <div class="d-flex gap-2">
+                <asp:Button ID="btnConsultar" runat="server"
+                    Text="Consultar" CssClass="btn btn-dark fw-semibold" OnClick="btnConsultar_Click" />
+
+                <asp:Button ID="btnAgregarEspacio" runat="server"
+                    Text="Añadir Espacio" CssClass="btn btn-success fw-semibold fst-italic"
+                    OnClick="btnAgregarEspacio_Click" />
+            </div>
+        </div>
     </div>
+
+
 
     <!-- Tabla -->
     <div class="table-responsive">
-        <table class="table table-bordered text-center">
+        <table class="tabla-reservas">
             <thead class="table-light fw-bold">
                 <tr>
                     <th>Abrir</th>
@@ -62,15 +82,24 @@
                             </td>
                         </tr>
                     </ItemTemplate>
+                    <FooterTemplate>
+                        <tr>
+                            <td colspan="5" class="text-center pt-3">
+                                <asp:Button ID="btnAnteriorFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm me-2"
+                                    Text="←" CommandName="Anterior" OnCommand="Paginar_Click" />
+
+                                <asp:Label ID="lblPaginaFoot" runat="server" CssClass="fw-bold"></asp:Label>
+
+                                <asp:Button ID="btnSiguienteFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm ms-2"
+                                    Text="→" CommandName="Siguiente" OnCommand="Paginar_Click" />
+                            </td>
+                        </tr>
+                    </FooterTemplate>
                 </asp:Repeater>
             </tbody>
         </table>
     </div>
 
-    <!-- Botón de añadir -->
-    <div class="text-end mt-3">
-        <asp:Button ID="btnAgregarEspacio" runat="server" CssClass="btn btn-dark fw-bold" Text="Añadir" OnClick="btnAgregarEspacio_Click" />
-    </div>
     <!-- Modal Paso 1: Datos del Espacio [ AGREGAR UN ESPACIO ] -->
     <div class="modal fade" id="modalPaso1" tabindex="-1" aria-labelledby="modalPaso1Label" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -142,28 +171,24 @@
                     <div class="row align-items-end">
                         <div class="col-md-3 mb-3">
                             <label for="txtHoraInicioInsert" class="form-label">Hora Inicio</label>
-                            <asp:TextBox
-                                ID="txtHoraInicioInsert"
+                            <asp:DropDownList
+                                ID="ddlHoraInicioInsert"
                                 runat="server"
-                                TextMode="Time"
                                 CssClass="form-control"
                                 OnTextChanged="txtHoraFinInsert_TextChanged"
-                                AutoPostBack="true"
-                                placeholder="00:00">
-                            </asp:TextBox>
+                                AutoPostBack="true">
+                            </asp:DropDownList>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="txtHoraFinInsert" class="form-label">Hora Fin</label>
-                            <asp:TextBox
-                                ID="txtHoraFinInsert"
+                            <asp:DropDownList
+                                ID="ddlHoraFinInsert"
                                 runat="server"
-                                TextMode="Time"
                                 CssClass="form-control"
                                 OnTextChanged="txtHoraFinInsert_TextChanged"
-                                AutoPostBack="true"
-                                placeholder="00:00">
-                            </asp:TextBox>
+                                AutoPostBack="true">
+                            </asp:DropDownList>
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -302,24 +327,21 @@
                     <div class="row align-items-end">
                         <div class="col-md-3 mb-3">
                             <label for="txtHoraInicioEdit" class="form-label">Hora Inicio</label>
-                            <asp:TextBox
-                                ID="txtHoraInicioEdit"
+                            <asp:DropDownList
+                                ID="ddlHoraInicioEdit"
                                 runat="server"
                                 TextMode="Time"
                                 CssClass="form-control"
-                                Placeholder="00:00">
-                            </asp:TextBox>
+                            ></asp:DropDownList>
                         </div>
 
                         <div class="col-md-3 mb-3">
                             <label for="txtHoraFinEdit" class="form-label">Hora Fin</label>
-                            <asp:TextBox
-                                ID="txtHoraFinEdit"
+                            <asp:DropDownList
+                                ID="ddlHoraFinEdit"
                                 runat="server"
-                                TextMode="Time"
                                 CssClass="form-control"
-                                Placeholder="00:00">
-                            </asp:TextBox>
+                            ></asp:DropDownList>
                         </div>
                     </div>
                     <!-- Fin de Horarios -->
@@ -441,22 +463,6 @@
         function abrirModalEdicion() {
             var modalEdicion = bootstrap.Modal.getInstance(document.getElementById('modalEdicionEspacio'));
             modalEdicion.show();
-        }
-        function validarHoras() {
-            const horaInicio = document.getElementById('<%= txtHoraInicioInsert.ClientID %>').value;
-            const horaFin = document.getElementById('<%= txtHoraFinInsert.ClientID %>').value;
-
-            if (!horaInicio || !horaFin) {
-                alert("Ambas horas deben estar completas.");
-                return false;
-            }
-
-            if (horaInicio >= horaFin) {
-                alert("La hora de inicio debe ser menor que la hora de fin.");
-                return false;
-            }
-
-            return true;
         }
         function mostrarConfEspacio(id) {
             // Obtener correctamente el ID generado por ASP.NET

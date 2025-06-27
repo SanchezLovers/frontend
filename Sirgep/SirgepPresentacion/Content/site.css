@@ -400,3 +400,16 @@ body {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+.filtro-fecha-espacio {
+    font-size: 0.95em;
+    padding: 6.5px 6px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    width: 200px;
+    background: #fff;
+    appearance: none; /* Para que no tome el estilo del sistema operativo */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: auto;
+}

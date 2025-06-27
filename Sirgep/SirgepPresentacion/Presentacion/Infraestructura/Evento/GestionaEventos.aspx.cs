@@ -17,6 +17,14 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         private DepartamentoWS depaWS;
         private ProvinciaWS provWS;
         private DistritoWS distWS;
+        private int PaginaActual
+        {
+            get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
+            set => ViewState["PaginaActual"] = value;
+        }
+
+        private const int TAM_PAGINA = 10;
+        private int TotalPaginas = 1; // se calcula en CargarEspacios()
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -30,14 +38,65 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         {
             if (!IsPostBack)
             {
+                PaginaActual = 1;
                 CargarEventos();
+            }
+        }
+        protected void Paginar_Click(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Anterior") PaginaActual--;
+            if (e.CommandName == "Siguiente") PaginaActual++;
+
+            CargarEventos();
+        }
+
+        public void realizarPaginado(evento[] response)
+        {
+            if (response == null)
+            {
+                mostrarModalErrorEvento("RESULTADO DE BUSQUEDA", "No se encontraron eventos con los parámetros actuales; se listarán todos los eventos...");
+                CargarEventos();
+                return;
+            }
+            var todos = response.ToList(); // lo convertimos a lista
+
+            int totalEspacios = todos.Count;
+            TotalPaginas = (int)Math.Ceiling((double)totalEspacios / TAM_PAGINA);
+
+            if (PaginaActual < 1) PaginaActual = 1;
+            if (PaginaActual > TotalPaginas) PaginaActual = TotalPaginas;
+
+            // Datos solo para esta página
+            var paginaActual = todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
+
+            // Cargar al repeater
+            rptEventos.DataSource = paginaActual;
+            rptEventos.DataBind();
+
+            // Footer: actualizar label y botones
+            if (rptEventos.Controls.Count > 0)
+            {
+                var footer = rptEventos.Controls[rptEventos.Controls.Count - 1];
+
+                var lblPagina = footer.FindControl("lblPaginaFootEvento") as Label;
+                if (lblPagina != null)
+                    lblPagina.Text = $"Página {PaginaActual} / {TotalPaginas}";
+
+                var btnAnterior = footer.FindControl("btnAnteriorFootEvento") as Button;
+                var btnSiguiente = footer.FindControl("btnSiguienteFootEvento") as Button;
+
+                if (btnAnterior != null)
+                    btnAnterior.Enabled = PaginaActual > 1;
+
+                if (btnSiguiente != null)
+                    btnSiguiente.Enabled = PaginaActual < TotalPaginas;
             }
         }
 
         protected void CargarEventos()
         {
-            rptEventos.DataSource = eventoWS.listarEvento(new listarEventoRequest()).@return;
-            rptEventos.DataBind();
+            evento[] eventos= eventoWS.listarEvento(new listarEventoRequest()).@return; ;
+            realizarPaginado(eventos);
         }
 
         protected void ddlFiltroFechas_SelectedIndexChanged(object sender, EventArgs e)
@@ -66,14 +125,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             buscarEventoPorTextoResponse response = eventoWS.buscarEventoPorTexto(new buscarEventoPorTextoRequest(txtBusqueda.Text));
-            if (response.@return == null)
-            {
-                lblError.Text = "No se encontraron eventos siguiendo el cirterio de los filtros seleccionados.";
-                return;
-            }
-            lblError.Text = "";
-            rptEventos.DataSource = response.@return;
-            rptEventos.DataBind();
+            evento[] eventos = response.@return;
+            realizarPaginado(eventos);
         }
 
         public void LimpiarDatosAgregados()
@@ -464,6 +517,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             "var modalEvento = new bootstrap.Modal(document.getElementById('modalAgregarEvento')); modalEvento.show();", true);
         }
 
+        public bool validaFormatoHora(TimeSpan tsInicio, TimeSpan tsFin)
+        {
+            bool propCero = tsInicio.ToString().Substring(2) == ":00:00" || tsFin.ToString().Substring(2) == ":00:00";
+            bool propQuince = tsInicio.ToString().Substring(2) == ":15:00" || tsFin.ToString().Substring(2) == ":15:00";
+            bool propTreinta = tsInicio.ToString().Substring(2) == ":30:00" || tsFin.ToString().Substring(2) == ":30:00";
+            bool propCuarentaCinco = tsInicio.ToString().Substring(2) == ":45:00" || tsFin.ToString().Substring(2) == ":45:00";
+            bool cumpleFormato = propCero || propQuince || propTreinta || propCuarentaCinco;
+            return cumpleFormato;
+        }
         private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor)
         {
             // Validación: campos vacíos
@@ -506,9 +568,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return false;
             }
 
-            if (tsInicio.ToString().Substring(2) != ":00:00" || tsFin.ToString().Substring(2) != ":00:00")
+            if (!validaFormatoHora(tsInicio, tsFin))
             {
-                MostrarError("La horas deben terminar en :00.");
+                MostrarError("La horas deben terminar en algún múltiplo de 15 (00,15,30,45).");
                 return false;
             }
 
@@ -551,24 +613,51 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 Session["fechaMaxima"] = fecha;
         }
 
+        public bool validarFechas(string fechaIniFiltro, string fechaFinFiltro)
+        {
+            if ((fechaIniFiltro!="" && string.IsNullOrEmpty(fechaFinFiltro)) || (fechaFinFiltro!="" && string.IsNullOrEmpty(fechaIniFiltro)))
+            {
+                mostrarModalErrorEvento("VALIDACION", "Por favor, complete la fecha faltante.");
+                return false;
+            }
+
+            if (DateTime.TryParse(fechaIniFiltro, out DateTime fechaInicio) && DateTime.TryParse(fechaFinFiltro, out DateTime fechaFin))
+            {
+                if(fechaInicio > fechaFin)
+                {
+                    mostrarModalErrorEvento("VALIDACION","La fecha de inicio no puede ser mayor a la fecha fin");
+                    return false;
+                }
+            }
+            return true;
+        }
+
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             string fechaIniFiltro = txtFechaInicioFiltro.Text;
             string fechaFinFiltro = txtFechaFinFiltro.Text;
-            buscarEventosPorFechasResponse rsp =  eventoWS.buscarEventosPorFechas( new buscarEventosPorFechasRequest(fechaIniFiltro,fechaFinFiltro) );
-            if(rsp.@return != null)
+
+            if(!validarFechas(fechaIniFiltro,fechaFinFiltro)) return;
+            buscarEventosPorFechasResponse rsp = null;
+            if (!string.IsNullOrEmpty(fechaFinFiltro) && !string.IsNullOrEmpty(fechaIniFiltro))
             {
-                rptEventos.DataSource = rsp.@return;
-                rptEventos.DataBind();
+                rsp = eventoWS.buscarEventosPorFechas(new buscarEventosPorFechasRequest(fechaIniFiltro, fechaFinFiltro));
+                if (rsp.@return != null)
+                {
+                    realizarPaginado(rsp.@return);
+                }
+                else
+                {
+                    mostrarModalErrorEvento("RESULTADO DE BUSQUEDA", "No se encontraron eventos siguiendo el cirterio de los filtros seleccionados. Se listarán todos los eventos.");
+                    CargarEventos();
+                }
             }
             else
             {
-                lblError.Text = "No se encontraron eventos siguiendo el cirterio de los filtros seleccionados.";
-                rptEventos.DataSource = null;
-                return;
-                MostrarError("Hubo un error al listar los eventos mediante el filtro de fechas");
-                //CargarEventos();
+                mostrarModalErrorEvento("RESULTADO DE BUSQUEDA", "No se detectó ninguna fecha. Se listarán todos los eventos.");
+                CargarEventos();
             }
+            
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
@@ -886,10 +975,16 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         {
             string script = $@"
                 Sys.Application.add_load(function () {{
-                    mostrarModalExito('{titulo}', '{mensaje}');
+                    mostrarModalError('{titulo}', '{mensaje}');
                 }});
             ";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);
+        }
+
+        protected void btnEditUbigeo_Click(object sender, EventArgs e)
+        {
+            ddlDepasEditar.Enabled = true;
+            abrirModalEdicion();
         }
     }
 }

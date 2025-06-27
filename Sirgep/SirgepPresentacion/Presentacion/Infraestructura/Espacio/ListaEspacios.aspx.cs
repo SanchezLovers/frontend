@@ -21,6 +21,14 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         private DepartamentoWS departamentoWS;
         private ProvinciaWS provinciaWS;
         private EspacioDiaSemWS diaSemWS;
+        private int PaginaActual
+        {
+            get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
+            set => ViewState["PaginaActual"] = value;
+        }
+
+        private const int TAM_PAGINA = 10;
+        private int TotalPaginas = 1; // se calcula en CargarEspacios()
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -35,11 +43,32 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         {
             if (!IsPostBack)
             {
+                incializarHoras();               
+                PaginaActual = 1;
                 CargarEspacios();
                 CargarDistritos();
                 CargarDepas();
             }
+        }
 
+        public void incializarHoras()
+        {
+            ddlHoraInicioInsert.Items.Clear();
+            ddlHoraInicioInsert.Items.Add(new ListItem("Hora:minutos", ""));
+            ddlHoraFinInsert.Items.Clear();
+            ddlHoraFinInsert.Items.Add(new ListItem("Hora:minutos", ""));
+            ddlHoraInicioEdit.Items.Clear();
+            ddlHoraInicioEdit.Items.Add(new ListItem("Hora:minutos", ""));
+            ddlHoraFinEdit.Items.Clear();
+            ddlHoraFinEdit.Items.Add(new ListItem("Hora:minutos", ""));
+            for (int i = 0; i < 24; i++)
+            {
+                string hora = i.ToString("D2") + ":00";
+                ddlHoraInicioInsert.Items.Add(new ListItem(hora, hora));
+                ddlHoraFinInsert.Items.Add(new ListItem(hora, hora));
+                ddlHoraInicioEdit.Items.Add(new ListItem(hora, hora));
+                ddlHoraFinEdit.Items.Add(new ListItem(hora, hora));
+            }
         }
         public void CargarDepas()
         {
@@ -66,6 +95,29 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             if (ddlDistritoAgregar.Items.Count == 0)
                 ddlDistritoAgregar.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
         }
+        protected void Paginar_Click(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "Anterior")
+            {
+                PaginaActual--;
+                if (!string.IsNullOrEmpty(txtBusqueda.Text))
+                {
+                    txtBusqueda_TextChanged(sender, e);
+                    return;
+                }
+            }
+            if (e.CommandName == "Siguiente")
+            {
+                PaginaActual++;
+                if (!string.IsNullOrEmpty(txtBusqueda.Text))
+                {
+                    txtBusqueda_TextChanged(sender, e);
+                    return;
+                }
+            }
+
+            CargarEspacios();
+        }
         private void CargarDistritos()
         {
             ddlDistrito.DataSource = distritoWS.listarTodosDistritos(new listarTodosDistritosRequest()).@return;
@@ -75,11 +127,54 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             if (ddlDistrito.Items[0].Text != "Seleccione un distrito")
                 ddlDistrito.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
         }
+
+        public void realizarPaginado(espacio[] response)
+        {
+            if (response == null)
+            {
+                mostrarModalErrorEsp("RESULTADO DE BUSQUEDA", "No se encontraron espacios con los parámetros actuales; se listarán todos los espacios...");
+                CargarEspacios();
+                return;
+            }
+            var todos = response.ToList(); // lo convertimos a lista
+
+            int totalEspacios = todos.Count;
+            TotalPaginas = (int)Math.Ceiling((double)totalEspacios / TAM_PAGINA);
+
+            if (PaginaActual < 1) PaginaActual = 1;
+            if (PaginaActual > TotalPaginas) PaginaActual = TotalPaginas;
+
+            // Datos solo para esta página
+            var paginaActual = todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
+
+            // Cargar al repeater
+            rptEspacios.DataSource = paginaActual;
+            rptEspacios.DataBind();
+
+            // Footer: actualizar label y botones
+            if (rptEspacios.Controls.Count > 0)
+            {
+                var footer = rptEspacios.Controls[rptEspacios.Controls.Count - 1];
+
+                var lblPagina = footer.FindControl("lblPaginaFoot") as Label;
+                if (lblPagina != null)
+                    lblPagina.Text = $"Página {PaginaActual} / {TotalPaginas}";
+
+                var btnAnterior = footer.FindControl("btnAnteriorFoot") as Button;
+                var btnSiguiente = footer.FindControl("btnSiguienteFoot") as Button;
+
+                if (btnAnterior != null)
+                    btnAnterior.Enabled = PaginaActual > 1;
+
+                if (btnSiguiente != null)
+                    btnSiguiente.Enabled = PaginaActual < TotalPaginas;
+            }
+        }
         private void CargarEspacios()
         {
             listarEspacioResponse response = espacioWS.listarEspacio(new listarEspacioRequest());
-            rptEspacios.DataSource = response.@return;
-            rptEspacios.DataBind();
+            espacio[] espacios = response.@return;
+            realizarPaginado(espacios);
         }
         protected void btnAgregarEspacio_Click(object sender, EventArgs e)
         {
@@ -88,8 +183,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             txtUbicacionAgregar.Text = "";
             txtSuperficieAgregar.Text = "";
             txtPrecioReservaAgregar.Text = "";
-            txtHoraFinInsert.Text = "";
-            txtHoraInicioInsert.Text = "";
+            ddlHoraFinInsert.Text = "";
+            ddlHoraInicioInsert.Text = "";
 
             string test = ddlDepartamentoAgregar.Items[0].ToString();
             if (ddlDepartamentoAgregar.Items[0].ToString() != "Escoja un departamento")
@@ -161,8 +256,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlDistritoEdit.SelectedValue = espDTO.idDistrito.ToString();
             ddlDistritoEdit.Enabled = false;
 
-            txtHoraInicioEdit.Text = espDTO.horaInicio.ToString();
-            txtHoraFinEdit.Text = espDTO.horaFin.ToString();
+            ddlHoraInicioEdit.Text = espDTO.horaInicio.ToString().Substring(0,5);
+            ddlHoraFinEdit.Text = espDTO.horaFin.ToString().Substring(0, 5);
 
             // Cargar los días que el Espacio atiende
             espacioDiaSem[] diasSem = espDTO.dias;
@@ -182,21 +277,24 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 // llamamos a la filtración doble implementada en backend
                 listarEspacioDistyCatResponse response = null;
                 response = espacioWS.listarEspacioDistyCat(new listarEspacioDistyCatRequest(int.Parse(filtroDist), filtroCat));
-                rptEspacios.DataSource = response.@return;
+                realizarPaginado(response.@return);
             }
             else if (filtroCat != "")
             {
                 listarEspacioPorCategoriaResponse responseFiltroCat = espacioWS.listarEspacioPorCategoria(new listarEspacioPorCategoriaRequest(filtroCat));
-                rptEspacios.DataSource = responseFiltroCat.@return;
+                realizarPaginado(responseFiltroCat.@return);
             }
             else if (filtroDist != "")
             {
                 int idDistrito = int.Parse(filtroDist);
                 listarEspacioPorDistritoResponse responseFiltroDist = espacioWS.listarEspacioPorDistrito(new listarEspacioPorDistritoRequest(idDistrito));
-                rptEspacios.DataSource = responseFiltroDist.@return;
+                realizarPaginado(responseFiltroDist.@return);
             }
-            else CargarEspacios();
-            rptEspacios.DataBind();
+            else
+            {
+                CargarEspacios();
+            }
+            
             // el último caso, es por si no se quieren filtros
         }
 
@@ -231,10 +329,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         }
 
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
-        {
+        {   
             buscarEspacioPorTextoResponse response = espacioWS.buscarEspacioPorTexto(new buscarEspacioPorTextoRequest(txtBusqueda.Text));
-            rptEspacios.DataSource = response.@return;
-            rptEspacios.DataBind();
+            espacio[] espacios = response.@return;
+            realizarPaginado(espacios);
         }
 
         protected void ddlDepartamentoAgregar_SelectedIndexChanged(object sender, EventArgs e)
@@ -305,8 +403,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             double superficie = double.Parse(txtSuperficieEdit.Text);
             double precioReserva = double.Parse(txtPrecioEdit.Text);
             string tipoEspacioInsumo = ddlTipoEspacioEdit.SelectedValue;
-            string horaIni = txtHoraInicioEdit.Text;
-            string horaFin = txtHoraFinEdit.Text;
+            string horaIni = ddlHoraInicioEdit.Text;
+            string horaFin = ddlHoraFinEdit.Text;
 
             if (horaIni.Length==5) horaIni += ":00";
             if (horaFin.Length==5) horaFin += ":00";
@@ -354,8 +452,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string superficieTexto = txtSuperficieAgregar.Text.Trim();
             string precioTexto = txtPrecioReservaAgregar.Text.Trim();
             string tipoEspacioInsumoInsert = ddlTipoEspacioAgregar.SelectedValue;
-            string horaIniInsert = txtHoraInicioInsert.Text.Trim();
-            string horaFinInsert = txtHoraFinInsert.Text.Trim();
+            string horaIniInsert = ddlHoraInicioInsert.Text.Trim();
+            string horaFinInsert = ddlHoraFinInsert.Text.Trim();
             string depa = ddlDepartamentoAgregar.Text.Trim();
             string prov = ddlProvinciaAgregar.Text.Trim();
             string dist = ddlDistritoAgregar.Text.Trim();
@@ -370,10 +468,26 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 else abrirModalEditarEspacio();
                 return false;
             }
+            
+            if(nombreInsert.Length > 45)
+            {
+                MostrarError("El nombre superó el máximo de 45 caracteres.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
 
             if (string.IsNullOrWhiteSpace(ubicacionInsert))
             {
                 MostrarError("Debe ingresar la ubicación del espacio.");
+                if (current == 1) abrirModalAgregarEspacio();
+                else abrirModalEditarEspacio();
+                return false;
+            }
+
+            if (ubicacionInsert.Length > 100)
+            {
+                MostrarError("La ubicación superó el máximo de 100 caracteres.");
                 if (current == 1) abrirModalAgregarEspacio();
                 else abrirModalEditarEspacio();
                 return false;
@@ -466,8 +580,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             double superficieInsert = double.Parse(txtSuperficieAgregar.Text);
             double precioReservaInsert = double.Parse(txtPrecioReservaAgregar.Text);
             string tipoEspacioInsumoInsert = ddlTipoEspacioAgregar.SelectedValue;
-            string horaIniInsert = txtHoraInicioInsert.Text;
-            string horaFinInsert = txtHoraFinInsert.Text;
+            string horaIniInsert = ddlHoraInicioInsert.Text;
+            string horaFinInsert = ddlHoraFinInsert.Text;
 
             eTipoEspacio eTipo;
             eTipoEspacio.TryParse(tipoEspacioInsumoInsert, false, out eTipo);
@@ -659,8 +773,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
         protected void txtHoraFinInsert_TextChanged(object sender, EventArgs e)
         {
-            string horaInicioStr = txtHoraInicioInsert.Text.Trim();
-            string horaFinStr = txtHoraFinInsert.Text.Trim();
+            string horaInicioStr = ddlHoraInicioInsert.Text.Trim();
+            string horaFinStr = ddlHoraFinInsert.Text.Trim();
 
             // Verificar que ambas no estén vacías
             if (string.IsNullOrEmpty(horaInicioStr) || string.IsNullOrEmpty(horaFinStr))
@@ -671,8 +785,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 return;
             }
 
-            TimeSpan horaInicio = TimeSpan.Parse(txtHoraInicioInsert.Text);
-            TimeSpan horaFin = TimeSpan.Parse(txtHoraFinInsert.Text);
+            TimeSpan horaInicio = TimeSpan.Parse(ddlHoraInicioInsert.Text);
+            TimeSpan horaFin = TimeSpan.Parse(ddlHoraFinInsert.Text);
 
             if (horaInicio.Minutes != 0 || horaFin.Minutes != 0)
             {
@@ -735,7 +849,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         {
             string script = $@"
                 Sys.Application.add_load(function () {{
-                    mostrarModalExito('{titulo}', '{mensaje}');
+                    mostrarModalError('{titulo}', '{mensaje}');
                 }});
             ";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalError", script, true);

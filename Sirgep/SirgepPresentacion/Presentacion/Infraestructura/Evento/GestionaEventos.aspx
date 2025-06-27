@@ -7,61 +7,61 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <!-- Título principal -->
-    <h2 class="fw-bold mb-4" style="font-size: 2.8rem;">Municipalidad &gt; Eventos</h2>
+    <h2 class="fw-bold mb-4" >Municipalidad &gt; Eventos</h2>
 
     <!-- Búsqueda -->
     <div class="row mb-3">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-12">
             <div class="input-group">
-                <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="form-control" Placeholder="🔍 Buscar" AutoPostBack="true"/>
+                <asp:TextBox OnTextChanged="txtBusqueda_TextChanged" ID="txtBusqueda" runat="server" CssClass="input-busqueda" Placeholder="🔍 Buscar" AutoPostBack="true"/>
             </div>
         </div>
     </div>
 
     <!-- Filtros -->
     <div class="mb-4">
-        <label class="fw-bold d-block mb-3" style="font-size: 1.2rem;">Filtros:</label>
+        <label class="fw-bold d-block" style="font-size: 1.2rem;">Filtro por fecha:</label>
 
         <div class="row g-3 align-items-end">
-            <!-- 2. Checkbox de filtro por fecha -->
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="input-group">
-                    <input type="text" class="form-control bg-white" value="Filtro por Fechas" readonly />
+            <!-- Mensaje de error -->
+            <div class="col-12">
+                <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
+            </div>
+
+            <!-- Fechas y botón en la misma fila -->
+            <div class="col-12 d-flex align-items-center justify-content-between flex-wrap gap-3">
+
+                <!-- Fechas -->
+                <div class="d-flex align-items-center flex-wrap gap-3" id="filtrosFechas">
+                    <label for="txtFechaInicioFiltro" class="mb-0">Inicio:</label>
+                    <asp:TextBox ID="txtFechaInicioFiltro" runat="server"
+                        CssClass="form-control form-control-sm mb-0 filtro-fecha"
+                        TextMode="Date" Style="width: 150px;" />
+
+                    <label for="txtFechaFinFiltro" class="mb-0">Fin:</label>
+                    <asp:TextBox ID="txtFechaFinFiltro" runat="server"
+                        CssClass="form-control form-control-sm mb-0 filtro-fecha"
+                        TextMode="Date" Style="width: 150px;" />
                 </div>
-            </div>
 
-            <div>
-               <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
-            </div>
-
-            <!-- 3. Fechas inicio / fin en una fila -->
-            <div class="col-12 col-md-6 col-lg-3" id="filtrosFechas">
-                <div class="row gx-2">
-                    <div class="col-6">
-                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Inicio</label>
-                        <asp:TextBox ID="txtFechaInicioFiltro" runat="server" CssClass="form-control form-control-sm" TextMode="Date" />
-                    </div>
-                    <div class="col-6">
-                        <label class="mb-1 w-100" style="font-size: 0.85rem;">Fin</label>
-                        <asp:TextBox ID="txtFechaFinFiltro" runat="server" CssClass="form-control form-control-sm" TextMode="Date" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Botón consultar alineado a la derecha -->
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="d-flex justify-content-lg-end">
+                <!-- Botones: Consultar + Añadir -->
+                <div class="d-flex gap-2 flex-wrap">
                     <asp:Button ID="btnConsultar" runat="server" Text="Consultar"
-                        CssClass="btn btn-dark px-4 fw-semibold fst-italic" OnClick="btnConsultar_Click"
-                        OnClientClick="return validarFechasFiltro();"/>
+                        CssClass="btn btn-dark px-4 fw-semibold fst-italic"
+                        OnClick="btnConsultar_Click" />
+
+                    <asp:Button ID="btnMostrarModalAgregarEvento" runat="server"
+                        CssClass="btn btn-success fw-bold fst-italic px-4"
+                        Text="Añadir Evento" OnClick="btnMostrarModalAgregarEvento_Click" />
                 </div>
             </div>
         </div>
     </div>
 
+
     <!-- Tabla -->
     <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle" style="background: #f7f7f7;">
+        <table class="table table-bordered text-center align-middle tabla-reservas" style="background: #f7f7f7;">
             <thead class="table-light fw-bold">
                 <tr>
                     <th>Abrir</th>
@@ -97,19 +97,26 @@
                                 <asp:Button ID="btnEditar" runat="server" CssClass="btn btn-warning btn-sm fw-bold me-2" Text="Editar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEditar_Click" />
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
                                     Text="Eliminar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEliminar_Click" />
-
                             </td>
                         </tr>
                     </ItemTemplate>
+                    <FooterTemplate>
+                        <tr>
+                            <td colspan="10" class="text-center pt-3">
+
+                                <asp:Button ID="btnAnteriorFootEvento" runat="server" CssClass="btn btn-outline-secondary btn-sm me-4"
+                                    Text="←" CommandName="Anterior" OnCommand="Paginar_Click" />
+
+                                <asp:Label ID="lblPaginaFootEvento" runat="server" CssClass="fw-bold"></asp:Label>
+
+                                <asp:Button ID="btnSiguienteFootEvento" runat="server" CssClass="btn btn-outline-secondary btn-sm ms-4"
+                                    Text="→" CommandName="Siguiente" OnCommand="Paginar_Click" />
+                            </td>
+                        </tr>
+                    </FooterTemplate>
                 </asp:Repeater>
             </tbody>
         </table>
-    </div>
-
-    <!-- Botón de añadir -->
-    <div class="text-end mt-3">
-        <asp:Button ID="btnMostrarModalAgregarEvento" runat="server" CssClass="btn btn-dark fw-bold fst-italic px-4"
-    Text="Añadir Evento" OnClick="btnMostrarModalAgregarEvento_Click" />
     </div>
 
     <!-- ------------------------------MODAL AGREGAR EVENTO------------------------------ -->
@@ -199,17 +206,17 @@
                             <!-- Precio Entrada -->
                             <div class="col-4">
                                 <label class="form-label fw-semibold">Precio Entrada</label>
-                                <asp:TextBox ID="txtPrecioEntrada" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox TextMode="Number" ID="txtPrecioEntrada" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
                             </div>
                             <!-- Disponibles -->
                             <div class="col-4">
                                 <label class="form-label fw-semibold">Entradas Disponibles</label>
-                                <asp:TextBox ID="txtDisponibles" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox TextMode="Number" ID="txtDisponibles" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
                             </div>
                             <!-- Vendidas -->
                             <div class="col-4">
                                 <label class="form-label fw-semibold">Entradas Vendidas</label>
-                                <asp:TextBox ID="txtVendidas" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox TextMode="Number" ID="txtVendidas" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
                             </div>
 
                         </div>
@@ -229,7 +236,6 @@
                         </div>
 
                         <img id="previewImg" src="#" alt="Vista previa" style="display: none; max-width: 100%; margin-top: 10px;" />
-
 
                     </div>
 
@@ -252,7 +258,7 @@
                             <asp:TextBox ID="txtHoraFinFuncion" runat="server" CssClass="form-control" TextMode="Time"/>
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncion_Click" />
+                            <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn btn-success" OnClick="btnAgregarFuncion_Click" />
                         </div>
                         <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
@@ -349,6 +355,11 @@
                                 <asp:ListItem Text="Seleccione un departamento" Value="" Disabled="true" Selected="True" />
                             </asp:DropDownList>
                         </div>
+
+                        <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success"
+                            ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
+                            <i class="bi bi-pencil-fill"></i>
+                        </asp:LinkButton>
 
                     </div>
 
@@ -551,26 +562,6 @@
             document.getElementById('fechaFuncion').value = '';
             document.getElementById('horaInicioFuncion').value = '';
             document.getElementById('horaFinFuncion').value = '';
-        }
-
-        function validarFechasFiltro() {
-            const inicio = document.getElementById('<%= txtFechaInicioFiltro.ClientID %>').value;
-            const fin = document.getElementById('<%= txtFechaFinFiltro.ClientID %>').value;
-
-            if (!inicio || !fin) {
-                alert("Por favor, selecciona ambas fechas.");
-                return false;
-            }
-
-            const fechaInicio = new Date(inicio);
-            const fechaFin = new Date(fin);
-
-            if (fechaInicio >= fechaFin) {
-                alert("La fecha de inicio debe ser menor que la fecha de fin y no pueden ser iguales.");
-                return false;
-            }
-
-            return true;
         }
         function modalConfirmacionEliminado(id) {
             // Mostrar el modal (Bootstrap 5)
