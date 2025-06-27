@@ -43,7 +43,6 @@
             <!-- Botón alineado a la derecha -->
             <asp:Button ID="btnDescargarMostrarModal" runat="server"
                 Text="Descargar Lista de Entradas"
-                OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de entradas fue descargada correctamente.'); }, 1000);"
                 OnClick="btnDescargar_Click"
                 CssClass="btn btn-dark"/>
         </div>
