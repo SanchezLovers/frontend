@@ -44,7 +44,7 @@
             <asp:Button ID="btnDescargarMostrarModal" runat="server"
                 Text="Descargar Lista de Entradas"
                 OnClick="btnDescargar_Click"
-                CssClass="btn btn-dark"/>
+                CssClass="btn btn-dark" />
         </div>
     </div>
     <!-- GridView -->
@@ -85,22 +85,18 @@
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" CssClass="text-center" />
             </asp:BoundField>
-
             <asp:BoundField DataField="FechaFuncion" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" CssClass="text-center" />
             </asp:BoundField>
-
             <asp:BoundField DataField="HoraInicio" HeaderText="Hora Inicio" DataFormatString="{0:HH:mm}" HtmlEncode="false">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" CssClass="text-center" />
             </asp:BoundField>
-
             <asp:BoundField DataField="HoraFin" HeaderText="Hora Fin" DataFormatString="{0:HH:mm}" HtmlEncode="false">
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Center" CssClass="text-center" />
             </asp:BoundField>
         </Columns>
     </asp:GridView>
-
 </asp:Content>
