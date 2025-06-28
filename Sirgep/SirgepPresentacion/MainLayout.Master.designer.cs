@@ -69,15 +69,6 @@ namespace SirgepPresentacion
         protected global::System.Web.UI.HtmlControls.HtmlAnchor adminMenu;
 
         /// <summary>
-        /// Control lnkPerfilAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPerfilAdmin;
-
-        /// <summary>
         /// Control lnkEspaciosAdmin.
         /// </summary>
         /// <remarks>
