@@ -5,11 +5,20 @@
     <div class="container-reservas">
         <h1 class="titulo-principal">Municipalidad &gt; Reservas</h1>
         <div class="busqueda-filtros">
-            <div class="busqueda">
-                <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
-                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display:none" />
-                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />            
+            <div class="busqueda" style="display: flex; align-items: center; gap: 10px;">
+                <input type="text" id="input_busqueda" runat="server" class="input-busqueda"
+                    placeholder="🔍 Buscar"
+                    oninput="validarLongitudBusqueda(this)"
+                    onkeypress="return buscarOnEnter(event)" />
+                <span id="mensajeAdvertencia" class="mensaje-advertencia"
+                    style="color: red; visibility: hidden; margin-left: 10px;">La búsqueda no puede superar los 100 caracteres.
+                </span>
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar"
+                    OnClick="btnBuscar_Click" Style="visibility: hidden;" CssClass="btn btn-dark mx-2" />
+                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas"
+                    OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />
             </div>
+
             <div class="filtros">
                 <label class="filtros-label">Filtros:</label>
                 <asp:DropDownList ID="ddlFiltros" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFiltros_SelectedIndexChanged" CssClass="filtro-select">
@@ -23,8 +32,10 @@
                     <asp:CheckBox ID="chkActivos" runat="server" CssClass="checkbox-filtro" />
                 </div>
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark mx-2" OnClick="btnFiltrar_Click" />
+                <asp:ImageButton ID="btnLimpiarFiltro" runat="server" ImageUrl="/Images/img/trash-solid.svg" CssClass="image-button" OnClick="btnLimpiarFiltro_Click" Visible="false" ToolTip="Limpiar filtros y mostrar todas las reservas" />
             </div>
         </div>
+
         <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None" OnRowDataBound="gvReservas_RowDataBound">
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
@@ -40,10 +51,12 @@
                         <%# "#" + Convert.ToInt32(Eval("numReserva")).ToString("D3") %>
                     </ItemTemplate>
                 </asp:TemplateField>
+
                 <asp:BoundField DataField="FechaConstancia" HeaderText="Fecha de Constancia" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="Distrito" HeaderText="Distrito" />
                 <asp:BoundField DataField="Espacio" HeaderText="Espacio" />
                 <asp:BoundField DataField="Correo" HeaderText="Correo del usuario" />
+
                 <asp:TemplateField HeaderText="Acciones">
                     <ItemTemplate>
                         <asp:Button ID="btnEliminarReserva" runat="server" Text="Eliminar" CssClass="btn btn-danger btn-sm"
@@ -51,13 +64,12 @@
                             CommandArgument='<%# Eval("numReserva") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
+
                 <asp:TemplateField HeaderText="¿Activo?">
                     <ItemTemplate>
                         <%# Eval("Activo").ToString() == "65" ? "Sí" : "No" %>
                     </ItemTemplate>
                 </asp:TemplateField>
-
-
             </Columns>
         </asp:GridView>
 
@@ -68,16 +80,41 @@
             <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark mx-1" OnClick="btnSiguiente_Click" />
         </asp:Panel>
     </div>
-     <!-- Java Script -->
+
+    <!-- JavaScript -->
     <script type="text/javascript">
+        function validarLongitudBusqueda(input) {
+            var mensaje = document.getElementById('mensajeAdvertencia');
+            if (input.value.length > 100) {
+                mensaje.style.visibility = 'visible';
+            } else {
+                mensaje.style.visibility = 'hidden';
+            }
+        }
+
+        function validarBusqueda() {
+            var input = document.getElementById('<%= input_busqueda.ClientID %>');
+            if (input.value.length > 100) {
+                alert("La búsqueda no puede superar los 100 caracteres.");
+                return false;
+            }
+            return true;
+        }
+
         function buscarOnEnter(e) {
+            var input = document.getElementById('<%= input_busqueda.ClientID %>');
             if (e.key === 'Enter' || e.keyCode === 13) {
-                e.preventDefault(); // evitar submit automático
-                __doPostBack('<%= btnBuscar.UniqueID %>', ''); // simula click en botón
+                e.preventDefault();
+
+                if (input.value.length > 100) {
+                    alert("La búsqueda no puede superar los 100 caracteres.");
+                    return false;
+                }
+
+                __doPostBack('<%= btnBuscar.UniqueID %>', '');
                 return false;
             }
             return true;
         }
     </script>
-
 </asp:Content>
