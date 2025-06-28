@@ -7,8 +7,8 @@
         <div class="busqueda-filtros">
             <div class="busqueda">
                 <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
-                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display: none" />
-                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display:none" />
+                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />            
             </div>
             <div class="filtros">
                 <label class="filtros-label">Filtros:</label>
@@ -30,7 +30,7 @@
             <Columns>
                 <asp:TemplateField HeaderText="Abrir">
                     <ItemTemplate>
-                        <a href='<%# "ConstanciaReserva.aspx?numReserva=" + Eval("numReserva") %>'>
+                        <a href='<%# "ConstanciaReserva.aspx?idConstancia=" + Eval("idConstancia") %>'>
                             <img src="/Images/icons/open-link.png" alt="Abrir" class="icono-abrir" />
                         </a>
                     </ItemTemplate>
@@ -69,7 +69,7 @@
             <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark mx-1" OnClick="btnSiguiente_Click" />
         </asp:Panel>
     </div>
-    <!-- Java Script -->
+     <!-- Java Script -->
     <script type="text/javascript">
         function buscarOnEnter(e) {
             if (e.key === 'Enter' || e.keyCode === 13) {

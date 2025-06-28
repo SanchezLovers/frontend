@@ -42,20 +42,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         {
             int idComprador = 40;
             //int idComprador = int.Parse(Session["idUsuario"].ToString());
-            detalleEntradaDTO[] listaDetalleEntradas = null;
-            try
+            detalleEntradaDTO[] listaDetalleEntradas = entradaWS.listarPorComprador(idComprador, fechaInicio, fechaFin, estado);
+            if (listaDetalleEntradas==null)
             {
-                listaDetalleEntradas = entradaWS.listarPorComprador(idComprador, fechaInicio, fechaFin, estado);
+                listaDetalleEntradas = new detalleEntradaDTO[0];
             }
-            catch (FaultException ex)
-            {
-                listaDetalleEntradas = new detalleEntradaDTO[0]; // Para evitar que el GridView falle
-            }
-            finally
-            {
-                GvListaEntradasComprador.DataSource = listaDetalleEntradas;
-                GvListaEntradasComprador.DataBind();
-            }
+            GvListaEntradasComprador.DataSource = listaDetalleEntradas;
+            GvListaEntradasComprador.DataBind();
         }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {

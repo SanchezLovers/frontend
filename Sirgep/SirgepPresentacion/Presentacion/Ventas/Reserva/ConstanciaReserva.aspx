@@ -13,7 +13,7 @@
                 <div class="col-12 col-md-4">
                     <strong>Nombre:</strong> <asp:Label ID="lblEspacio" runat="server" CssClass="ms-2" />
                 </div>
-                <div class="col-12 co l-md-4">
+                <div class="col-12 col-md-4">
                     <strong>Tipo Espacio:</strong> <asp:Label ID="lblTipoEspacio" runat="server" CssClass="ms-2" />
                 </div>
                 <div class="col-12 col-md-4">
