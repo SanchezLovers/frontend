@@ -7,8 +7,8 @@
         <div class="busqueda-filtros">
             <div class="busqueda">
                 <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
-                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display:none" />
-                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />            
+                <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display: none" />
+                <asp:Button ID="btnVerCalendario" runat="server" Text="Ver Calendario Mensual de Reservas" OnClick="btnVerCalendario_Click" CssClass="btn btn-dark mx-2" />
             </div>
             <div class="filtros">
                 <label class="filtros-label">Filtros:</label>
@@ -23,6 +23,7 @@
                     <asp:CheckBox ID="chkActivos" runat="server" CssClass="checkbox-filtro" />
                 </div>
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark mx-2" OnClick="btnFiltrar_Click" />
+                <asp:ImageButton ID="btnLimpiarFiltro" runat="server" ImageUrl="/Images/img/trash-solid.svg" CssClass="image-button" OnClick="btnLimpiarFiltro_Click" Visible="false" ToolTip="Limpiar filtros y mostrar todas las reservas" />
             </div>
         </div>
         <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None" OnRowDataBound="gvReservas_RowDataBound">
@@ -68,7 +69,7 @@
             <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark mx-1" OnClick="btnSiguiente_Click" />
         </asp:Panel>
     </div>
-     <!-- Java Script -->
+    <!-- Java Script -->
     <script type="text/javascript">
         function buscarOnEnter(e) {
             if (e.key === 'Enter' || e.keyCode === 13) {

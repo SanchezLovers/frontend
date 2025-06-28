@@ -22,6 +22,8 @@
   <xs:element name="eliminarLogicoReservaResponse" type="tns:eliminarLogicoReservaResponse" />
   <xs:element name="insertarReserva" type="tns:insertarReserva" />
   <xs:element name="insertarReservaResponse" type="tns:insertarReservaResponse" />
+  <xs:element name="listarDetalleReservasFiltradaPorComprador" type="tns:listarDetalleReservasFiltradaPorComprador" />
+  <xs:element name="listarDetalleReservasFiltradaPorCompradorResponse" type="tns:listarDetalleReservasFiltradaPorCompradorResponse" />
   <xs:element name="listarDetalleReservasPorComprador" type="tns:listarDetalleReservasPorComprador" />
   <xs:element name="listarDetalleReservasPorCompradorResponse" type="tns:listarDetalleReservasPorCompradorResponse" />
   <xs:element name="listarPorMesYAnio" type="tns:listarPorMesYAnio" />
@@ -42,37 +44,17 @@
   <xs:complexType name="crearLibroExcelReservasResponse">
     <xs:sequence />
   </xs:complexType>
-  <xs:complexType name="buscarConstanciaReserva">
+  <xs:complexType name="listarDetalleReservasFiltradaPorComprador">
     <xs:sequence>
-      <xs:element name="idConstancia" type="xs:int" />
+      <xs:element name="idComprador" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="estados" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="buscarConstanciaReservaResponse">
+  <xs:complexType name="listarDetalleReservasFiltradaPorCompradorResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:constanciaReservaDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="constanciaReservaDTO">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:detalleConstanciaDTO">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="detalleReserva" type="tns:detalleReservaDTO" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="detalleConstanciaDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="apellidosComprador" type="xs:string" />
-      <xs:element minOccurs="0" name="correo" type="xs:string" />
-      <xs:element minOccurs="0" name="detallePago" type="xs:string" />
-      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
-      <xs:element name="idConstancia" type="xs:int" />
-      <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
-      <xs:element name="monto" type="xs:double" />
-      <xs:element minOccurs="0" name="nombresComprador" type="xs:string" />
-      <xs:element minOccurs="0" name="numDocumento" type="xs:string" />
-      <xs:element minOccurs="0" name="tipoDocumento" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleReservaDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="detalleReservaDTO">
@@ -111,6 +93,39 @@
       <xs:element minOccurs="0" name="fechaReserva" type="xs:dateTime" />
       <xs:element name="idConstancia" type="xs:int" />
       <xs:element name="numReserva" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarConstanciaReserva">
+    <xs:sequence>
+      <xs:element name="idConstancia" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarConstanciaReservaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:constanciaReservaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="constanciaReservaDTO">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:detalleConstanciaDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="detalleReserva" type="tns:detalleReservaDTO" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="detalleConstanciaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="apellidosComprador" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="detallePago" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha" type="xs:dateTime" />
+      <xs:element name="idConstancia" type="xs:int" />
+      <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
+      <xs:element name="monto" type="xs:double" />
+      <xs:element minOccurs="0" name="nombresComprador" type="xs:string" />
+      <xs:element minOccurs="0" name="numDocumento" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoDocumento" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarPorMesYAnio">
@@ -324,14 +339,6 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarTodasReservas">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarTodasReservasResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reservaDTO" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarReservaPorFecha">
     <xs:sequence>
       <xs:element minOccurs="0" name="fecha" type="xs:string" />
@@ -339,6 +346,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarReservaPorFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reservaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodasReservas">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodasReservasResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:reservaDTO" />
     </xs:sequence>

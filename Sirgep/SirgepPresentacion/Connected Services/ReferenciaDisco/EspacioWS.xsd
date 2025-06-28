@@ -164,14 +164,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarEspacio">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="listarEspacioResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="asunto" type="xs:string" />
@@ -182,6 +174,14 @@
   <xs:complexType name="enviarCorreosCompradoresPorDistritoDeEspacioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarEspacio">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarEspacioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="obtenerEspacioDTO">
@@ -220,16 +220,6 @@
       <xs:element name="idEspacio" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="buscarEspacio">
-    <xs:sequence>
-      <xs:element name="id" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="buscarEspacioResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:espacio" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="actualizarEspacio">
     <xs:sequence>
       <xs:element minOccurs="0" name="espacio" type="tns:espacio" />
@@ -238,6 +228,16 @@
   <xs:complexType name="actualizarEspacioResponse">
     <xs:sequence>
       <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEspacio">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="buscarEspacioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:espacio" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarLogico">

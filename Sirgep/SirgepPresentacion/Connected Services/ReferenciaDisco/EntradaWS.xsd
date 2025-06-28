@@ -25,11 +25,11 @@
   <xs:element name="insertarEntrada" type="tns:insertarEntrada" />
   <xs:element name="insertarEntradaResponse" type="tns:insertarEntradaResponse" />
   <xs:element name="listarDetalleEntradas" type="tns:listarDetalleEntradas" />
-  <xs:element name="listarDetalleEntradasPorComprador" type="tns:listarDetalleEntradasPorComprador" />
-  <xs:element name="listarDetalleEntradasPorCompradorResponse" type="tns:listarDetalleEntradasPorCompradorResponse" />
   <xs:element name="listarDetalleEntradasResponse" type="tns:listarDetalleEntradasResponse" />
   <xs:element name="listarEntradasActivas" type="tns:listarEntradasActivas" />
   <xs:element name="listarEntradasActivasResponse" type="tns:listarEntradasActivasResponse" />
+  <xs:element name="listarPorComprador" type="tns:listarPorComprador" />
+  <xs:element name="listarPorCompradorResponse" type="tns:listarPorCompradorResponse" />
   <xs:complexType name="buscarEntrada">
     <xs:sequence>
       <xs:element name="idEntrada" type="xs:int" />
@@ -203,10 +203,15 @@
   <xs:complexType name="crearLibroExcelEntradas">
     <xs:sequence>
       <xs:element name="idComprador" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="crearLibroExcelEntradasResponse">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
   </xs:complexType>
   <xs:complexType name="actualizarEntrada">
     <xs:sequence>
@@ -248,30 +253,6 @@
       <xs:element name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarDetalleEntradasPorComprador">
-    <xs:sequence>
-      <xs:element name="idComprador" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDetalleEntradasPorCompradorResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleEntradaDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="detalleEntradaDTO">
-    <xs:sequence>
-      <xs:element name="estado" type="xs:unsignedShort" />
-      <xs:element minOccurs="0" name="fechaConstancia" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fechaFuncion" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
-      <xs:element name="idConstancia" type="xs:int" />
-      <xs:element minOccurs="0" name="nombreDistrito" type="xs:string" />
-      <xs:element minOccurs="0" name="nombreEvento" type="xs:string" />
-      <xs:element name="numEntrada" type="xs:int" />
-      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="buscarConstanciaEntrada">
     <xs:sequence>
       <xs:element name="idConstancia" type="xs:int" />
@@ -305,6 +286,20 @@
       <xs:element minOccurs="0" name="tipoDocumento" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="detalleEntradaDTO">
+    <xs:sequence>
+      <xs:element name="estado" type="xs:unsignedShort" />
+      <xs:element minOccurs="0" name="fechaConstancia" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaFuncion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaFin" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="horaInicio" type="xs:dateTime" />
+      <xs:element name="idConstancia" type="xs:int" />
+      <xs:element minOccurs="0" name="nombreDistrito" type="xs:string" />
+      <xs:element minOccurs="0" name="nombreEvento" type="xs:string" />
+      <xs:element name="numEntrada" type="xs:int" />
+      <xs:element minOccurs="0" name="ubicacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="buscarEntradasPorTexto">
     <xs:sequence>
       <xs:element minOccurs="0" name="texto" type="xs:string" />
@@ -329,6 +324,19 @@
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="listarDetalleEntradasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleEntradaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorComprador">
+    <xs:sequence>
+      <xs:element name="idComprador" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarPorCompradorResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleEntradaDTO" />
     </xs:sequence>

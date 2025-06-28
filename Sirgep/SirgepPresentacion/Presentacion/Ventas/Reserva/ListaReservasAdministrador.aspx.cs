@@ -40,14 +40,20 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 ddlDistritos.DataBind();
                 ddlDistritos.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
                 ddlDistritos.Visible = false;
+                btnLimpiarFiltro.Visible = false;
 
-                Reservas = client.listarTodasReservas().ToList();
                 CargarPagina();
             }
         }
 
         protected void CargarPagina()
         {
+            // Solo cargar todas las reservas si no hay datos en ViewState para evitar que se sobreescriban la lista filtrada
+            if (Reservas == null || !Reservas.Any())
+            {
+                Reservas = client.listarTodasReservas().ToList();
+            }
+
             int paginaActual = (int)(ViewState["PaginaActual"] ?? 1);
             var reservas = Reservas;
 
@@ -65,6 +71,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             btnAnterior.Enabled = paginaActual > 1;
             btnSiguiente.Enabled = paginaActual < totalPaginas;
         }
+
 
         protected void ddlFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -131,11 +138,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 Reservas = filtradas;
                 ViewState["PaginaActual"] = 1;
+                btnLimpiarFiltro.Visible = true;
                 CargarPagina();
             }
             catch
             {
                 Reservas = new List<reservaDTO>();
+                mostrarModalErrorReserva("Sin resultados", "No se encontró alguna coincidencia");
                 CargarPagina();
             }
         }
@@ -145,10 +154,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             try
             {
-                // Usar el listado actual ya filtrado (almacenado en ViewState)
+                // Siempre buscar dentro de la lista actual
                 var listadoActual = Reservas;
 
-                // Aplicar filtro de búsqueda solo si hay texto
                 if (!string.IsNullOrEmpty(textoBusqueda))
                 {
                     listadoActual = listadoActual.Where(r =>
@@ -158,19 +166,24 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                         (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||
                         (r.correo?.ToLower().Contains(textoBusqueda) ?? false)
                     ).ToList();
-                }
-                else
-                {
-                    listadoActual = client.listarTodasReservas().ToList();
+                    btnLimpiarFiltro.Visible = true;
                 }
 
+                // Guardar resultado y mostrar modal si está vacío
                 Reservas = listadoActual;
                 ViewState["PaginaActual"] = 1;
                 CargarPagina();
+
+                if (!listadoActual.Any())
+                {
+                    mostrarModalErrorReserva("Sin resultados", "No se encontró alguna coincidencia.");
+                    btnLimpiarFiltro.Visible = false;
+                }
             }
             catch
             {
                 Reservas = new List<reservaDTO>();
+                mostrarModalErrorReserva("ERROR", "Ocurrió un error durante la búsqueda.");
                 CargarPagina();
             }
         }
@@ -183,15 +196,44 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnEliminarReserva_Click(object sender, EventArgs e)
         {
             int idReserva = int.Parse(((Button)sender).CommandArgument);
-            Boolean reservaEliminada = client.eliminarLogicoReserva(idReserva);
+
+            // Buscar la reserva en la lista cargada
+            var reserva = Reservas.FirstOrDefault(r => r.numReserva == idReserva);
+
+            if (reserva == null)
+            {
+                mostrarModalErrorReserva("ERROR", "No se encontró la reserva.");
+                return;
+            }
+
+            // Validar si han pasado al menos 5 años desde la fecha de constancia
+            if (reserva.fechaConstancia.AddYears(5).Date > DateTime.Today)
+            {
+                mostrarModalErrorReserva("No permitido", "Solo se pueden eliminar reservas con más de 5 años de antigüedad.");
+                return;
+            }
+
+            // Validar si está activo (asumo que 'A' == activo)
+            /*if ((char)reserva.activo != 'A')
+            {
+                mostrarModalErrorReserva("No permitido", "La reserva no está activa.");
+                return;
+            }*/
+
+            bool reservaEliminada = client.eliminarLogicoReserva(idReserva);
 
             if (reservaEliminada)
             {
-                mostrarModalExitoReserva("VENTANA DE CONFIRMACION", "La reserva ha sido eliminada correctamente.");
-                CargarPagina();
-                return;
+                //Elimina la reserva del listado actual
+                Reservas = Reservas.Where(r => r.numReserva != idReserva).ToList();
+
+                mostrarModalExitoReserva("Éxito", "La reserva ha sido eliminada correctamente.");
             }
-            mostrarModalErrorReserva("VENTANA DE ERROR", "Ocurrió un problema al eliminar la reserva.");
+            else
+            {
+                mostrarModalErrorReserva("Error", "Ocurrió un problema al eliminar la reserva.");
+            }
+
             CargarPagina();
         }
 
@@ -221,26 +263,44 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             {
                 var reserva = (reservaDTO)e.Row.DataItem;
 
-                // Asegúrate de que fechaConstancia sea una propiedad DateTime válida
                 DateTime fechaConstancia = reserva.fechaConstancia;
+                char estado = (char)reserva.activo;
 
                 Button btnEliminar = (Button)e.Row.FindControl("btnEliminarReserva");
 
-                ushort a = reserva.activo;
-
-                char aChar = ((char)a);
-
                 if (btnEliminar != null)
                 {
-                    bool habilitado = fechaConstancia.AddYears(5) <= DateTime.Now && reserva.activo=='A';
+                    bool habilitado = fechaConstancia.AddYears(5).Date <= DateTime.Today;
                     btnEliminar.Enabled = habilitado;
 
-                    // Opcional: agrega un tooltip explicativo
                     btnEliminar.ToolTip = habilitado
                         ? "Puedes eliminar esta entrada, ya que han pasado 5 años desde la constancia"
                         : "No puedes eliminar esta entrada. Aún no han pasado 5 años desde la constancia";
                 }
             }
+        }
+
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            // Limpiar controles de filtro
+            ddlFiltros.SelectedIndex = 0;
+            txtFecha.Text = "";
+            ddlDistritos.SelectedIndex = 0;
+            chkActivos.Checked = false;
+            input_busqueda.Value = "";
+
+            // Ocultar controles no necesarios según filtro inicial
+            txtFecha.Visible = true;
+            ddlDistritos.Visible = false;
+
+            // Recargar todas las reservas
+            Reservas = client.listarTodasReservas().ToList();
+            ViewState["PaginaActual"] = 1;
+
+            // Ocultar el botón de limpiar filtro
+            btnLimpiarFiltro.Visible = false;
+
+            CargarPagina();
         }
     }
 }

@@ -5,11 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/SirgepWS/EntradaWS?xsd=1" namespace="pe.edu.pucp.sirgep" />
     </xsd:schema>
   </types>
-  <message name="listarDetalleEntradasPorComprador">
-    <part name="parameters" element="tns:listarDetalleEntradasPorComprador" />
+  <message name="listarPorComprador">
+    <part name="parameters" element="tns:listarPorComprador" />
   </message>
-  <message name="listarDetalleEntradasPorCompradorResponse">
-    <part name="parameters" element="tns:listarDetalleEntradasPorCompradorResponse" />
+  <message name="listarPorCompradorResponse">
+    <part name="parameters" element="tns:listarPorCompradorResponse" />
+  </message>
+  <message name="actualizarEntrada">
+    <part name="parameters" element="tns:actualizarEntrada" />
+  </message>
+  <message name="actualizarEntradaResponse">
+    <part name="parameters" element="tns:actualizarEntradaResponse" />
   </message>
   <message name="insertarEntrada">
     <part name="parameters" element="tns:insertarEntrada" />
@@ -23,59 +29,11 @@
   <message name="buscarEntradaResponse">
     <part name="parameters" element="tns:buscarEntradaResponse" />
   </message>
-  <message name="actualizarEntrada">
-    <part name="parameters" element="tns:actualizarEntrada" />
-  </message>
-  <message name="actualizarEntradaResponse">
-    <part name="parameters" element="tns:actualizarEntradaResponse" />
-  </message>
-  <message name="buscarEventoDeEntrada">
-    <part name="parameters" element="tns:buscarEventoDeEntrada" />
-  </message>
-  <message name="buscarEventoDeEntradaResponse">
-    <part name="parameters" element="tns:buscarEventoDeEntradaResponse" />
-  </message>
   <message name="eliminarFisicoEntrada">
     <part name="parameters" element="tns:eliminarFisicoEntrada" />
   </message>
   <message name="eliminarFisicoEntradaResponse">
     <part name="parameters" element="tns:eliminarFisicoEntradaResponse" />
-  </message>
-  <message name="listarEntradasActivas">
-    <part name="parameters" element="tns:listarEntradasActivas" />
-  </message>
-  <message name="listarEntradasActivasResponse">
-    <part name="parameters" element="tns:listarEntradasActivasResponse" />
-  </message>
-  <message name="buscarCompradorDeEntrada">
-    <part name="parameters" element="tns:buscarCompradorDeEntrada" />
-  </message>
-  <message name="buscarCompradorDeEntradaResponse">
-    <part name="parameters" element="tns:buscarCompradorDeEntradaResponse" />
-  </message>
-  <message name="crearLibroExcelEntradas">
-    <part name="parameters" element="tns:crearLibroExcelEntradas" />
-  </message>
-  <message name="crearLibroExcelEntradasResponse">
-    <part name="parameters" element="tns:crearLibroExcelEntradasResponse" />
-  </message>
-  <message name="buscarFuncionDeEntrada">
-    <part name="parameters" element="tns:buscarFuncionDeEntrada" />
-  </message>
-  <message name="buscarFuncionDeEntradaResponse">
-    <part name="parameters" element="tns:buscarFuncionDeEntradaResponse" />
-  </message>
-  <message name="listarDetalleEntradas">
-    <part name="parameters" element="tns:listarDetalleEntradas" />
-  </message>
-  <message name="listarDetalleEntradasResponse">
-    <part name="parameters" element="tns:listarDetalleEntradasResponse" />
-  </message>
-  <message name="buscarDistritoDeEntrada">
-    <part name="parameters" element="tns:buscarDistritoDeEntrada" />
-  </message>
-  <message name="buscarDistritoDeEntradaResponse">
-    <part name="parameters" element="tns:buscarDistritoDeEntradaResponse" />
   </message>
   <message name="buscarConstanciaEntrada">
     <part name="parameters" element="tns:buscarConstanciaEntrada" />
@@ -83,22 +41,68 @@
   <message name="buscarConstanciaEntradaResponse">
     <part name="parameters" element="tns:buscarConstanciaEntradaResponse" />
   </message>
-  <message name="eliminarLogicoEntrada">
-    <part name="parameters" element="tns:eliminarLogicoEntrada" />
-  </message>
-  <message name="eliminarLogicoEntradaResponse">
-    <part name="parameters" element="tns:eliminarLogicoEntradaResponse" />
-  </message>
   <message name="buscarEntradasPorTexto">
     <part name="parameters" element="tns:buscarEntradasPorTexto" />
   </message>
   <message name="buscarEntradasPorTextoResponse">
     <part name="parameters" element="tns:buscarEntradasPorTextoResponse" />
   </message>
+  <message name="listarEntradasActivas">
+    <part name="parameters" element="tns:listarEntradasActivas" />
+  </message>
+  <message name="listarEntradasActivasResponse">
+    <part name="parameters" element="tns:listarEntradasActivasResponse" />
+  </message>
+  <message name="buscarDistritoDeEntrada">
+    <part name="parameters" element="tns:buscarDistritoDeEntrada" />
+  </message>
+  <message name="buscarDistritoDeEntradaResponse">
+    <part name="parameters" element="tns:buscarDistritoDeEntradaResponse" />
+  </message>
+  <message name="listarDetalleEntradas">
+    <part name="parameters" element="tns:listarDetalleEntradas" />
+  </message>
+  <message name="listarDetalleEntradasResponse">
+    <part name="parameters" element="tns:listarDetalleEntradasResponse" />
+  </message>
+  <message name="eliminarLogicoEntrada">
+    <part name="parameters" element="tns:eliminarLogicoEntrada" />
+  </message>
+  <message name="eliminarLogicoEntradaResponse">
+    <part name="parameters" element="tns:eliminarLogicoEntradaResponse" />
+  </message>
+  <message name="buscarFuncionDeEntrada">
+    <part name="parameters" element="tns:buscarFuncionDeEntrada" />
+  </message>
+  <message name="buscarFuncionDeEntradaResponse">
+    <part name="parameters" element="tns:buscarFuncionDeEntradaResponse" />
+  </message>
+  <message name="buscarEventoDeEntrada">
+    <part name="parameters" element="tns:buscarEventoDeEntrada" />
+  </message>
+  <message name="buscarEventoDeEntradaResponse">
+    <part name="parameters" element="tns:buscarEventoDeEntradaResponse" />
+  </message>
+  <message name="crearLibroExcelEntradas">
+    <part name="parameters" element="tns:crearLibroExcelEntradas" />
+  </message>
+  <message name="crearLibroExcelEntradasResponse">
+    <part name="parameters" element="tns:crearLibroExcelEntradasResponse" />
+  </message>
+  <message name="buscarCompradorDeEntrada">
+    <part name="parameters" element="tns:buscarCompradorDeEntrada" />
+  </message>
+  <message name="buscarCompradorDeEntradaResponse">
+    <part name="parameters" element="tns:buscarCompradorDeEntradaResponse" />
+  </message>
   <portType name="EntradaWS">
-    <operation name="listarDetalleEntradasPorComprador">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorRequest" message="tns:listarDetalleEntradasPorComprador" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasPorCompradorResponse" message="tns:listarDetalleEntradasPorCompradorResponse" />
+    <operation name="listarPorComprador">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarPorCompradorRequest" message="tns:listarPorComprador" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarPorCompradorResponse" message="tns:listarPorCompradorResponse" />
+    </operation>
+    <operation name="actualizarEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest" message="tns:actualizarEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse" message="tns:actualizarEntradaResponse" />
     </operation>
     <operation name="insertarEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/insertarEntradaRequest" message="tns:insertarEntrada" />
@@ -108,58 +112,63 @@
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaRequest" message="tns:buscarEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradaResponse" message="tns:buscarEntradaResponse" />
     </operation>
-    <operation name="actualizarEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaRequest" message="tns:actualizarEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/actualizarEntradaResponse" message="tns:actualizarEntradaResponse" />
-    </operation>
-    <operation name="buscarEventoDeEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest" message="tns:buscarEventoDeEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse" message="tns:buscarEventoDeEntradaResponse" />
-    </operation>
     <operation name="eliminarFisicoEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaRequest" message="tns:eliminarFisicoEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarFisicoEntradaResponse" message="tns:eliminarFisicoEntradaResponse" />
-    </operation>
-    <operation name="listarEntradasActivas">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasRequest" message="tns:listarEntradasActivas" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasResponse" message="tns:listarEntradasActivasResponse" />
-    </operation>
-    <operation name="buscarCompradorDeEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest" message="tns:buscarCompradorDeEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse" message="tns:buscarCompradorDeEntradaResponse" />
-    </operation>
-    <operation name="crearLibroExcelEntradas">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest" message="tns:crearLibroExcelEntradas" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse" message="tns:crearLibroExcelEntradasResponse" />
-    </operation>
-    <operation name="buscarFuncionDeEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest" message="tns:buscarFuncionDeEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse" message="tns:buscarFuncionDeEntradaResponse" />
-    </operation>
-    <operation name="listarDetalleEntradas">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasRequest" message="tns:listarDetalleEntradas" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasResponse" message="tns:listarDetalleEntradasResponse" />
-    </operation>
-    <operation name="buscarDistritoDeEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaRequest" message="tns:buscarDistritoDeEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaResponse" message="tns:buscarDistritoDeEntradaResponse" />
     </operation>
     <operation name="buscarConstanciaEntrada">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarConstanciaEntradaRequest" message="tns:buscarConstanciaEntrada" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarConstanciaEntradaResponse" message="tns:buscarConstanciaEntradaResponse" />
     </operation>
-    <operation name="eliminarLogicoEntrada">
-      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest" message="tns:eliminarLogicoEntrada" />
-      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse" message="tns:eliminarLogicoEntradaResponse" />
-    </operation>
     <operation name="buscarEntradasPorTexto">
       <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoRequest" message="tns:buscarEntradasPorTexto" />
       <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEntradasPorTextoResponse" message="tns:buscarEntradasPorTextoResponse" />
     </operation>
+    <operation name="listarEntradasActivas">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasRequest" message="tns:listarEntradasActivas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarEntradasActivasResponse" message="tns:listarEntradasActivasResponse" />
+    </operation>
+    <operation name="buscarDistritoDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaRequest" message="tns:buscarDistritoDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarDistritoDeEntradaResponse" message="tns:buscarDistritoDeEntradaResponse" />
+    </operation>
+    <operation name="listarDetalleEntradas">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasRequest" message="tns:listarDetalleEntradas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/listarDetalleEntradasResponse" message="tns:listarDetalleEntradasResponse" />
+    </operation>
+    <operation name="eliminarLogicoEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaRequest" message="tns:eliminarLogicoEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/eliminarLogicoEntradaResponse" message="tns:eliminarLogicoEntradaResponse" />
+    </operation>
+    <operation name="buscarFuncionDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaRequest" message="tns:buscarFuncionDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarFuncionDeEntradaResponse" message="tns:buscarFuncionDeEntradaResponse" />
+    </operation>
+    <operation name="buscarEventoDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaRequest" message="tns:buscarEventoDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarEventoDeEntradaResponse" message="tns:buscarEventoDeEntradaResponse" />
+    </operation>
+    <operation name="crearLibroExcelEntradas">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasRequest" message="tns:crearLibroExcelEntradas" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/crearLibroExcelEntradasResponse" message="tns:crearLibroExcelEntradasResponse" />
+    </operation>
+    <operation name="buscarCompradorDeEntrada">
+      <input wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaRequest" message="tns:buscarCompradorDeEntrada" />
+      <output wsam:Action="pe.edu.pucp.sirgep/EntradaWS/buscarCompradorDeEntradaResponse" message="tns:buscarCompradorDeEntradaResponse" />
+    </operation>
   </portType>
   <binding name="EntradaWSPortBinding" type="tns:EntradaWS">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarDetalleEntradasPorComprador">
+    <operation name="listarPorComprador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="actualizarEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -186,79 +195,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="actualizarEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarEventoDeEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="eliminarFisicoEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarEntradasActivas">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarCompradorDeEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="crearLibroExcelEntradas">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarFuncionDeEntrada">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarDetalleEntradas">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="buscarDistritoDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -276,6 +213,42 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="buscarEntradasPorTexto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarEntradasActivas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarDistritoDeEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDetalleEntradas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="eliminarLogicoEntrada">
       <soap:operation soapAction="" />
       <input>
@@ -285,7 +258,34 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="buscarEntradasPorTexto">
+    <operation name="buscarFuncionDeEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarEventoDeEntrada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="crearLibroExcelEntradas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="buscarCompradorDeEntrada">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
