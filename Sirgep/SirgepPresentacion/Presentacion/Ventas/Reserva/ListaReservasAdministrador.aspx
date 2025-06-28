@@ -23,6 +23,7 @@
                     <asp:CheckBox ID="chkActivos" runat="server" CssClass="checkbox-filtro" />
                 </div>
                 <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark mx-2" OnClick="btnFiltrar_Click" />
+                <asp:ImageButton ID="btnLimpiarFiltro" runat="server" ImageUrl="/Images/img/trash-solid.svg" CssClass="image-button" OnClick="btnLimpiarFiltro_Click" Visible="false" ToolTip="Limpiar filtros y mostrar todas las reservas" />
             </div>
         </div>
         <asp:GridView ID="gvReservas" runat="server" AutoGenerateColumns="False" CssClass="tabla-reservas" GridLines="None" OnRowDataBound="gvReservas_RowDataBound">

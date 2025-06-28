@@ -116,14 +116,44 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\CompradorWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CompradorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\DistritoWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EntradaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EntradaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\EspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EspacioWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\FuncionWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\FuncionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
@@ -2472,50 +2502,20 @@
     <Content Include="Content\bootstrap-icons\bootstrap-icons.scss" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff2" />
-    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\CompradorWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\DistritoWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\DistritoWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\EntradaWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EntradaWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\EspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EventoWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\FuncionWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse.datasource">

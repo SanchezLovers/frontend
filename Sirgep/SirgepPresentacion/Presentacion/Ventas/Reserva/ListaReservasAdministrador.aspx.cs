@@ -40,15 +40,20 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 ddlDistritos.DataBind();
                 ddlDistritos.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
                 ddlDistritos.Visible = false;
+                btnLimpiarFiltro.Visible = false;
 
-                
                 CargarPagina();
             }
         }
 
         protected void CargarPagina()
         {
-            Reservas = client.listarTodasReservas().ToList();
+            // Solo cargar todas las reservas si no hay datos en ViewState para evitar que se sobreescriban la lista filtrada
+            if (Reservas == null || !Reservas.Any())
+            {
+                Reservas = client.listarTodasReservas().ToList();
+            }
+
             int paginaActual = (int)(ViewState["PaginaActual"] ?? 1);
             var reservas = Reservas;
 
@@ -66,6 +71,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             btnAnterior.Enabled = paginaActual > 1;
             btnSiguiente.Enabled = paginaActual < totalPaginas;
         }
+
 
         protected void ddlFiltros_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -132,11 +138,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 Reservas = filtradas;
                 ViewState["PaginaActual"] = 1;
+                btnLimpiarFiltro.Visible = true;
                 CargarPagina();
             }
             catch
             {
                 Reservas = new List<reservaDTO>();
+                mostrarModalErrorReserva("Sin resultados", "No se encontró alguna coincidencia");
                 CargarPagina();
             }
         }
@@ -146,10 +154,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             try
             {
-                // Usar el listado actual ya filtrado (almacenado en ViewState)
+                // Siempre buscar dentro de la lista actual
                 var listadoActual = Reservas;
 
-                // Aplicar filtro de búsqueda solo si hay texto
                 if (!string.IsNullOrEmpty(textoBusqueda))
                 {
                     listadoActual = listadoActual.Where(r =>
@@ -159,19 +166,24 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                         (r.espacio?.ToLower().Contains(textoBusqueda) ?? false) ||
                         (r.correo?.ToLower().Contains(textoBusqueda) ?? false)
                     ).ToList();
-                }
-                else
-                {
-                    listadoActual = client.listarTodasReservas().ToList();
+                    btnLimpiarFiltro.Visible = true;
                 }
 
+                // Guardar resultado y mostrar modal si está vacío
                 Reservas = listadoActual;
                 ViewState["PaginaActual"] = 1;
                 CargarPagina();
+
+                if (!listadoActual.Any())
+                {
+                    mostrarModalErrorReserva("Sin resultados", "No se encontró alguna coincidencia.");
+                    btnLimpiarFiltro.Visible = false;
+                }
             }
             catch
             {
                 Reservas = new List<reservaDTO>();
+                mostrarModalErrorReserva("ERROR", "Ocurrió un error durante la búsqueda.");
                 CargarPagina();
             }
         }
@@ -212,6 +224,9 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             if (reservaEliminada)
             {
+                //Elimina la reserva del listado actual
+                Reservas = Reservas.Where(r => r.numReserva != idReserva).ToList();
+
                 mostrarModalExitoReserva("Éxito", "La reserva ha sido eliminada correctamente.");
             }
             else
@@ -263,6 +278,29 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                         : "No puedes eliminar esta entrada. Aún no han pasado 5 años desde la constancia";
                 }
             }
+        }
+
+        protected void btnLimpiarFiltro_Click(object sender, EventArgs e)
+        {
+            // Limpiar controles de filtro
+            ddlFiltros.SelectedIndex = 0;
+            txtFecha.Text = "";
+            ddlDistritos.SelectedIndex = 0;
+            chkActivos.Checked = false;
+            input_busqueda.Value = "";
+
+            // Ocultar controles no necesarios según filtro inicial
+            txtFecha.Visible = true;
+            ddlDistritos.Visible = false;
+
+            // Recargar todas las reservas
+            Reservas = client.listarTodasReservas().ToList();
+            ViewState["PaginaActual"] = 1;
+
+            // Ocultar el botón de limpiar filtro
+            btnLimpiarFiltro.Visible = false;
+
+            CargarPagina();
         }
     }
 }

@@ -400,3 +400,16 @@ body {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
+.image-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 24px; /* o el tamaño que desees */
+    height: 24px;
+}
+
+    .image-button:hover {
+        filter: brightness(0.7);
+    }
