@@ -17,6 +17,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         private DepartamentoWS depaWS;
         private ProvinciaWS provWS;
         private DistritoWS distWS;
+
+        private const int MODAL_AGREGAR = 0;
+        private const int MODAL_EDITAR = 1;
         private int PaginaActual
         {
             get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
@@ -143,93 +146,106 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtReferencia.Text = "";
             lblError.Text = "";
         }
-        private bool ValidarDatosEvento()
+        private bool ValidarDatosEvento(string txtNombre, string txtDesc, string txtUbi, string txtPrecio,
+                string txtDispo, string txtVend, string txtRef, string ddlDepas, string ddlDist, string ddlProv, int pagina)
         {
             // Validación de existencia de fecha mínima
             if (Session["fechaMinima"] == null)
             {
-                MostrarError("Debe agregar al menos 1 función.");
-                abrirModalAgregar();
+                MostrarError("Debe agregar al menos 1 función.", pagina);
                 return false;
             }
 
             // Validar campos obligatorios de texto
-            if (string.IsNullOrWhiteSpace(txtNomEvent.Text))
+            if (string.IsNullOrWhiteSpace(txtNombre))
             {
-                MostrarError("Debe ingresar el nombre del evento.");
-                abrirModalAgregar();
+                MostrarError("Debe ingresar el nombre del evento.", pagina);
+                return false;
+            }
+            
+            if(txtNombre.Length > 45)
+            {
+                MostrarError("La longitud del nombre ha superado los 45 caracteres.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtDescAgregar.Text))
+            if (string.IsNullOrWhiteSpace(txtDesc))
             {
-                MostrarError("Debe ingresar la descripción del evento.");
-                abrirModalAgregar();
+                MostrarError("Debe ingresar la descripción del evento.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtUbicacionAgregar.Text))
+            if (txtDesc.Length > 350)
             {
-                MostrarError("Debe ingresar la ubicación del evento.");
-                abrirModalAgregar();
+                MostrarError("La longitud de la descripción ha superado los 350 caracteres.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ddlDepaAgregar.SelectedValue) || ddlDepaAgregar.SelectedValue == "0")
+            if (string.IsNullOrWhiteSpace(txtUbi))
             {
-                MostrarError("Debe seleccionar un departamento.");
-                abrirModalAgregar();
+                MostrarError("Debe ingresar la ubicación del evento.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ddlProvAgregar.SelectedValue) || ddlProvAgregar.SelectedValue == "0")
+            if (txtUbi.Length > 45)
             {
-                MostrarError("Debe seleccionar una provincia.");
-                abrirModalAgregar();
+                MostrarError("La longitud de la ubicación ha superado los 45 caracteres.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ddlDistAgregar.SelectedValue) || ddlDistAgregar.SelectedValue == "0")
+            if (string.IsNullOrWhiteSpace(ddlDepas) || ddlDepas == "0")
             {
-                MostrarError("Debe seleccionar un distrito.");
-                abrirModalAgregar();
+                MostrarError("Debe seleccionar un departamento.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtReferencia.Text))
+            if (string.IsNullOrWhiteSpace(ddlProv) || ddlProv == "0")
             {
-                MostrarError("Debe ingresar la referencia del evento.");
-                abrirModalAgregar();
+                MostrarError("Debe seleccionar una provincia.", pagina);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(ddlDist) || ddlDist == "0")
+            {
+                MostrarError("Debe seleccionar un distrito.", pagina);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtRef))
+            {
+                MostrarError("Debe ingresar la referencia del evento.", pagina);
+                return false;
+            }
+
+            if (txtRef.Length > 45)
+            {
+                MostrarError("La longitud de la referencia ha superado los 45 caracteres.", pagina);
                 return false;
             }
 
             // Validar números: Precio, Disponibles, Vendidas
-            if (!int.TryParse(txtPrecioEntrada.Text, out int precio) || precio < 0 || precio > 1000)
+            if (!int.TryParse(txtPrecio, out int precio) || precio < 0 || precio > 1000)
             {
-                MostrarError("El precio de la entrada debe ser un número entre 0 y 1000.");
-                abrirModalAgregar();
+                MostrarError("El precio de la entrada debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
-            if (!int.TryParse(txtDisponibles.Text, out int disponibles) || disponibles < 0 || disponibles > 1000)
+            if (!int.TryParse(txtDispo, out int disponibles) || disponibles < 0 || disponibles > 1000)
             {
-                MostrarError("La cantidad disponible debe ser un número entre 0 y 1000.");
-                abrirModalAgregar();
+                MostrarError("La cantidad disponible debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
-            int.TryParse(txtVendidas.Text, out int vendidas);
+            int.TryParse(txtVend, out int vendidas);
             if (vendidas < 0 || vendidas > 1000)
             {
-                MostrarError("La cantidad vendida debe ser un número entre 0 y 1000.");
-                abrirModalAgregar();
+                MostrarError("La cantidad vendida debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
             if(vendidas > disponibles)
             {
-                MostrarError("La cantidad vendida debe ser menor que la cantidad disponible.");
-                abrirModalAgregar();
+                MostrarError("La cantidad vendida debe ser menor que la cantidad disponible.", pagina);
                 return false;
             }
 
@@ -239,7 +255,11 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatosEvento()) return;
+            if (!ValidarDatosEvento(txtNomEvent.Text, txtDescAgregar.Text,
+                txtUbicacionAgregar.Text, txtPrecioEntrada.Text, txtDisponibles.Text,
+                txtVendidas.Text, txtReferencia.Text, ddlDepaAgregar.Text, ddlDistAgregar.Text,
+                ddlProvAgregar.Text, MODAL_AGREGAR)) return;
+
             string fechaInicioEvento = Session["fechaMinima"].ToString();
             string fechaFinEvento = Session["fechaMaxima"].ToString();
             string nombreEvento = txtNomEvent.Text;
@@ -506,7 +526,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string valor = $"{fecha}_{horaInicio}_{horaFin}";
             string texto = $"{fecha} - {horaInicio} a {horaFin}";
 
-            if (!ValidaFuncion(fecha,horaInicio,horaFin,valor)) return;
+            const int MODAL_AGREGAR = 0;
+            if (!ValidaFuncion(fecha,horaInicio,horaFin,valor, MODAL_AGREGAR)) return;
+            lblErrorEditar.Text = "";
             DateTime.TryParse(fecha, out DateTime fechaSeleccionada);
 
             ddlFuncionesAgregar.Items.Add(new ListItem(texto, valor));
@@ -526,58 +548,58 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             bool cumpleFormato = propCero || propQuince || propTreinta || propCuarentaCinco;
             return cumpleFormato;
         }
-        private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor)
+        private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor, int pagina)
         {
             // Validación: campos vacíos
             if (string.IsNullOrWhiteSpace(fecha) || string.IsNullOrWhiteSpace(horaInicio) || string.IsNullOrWhiteSpace(horaFin))
             {
-                MostrarError("Por favor complete todos los campos de la función.");
+                MostrarError("Por favor complete todos los campos de la función.", pagina);
                 return false;
             }
 
             // Validación: fecha en el mismo año y no pasada
             if (!DateTime.TryParse(fecha, out DateTime fechaSeleccionada))
             {
-                MostrarError("La fecha no tiene un formato válido.");
+                MostrarError("La fecha no tiene un formato válido.", pagina);
                 return false;
             }
 
             DateTime hoy = DateTime.Today;
             if (fechaSeleccionada.Year != hoy.Year)
             {
-                MostrarError("La fecha debe estar en el año actual.");
+                MostrarError("La fecha debe estar en el año actual.", pagina);
                 return false;
             }
 
             if (fechaSeleccionada < hoy)
             {
-                MostrarError("La fecha no puede ser anterior a hoy.");
+                MostrarError("La fecha no puede ser anterior a hoy.", pagina);
                 return false;
             }
 
             // Validación: hora inicio < hora fin
             if (!TimeSpan.TryParse(horaInicio, out TimeSpan tsInicio) || !TimeSpan.TryParse(horaFin, out TimeSpan tsFin))
             {
-                MostrarError("Las horas no tienen un formato válido.");
+                MostrarError("Las horas no tienen un formato válido.", pagina);
                 return false;
             }
 
             if (tsInicio >= tsFin)
             {
-                MostrarError("La hora de inicio debe ser menor a la hora de fin.");
+                MostrarError("La hora de inicio debe ser menor a la hora de fin.", pagina);
                 return false;
             }
 
             if (!validaFormatoHora(tsInicio, tsFin))
             {
-                MostrarError("La horas deben terminar en algún múltiplo de 15 (00,15,30,45).");
+                MostrarError("La horas deben terminar en algún múltiplo de 15 (00,15,30,45).", pagina);
                 return false;
             }
 
             // validación de duplicados
             if (ddlFuncionesAgregar.Items.Cast<ListItem>().Any(i => i.Value == valor))
             {
-                MostrarError("Esa función ya ha sido agregada.");
+                MostrarError("Esa función ya ha sido agregada.", pagina);
                 return false;
             }
 
@@ -595,10 +617,16 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtHoraFinEditar.Text = "";
         }
 
-        private void MostrarError(string mensaje)
+        private void MostrarError(string mensaje, int pagina)
         {
-            lblErrorAgregar.Text = mensaje;
-            abrirModalAgregar();
+            if(pagina == MODAL_AGREGAR)
+            {
+                lblErrorAgregar.Text = mensaje;
+                abrirModalAgregar();
+                return;
+            }
+            lblErrorEditar.Text = mensaje;
+            abrirModalEdicion();
         }
 
         private void ActualizarFechasMinMax(DateTime fecha)
@@ -683,13 +711,11 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             if (!eliminado)
             {
                 // error al eliminar
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError",
-                "mostrarModalPorId('modalError');", true);
+                mostrarModalErrorEvento("VENTANA DE ERROR", "El evento no fue eliminado correctamente.");
             }
             else
             {
-                string script = "setTimeout(function(){ mostrarModalExito('Eliminación exitosa','Evento eliminado exitosamente'); }, 300);";
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", script, true);
+                mostrarModalExitoEvento("VENTANA DE ÉXITO", "El evento fue eliminado correctamente.");
             }
             CargarEventos();
         }
@@ -709,6 +735,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 ddlDistEditar.DataValueField = "IdDistrito";
                 ddlDistEditar.DataBind();
                 ddlDistEditar.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
+                if (!ddlDistEditar.Enabled) ddlDistEditar.Enabled = true;
             }
             else
             {
@@ -737,6 +764,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 ddlProvEditar.DataValueField = "IdProvincia";
                 ddlProvEditar.DataBind();
                 ddlProvEditar.Items.Insert(0, new ListItem("Seleccione una provincia", ""));
+                if (!ddlProvEditar.Enabled) ddlProvEditar.Enabled=true;
             }
             else
             {
@@ -761,7 +789,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string id = btn.CommandArgument;
             int idEvento = int.Parse(id);
             hdnIdEvento.Value = idEvento.ToString();
-            evento eventoEditar = eventoWS.buscarEventoPorID(new buscarEventoPorIDRequest(idEvento)).@return;
+            eventoDTO eventoEditar = eventoWS.buscarEventoDTOporID(new buscarEventoDTOporIDRequest(idEvento)).@return;
 
             // llenar los campos con la información del evento traído
             txtNombreEditar.Text = eventoEditar.nombre;
@@ -772,31 +800,23 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtDispoEditar.Text = eventoEditar.cantEntradasDispo.ToString();
             txtVendEditar.Text = eventoEditar.cantEntradasVendidas.ToString();
 
-            // cargar objetos a mostrar
-            distrito dist = distWS.buscarDistPorId(new buscarDistPorIdRequest(eventoEditar.distrito.idDistrito)).@return;
-            provincia prov = provWS.buscarProvinciaPorId(new buscarProvinciaPorIdRequest(dist.provincia.idProvincia)).@return;
-            departamento depa = depaWS.buscarDepaPorId(new buscarDepaPorIdRequest(prov.departamento.idDepartamento)).@return;
-
-            // llenar distrito
-            ddlDistEditar.DataSource = distWS.listarDistritosFiltrados(new listarDistritosFiltradosRequest(depa.idDepartamento)).@return;
-            ddlDistEditar.DataTextField = "Nombre";
-            ddlDistEditar.DataValueField = "IdDistrito";
-            ddlDistEditar.DataBind();
-            ddlDistEditar.SelectedValue = dist.idDistrito.ToString();
-
-            // llenar la provincia
-            ddlProvEditar.DataSource = provWS.listarProvinciaPorDepa(new listarProvinciaPorDepaRequest(depa.idDepartamento)).@return;
-            ddlProvEditar.DataTextField = "Nombre";
-            ddlProvEditar.DataValueField = "IdProvincia";
-            ddlProvEditar.DataBind();
-            ddlProvEditar.SelectedValue = prov.idProvincia.ToString();
-
-            // llenar el departamento
-            ddlDepasEditar.DataSource = depaWS.listarDepas(new listarDepasRequest()).@return;
             ddlDepasEditar.DataTextField = "Nombre";
             ddlDepasEditar.DataValueField = "IdDepartamento";
-            ddlDepasEditar.DataBind();
-            ddlDepasEditar.SelectedValue = depa.idDepartamento.ToString();
+            ddlDepasEditar.Items.Insert(0, new ListItem(eventoEditar.nombreProv.ToString(), eventoEditar.idDepa.ToString()));
+            ddlDepasEditar.SelectedValue = eventoEditar.idDepa.ToString();
+            ddlDepasEditar.Enabled = false;
+
+            ddlProvEditar.DataTextField = "Nombre";
+            ddlProvEditar.DataValueField = "IdProvincia";
+            ddlProvEditar.Items.Insert(0, new ListItem(eventoEditar.nombreProv.ToString(), eventoEditar.idProv.ToString()));
+            ddlProvEditar.SelectedValue = eventoEditar.idProv.ToString();
+            ddlProvEditar.Enabled = false;
+
+            ddlDistEditar.DataTextField = "Nombre";
+            ddlDistEditar.DataValueField = "IdDistrito";
+            ddlDistEditar.Items.Insert(0, new ListItem(eventoEditar.nombreDist.ToString(), eventoEditar.idDist.ToString()));
+            ddlDistEditar.SelectedValue = eventoEditar.idDist.ToString();
+            ddlDistEditar.Enabled = false;
 
             // llenar las funciones
             ddlFuncEditar.DataSource = funcionWS.listarFuncionesPorIdEvento(new listarFuncionesPorIdEventoRequest(idEvento)).@return;
@@ -815,8 +835,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             ddlFuncEditar.DataBind();
             ddlFuncEditar.Items.Insert(0, new ListItem("Presione para ver las funciones del evento", ""));
             abrirModalEdicion();
-
-
         }
         public void abrirModalEdicion()
         {
@@ -833,52 +851,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string valor = $"{fecha}_{horaInicio}_{horaFin}";
             string texto = $"{fecha} - {horaInicio} a {horaFin}";
 
-            // Validación: campos vacíos
-            if (string.IsNullOrWhiteSpace(fecha) || string.IsNullOrWhiteSpace(horaInicio) || string.IsNullOrWhiteSpace(horaFin))
-            {
-                MostrarError("Por favor complete todos los campos de la función.");
-                return;
-            }
-
-            // Validación: fecha en el mismo año y no pasada
-            if (!DateTime.TryParse(fecha, out DateTime fechaSeleccionada))
-            {
-                MostrarError("La fecha no tiene un formato válido.");
-                return;
-            }
-
-            DateTime hoy = DateTime.Today;
-            if (fechaSeleccionada.Year != hoy.Year)
-            {
-                MostrarError("La fecha debe estar en el año actual.");
-                return;
-            }
-
-            if (fechaSeleccionada < hoy)
-            {
-                MostrarError("La fecha no puede ser anterior a hoy.");
-                return;
-            }
-
-            // Validación: hora inicio < hora fin
-            if (!TimeSpan.TryParse(horaInicio, out TimeSpan tsInicio) || !TimeSpan.TryParse(horaFin, out TimeSpan tsFin))
-            {
-                MostrarError("Las horas no tienen un formato válido.");
-                return;
-            }
-
-            if (tsInicio >= tsFin)
-            {
-                MostrarError("La hora de inicio debe ser menor a la hora de fin.");
-                return;
-            }
-
-            // validación de duplicados
-            if (ddlFuncionesAgregar.Items.Cast<ListItem>().Any(i => i.Value == valor))
-            {
-                MostrarError("Esa función ya ha sido agregada.");
-                return;
-            }
+            const int MODAL_EDITAR = 2;
+            // 2 hace referencia al Modal Editar
+            if (!ValidaFuncion(fecha, horaInicio, horaFin, valor, MODAL_EDITAR)) return;
+            DateTime.TryParse(fecha, out DateTime fechaSeleccionada);
 
             ddlFuncEditar.Items.Add(new ListItem(texto, valor));
             ActualizarFechasMinMax(fechaSeleccionada);
@@ -920,8 +896,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void btnAceptarEditar_Click(object sender, EventArgs e)
         {
             ActualizarFechasMinMaxEditar();
-            string fechaInicioEvento = Session["fechaMinima"].ToString();
-            string fechaFinEvento = Session["fechaMaxima"].ToString();
+
+            if (!ValidarDatosEvento(txtNombreEditar.Text, txtDescEditar.Text, txtUbiEditar.Text, txtPrecioEditar.Text,
+                txtDispoEditar.Text, txtVendEditar.Text, txtRefEditar.Text, ddlDepasEditar.Text, ddlDistEditar.Text, ddlProvEditar.Text, MODAL_EDITAR)) return;
+
             string nombreEvento = txtNombreEditar.Text;
             string descripcionEvento = txtDescEditar.Text;
             string ubicacionEvento = txtUbiEditar.Text;
@@ -930,6 +908,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string cantDisponibles = txtDispoEditar.Text;
             string cantVendidas = txtVendEditar.Text;
             string referenciaEvento = txtRefEditar.Text;
+            
+            string fechaInicioEvento = Session["fechaMinima"].ToString();
+            string fechaFinEvento = Session["fechaMaxima"].ToString();
 
             evento eventoActualizar = new evento
             {
@@ -984,6 +965,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected void btnEditUbigeo_Click(object sender, EventArgs e)
         {
             ddlDepasEditar.Enabled = true;
+            ddlDepasEditar.DataSource = depaWS.listarDepas(new listarDepasRequest()).@return;
+            ddlDepasEditar.DataBind();
+            ddlDepasEditar.Items.Insert(0, new ListItem("Seleccione un departamento", ""));
             abrirModalEdicion();
         }
     }

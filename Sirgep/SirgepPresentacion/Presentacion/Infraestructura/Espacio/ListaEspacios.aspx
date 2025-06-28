@@ -278,20 +278,22 @@
                             <label>Ubicación</label>
                             <asp:TextBox ID="txtUbicacionEdit" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
                         </div>
+
                         <div class="mb-3 col-md-6">
                             <label>Departamento</label>
-                            <div class="d-flex align-items-center gap-2">
-                                <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select me-2" AutoPostBack="true"
+                            <div class="d-flex align-items-center">
+                                <asp:DropDownList ID="ddlDepartamentoEdit" runat="server" CssClass="form-select me-2 flex-grow-1" AutoPostBack="true"
                                     OnSelectedIndexChanged="ddlDepartamentoEdit_SelectedIndexChanged">
                                 </asp:DropDownList>
+
                                 <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success"
                                     ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
                                     <i class="bi bi-pencil-fill"></i>
                                 </asp:LinkButton>
                             </div>
                         </div>
-                        
                     </div>
+
 
                     <div class="row">
                         <div class="mb-3 col-md-6">

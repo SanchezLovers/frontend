@@ -351,15 +351,19 @@
                         <!-- Departamento -->
                         <div class="col-6">
                             <label class="form-label fw-semibold">Departamento</label>
-                            <asp:DropDownList ID="ddlDepasEditar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDepasEditar_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Text="Seleccione un departamento" Value="" Disabled="true" Selected="True" />
-                            </asp:DropDownList>
+
+                            <div class="d-flex align-items-center gap-2">
+                                <asp:DropDownList ID="ddlDepasEditar" runat="server" CssClass="form-select flex-grow-1"
+                                    OnSelectedIndexChanged="ddlDepasEditar_SelectedIndexChanged" AutoPostBack="true">
+                                    <asp:ListItem Text="Seleccione un departamento" Value="" Disabled="true" Selected="True" />
+                                </asp:DropDownList>
+
+                                <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success" ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </asp:LinkButton>
+                            </div>
                         </div>
 
-                        <asp:LinkButton ID="btnEditUbigeo" runat="server" CssClass="btn btn-success"
-                            ToolTip="Presione para modificar el ubigeo." OnClick="btnEditUbigeo_Click">
-                            <i class="bi bi-pencil-fill"></i>
-                        </asp:LinkButton>
 
                     </div>
 
@@ -453,15 +457,19 @@
                             <asp:TextBox ID="txtHoraFinEditar" runat="server" CssClass="form-control" TextMode="Time" />
                         </div>
                         <div class="col-md-2">
-                            <asp:Button ID="btnAgregarFuncionEditar" runat="server" Text="Añadir" CssClass="btn-success" OnClick="btnAgregarFuncionEditar_Click" />
+                            <asp:Button ID="btnAgregarFuncionEditar" runat="server" Text="Añadir" CssClass="btn btn-success" OnClick="btnAgregarFuncionEditar_Click" />
                         </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <asp:Label ID="lblErrorEditar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
 
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnAceptarEditar" CssClass="btn btn-secondary" runat="server" Text="Aceptar" OnClick="btnAceptarEditar_Click" />
+                    <asp:Button ID="btnAceptarEditar" CssClass="btn btn-success" runat="server" Text="Aceptar" OnClick="btnAceptarEditar_Click" />
                 </div>
             </div>
         </div>

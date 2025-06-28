@@ -429,6 +429,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected global::System.Web.UI.WebControls.Button btnAgregarFuncionEditar;
 
         /// <summary>
+        /// Control lblErrorEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorEditar;
+
+        /// <summary>
         /// Control btnAceptarEditar.
         /// </summary>
         /// <remarks>
