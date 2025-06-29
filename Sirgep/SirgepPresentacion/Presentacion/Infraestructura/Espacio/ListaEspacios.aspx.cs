@@ -925,5 +925,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlDepartamentoEdit.Enabled = true;
             abrirModalEditarEspacio();
         }
+
+        protected void btnGuardarEdicion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

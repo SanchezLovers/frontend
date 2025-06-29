@@ -86,12 +86,12 @@
                         <tr>
                             <td colspan="5" class="text-center pt-3">
                                 <asp:Button ID="btnAnteriorFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm me-2"
-                                    Text="←" CommandName="Anterior" OnCommand="Paginar_Click" />
+                                    Text="Anterior" CommandName="Anterior" OnCommand="Paginar_Click" />
 
                                 <asp:Label ID="lblPaginaFoot" runat="server" CssClass="fw-bold"></asp:Label>
 
                                 <asp:Button ID="btnSiguienteFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm ms-2"
-                                    Text="→" CommandName="Siguiente" OnCommand="Paginar_Click" />
+                                    Text="Siguiente" CommandName="Siguiente" OnCommand="Paginar_Click" />
                             </td>
                         </tr>
                     </FooterTemplate>
@@ -117,7 +117,7 @@
                             <label>Nombre del espacio</label>
                             <asp:TextBox ID="txtNombreEspacioAgregar" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Tipo de espacio</label>
                             <asp:DropDownList ID="ddlTipoEspacioAgregar" runat="server" CssClass="form-select">
                             </asp:DropDownList>
@@ -129,7 +129,7 @@
                             <label>Ubicación</label>
                             <asp:TextBox ID="txtUbicacionAgregar" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Departamento</label>
                             <asp:DropDownList ID="ddlDepartamentoAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlDepartamentoAgregar_SelectedIndexChanged">
@@ -142,7 +142,7 @@
                             <label>Superficie (m²)</label>
                             <asp:TextBox ID="txtSuperficieAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Provincia</label>
                             <asp:DropDownList ID="ddlProvinciaAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlProvinciaAgregar_SelectedIndexChanged">
@@ -156,11 +156,34 @@
                             <label>Precio de reserva por hora</label>
                             <asp:TextBox ID="txtPrecioReservaAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Distrito</label>
                             <asp:DropDownList ID="ddlDistritoAgregar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistritoAgregar_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
+                    </div>
+
+                    <!-- Imagen actual (preview) -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Imagen actual:</label><br />
+                        <asp:Image ID="imgActual" runat="server" Width="150px" CssClass="img-thumbnail" />
+                    </div>
+
+                    <!-- Subir nueva imagen -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Subir nueva imagen:</label>
+                        <asp:FileUpload ID="fuImagenEditar" runat="server" CssClass="form-control" />
+                    </div>
+
+                    <!-- Botón para guardar cambios -->
+                    <div class="mb-3">
+                        <asp:Button ID="btnGuardarEdicion" runat="server" Text="Guardar cambios" CssClass="btn btn-primary"
+                            OnClick="btnGuardarEdicion_Click" />
+                    </div>
+
+                    <!-- Mensaje de error o éxito -->
+                    <div class="mb-3">
+                        <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger fw-bold" />
                     </div>
 
                     <!-- Horarios -->

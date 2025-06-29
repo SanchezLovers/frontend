@@ -63,14 +63,14 @@
     <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
         <asp:Button ID="btnAnterior" runat="server"
             CssClass="btn btn-outline-secondary btn-sm me-4"
-            Text="←" OnClick="btnAnterior_Click" />
+            Text="Anterior" OnClick="btnAnterior_Click" />
 
         <asp:Label ID="lblPaginaActual" runat="server"
             CssClass="fw-bold text-dark mx-2" />
 
         <asp:Button ID="btnSiguiente" runat="server"
             CssClass="btn btn-outline-secondary btn-sm ms-4"
-            Text="→" OnClick="btnSiguiente_Click" />
+            Text="Siguiente" OnClick="btnSiguiente_Click" />
     </div>
     <div class="mb-3"></div>
     <!-- Modal de Confirmación -->
