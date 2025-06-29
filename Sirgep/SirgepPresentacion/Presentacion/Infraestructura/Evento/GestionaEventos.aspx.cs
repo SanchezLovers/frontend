@@ -448,7 +448,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                     CargarEventos();
                     return;
                 }
-                mostrarModalErrorEvento("VENTANA DE ERROR", "No se pudo enviar los correos apropiadamente, pero sí se insertó el EVENTO.");
+                mostrarModalExitoEvento("VENTANA DE ÉXITO", $"Se insertó el Evento correctamente. No hay compradores con el distrito {nombreDistrito} así que no se enviará ningún correo.");
             }
             else
             {

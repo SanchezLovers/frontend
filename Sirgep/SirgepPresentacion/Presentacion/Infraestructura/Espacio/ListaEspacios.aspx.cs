@@ -635,9 +635,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                     }
                     //mostrarModalExitoEsp("ÉXITO", "Días insertados correctamente.");
                 }
-
-                // Mensaje de éxito
-                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente.");
                 CargarEspacios();
                 string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
                 string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
@@ -756,6 +753,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                         "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
                         "}, 1000);", true);
                 }
+                mostrarModalExitoEsp("¡ESPACIO INSERTADO CON ÉXITO!", $"Se insertó el Espacio correctamente. No hay compradores con el distrito {nombreDistrito} así que no se enviará ningún correo.");
             }
             else
             {
