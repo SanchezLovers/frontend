@@ -46,7 +46,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         {
             if (!IsPostBack)
             {
-                incializarHoras();               
+                incializarHoras();
                 PaginaActual = 1;
                 CargarEspacios();
                 CargarDistritos();
@@ -194,7 +194,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string test = ddlDepartamentoAgregar.Items[0].ToString();
             if (ddlDepartamentoAgregar.Items[0].ToString() != "Escoja un departamento")
                 ddlDepartamentoAgregar.Items.Insert(0, new ListItem("Escoja un departamento", ""));
-            
+
             // Asegurarnos de que apunten al primer index
             ddlTipoEspacioAgregar.SelectedIndex = 0;
             ddlDepartamentoAgregar.SelectedIndex = 0;
@@ -224,7 +224,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-
             /*CARGAR DATOS*/
             int idEspacio = int.Parse(((Button)sender).CommandArgument.ToString());
             hiddenIdEspacio.Value = idEspacio.ToString();
@@ -245,7 +244,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             txtUbicacionEdit.Text = espDTO.ubicacion;
             txtSuperficieEdit.Text = espDTO.superficie.ToString();
             txtPrecioEdit.Text = espDTO.precioReserva.ToString();
-            
+
             ddlDepartamentoEdit.SelectedValue = espDTO.idDepartamento.ToString();
             ddlDepartamentoEdit.Enabled = false;
 
@@ -261,7 +260,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlDistritoEdit.SelectedValue = espDTO.idDistrito.ToString();
             ddlDistritoEdit.Enabled = false;
 
-            ddlHoraInicioEdit.Text = espDTO.horaInicio.ToString().Substring(0,5);
+            ddlHoraInicioEdit.Text = espDTO.horaInicio.ToString().Substring(0, 5);
             ddlHoraFinEdit.Text = espDTO.horaFin.ToString().Substring(0, 5);
 
             // Cargar los días que el Espacio atiende
@@ -271,7 +270,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             // Mostrar el modal usando JavaScript
             abrirModalEditarEspacio();
         }
-
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             // Text ya es el VALOR y es un string
@@ -299,10 +297,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             {
                 CargarEspacios();
             }
-            
             // el último caso, es por si no se quieren filtros
         }
-
         protected void btnConfirmarAccion_Click(object sender, EventArgs e)
         {
             int id = int.Parse(hdnIdAEliminar.Value);
@@ -324,17 +320,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 {
                     mostrarModalErrorEsp("FALLO AL ELIMINAR Dias del Espacio", "Ocurrió un error al momento de eliminar los días del espacio.");
                 }
-                
+
             }
             else
             {
                 mostrarModalErrorEsp("FALLO AL ELIMINAR ESPACIO", "Ocurrió un error al momento de eliminar el espacio.");
             }
-
         }
-
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
-        {   
+        {
             buscarEspacioPorTextoResponse response = espacioWS.buscarEspacioPorTexto(new buscarEspacioPorTextoRequest(txtBusqueda.Text));
             espacio[] espacios = response.@return;
             realizarPaginado(espacios);
@@ -362,10 +356,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 ddlProvinciaAgregar.Items.Clear();
                 ddlProvinciaAgregar.Items.Insert(0, new ListItem("Seleccione un departamento primero", ""));
             }
-
             // Para mantener el modal abierto tras el postback
             abrirModalAgregarEspacio();
-            
         }
 
         protected void ddlProvinciaAgregar_SelectedIndexChanged(object sender, EventArgs e)
@@ -420,8 +412,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string horaIni = ddlHoraInicioEdit.Text;
             string horaFin = ddlHoraFinEdit.Text;
 
-            if (horaIni.Length==5) horaIni += ":00";
-            if (horaFin.Length==5) horaFin += ":00";
+            if (horaIni.Length == 5) horaIni += ":00";
+            if (horaFin.Length == 5) horaFin += ":00";
 
             eTipoEspacio eTipo;
             eTipoEspacio.TryParse(tipoEspacioInsumo, false, out eTipo);
@@ -475,64 +467,64 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
             if (!ContieneLetras(ubicacionInsert))
             {
-                MostrarError("La ubicación debe contener letras.",current);
+                MostrarError("La ubicación debe contener letras.", current);
                 return false;
             }
 
             // Validar campos de texto obligatorios
             if (string.IsNullOrWhiteSpace(nombreInsert))
             {
-                MostrarError("Debe ingresar el nombre del espacio.",current);
+                MostrarError("Debe ingresar el nombre del espacio.", current);
                 return false;
             }
-            
-            if(nombreInsert.Length > 45)
+
+            if (nombreInsert.Length > 45)
             {
-                MostrarError("El nombre superó el máximo de 45 caracteres.",current);
+                MostrarError("El nombre superó el máximo de 45 caracteres.", current);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(ubicacionInsert))
             {
-                MostrarError("Debe ingresar la ubicación del espacio.",current);
+                MostrarError("Debe ingresar la ubicación del espacio.", current);
                 return false;
             }
 
             if (ubicacionInsert.Length > 100)
             {
-                MostrarError("La ubicación superó el máximo de 100 caracteres.",current);
+                MostrarError("La ubicación superó el máximo de 100 caracteres.", current);
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(tipoEspacioInsumoInsert) || tipoEspacioInsumoInsert == "0")
             {
-                MostrarError("Debe seleccionar un tipo de espacio.",current);
+                MostrarError("Debe seleccionar un tipo de espacio.", current);
                 return false;
             }
 
             // Validar superficie
             if (!double.TryParse(superficieTexto, out double superficieInsert) || superficieInsert < 10 || superficieInsert > 1000)
             {
-                MostrarError("La superficie debe ser un número positivo menor o igual a 1000 y como mínimo de 10 metros cuadrados.",current);
+                MostrarError("La superficie debe ser un número positivo menor o igual a 1000 y como mínimo de 10 metros cuadrados.", current);
                 return false;
             }
 
             // Validar precio de reserva
             if (!double.TryParse(precioTexto, out double precioReservaInsert) || precioReservaInsert <= 0 || precioReservaInsert > 1000)
             {
-                MostrarError("El precio de reserva debe ser un número positivo menor o igual a 1000.",current);
+                MostrarError("El precio de reserva debe ser un número positivo menor o igual a 1000.", current);
                 return false;
             }
             // Validar horas
             if (string.IsNullOrWhiteSpace(horaIniInsert) || string.IsNullOrWhiteSpace(horaFinInsert))
             {
-                MostrarError("Debe ingresar la hora de inicio y la hora de fin.",current);
+                MostrarError("Debe ingresar la hora de inicio y la hora de fin.", current);
                 return false;
             }
 
             if (string.IsNullOrEmpty(depa))
             {
-                MostrarError("Debe elegir un departamento.",current);
+                MostrarError("Debe elegir un departamento.", current);
                 return false;
             }
 
@@ -548,7 +540,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 return false;
             }
 
-            if (!((diasArray.Length > 0) || dias=="") && current == AGREGAR_ESPACIO)
+            if (!((diasArray.Length > 0) || dias == "") && current == AGREGAR_ESPACIO)
             {
                 MostrarError("Debe seleccionar al menos 1 día de atención.", current);
                 return false;
@@ -663,10 +655,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                     }
                     //mostrarModalExitoEsp("ÉXITO", "Días insertados correctamente.");
                 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 11b68dbd2df1551ac713a6f762fa9b1fa11fff9e
                 CargarEspacios();
                 string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
                 Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
@@ -792,21 +780,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                       </div>
                     </body>
                     </html>";
-                bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
-                if (resultado)
-                {
-                    // Mensaje de éxito
-                    mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente y se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.");
-                    return;
-                }
-                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se insertó el espacio correctamente, pero no se encontró compradores cuyo distrito favorito coincida para enviar el correo.");
+            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
+            if (resultado)
+            {
+                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente y se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.");
             }
             else
             {
-                // Mensaje de fallo
-                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
+                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se insertó el espacio correctamente, pero no se encontró compradores cuyo distrito favorito coincida para enviar el correo.");
             }
-            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
         }
         public void LimpiarDatosAgregados()
         {
@@ -899,7 +881,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalExito", script, true);
         }
 
-        public void mostrarModalErrorEsp(string titulo, string mensaje)
+        private void mostrarModalErrorEsp(string titulo, string mensaje)
         {
             string script = $@"
                 Sys.Application.add_load(function () {{
@@ -928,7 +910,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
                 string lblErrorDepa = lblError.Text;
                 if (!string.IsNullOrEmpty(lblErrorDepa) && lblErrorDepa.Contains("departamento")) lblError.Text = "";
-                
+
             }
             else
             {

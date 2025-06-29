@@ -127,10 +127,6 @@
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\ReporteWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\ReporteWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
     <None Include="Connected Services\ReferenciaDisco\configuration91.svcinfo" />
     <None Include="Connected Services\ReferenciaDisco\configuration.svcinfo" />
@@ -2527,6 +2523,10 @@
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
@@ -2696,6 +2696,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entrada.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.enviarCorreosCompradoresPorDistritoDeEspacioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2711,10 +2714,19 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioRepDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espaciosFavoritosDelMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.evento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.funcion.datasource">
@@ -2768,6 +2780,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2807,6 +2822,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2834,6 +2852,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCorreoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2841,42 +2862,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioRepDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espaciosFavoritosDelMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
-		<DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioRepDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espaciosFavoritosDelMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />

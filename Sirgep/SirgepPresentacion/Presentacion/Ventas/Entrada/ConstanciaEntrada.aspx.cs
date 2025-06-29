@@ -70,7 +70,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 Session["tipoServicio"] = "entrada";
                 Session["MostrarFeedback"] = null; // Limpiar para evitar mostrarlo de nuevo
-                string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
+                script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
                 ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
             }
             else // Flujo de consulta (redirecciona a la página de consulta de entradas)
