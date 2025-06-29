@@ -40,6 +40,17 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 lblReferencia.Text = "edificio 123";
                 */
                 PrecioEntrada.Text = $"El precio por entrada a este evento es: S/{e.precioEntrada}.";
+
+                // Mostrar imagen del evento
+                if (!string.IsNullOrEmpty(e.archivoImagen))
+                {
+                    imgEvento.ImageUrl = "~/" + e.archivoImagen;
+                    imgEvento.Visible = true;
+                }
+                else
+                {
+                    imgEvento.Visible = false;
+                }
             }
         }
 
