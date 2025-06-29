@@ -33,6 +33,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (!IsPostBack)
             {
                 CargarDepartamentos();
+
                 txtFecha.Attributes["min"] = DateTime.Now.AddDays(2).ToString("yyyy-MM-dd");
 
                 ddlDistrito.Items.Insert(0, new ListItem("Seleccione Distrito", ""));
@@ -50,7 +51,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void CargarDepartamentos()
         {
-            // Reemplazar con llamada a tu WS
             ddlDepartamento.DataSource = departamentoWS.listarDepas();
             ddlDepartamento.DataTextField = "Nombre";
             ddlDepartamento.DataValueField = "IdDepartamento";
@@ -141,11 +141,20 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             if (filtroCat != "" && filtroDist != "")
             {
                 // llamamos a la filtración doble implementada en backend
+                ddlEspacio.Items.Clear();
                 ddlEspacio.DataSource = espacioWS.listarEspacioDistyCat(int.Parse(filtroDist), filtroCat);
 
                 ddlEspacio.DataTextField = "nombre";
                 ddlEspacio.DataValueField = "idEspacio";
                 ddlEspacio.DataBind();
+                if (ddlEspacio.DataSource == null)
+                {
+                    ddlEspacio.Items.Insert(0, new ListItem("Seleccione otra categoría.", ""));
+                    lblError.Visible = true;
+                    lblError.Text = "No hay espacios para el distrito y categoría seleccionados.";
+                    return;
+                }
+                lblError.Visible = false;
                 ddlEspacio.Items.Insert(0, new ListItem("Seleccione Espacio", ""));
             }
             else
@@ -166,8 +175,17 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 var horarios = horarioWS.listarHorariosDelEspacioYDia(idEspacio, fecha);
 
-                rptHorarios.DataSource = horarios;
-                rptHorarios.DataBind();
+                if (horarios != null)
+                {
+                    rptHorarios.DataSource = horarios;
+                    rptHorarios.DataBind();
+                }
+                else
+                {
+                    rptHorarios.DataSource = null;
+                    lblError.Visible = true;
+                    lblError.Text = "El espacio no atiende el día que usted ha elegido.";
+                }
 
             }
             else

@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -401,8 +402,23 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 }
 
                 string nombreDistrito = distWS.buscarDistPorId(new buscarDistPorIdRequest(eventoAgregar.distrito.idDistrito)).@return.nombre;
-                string asunto = $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {eventoAgregar.nombre}!";
-                string contenido = $@"
+                Thread thread = new Thread(() => enviarCorreosEvento(nombreDistrito, eventoAgregar));
+                thread.Start();
+                mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
+                //CargarEventos();
+            }
+            else
+            {
+                // error al insertar
+                mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar el evento");
+            }
+
+            LimpiarDatosAgregados();
+        }
+        protected void enviarCorreosEvento(string nombreDistrito, evento eventoAgregar)
+        {
+            string asunto = $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {eventoAgregar.nombre}!";
+            string contenido = $@"
                     <html>
                     <head>
                       <style>
@@ -509,22 +525,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                       </div>
                     </body>
                     </html>";
-                bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)).@return;
-                if (resultado)
-                {
-                    mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
-                    CargarEventos();
-                    return;
-                }
-                mostrarModalErrorEvento("VENTANA DE ERROR", "No se pudo enviar los correos apropiadamente, pero sí se insertó el EVENTO.");
-            }
-            else
-            {
-                // error al insertar
-                mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar el evento");
-            }
-
-            LimpiarDatosAgregados();
+            bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)).@return;
         }
 
         protected void ddlProvAgregar_SelectedIndexChanged(object sender, EventArgs e)

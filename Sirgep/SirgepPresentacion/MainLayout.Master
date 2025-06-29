@@ -265,7 +265,7 @@
         if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
             cerrarModalCarga();
 
-            // 🔧 Remover backdrop y clase que deja Bootstrap
+            // Remover backdrop y clase que deja Bootstrap
             document.body.classList.remove("modal-open");
 
             // Elimina backdrop si quedó alguno (por precaución)
@@ -437,7 +437,16 @@
         document.addEventListener(evt, reiniciarTemporizadorSesion, true);
     });
 
-    // Iniciar el temporizador al cargar la página
-    iniciarTemporizadorSesion();
+    // Obtiene el tipo de usuario desde el campo oculto
+    function esUsuarioRegistrado() {
+        var tipoUsuario = document.getElementById('<%= hdnTipoUsuario.ClientID %>').value;
+        // Ajusta el valor según tu lógica: por ejemplo, "Invitado" o "" para no registrado
+        return tipoUsuario && tipoUsuario !== "Invitado";
+    }
+
+    // Solo inicia el temporizador si el usuario está registrado
+    if (esUsuarioRegistrado()) {
+        iniciarTemporizadorSesion();
+    }
 </script>
 </html>

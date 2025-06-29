@@ -28,6 +28,11 @@ namespace SirgepPresentacion.Presentacion.Inicio
             Response.Redirect("/Presentacion/Infraestructura/Evento/GestionaEventos.aspx");
         }
 
+        protected void btnStats_click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Presentacion/Usuarios/Administrador/Stats.aspx");
+        }
+
         protected void btnConsultarEntradas_Click(object sender, EventArgs e)
         {
             //string script = "setTimeout(function(){ mostrarModalError('En proceso...','Esta opción aún está en desarrollo :)'); }, 300);";

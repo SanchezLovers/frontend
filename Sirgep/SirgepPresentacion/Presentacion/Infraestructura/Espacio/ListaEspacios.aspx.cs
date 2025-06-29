@@ -663,11 +663,28 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                     }
                     //mostrarModalExitoEsp("ÉXITO", "Días insertados correctamente.");
                 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 11b68dbd2df1551ac713a6f762fa9b1fa11fff9e
                 CargarEspacios();
                 string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
-                string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
-                string contenido = $@"
+                Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
+                thread.Start();
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
+                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
+                        "}, 1000);", true);
+            }
+            else
+            {
+                // Mensaje de fallo
+                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
+            }
+        }
+        protected void enviarCorreosEspacio(string nombreDistrito, espacio espacioInsertar)
+        {
+            string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
+            string contenido = $@"
                     <html>
                     <head>
                       <style>
@@ -789,6 +806,16 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 // Mensaje de fallo
                 mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
             }
+            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
+        }
+        public void LimpiarDatosAgregados()
+        {
+            txtUbicacionAgregar.Text = "";
+            txtSuperficieAgregar.Text = "";
+            txtPrecioReservaAgregar.Text = "";
+            txtUbicacionAgregar.Text = "";
+            txtNombreEspacioAgregar.Text = "";
+            lblError.Text = "";
         }
 
         protected void ddlDistritoAgregar_SelectedIndexChanged(object sender, EventArgs e)

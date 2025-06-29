@@ -6,10 +6,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="mb-4 d-flex align-items-center">
-    <asp:Button ID="btnRegresar" runat="server" Text="&lt; Regresar" CssClass="btn btn-outline-secondary me-3" OnClick="btnRegresar_Click" />
-    <span class="fw-bold fs-4 me-3">Eventos del distrito:</span>
-    <asp:Label ID="lblDistrito" runat="server" CssClass="fw-bold fs-4" />
-</div>
+        <asp:Button ID="btnRegresar" runat="server" Text="&lt; Regresar" CssClass="btn btn-outline-secondary me-3" OnClick="btnRegresar_Click" />
+        <span class="fw-bold fs-4 me-3">Eventos del distrito:</span>
+        <asp:Label ID="lblDistrito" runat="server" CssClass="fw-bold fs-4" />
+    </div>
     <hr />
     <!-- Repeater -->
     <asp:Repeater ID="rptEventos" runat="server">
@@ -17,19 +17,26 @@
             <div class="row">
         </HeaderTemplate>
         <ItemTemplate>
-            <div class="col-md-6 mb-2">
-                <div class="card h-100 shadow-sm">
-                    <div class="row g-0">
-                        <div class="col-4 d-flex align-items-center">
-
-                        </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold mb-1"><%# Eval("Nombre") %></h5>
-                                <div class="mb-1"><%# Eval("ubicacion") %> - <%# Eval("referencia") %></div>
-                                <div class="text-muted small mb-2"><%# Eval("descripcion") %></div>
-                                <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-dark btn-sm float-end me-1 mb-3" CommandArgument='<%# Eval("idEvento") %>' OnClick="btnComprar_Click" />
+            <div class="col-md-6 mb-4 d-flex justify-content-center">
+                <div class="evento-card w-100">
+                    <div class="evento-img">
+                        <%# !string.IsNullOrEmpty(Eval("archivoImagen") as string) ? "<img src='" + ResolveUrl("~/" + ((string)Eval("archivoImagen")).Replace("Images/img/eventos/", "Images/img/eventosThumbs/").Replace(".png", ".jpg").Replace(".gif", ".jpg")) + "' loading='lazy' />" : "" %>
+                    </div>
+                    <div class="evento-info">
+                        <div>
+                            <div class="evento-titulo">
+                                <%# Eval("Nombre") %>
                             </div>
+                            <div class="evento-ubicacion">
+                                <%# Eval("ubicacion") %><br />
+                                <%# Eval("referencia") %>
+                            </div>
+                            <div class="evento-descripcion">
+                                <%# Eval("descripcion") %>
+                            </div>
+                        </div>
+                        <div class="evento-btn-wrapper">
+                            <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-dark btn-sm" CommandArgument='<%# Eval("idEvento") %>' OnClick="btnComprar_Click" />
                         </div>
                     </div>
                 </div>
@@ -37,7 +44,7 @@
         </ItemTemplate>
         <FooterTemplate>
             </div>
-
+   
         </FooterTemplate>
     </asp:Repeater>
     <!-- Cambio de paginado -->
