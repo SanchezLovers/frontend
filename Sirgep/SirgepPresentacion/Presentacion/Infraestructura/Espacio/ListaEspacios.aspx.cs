@@ -637,8 +637,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 }
                 CargarEspacios();
                 string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
-                string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
-                string contenido = $@"
+                Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
+                thread.Start();
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
+                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
+                        "}, 1000);", true);
+            }
+            else
+            {
+                // Mensaje de fallo
+                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
+            }
+        }
+        protected void enviarCorreosEspacio(string nombreDistrito, espacio espacioInsertar)
+        {
+            string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
+            string contenido = $@"
                     <html>
                     <head>
                       <style>
@@ -746,20 +760,16 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                       </div>
                     </body>
                     </html>";
-                bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
-                if (resultado)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
-                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
-                        "}, 1000);", true);
-                }
-                mostrarModalExitoEsp("¡ESPACIO INSERTADO CON ÉXITO!", $"Se insertó el Espacio correctamente. No hay compradores con el distrito {nombreDistrito} así que no se enviará ningún correo.");
-            }
-            else
-            {
-                // Mensaje de fallo
-                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
-            }
+            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
+        }
+        public void LimpiarDatosAgregados()
+        {
+            txtUbicacionAgregar.Text = "";
+            txtSuperficieAgregar.Text = "";
+            txtPrecioReservaAgregar.Text = "";
+            txtUbicacionAgregar.Text = "";
+            txtNombreEspacioAgregar.Text = "";
+            lblError.Text = "";
         }
 
         protected void ddlDistritoAgregar_SelectedIndexChanged(object sender, EventArgs e)
