@@ -410,6 +410,88 @@ body {
     height: 24px;
 }
 
-    .image-button:hover {
-        filter: brightness(0.7);
+.image-button:hover {
+    filter: brightness(0.7);
+}
+
+/* Estilo para la card de evento */
+.evento-card {
+    display: flex;
+    border: 2px solid #222;
+    border-radius: 8px;
+    padding: 16px 20px 16px 20px;
+    background: #fff;
+    align-items: center;
+    min-height: 160px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.evento-img {
+    flex: 0 0 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .evento-img img {
+        width: 120px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+.evento-info {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    margin-left: 18px;
+    padding-bottom: 48px;
+}
+
+.evento-titulo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+}
+
+.evento-ubicacion {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.evento-descripcion {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.evento-btn-wrapper {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.evento-btn-comprar {
+    background: #23252a;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 6px 16px;
+    border: none;
+    font-weight: 400;
+    transition: background 0.2s;
+    margin-top: 0;
+}
+
+    .evento-btn-comprar:hover {
+        background: #111217;
     }
