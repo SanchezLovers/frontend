@@ -25,17 +25,19 @@
 
                     <div class="mb-3">
                         <label for="txtEmail" class="form-label">*Correo de su cuenta</label>
-                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="admin@sirgep.com.pe"></asp:TextBox>
+                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" MaxLength="45" placeholder="admin@sirgep.com.pe"></asp:TextBox>
+                        <span id="emailError" class="text-danger" style="display:none;">El correo no puede tener más de 45 caracteres.</span>
                     </div>
 
                     <div class="mb-3 position-relative">
                         <label for="txtPassword" class="form-label">*Contraseña:</label>
                         <div class="input-group">
-                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Ingrese su Contraseña"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" MaxLength="45" placeholder="Ingrese su Contraseña"></asp:TextBox>
                             <span class="input-group-text" onclick="togglePassword()">
                                 <i id="togglePasswordIcon" class="bi bi-eye-slash"></i>
                             </span>
                         </div>
+                        <span id="passwordError" class="text-danger" style="display:none;">La contraseña no puede tener más de 45 caracteres.</span>
                     </div>
 
 
@@ -73,5 +75,29 @@
                 toggleIcon.classList.add('bi-eye-slash');
             }
         }
+    </script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var emailInput = document.getElementById('<%= txtEmail.ClientID %>');
+            var emailError = document.getElementById('emailError');
+            var passwordInput = document.getElementById('<%= txtPassword.ClientID %>');
+            var passwordError = document.getElementById('passwordError');
+
+            emailInput.addEventListener('input', function () {
+                if (emailInput.value.length >= 45) {
+                    emailError.style.display = 'block';
+                } else {
+                    emailError.style.display = 'none';
+                }
+            });
+
+            passwordInput.addEventListener('input', function () {
+                if (passwordInput.value.length >= 45) {
+                    passwordError.style.display = 'block';
+                } else {
+                    passwordError.style.display = 'none';
+                }
+            });
+        });
     </script>
 </asp:Content>

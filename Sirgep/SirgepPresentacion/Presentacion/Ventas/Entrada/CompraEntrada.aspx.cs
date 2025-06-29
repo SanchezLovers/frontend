@@ -135,6 +135,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void btnPagar_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
             // Validar campos obligatorios
             //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
@@ -148,7 +152,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 return;
 
             }
-            documentoNoValido(sender, e);
+            //documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -290,6 +294,21 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             ((CustomValidator)source).ErrorMessage = mensaje;
         }
 
+
+        protected void cvNombres_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Regex.IsMatch(txtNombres.Text.Trim(), @"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+        }
+
+        protected void cvApellidoPaterno_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = Regex.IsMatch(txtApellidoPaterno.Text.Trim(), @"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+        }
+
+        protected void cvApellidoMaterno_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = txtApellidoMaterno.Text.Trim().Length == 0 || Regex.IsMatch(txtApellidoMaterno.Text.Trim(), @"^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$");
+        }
 
     }
 

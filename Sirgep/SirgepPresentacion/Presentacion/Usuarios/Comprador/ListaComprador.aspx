@@ -4,6 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server" />
     <asp:HiddenField ID="hdnIdAEliminar" runat="server" />
 
     <h2 class="fw-bold mb-4">Usuarios</h2>
@@ -14,7 +15,7 @@
         <asp:TextBox ID="txtBusqueda" runat="server"
             CssClass="form-control d-inline-block mx-2"
             Style="width: 400px;"
-            Placeholder="Ingrese nombre, apellido, correo o nro documento" />
+            Placeholder="🔍 Buscar" />
         <asp:Button ID="btnBuscar" runat="server" Text="Buscar" CssClass="btn btn-dark" OnClick="btnBuscar_Click" />
     </div>
     <!-- Aquí va el GridView -->
@@ -40,6 +41,11 @@
         </Columns>
     </asp:GridView>
 
+    <div class="d-flex justify-content-center align-items-center gap-3 mt-4 mb-4">
+    <asp:Button ID="btnAnterior" runat="server" Text="Anterior" CssClass="btn btn-outline-dark" OnClick="btnAnterior_Click" />
+    <asp:Label ID="lblPaginaActual" runat="server" CssClass="fw-bold fs-5 m-0 px-2"></asp:Label>
+    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-outline-dark" OnClick="btnSiguiente_Click" />
+    </div>
 
     <!-- Modal de Confirmación -->
     <div class="modal fade" id="mostrarConfUsuario" tabindex="-1" aria-labelledby="mostrarConfUsuarioLabel" aria-hidden="true">
@@ -66,16 +72,39 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal de Error -->
+    <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-header-rojo text-white">
+                    <h5 class="modal-title" id="modalErrorLabel">Resultado de Búsqueda</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body fs-5" id="modalErrorBody">
+                    
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
     <script type="text/javascript">
         function mostrarConfUsuario(id) {
             var hiddenField = document.getElementById('<%= hdnIdAEliminar.ClientID %>');
-            if (hiddenField) {
-                hiddenField.value = id;
-            }
+            if (hiddenField) hiddenField.value = id;
+
             var modalElement = document.getElementById('mostrarConfUsuario');
             var modalEliminar = new bootstrap.Modal(modalElement);
             modalEliminar.show();
+        }
+
+        function mostrarModalBusquedaSinResultados(mensaje) {
+            document.getElementById('modalErrorBody').textContent = mensaje;
+            var modal = new bootstrap.Modal(document.getElementById('modalError'));
+            modal.show();
         }
     </script>
 </asp:Content>

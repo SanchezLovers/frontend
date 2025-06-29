@@ -109,6 +109,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected void btnPagar_Click(object sender, EventArgs e)
 
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
             string fechaR = Request.QueryString["fecha"];
             string horaIni = Request.QueryString["horaIni"];
             string horaFin = Request.QueryString["horaFin"];
@@ -128,7 +132,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             }
 
-            documentoNoValido(sender, e);
+            //documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -308,6 +312,23 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             ((CustomValidator)source).ErrorMessage = mensaje;
         }
 
+        protected void cvNombres_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            Regex soloLetrasRegex = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$");
+            args.IsValid = soloLetrasRegex.IsMatch(args.Value.Trim());
+        }
+
+        protected void cvApellidoPaterno_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            Regex soloLetrasRegex = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$");
+            args.IsValid = soloLetrasRegex.IsMatch(args.Value.Trim());
+        }
+
+        protected void cvApellidoMaterno_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            Regex soloLetrasRegex = new Regex(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$");
+            args.IsValid = string.IsNullOrWhiteSpace(args.Value) || soloLetrasRegex.IsMatch(args.Value.Trim());
+        }
 
     }
 }
