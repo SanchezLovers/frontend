@@ -25,6 +25,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             if (!IsPostBack)
             {
+                // Aseguramos que el session para el feedback esté en false al cargar la página
+                Session["MostrarFeedback"] = false;
                 int idEspacio = int.Parse(Request.QueryString["idEspacio"]);
                 string fechaR = Request.QueryString["fecha"];
                 string horaIni = Request.QueryString["horaIni"];
@@ -121,7 +123,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-               // string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) || -- no es obligatorio
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
@@ -142,14 +143,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 return;
             }
 
-
-
-
-
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
-
-            //int cantidad = 1;
 
             int idEspacio = int.Parse(Request.QueryString["idEspacio"]);
             double totalAPagar = double.Parse(LblTotalReserva.Text);
@@ -172,7 +167,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    // segundoApellido = txtApellidoMaterno.Text.Trim(),  no obligatorio
+                    segundoApellido = txtApellidoMaterno.Text.Trim(),  //no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
@@ -193,11 +188,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 identificadorPersona = compradorExistente.idPersona; // Obtener el ID del comprador existente
             }
 
-
-
-
-
-            ReferenciaDisco.eMetodoPago mp;
+            eMetodoPago mp;
 
             string metodoPagoSeleccionado = hfMetodoPago.Value;
 
@@ -226,26 +217,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 // Campos propios de reserva
                 fechaReserva = DateTime.Parse(fechaR),  // Convertir a DateTime
                 fechaReservaSpecified = true,
-                //horarioIni = new ReferenciaDisco.localTime
-                //{
-                //hour = tIni.Hours,
-                //minute = tIni.Minutes,
-                //second = tIni.Seconds
-
-                //},
-                //horarioFin = new ReferenciaDisco.localTime
-                //{
-                //   hour = tFin.Hours,
-                //   minute = tFin.Minutes,
-                //   second = tFin.Seconds
-                //},
-
-                //horarioIni = horaIni,
-                //horarioFin = horaFin,
-
-                // Relaciones
-                //horarioIni = reservaService.convertirALocalTime(horaIni), // Convertir a localTime
-                // horarioFin = reservaService.convertirALocalTime(horaFin),
                 iniString = horaIni,
                 finString = tFin.ToString(),
 
@@ -258,24 +229,18 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 espacio = espacioService.buscarEspacio(idEspacio)        // el objeto espacio
             };
 
-            //int idReserva = reservaService.insertarReserva(nuevaReserva);
-            // };
-
-            //int idReserva = compraService.insertarConstancia(nueva);
             int idConstancia = reservaService.insertarReserva(nuevaReserva);
 
 
             string scriptExito =
-           "document.getElementById('modalExitoBody').innerText = 'Pago realizado con éxito.';" +
-           "var modal = new bootstrap.Modal(document.getElementById('modalExito'));" +
-           "modal.show();" +
+           "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);" +
            "setTimeout(function() {" +
            "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia + "';" +
            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
+            // Justo antes de redirigir a ConstanciaReserva.aspx
+            Session["MostrarFeedback"] = true; //Solo muestra el feedback si el flujo fue por un pago
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
-
-            //Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
 
         protected void cvDocumento_ServerValidate(object source, ServerValidateEventArgs args)

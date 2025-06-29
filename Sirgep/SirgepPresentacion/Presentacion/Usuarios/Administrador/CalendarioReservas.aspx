@@ -7,6 +7,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Encabezado" runat="server">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/locales-all.global.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
@@ -76,6 +77,13 @@
                 center: 'title',
                 right: 'dayGridMonth,dayGridWeek,dayGridDay,listMonth'
             },
+            buttonText: {
+                today: 'hoy',
+                month: 'mes',
+                week: 'semana',
+                day: 'día',
+                list: 'lista'
+            },
             initialDate: new Date(anio, mes, 1),
             events: eventos,
             datesSet: function (info) {
@@ -116,5 +124,5 @@
             const modal = new bootstrap.Modal(document.getElementById('detalleReservaModal'));
             modal.show();
         }
-</script>
+    </script>
 </asp:Content>

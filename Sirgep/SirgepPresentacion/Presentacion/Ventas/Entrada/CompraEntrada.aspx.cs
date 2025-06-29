@@ -31,11 +31,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             if (!IsPostBack)
             {
-                //if (Request.QueryString["idEvento"] != null)
-                //{
-                //int idEntrada = int.Parse((sender as Button).CommandArgument);
-
-                //int idFuncion = 1; // Simular ID elegido
+                // Aseguramos que el session para el feedback esté en false al cargar la página
+                Session["MostrarFeedback"] = false;
                 int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
                 var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
                 evento evento = compraService.buscarEventos(funcion.evento.idEvento);
@@ -43,15 +40,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblEvento.Text = evento.nombre;
                 lblUbicacion.Text = evento.ubicacion;
                 lblReferencia.Text = evento.referencia;
-
-                // Obtener parámetros por URL
-                //string fechaStr = Request.QueryString["fecha"];
-                //string horaIni = Request.QueryString["horaInicio"];
-                //string horaFin = Request.QueryString["horaFin"];
-                //string cantidadStr = Request.QueryString["cantidad"];
-
-                
-
 
                 string fecha = funcion.fecha.ToString();
                 string horaIni = funcion.horaInicio.ToString();
@@ -63,14 +51,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 lblFecha.Text = DateTime.Parse(fecha).ToString("dd/MM/yyyy");
                 lblCantidad.Text = cantidad;
                 lblTotal.Text = evento.precioEntrada.ToString();
-
-                // Guardar en ViewState si lo vas a usar en el botón pagar
-                //ViewState["IdEvento"] = idEvento;
-                //ViewState["Fecha"] = fechaStr;
-                //ViewState["HoraInicio"] = horaIni;
-                //ViewState["HoraFin"] = horaFin;
-                //ViewState["Cantidad"] = cantidadStr;
-                //}
 
                 if (Session["idUsuario"] != null)
                 {
@@ -140,10 +120,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 return;
             }
             // Validar campos obligatorios
-            //aqui el if
             if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
                 string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                //string.IsNullOrWhiteSpace(txtApellidoMaterno.Text) ||
                 string.IsNullOrWhiteSpace(txtDNI.Text) ||
                  string.IsNullOrWhiteSpace(txtCorreo.Text))
             {
@@ -167,7 +145,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
             int idPersona1;
-            // ---------- Datos que necesitas ----------
             double precio = compraService.buscarEventos(1).precioEntrada;
             double totalAPagar = precio;
 
@@ -186,7 +163,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    //segundoApellido = txtApellidoMaterno.Text.Trim(),
+                    segundoApellido = txtApellidoMaterno.Text.Trim(), //no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
                     tipoDocumento = eTipoDocumento.DNI,
@@ -195,7 +172,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 };
                 if (txtApellidoMaterno.Text.Length > 0) nuevo.segundoApellido = txtApellidoMaterno.Text.Trim();
                 idPersona1 = compraService.insertarComprador(nuevo);
-                //idPersona1 = nuevo.idPersona; // Obtener el ID del nuevo comprador
             }
             else
             {
@@ -206,7 +182,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
 
 
-            ReferenciaDisco.eMetodoPago mp;
+            eMetodoPago mp;
 
             string metodoPagoSeleccionado = hfMetodoPago.Value;
 
@@ -218,7 +194,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
-            //int idFuncion = 1; // Simular ID elegido
             int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
             var funcion = fWs.buscarFuncionId(idFuncion); // bsuscar función
             evento evento = compraService.buscarEventos(funcion.evento.idEvento);
@@ -254,10 +229,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             //int idConstancia=compraService.insertarConstancia(nueva);
             int idConstancia = entradaWS.insertarEntrada(nEntrada);
-            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);";
+            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);"+
+                                 "setTimeout(function() {" +
+                                 "  window.location.href = '/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia + "';" +
+                                 "}, 1500);"; // 1.5 segundos para que el usuario vea el modal;
+            // Justo antes de redirigir a ConstanciaEntrada.aspx
+            Session["MostrarFeedback"] = true; //Solo muestra el feedback si el flujo fue por un pago
 
             ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalExito", scriptExito, true);
-            Response.Redirect("/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia);
         }
 
         protected void cvDocumento_ServerValidate(object source, ServerValidateEventArgs args)

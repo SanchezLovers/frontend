@@ -96,6 +96,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -124,6 +125,10 @@
     <None Include="Connected Services\ReferenciaDisco\FuncionWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
@@ -2256,6 +2261,7 @@
     <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
+    <Content Include="Presentacion\Usuarios\Administrador\Stats.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
@@ -2359,6 +2365,13 @@
     </Compile>
     <Compile Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx.designer.cs">
       <DependentUpon>CalendarioReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Administrador\Stats.aspx.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Administrador\Stats.aspx.designer.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.cs">
       <DependentUpon>ListaComprador.aspx</DependentUpon>
@@ -2829,6 +2842,21 @@
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioRepDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espaciosFavoritosDelMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
+		<DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
