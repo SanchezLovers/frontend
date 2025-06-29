@@ -11,7 +11,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
     public partial class ConstanciaReserva : System.Web.UI.Page
     {
         private ReservaWSClient reservaWS;
-        //private CompradorWSClient compradorWS;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,12 +23,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         }
         protected void CargarDatosEnPantalla(int idConstancia)
         {
-            /*
-            reserva reservaDomain = reservaWS.buscarReserva(numReserva);
-            comprador compradorDomain = reservaWS.buscarCompradorDeReserva(reservaDomain.persona.idPersona);
-            espacio espacioDomain = reservaWS.buscarEspacioDeReserva(reservaDomain.espacio.idEspacio);
-            distrito distritoDomain = reservaWS.buscarDistritoDeReserva(espacioDomain.distrito.idDistrito);
-            */
             constanciaReservaDTO constanciaReservaDTO = reservaWS.buscarConstanciaReserva(idConstancia);
             // Datos del espacio
             lblEspacio.Text = constanciaReservaDTO.detalleReserva.nombreEspacio;
@@ -57,9 +50,18 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Session["tipoServicio"] = "reserva";
-            string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
-            ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            // Flujo de compra (muestra modal de feedback)
+            if (Session["MostrarFeedback"] != null && (bool)Session["MostrarFeedback"])
+            {
+                Session["tipoServicio"] = "reserva";
+                Session["MostrarFeedback"] = null; // Limpiar para evitar mostrarlo de nuevo
+                string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            }
+            else // Flujo de consulta (redirecciona a la página de consulta de entradas)
+            {
+                Response.Redirect("/Presentacion/Ventas/Reserva/ListaReservasComprador.aspx");
+            }
         }
 
         protected void btnDescargar_Click(object sender, EventArgs e)

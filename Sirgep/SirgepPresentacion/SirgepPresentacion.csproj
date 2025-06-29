@@ -96,6 +96,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -116,48 +117,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\CompradorWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\CompradorWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\DistritoWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EntradaWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EntradaWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\EspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EspacioWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ReferenciaDisco\FuncionWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\FuncionWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\ReporteWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ReporteWS.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
-    <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
@@ -2284,13 +2255,13 @@
     <Content Include="Presentacion\Infraestructura\Evento\DetalleEvento.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\ListaEvento.aspx" />
     <Content Include="Presentacion\Infraestructura\Evento\GestionaEventos.aspx" />
-    <None Include="Presentacion\Infraestructura\Evento\ImagenMini.ashx" />
     <Content Include="Presentacion\Inicio\LogIn.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
     <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
+    <Content Include="Presentacion\Usuarios\Administrador\Stats.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx" />
     <Content Include="Presentacion\Usuarios\Comprador\PerfilComprador.aspx" />
     <Content Include="Presentacion\Ventas\Entrada\CompraEntrada.aspx" />
@@ -2394,6 +2365,13 @@
     </Compile>
     <Compile Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx.designer.cs">
       <DependentUpon>CalendarioReservas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Administrador\Stats.aspx.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Usuarios\Administrador\Stats.aspx.designer.cs">
+      <DependentUpon>Stats.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Usuarios\Comprador\ListaComprador.aspx.cs">
       <DependentUpon>ListaComprador.aspx</DependentUpon>
@@ -2507,20 +2485,50 @@
     <Content Include="Content\bootstrap-icons\bootstrap-icons.scss" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CalificacionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\CompradorWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\CompraWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\CompraWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\DistritoWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\DistritoWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\EntradaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EntradaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\EspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\EventoWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EventoWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\FuncionWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\HorarioEspacioWS.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\ProvinciaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReservaWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.actualizarCompradorResponse.datasource">
@@ -2590,6 +2598,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDTOporIDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse.datasource">
@@ -2701,6 +2712,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.evento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.funcion.datasource">
@@ -2829,31 +2843,25 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDTOporIDResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espacioRepDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.espaciosFavoritosDelMesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO1.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.entradasPorMesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse1.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.reservasPorMesResponse.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
@@ -2868,6 +2876,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\img\espacios\" />
+    <Folder Include="Images\img\eventos\" />
     <Folder Include="Presentacion\Infraestructura\Funcion\" />
   </ItemGroup>
   <ItemGroup>

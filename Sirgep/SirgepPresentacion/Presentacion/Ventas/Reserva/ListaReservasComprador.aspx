@@ -9,10 +9,6 @@
     <h2 class="fw-bold mb-4">Reservas</h2>
     <!-- Búsqueda y Filtros -->
     <div class="busqueda-filtros mb-4">
-        <div class="busqueda mb-2">
-            <input type="text" id="input_busqueda" runat="server" class="input-busqueda" placeholder="🔍 Buscar" onkeypress="return buscarOnEnter(event)" />
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" OnClick="btnBuscar_Click" Style="display: none" />
-        </div>
         <div class="filtros d-flex align-items-center flex-wrap gap-3">
             <label class="fw-bold me-2 mb-0">Filtros:</label>
             <!-- Fecha Desde -->
@@ -25,23 +21,30 @@
                 <label class="me-1 mb-0">Hasta:</label>
                 <asp:TextBox ID="txtFechaFin" runat="server" CssClass="form-control" TextMode="Date" />
             </div>
-            <!-- Checkboxes -->
+            <!-- RadioButtonList para Estado con estilos en línea -->
             <div class="d-flex align-items-center">
-                <asp:CheckBox ID="chkVigentes" runat="server" CssClass="form-check-input me-1" />
-                <label for="chkVigentes" class="me-3 mb-0">Vigentes</label>
-                <asp:CheckBox ID="chkFinalizadas" runat="server" CssClass="form-check-input me-1" />
-                <label for="chkFinalizadas" class="me-3 mb-0">Finalizadas</label>
-                <asp:CheckBox ID="chkCanceladas" runat="server" CssClass="form-check-input me-1" />
-                <label for="chkCanceladas" class="me-3 mb-0">Canceladas</label>
+                <asp:Label runat="server" AssociatedControlID="rblEstados" Style="margin-right: 10px; font-weight: normal; color: black;">Estado:</asp:Label>
+                <asp:RadioButtonList ID="rblEstados" runat="server" RepeatDirection="Horizontal" RepeatLayout="Flow"
+                    Style="display: flex; gap: 20px; color: black; font-weight: normal;">
+                    <asp:ListItem Text="Vigentes" Value="Vigentes" />
+                    <asp:ListItem Text="Finalizadas" Value="Finalizadas" />
+                    <asp:ListItem Text="Canceladas" Value="Canceladas" />
+                </asp:RadioButtonList>
             </div>
-            <!-- Botón Filtrar -->
             <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark" OnClick="btnFiltrar_Click" />
+            <asp:Button ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" CssClass="btn btn-dark" OnClick="btnMostrarTodos_Click" />
         </div>
     </div>
     <!-- Descarga -->
     <div class="container">
-        <div class="d-flex justify-content-between mb-3">
-            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Lista de Reservas" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La lista de reservas fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Mensaje alineado a la izquierda, sin negrita -->
+            <asp:Label ID="lblMensaje" runat="server" CssClass="mb-0 text-dark" />
+            <!-- Botón alineado a la derecha -->
+            <asp:Button ID="btnDescargarMostrarModal" runat="server"
+                Text="Descargar Lista de Reservas"
+                OnClick="btnDescargar_Click"
+                CssClass="btn btn-dark" />
         </div>
     </div>
     <!-- un par de hidden values -->

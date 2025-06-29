@@ -401,6 +401,18 @@ body {
     cursor: not-allowed;
 }
 
+.filtro-fecha-espacio {
+    font-size: 0.95em;
+    padding: 6.5px 6px;
+    border: 2px solid #222;
+    border-radius: 10px;
+    width: 200px;
+    background: #fff;
+    appearance: none; /* Para que no tome el estilo del sistema operativo */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: auto;
+}
 .image-button {
     background-color: transparent;
     border: none;
@@ -417,81 +429,50 @@ body {
 /* Estilo para la card de evento */
 .evento-card {
     display: flex;
-    border: 2px solid #222;
-    border-radius: 8px;
-    padding: 16px 20px 16px 20px;
+    flex-direction: row;
+    border: 2px solid #333;
+    border-radius: 12px;
     background: #fff;
+    padding: 18px 24px;
+    margin: 12px 0;
+    min-height: 180px;
     align-items: center;
-    min-height: 160px;
-    width: 100%;
-    box-sizing: border-box;
-    position: relative;
-    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
-.evento-img {
-    flex: 0 0 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.evento-img img {
+    width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 24px;
 }
-
-    .evento-img img {
-        width: 120px;
-        height: 110px;
-        object-fit: cover;
-        border-radius: 0;
-        box-shadow: none;
-    }
 
 .evento-info {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    margin-left: 18px;
-    padding-bottom: 48px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .evento-titulo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
 .evento-ubicacion {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: #222;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 4px;
 }
 
 .evento-descripcion {
-    font-size: 0.95rem;
-    color: #444;
-    margin-bottom: 1rem;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 8px;
 }
 
 .evento-btn-wrapper {
-    position: absolute;
-    right: 24px;
-    bottom: 24px;
-    width: auto;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    text-align: right;
 }
-
-.evento-btn-comprar {
-    background: #23252a;
-    color: #fff;
-    border-radius: 8px;
-    font-size: 1rem;
-    padding: 6px 16px;
-    border: none;
-    font-weight: 400;
-    transition: background 0.2s;
-    margin-top: 0;
-}
-
-    .evento-btn-comprar:hover {
-        background: #111217;
-    }

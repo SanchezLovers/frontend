@@ -18,11 +18,9 @@
         </HeaderTemplate>
         <ItemTemplate>
             <div class="col-md-6 mb-4 d-flex justify-content-center">
-                Add commentMore actions
-               
-                <div class="evento-card">
+                <div class="evento-card w-100">
                     <div class="evento-img">
-                        <img src='<%# "/ImagenMini.ashx?src=" + Eval("archivoImagen") %>' alt="Mini imagen" />
+                        <%# !string.IsNullOrEmpty(Eval("archivoImagen") as string) ? "<img src='" + ResolveUrl("~/" + ((string)Eval("archivoImagen")).Replace("Images/img/eventos/", "Images/img/eventosThumbs/").Replace(".png", ".jpg").Replace(".gif", ".jpg")) + "' loading='lazy' />" : "" %>
                     </div>
                     <div class="evento-info">
                         <div>
@@ -38,14 +36,15 @@
                             </div>
                         </div>
                         <div class="evento-btn-wrapper">
-                            <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-dark btn-sm float-end me-1 mb-3" CommandArgument='<%# Eval("idEvento") %>' OnClick="btnComprar_Click" />
+                            <asp:Button ID="btnComprar" runat="server" Text="Comprar" CssClass="btn btn-dark btn-sm" CommandArgument='<%# Eval("idEvento") %>' OnClick="btnComprar_Click" />
                         </div>
                     </div>
                 </div>
+            </div>
         </ItemTemplate>
         <FooterTemplate>
             </div>
-
+   
         </FooterTemplate>
     </asp:Repeater>
     <!-- Cambio de paginado -->

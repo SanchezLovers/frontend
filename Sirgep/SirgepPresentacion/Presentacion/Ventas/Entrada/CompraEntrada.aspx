@@ -103,7 +103,7 @@
                 });
             }
         }
-</script>
+    </script>
 
     <script type="text/javascript">
         var totalSeconds = 60;

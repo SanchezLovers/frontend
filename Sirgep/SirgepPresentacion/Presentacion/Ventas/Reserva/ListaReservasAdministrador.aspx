@@ -11,7 +11,7 @@
                     oninput="validarLongitudBusqueda(this)"
                     onkeypress="return buscarOnEnter(event)" />
                 <span id="mensajeAdvertencia" class="mensaje-advertencia"
-                    style="color: red; visibility: hidden; margin-left: 10px;">La búsqueda no puede superar los 100 caracteres.
+                    style="color: red; visibility: hidden; margin-left: 10px;">La búsqueda no puede superar los 50 caracteres.
                 </span>
                 <asp:Button ID="btnBuscar" runat="server" Text="Buscar"
                     OnClick="btnBuscar_Click" Style="visibility: hidden;" CssClass="btn btn-dark mx-2" />
@@ -85,36 +85,11 @@
     <script type="text/javascript">
         function validarLongitudBusqueda(input) {
             var mensaje = document.getElementById('mensajeAdvertencia');
-            if (input.value.length > 100) {
+            if (input.value.length > 50) {
                 mensaje.style.visibility = 'visible';
             } else {
                 mensaje.style.visibility = 'hidden';
             }
-        }
-
-        function validarBusqueda() {
-            var input = document.getElementById('<%= input_busqueda.ClientID %>');
-            if (input.value.length > 100) {
-                alert("La búsqueda no puede superar los 100 caracteres.");
-                return false;
-            }
-            return true;
-        }
-
-        function buscarOnEnter(e) {
-            var input = document.getElementById('<%= input_busqueda.ClientID %>');
-            if (e.key === 'Enter' || e.keyCode === 13) {
-                e.preventDefault();
-
-                if (input.value.length > 100) {
-                    alert("La búsqueda no puede superar los 100 caracteres.");
-                    return false;
-                }
-
-                __doPostBack('<%= btnBuscar.UniqueID %>', '');
-                return false;
-            }
-            return true;
         }
     </script>
 </asp:Content>

@@ -60,6 +60,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected global::System.Web.UI.WebControls.Label PrecioEntrada;
 
         /// <summary>
+        /// Control imgEvento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgEvento;
+
+        /// <summary>
         /// Control cantGeneralInvisible.
         /// </summary>
         /// <remarks>
