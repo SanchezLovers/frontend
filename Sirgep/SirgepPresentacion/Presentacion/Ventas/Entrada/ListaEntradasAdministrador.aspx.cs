@@ -39,10 +39,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 CargarEntradas();
             }
         }
-        public void CargarEntradas()
+
+        public void realizarPaginado(detalleEntradaDTO[] entradas)
         {
-            var todasLasEntradas = entradaWS.listarDetalleEntradas(new listarDetalleEntradasRequest()).@return; ; // Lista completa
-            int total = todasLasEntradas.Length;
+            var todasLasEntradas = entradas.ToList();
+            int total = todasLasEntradas.Count;
             int inicio = (PaginaActual - 1) * TAMANIO_PAGINA;
             int totalPaginas = (int)Math.Ceiling((double)total / TAMANIO_PAGINA);
             var entradasPaginadas = todasLasEntradas
@@ -57,17 +58,30 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             btnAnterior.Enabled = PaginaActual > 1;
             btnSiguiente.Enabled = inicio + TAMANIO_PAGINA < total;
         }
+        public void CargarEntradas()
+        {
+            detalleEntradaDTO[] entradas = entradaWS.listarDetalleEntradas(new listarDetalleEntradasRequest()).@return; ; // Lista completa
+            realizarPaginado(entradas);
+        }
 
         protected void txtBusqueda_TextChanged(object sender, EventArgs e)
         {
             string texto = txtBusqueda.Text;
             if (texto == "" || texto==null)
             {
+                PaginaActual = 1;
+                CargarEntradas();
+                return;
+            
+            }
+            detalleEntradaDTO[] entradas = entradaWS.buscarEntradasPorTexto(new buscarEntradasPorTextoRequest(texto)).@return;
+            if(entradas == null)
+            {
+                mostrarModalErrorEntrada("RESULTADOS DE BUSQUEDA", "No se encontraron entradas con los parámetros actuales. Se litarán todas las entradas.");
                 CargarEntradas();
                 return;
             }
-            rptEntradas.DataSource = entradaWS.buscarEntradasPorTexto(new buscarEntradasPorTextoRequest(texto)).@return;
-            rptEntradas.DataBind();
+            realizarPaginado(entradas);
         }
 
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
@@ -89,12 +103,22 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             if (PaginaActual > 1)
             {
                 PaginaActual--;
+                if (!string.IsNullOrEmpty(txtBusqueda.Text))
+                {
+                    txtBusqueda_TextChanged(sender, e);
+                    return;
+                }
                 CargarEntradas();
             }
         }
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
             PaginaActual++;
+            if (!string.IsNullOrEmpty(txtBusqueda.Text))
+            {
+                txtBusqueda_TextChanged(sender, e);
+                return;
+            }
             CargarEntradas();
         }
         public void mostrarModalExitoEntrada(string titulo, string mensaje)

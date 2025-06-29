@@ -2587,6 +2587,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDTOporIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2698,6 +2701,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.evento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.funcion.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2737,12 +2743,6 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDiasSemDeEspacioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2780,9 +2780,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarHorariosDelEspacioYDiaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarPorMesYAnioResponse.datasource">
@@ -2833,6 +2830,12 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2845,6 +2848,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\img\espacios\" />
+    <Folder Include="Images\img\eventos\" />
     <Folder Include="Presentacion\Infraestructura\Funcion\" />
   </ItemGroup>
   <ItemGroup>

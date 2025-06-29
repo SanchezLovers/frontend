@@ -14,35 +14,34 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
     public partial class ListaEntradasComprador : System.Web.UI.Page
     {
         private EntradaWSClient entradaWS;
-        private List<detalleEntradaDTO> listaDetalleEntradas
+        private detalleEntradaDTO[] lista
         {
-            get => ViewState["listaDetalleEntradas"] as List<detalleEntradaDTO> ?? new List<detalleEntradaDTO>();
-            set => ViewState["listaDetalleEntradas"] = value;
-        }
-
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            entradaWS = new EntradaWSClient();
+            get => ViewState["lista"] as detalleEntradaDTO[] ?? new detalleEntradaDTO[0];
+            set => ViewState["lista"] = value;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            entradaWS = new EntradaWSClient();
             if (!IsPostBack)
             {
-                entradaWS = new EntradaWSClient();
-                CargarDatos(null, null, null);
+                //int idComprador = 40;
+                int idComprador = int.Parse(Session["idUsuario"].ToString());
+                lista = entradaWS.listarEntradasPorComprador(idComprador, null, null, null);
+                GvListaEntradasComprador.DataSource = lista;
+                GvListaEntradasComprador.DataBind();
             }
         }
         protected void GvListaEntradasComprador_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GvListaEntradasComprador.PageIndex = e.NewPageIndex;
-            CargarDatos(null, null, null);
-            //GvListaEntradasComprador.DataBind();
+            GvListaEntradasComprador.DataSource = lista;
+            GvListaEntradasComprador.DataBind();
         }
         protected void CargarDatos(string fechaInicio, string fechaFin, string estado)
         {
-            int idComprador = 40;
-            //int idComprador = int.Parse(Session["idUsuario"].ToString());
-            detalleEntradaDTO[] listaDetalleEntradas = entradaWS.listarPorComprador(idComprador, fechaInicio, fechaFin, estado);
+            //int idComprador = 40;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            detalleEntradaDTO[] listaDetalleEntradas = entradaWS.listarEntradasPorComprador(idComprador, fechaInicio, fechaFin, estado);
             if (listaDetalleEntradas==null)
             {
                 listaDetalleEntradas = new detalleEntradaDTO[0];
@@ -52,8 +51,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         }
         protected void btnDescargar_Click(object sender, EventArgs e)
         {
-            //int idComprador = int.Parse(Session["idUsuario"].ToString());
-            int idComprador = 40;
+            int idComprador = int.Parse(Session["idUsuario"].ToString());
+            //int idComprador = 40;
             DateTime? fechaInicio, fechaFin;
             string estado = null;
             ObtenerFiltros(out fechaInicio, out fechaFin, out estado);
@@ -103,7 +102,8 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         {
             txtFechaInicio.Text = txtFechaFin.Text="";
             rblEstados.ClearSelection();
-            CargarDatos(null, null, null);
+            GvListaEntradasComprador.DataSource = lista;
+            GvListaEntradasComprador.DataBind();
             lblMensaje.Text = "Mostrando todas las entradas de hasta un año";
         }
         protected void ObtenerFiltros(out DateTime? fechaInicio, out DateTime? fechaFin, out string estado)

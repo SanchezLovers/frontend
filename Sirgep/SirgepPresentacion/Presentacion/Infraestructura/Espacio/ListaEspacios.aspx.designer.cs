@@ -60,15 +60,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected global::System.Web.UI.WebControls.Button btnConsultar;
 
         /// <summary>
-        /// Control rptEspacios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEspacios;
-
-        /// <summary>
         /// Control btnAgregarEspacio.
         /// </summary>
         /// <remarks>
@@ -76,6 +67,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarEspacio;
+
+        /// <summary>
+        /// Control rptEspacios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptEspacios;
 
         /// <summary>
         /// Control txtNombreEspacioAgregar.
@@ -150,22 +150,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected global::System.Web.UI.WebControls.DropDownList ddlDistritoAgregar;
 
         /// <summary>
-        /// Control txtHoraInicioInsert.
+        /// Control ddlHoraInicioInsert.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraInicioInsert;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraInicioInsert;
 
         /// <summary>
-        /// Control txtHoraFinInsert.
+        /// Control ddlHoraFinInsert.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFinInsert;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraFinInsert;
 
         /// <summary>
         /// Control lblError.
@@ -357,22 +357,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected global::System.Web.UI.WebControls.DropDownList ddlDistritoEdit;
 
         /// <summary>
-        /// Control txtHoraInicioEdit.
+        /// Control ddlHoraInicioEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraInicioEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraInicioEdit;
 
         /// <summary>
-        /// Control txtHoraFinEdit.
+        /// Control ddlHoraFinEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHoraFinEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHoraFinEdit;
 
         /// <summary>
         /// Control lunesEdit.

@@ -15,24 +15,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
     {
 
         /// <summary>
-        /// Control input_busqueda.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText input_busqueda;
-
-        /// <summary>
-        /// Control btnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscar;
-
-        /// <summary>
         /// Control txtFechaInicio.
         /// </summary>
         /// <remarks>
@@ -51,31 +33,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
 
         /// <summary>
-        /// Control chkVigentes.
+        /// Control rblEstados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkVigentes;
-
-        /// <summary>
-        /// Control chkFinalizadas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkFinalizadas;
-
-        /// <summary>
-        /// Control chkCanceladas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkCanceladas;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblEstados;
 
         /// <summary>
         /// Control btnFiltrar.
@@ -85,6 +49,24 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFiltrar;
+
+        /// <summary>
+        /// Control btnMostrarTodos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMostrarTodos;
+
+        /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
 
         /// <summary>
         /// Control btnDescargarMostrarModal.
