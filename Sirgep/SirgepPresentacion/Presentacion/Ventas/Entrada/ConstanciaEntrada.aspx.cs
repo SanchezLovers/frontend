@@ -55,9 +55,18 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Session["tipoServicio"] = "entrada";
-            string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
-            ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            // Flujo de compra (muestra modal de feedback)
+            if (Session["MostrarFeedback"] != null && (bool)Session["MostrarFeedback"])
+            {
+                Session["tipoServicio"] = "entrada";
+                Session["MostrarFeedback"] = null; // Limpiar para evitar mostrarlo de nuevo
+                string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
+                ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);
+            }
+            else // Flujo de consulta (redirecciona a la página de consulta de entradas)
+            {
+                Response.Redirect("/Presentacion/Ventas/Entrada/ListaEntradasComprador.aspx");
+            }
         }
 
         protected void btnDescargar_Click(object sender, EventArgs e)

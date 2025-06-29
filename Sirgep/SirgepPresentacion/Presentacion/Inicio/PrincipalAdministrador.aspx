@@ -39,7 +39,16 @@
                     </div>
                 </div>
 
-
+                <h5 class="fw-semibold mb-3">Analizar Estadísticas de Servicios</h5>
+                <div class="row mb-4">
+                    <div class="col-6 mb-2">
+                        <asp:Button ID="btnStats" runat="server"
+                            CssClass="btn btn-dark w-100"
+                            Text="Ver Estadísticas"
+                            OnClick="btnStats_click" 
+                            OnClientClick="mostrarModalCarga('Cargando...', 'Redireccionando. Espere un momento.');"/>
+                    </div>
+                </div>
 
             </div>
             <!-- Columna derecha: imagen -->
