@@ -232,20 +232,20 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
             if (!int.TryParse(txtDispo, out int disponibles) || disponibles < 0 || disponibles > 1000)
             {
-                MostrarError("La cantidad disponible debe ser un número entre 0 y 1000.", pagina);
+                MostrarError("La cantidad de entradas disponibles debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
             int.TryParse(txtVend, out int vendidas);
             if (vendidas < 0 || vendidas > 1000)
             {
-                MostrarError("La cantidad vendida debe ser un número entre 0 y 1000.", pagina);
+                MostrarError("La cantidad de entradas vendidas debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
             if(vendidas > disponibles)
             {
-                MostrarError("La cantidad vendida debe ser menor que la cantidad disponible.", pagina);
+                MostrarError("La cantidad de entradas vendidas debe ser menor que la cantidad disponible (total de entradas).", pagina);
                 return false;
             }
 
@@ -541,12 +541,11 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         public bool validaFormatoHora(TimeSpan tsInicio, TimeSpan tsFin)
         {
-            bool propCero = tsInicio.ToString().Substring(2) == ":00:00" || tsFin.ToString().Substring(2) == ":00:00";
-            bool propQuince = tsInicio.ToString().Substring(2) == ":15:00" || tsFin.ToString().Substring(2) == ":15:00";
-            bool propTreinta = tsInicio.ToString().Substring(2) == ":30:00" || tsFin.ToString().Substring(2) == ":30:00";
-            bool propCuarentaCinco = tsInicio.ToString().Substring(2) == ":45:00" || tsFin.ToString().Substring(2) == ":45:00";
-            bool cumpleFormato = propCero || propQuince || propTreinta || propCuarentaCinco;
-            return cumpleFormato;
+            bool EsValido(TimeSpan t) =>
+                    t.Seconds == 0 &&
+                (t.Minutes == 0 || t.Minutes == 15 || t.Minutes == 30 || t.Minutes == 45);
+
+            return EsValido(tsInicio) && EsValido(tsFin);
         }
         private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor, int pagina)
         {

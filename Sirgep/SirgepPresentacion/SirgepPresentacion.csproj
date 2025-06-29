@@ -2587,6 +2587,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDeEntradaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDTOporIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoPorIDResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2698,6 +2701,9 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.evento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.funcion.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2749,9 +2755,6 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasActivasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEspacioDistyCatResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2791,9 +2794,6 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservaPorFechaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2830,16 +2830,10 @@
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventoDTO.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleEntradasFiltradaPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarDetalleReservasFiltradaPorCompradorResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.buscarEventoDTOporIDResponse.datasource">
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarReservasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
@@ -2854,6 +2848,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\img\espacios\" />
+    <Folder Include="Images\img\eventos\" />
     <Folder Include="Presentacion\Infraestructura\Funcion\" />
   </ItemGroup>
   <ItemGroup>
