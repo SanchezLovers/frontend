@@ -69,15 +69,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected global::System.Web.UI.WebControls.Button btnConsultar;
 
         /// <summary>
-        /// Control rptEventos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEventos;
-
-        /// <summary>
         /// Control btnMostrarModalAgregarEvento.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMostrarModalAgregarEvento;
+
+        /// <summary>
+        /// Control rptEventos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptEventos;
 
         /// <summary>
         /// Control txtNomEvent.
@@ -321,6 +321,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected global::System.Web.UI.WebControls.DropDownList ddlDepasEditar;
 
         /// <summary>
+        /// Control btnEditUbigeo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnEditUbigeo;
+
+        /// <summary>
         /// Control txtUbiEditar.
         /// </summary>
         /// <remarks>
@@ -418,6 +427,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAgregarFuncionEditar;
+
+        /// <summary>
+        /// Control lblErrorEditar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorEditar;
 
         /// <summary>
         /// Control btnAceptarEditar.
