@@ -150,33 +150,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         protected global::System.Web.UI.WebControls.DropDownList ddlDistritoAgregar;
 
         /// <summary>
-        /// Control imgActual.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgActual;
-
-        /// <summary>
-        /// Control fuImagenEditar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuImagenEditar;
-
-        /// <summary>
-        /// Control btnGuardarEdicion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarEdicion;
-
-        /// <summary>
         /// Control lblMensaje.
         /// </summary>
         /// <remarks>
@@ -292,6 +265,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkDomingo;
+
+        /// <summary>
+        /// Control fuAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuAgregar;
 
         /// <summary>
         /// Control diasSeleccionados.

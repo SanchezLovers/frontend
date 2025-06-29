@@ -1,9 +1,10 @@
-using System;
-using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using SirgepPresentacion.Presentacion.Inicio;
 using SirgepPresentacion.ReferenciaDisco;
+using System;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -55,6 +56,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
+            string tipoUsuario = Session["tipoUsuario"] as string;
+            // si es Administrador, no se pide calificación y, a su vez, la riderección es al PrincipalAdministrador…
+            if(tipoUsuario == "administrador")
+            {
+                Response.Redirect("~/Presentacion/Inicio/PrincipalAdministrador.aspx");
+            }
             Session["tipoServicio"] = "entrada";
             string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
             ClientScript.RegisterStartupScript(this.GetType(), "mostrarModalFeedback", script, true);

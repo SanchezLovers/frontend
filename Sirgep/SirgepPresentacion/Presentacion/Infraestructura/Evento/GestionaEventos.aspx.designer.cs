@@ -204,15 +204,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         protected global::System.Web.UI.WebControls.TextBox txtVendidas;
 
         /// <summary>
-        /// Control fuAgregar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuAgregar;
-
-        /// <summary>
         /// Control txtFechaFuncion.
         /// </summary>
         /// <remarks>
@@ -256,6 +247,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblErrorAgregar;
+
+        /// <summary>
+        /// Control fuAgregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuAgregar;
 
         /// <summary>
         /// Control btnAgregar.

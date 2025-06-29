@@ -64,19 +64,20 @@
         <table class="table table-bordered text-center align-middle tabla-reservas" style="background: #f7f7f7;">
             <thead class="table-light fw-bold">
                 <tr>
-                    <th class="">Abrir</th>
+                    <th>Imagen</th>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>E. Disponibles</th>
-                    <th>E. Vendidas</th>
-                    <th>Precio S/.</th>
+                    <th>Disponibles</th>
+                    <th>Vendidas</th>
+                    <th>Precio S/</th>
                     <th>Inicio</th>
                     <th>Fin</th>
                     <th>Acciones</th>
+                    <th>¿Activo?</th>
                 </tr>
             </thead>
             <tbody>
-                <asp:Repeater ID="rptEventos" runat="server">
+                <asp:Repeater ID="rptEventos" runat="server" OnItemDataBound="rptEventos_ItemDataBound">
                     <ItemTemplate>
                         <tr>
                             <td>
@@ -101,6 +102,7 @@
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
                                     Text="Eliminar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEliminar_Click" />
                             </td>
+                            <td><%# Eval("Activo").ToString() == "65" ? "Sí" : "No" %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>
@@ -224,23 +226,6 @@
 
                         </div>
 
-                        <hr class="my-3" />
-
-                        <!-- Foto -->
-                        <div class="row g-3">
-                            <!-- Subir imagen -->
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Subir foto</label>
-                                <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
-                            </div>
-
-                            <!-- Vista previa -->
-                            <div class="col-md-6 text-center d-flex align-items-end">
-                                <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
-                            </div>
-                        </div>
-
-
                         <hr class="my-4" />
 
                     <!-- Lista de funciones -->
@@ -263,6 +248,21 @@
                             <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn btn-success" OnClick="btnAgregarFuncion_Click" />
                         </div>
                         <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
+                    </div>
+                </div>
+
+
+                <!-- Foto -->
+                <div class="row g-3 my-2">
+                    <!-- Subir imagen -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Subir foto</label>
+                        <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
+                    </div>
+
+                    <!-- Vista previa -->
+                    <div class="col-md-6 text-center d-flex align-items-end">
+                        <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
                     </div>
                 </div>
 
@@ -407,17 +407,17 @@
                         <!-- Precio Entrada -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Precio Entrada</label>
-                            <asp:TextBox ID="txtPrecioEditar" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtPrecioEditar" TextMode="Number" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
                         </div>
                         <!-- Disponibles -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Entradas Disponibles</label>
-                            <asp:TextBox ID="txtDispoEditar" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDispoEditar" TextMode="Number" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
                         </div>
                         <!-- Vendidas -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Entradas Vendidas</label>
-                            <asp:TextBox ID="txtVendEditar" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtVendEditar" TextMode="Number" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
                         </div>
 
                     </div>
@@ -445,7 +445,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-4">
                         <asp:Label ID="lblErrorEditar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
 

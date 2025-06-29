@@ -21,6 +21,20 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         private const int MODAL_AGREGAR = 0;
         private const int MODAL_EDITAR = 1;
+
+        public List<funcion> funcionesEditar
+        {
+            get
+            {
+                if (ViewState["funcionesEditar"] == null)
+                    ViewState["funcionesEditar"] = new List<funcion>();
+                return (List<funcion>)ViewState["funcionesEditar"];
+            }
+            set
+            {
+                ViewState["funcionesEditar"] = value;
+            }
+        }
         private int PaginaActual
         {
             get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
@@ -32,6 +46,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            funcionesEditar = new List<funcion>();
             eventoWS = new EventoWSClient();
             funcionWS = new FuncionWSClient();
             depaWS = new DepartamentoWSClient();
@@ -841,6 +856,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string id = btn.CommandArgument;
             int idEvento = int.Parse(id);
             hdnIdEvento.Value = idEvento.ToString();
+            funcionesEditar.Clear();
             eventoDTO eventoEditar = eventoWS.buscarEventoDTOporID(new buscarEventoDTOporIDRequest(idEvento)).@return;
 
             // llenar los campos con la información del evento traído
@@ -903,10 +919,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string valor = $"{fecha}_{horaInicio}_{horaFin}";
             string texto = $"{fecha} - {horaInicio} a {horaFin}";
 
-            const int MODAL_EDITAR = 2;
             // 2 hace referencia al Modal Editar
             if (!ValidaFuncion(fecha, horaInicio, horaFin, valor, MODAL_EDITAR)) return;
             DateTime.TryParse(fecha, out DateTime fechaSeleccionada);
+
+            funcion nuevaFuncion = new funcion
+            {
+                fecha = fecha,
+                horaInicio = horaInicio,
+                horaFin = horaFin,
+                evento = new evento { idEvento = int.Parse(hdnIdEvento.Value) }
+            };
+
+            // Obtener la lista del ViewState
+            var listaActual = funcionesEditar;
+            listaActual.Add(nuevaFuncion);
+            funcionesEditar = listaActual; // guardar de nuevo en ViewState
 
             ddlFuncEditar.Items.Add(new ListItem(texto, valor));
             ActualizarFechasMinMax(fechaSeleccionada);
@@ -986,6 +1014,17 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
             if (actualizado)
             {
+                // insertar las funciones añadidas
+                foreach(funcion f in funcionesEditar)
+                {
+                    int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(f)).@return;
+
+                    if (idFuncion < 1)
+                    {
+                        mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función");
+                        return;
+                    }
+                }
                 mostrarModalExitoEvento("VENTANA DE ÉXITO", "EVENTO actualizado exitosamente");
                 CargarEventos();
             }
@@ -1045,6 +1084,35 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return;
 
             mostrarModalFoto("/" + ruta); // Asegúrate de que comience con "/"
+        }
+
+        protected void rptEventos_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var dataItem = e.Item.DataItem;
+
+                // Obtener la fecha
+                string estado = Convert.ToString(DataBinder.Eval(dataItem, "Activo"));
+                bool eliminado = estado == "69";
+
+                // Verificar si pasaron 5 años
+                bool habilitado = !eliminado;
+
+                // Obtener el botón y asignar su estado
+                Button btnEliminar = (Button)e.Item.FindControl("btnEliminar");
+                if (btnEliminar != null)
+                {
+                    btnEliminar.ToolTip = habilitado ?
+                        "Puedes eliminar este evento"
+                        : "Este evento ya fue eliminado.";
+                }
+                if (!habilitado)
+                {
+                    btnEliminar.Attributes["onclick"] = "return false;"; // Evita que haga postback
+                    btnEliminar.CssClass += " disabled-button"; // Agrega estilo visual
+                }
+            }
         }
     }
 }

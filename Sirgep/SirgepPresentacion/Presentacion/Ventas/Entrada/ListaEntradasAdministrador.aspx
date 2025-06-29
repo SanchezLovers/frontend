@@ -29,6 +29,7 @@
                     <th>Hora de Inicio</th>
                     <th>Hora de Fin</th>
                     <th>Acciones</th>
+                    <th>¿Activa?</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +38,7 @@
 
                         <tr>
                             <td>
-                                <a href="ListaEspacios.aspx">
+                                <a href='<%# "ConstanciaEntrada.aspx?idConstancia=" + Eval("idConstancia") %>'>
                                     <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
                                 </a>
                             </td>
@@ -52,6 +53,7 @@
                                     Text="Eliminar" CommandArgument='<%# String.Format("{0:yyyy-MM-dd}", Eval("fechaConstancia")) + "|" + Eval("numEntrada") %>'
                                     OnClick="btnEliminar_Click"/>
                             </td>
+                            <td><%# Eval("Estado").ToString() == "65" ? "Sí" : "No" %></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
