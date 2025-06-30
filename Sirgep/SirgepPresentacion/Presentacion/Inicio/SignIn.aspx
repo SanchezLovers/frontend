@@ -40,15 +40,34 @@
                             <p class="mb-2">Ingrese aquí su nombre, primer apellido y, si aplica, segundo apellido.</p>
 
                             <div class="mb-2">
-                                <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" placeholder="Nombres"></asp:TextBox>
+                                <!-- Nombres -->
+                                <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" placeholder="Nombres" MaxLength="45"></asp:TextBox>
+                                <span id="msgNombresMax" class="text-danger" style="display:none;">*Máximo 45 caracteres</span>
                                 <asp:RequiredFieldValidator ControlToValidate="txtNombres" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
+                                <asp:RegularExpressionValidator ControlToValidate="txtNombres" runat="server"
+                                ErrorMessage="Solo se permiten letras en el nombre"
+                                CssClass="text-danger" Display="Dynamic"
+                                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" />
                             </div>
+                            <!-- Primer Apellido -->
                             <div class="mb-2">
-                                <asp:TextBox ID="txtApellidoPaterno" runat="server" CssClass="form-control" placeholder="Primer Apellido"></asp:TextBox>
+                                <asp:TextBox ID="txtApellidoPaterno" runat="server" CssClass="form-control" placeholder="Primer Apellido" MaxLength="45"></asp:TextBox>
+                                <span id="msgApellidoPaternoMax" class="text-danger" style="display:none;">*Máximo 45 caracteres</span>
                                 <asp:RequiredFieldValidator ControlToValidate="txtApellidoPaterno" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
+                                <asp:RegularExpressionValidator ControlToValidate="txtApellidoPaterno" runat="server"
+                                ErrorMessage="Solo se permiten letras en el apellido paterno"
+                                CssClass="text-danger" Display="Dynamic"
+                                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" />
+
                             </div>
+                            <!-- Segundo Apellido (opcional) -->
                             <div class="mb-2">
-                                <asp:TextBox ID="txtApellidoMaterno" runat="server" CssClass="form-control" placeholder="Segundo Apellido (opcional)"></asp:TextBox>
+                                <asp:TextBox ID="txtApellidoMaterno" runat="server" CssClass="form-control" placeholder="Segundo Apellido (opcional)" MaxLength="45"></asp:TextBox>
+                                <span id="msgApellidoMaternoMax" class="text-danger" style="display:none;">*Máximo 45 caracteres</span>
+                                <asp:RegularExpressionValidator ControlToValidate="txtApellidoMaterno" runat="server"
+                                ErrorMessage="Solo se permiten letras en el apellido materno"
+                                CssClass="text-danger" Display="Dynamic"
+                                ValidationExpression="^([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*)$" />
                             </div>
                         </div>
 
@@ -95,13 +114,16 @@
                             <h5 class="fw-semibold">Cuenta</h5>
                             <p class="mb-2">Ingrese las credenciales y datos de su nueva cuenta.</p>
 
+                            <!-- Usuario -->
                             <div class="mb-2">
-                                <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Nombre de usuario"></asp:TextBox>
+                                <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="Nombre de usuario" MaxLength="45"></asp:TextBox>
+                                <span id="msgUsuarioMax" class="text-danger" style="display:none;">*Máximo 45 caracteres</span>
                                 <asp:RequiredFieldValidator ControlToValidate="txtUsuario" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
-                            </div>
+
+                                </div>
                             <div class="mb-2">
-                                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control"
-                                    placeholder="Correo electrónico" />
+                                <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" placeholder="Correo electrónico" MaxLength="45"></asp:TextBox>
+                                <span id="msgCorreoMax" class="text-danger" style="display:none;">*Máximo 45 caracteres</span>
 
                                 <!-- Validación de campo vacío -->
                                 <asp:RequiredFieldValidator ControlToValidate="txtCorreo" runat="server"
@@ -110,7 +132,7 @@
                                 <!-- Validación de formato -->
                                 <asp:RegularExpressionValidator ControlToValidate="txtCorreo" runat="server"
                                     ErrorMessage="*Correo inválido" CssClass="text-danger" Display="Dynamic"
-                                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+                                    ValidationExpression="\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*" />
 
                                 <!-- Validación de existencia (custom) -->
                                 <asp:CustomValidator ID="cvCorreo" runat="server"
@@ -119,8 +141,11 @@
                                     ErrorMessage="Este correo ya está registrado"
                                     CssClass="text-danger" Display="Dynamic" ValidateEmptyText="true" />
                             </div>
+                            <!-- Contraseña -->
                             <div class="mb-2">
-                                <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
+                                
+                                <asp:TextBox ID="txtContraseña" runat="server" CssClass="form-control" TextMode="Password" placeholder="Contraseña" MaxLength="16"></asp:TextBox>
+                                <span id="msgContraseñaMax" class="text-danger" style="display:none;">*Máximo 16 caracteres</span>
                                 <asp:RequiredFieldValidator ControlToValidate="txtContraseña" runat="server" ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
                             </div>
                             <div class="mb-2">
@@ -141,4 +166,28 @@
             </div>
         </div>
     </div>
+    <!--Sript para que muestre el mensaje de error si se intentan escribir más caracteres de los establecidos -->
+    <script type="text/javascript">
+        function addMaxLengthMsg(inputId, msgId, max) {
+            var txt = document.getElementById(inputId);
+            var msg = document.getElementById(msgId);
+            if (!txt || !msg) return;
+            txt.addEventListener('input', function() {
+                if (txt.value.length === max) {
+                    msg.style.display = 'inline';
+                } else {
+                    msg.style.display = 'none';
+                }
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            addMaxLengthMsg('<%= txtNombres.ClientID %>', 'msgNombresMax', 45);
+            addMaxLengthMsg('<%= txtApellidoPaterno.ClientID %>', 'msgApellidoPaternoMax', 45);
+            addMaxLengthMsg('<%= txtApellidoMaterno.ClientID %>', 'msgApellidoMaternoMax', 45);
+            addMaxLengthMsg('<%= txtUsuario.ClientID %>', 'msgUsuarioMax', 45);
+            addMaxLengthMsg('<%= txtCorreo.ClientID %>', 'msgCorreoMax', 45);
+            addMaxLengthMsg('<%= txtContraseña.ClientID %>', 'msgContraseñaMax', 16);
+        });
+    </script>
+
 </asp:Content>

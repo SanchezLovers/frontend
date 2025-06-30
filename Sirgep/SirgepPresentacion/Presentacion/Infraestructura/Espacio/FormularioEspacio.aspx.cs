@@ -62,7 +62,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         {
             int idDepto;
             provinciaWS = new ProvinciaWSClient();
-
+            lblError.Visible = false;
             if (int.TryParse(ddlDepartamento.SelectedValue, out idDepto))
             {
                 ddlProvincia.DataSource = provinciaWS.listarProvinciaPorDepa(idDepto);
@@ -116,6 +116,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void ddlEspacio_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lblError.Visible = true;
             if (ddlEspacio.SelectedValue.Equals(""))
                 return;
             else
@@ -124,7 +125,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 espacio es = espacioWS.buscarEspacio(idEspacio);
                 lblError.Visible = false;
                 lblPrecioHora.Text = es.precioReserva.ToString();
-                lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString()}";
+                lblPrecioHora.Text = $"Precio por hora: S/ {es.precioReserva.ToString("F2", CultureInfo.InvariantCulture)}";
                 lblPrecioTotal.Text = "Precio total seleccionado: Seleccione un horario";
                 hdnPrecioHora.Value = es.precioReserva.ToString(CultureInfo.InvariantCulture);
             }
@@ -177,6 +178,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
                 if (horarios != null)
                 {
+                    lblError.Visible = false;
                     rptHorarios.DataSource = horarios;
                     rptHorarios.DataBind();
                 }
