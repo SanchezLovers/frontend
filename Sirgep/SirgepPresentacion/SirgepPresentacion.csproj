@@ -119,12 +119,20 @@
   <ItemGroup>
     <None Include="Connected Services\ReferenciaDisco\CompradorWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\DepartamentoWS.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS2.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\EspacioDiaSemWS2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\EspacioWS.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\FuncionWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.wsdl" />
     <None Include="Connected Services\ReferenciaDisco\PersonaWS.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS1.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
@@ -2254,6 +2262,7 @@
     <Content Include="Presentacion\Inicio\LogIn.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalAdministrador.aspx" />
     <Content Include="Presentacion\Inicio\PrincipalInvitado.aspx" />
+    <Content Include="Presentacion\Inicio\RestaurarCredenciales.aspx" />
     <Content Include="Presentacion\Inicio\SignIn.aspx" />
     <Content Include="Presentacion\Ubicacion\Distrito\EligeDistrito.aspx" />
     <Content Include="Presentacion\Usuarios\Administrador\CalendarioReservas.aspx" />
@@ -2340,6 +2349,13 @@
     </Compile>
     <Compile Include="Presentacion\Inicio\PrincipalInvitado.aspx.designer.cs">
       <DependentUpon>PrincipalInvitado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\RestaurarCredenciales.aspx.cs">
+      <DependentUpon>RestaurarCredenciales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion\Inicio\RestaurarCredenciales.aspx.designer.cs">
+      <DependentUpon>RestaurarCredenciales.aspx</DependentUpon>
     </Compile>
     <Compile Include="Presentacion\Inicio\SignIn.aspx.cs">
       <DependentUpon>SignIn.aspx</DependentUpon>
@@ -2862,6 +2878,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.validarCuentaStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.enviarCorreoRecuperacionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="packages.config" />
