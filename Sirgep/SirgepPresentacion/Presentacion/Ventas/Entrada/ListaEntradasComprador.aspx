@@ -28,11 +28,10 @@
                     Style="display: flex; gap: 20px; color: black; font-weight: normal;">
                     <asp:ListItem Text="Vigentes" Value="Vigentes" />
                     <asp:ListItem Text="Finalizadas" Value="Finalizadas" />
-                    <asp:ListItem Text="Canceladas" Value="Canceladas" />
                 </asp:RadioButtonList>
             </div>
-            <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark" OnClick="btnFiltrar_Click" />
-            <asp:Button ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" CssClass="btn btn-dark" OnClick="btnMostrarTodos_Click" />
+            <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" CssClass="btn btn-dark" OnClientClick="mostrarModalCarga('Filtrando...', 'Estamos buscando tus entradas.');" OnClick="btnFiltrar_Click" />
+            <asp:Button ID="btnMostrarTodos" runat="server" Text="Mostrar Todos" CssClass="btn btn-dark" OnClientClick="mostrarModalCarga('Mostrando...', 'Estamos buscando todas tus entradas.');" OnClick="btnMostrarTodos_Click" />
         </div>
     </div>
     <!-- Descarga -->
@@ -44,6 +43,7 @@
             <asp:Button ID="btnDescargarMostrarModal" runat="server"
                 Text="Descargar Lista de Entradas"
                 OnClick="btnDescargar_Click"
+                OnClientClick="mostrarModalCarga('Descargando', 'Estamos generando el archivo Excel. Esto puede tardar unos segundos...');"
                 CssClass="btn btn-dark" />
         </div>
     </div>
@@ -60,6 +60,7 @@
                         CommandArgument='<%# Eval("IdConstancia") %>'
                         OnClick="BtnAbrir_Click"
                         CssClass="btn btn-link"
+                        OnClientClick="mostrarModalCarga('Abriendo...', 'Estamos abriendo tu entrada.');"
                         ToolTip="Abrir entrada">
                     <i class="bi bi-box-arrow-up-right"></i>
                     </asp:LinkButton>
