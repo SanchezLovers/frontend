@@ -40,6 +40,16 @@ body {
     margin-top: auto;
 }
 
+.recuperar-form-block {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+    border-radius: 12px;
+    background: #fff;
+    padding: 40px 30px 32px 30px;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.08);
+}
+
 .modal-header.modal-header-rojo {
     background-color: #f10909 !important;
 }

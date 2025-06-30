@@ -15,8 +15,8 @@
         <h3 class="mb-4">Calendario de Reservas</h3>
 
         <div class="export-buttons mb-3">
-            <asp:Button ID="btnExportarPDF" CssClass="btn btn-dark" runat="server" Text="Exportar PDF" OnClick="btnExportarPDF_Click" Enabled="false" />
-            <asp:Button ID="btnExportarExcel" CssClass="btn btn-dark" runat="server" Text="Exportar Excel" OnClick="btnExportarExcel_Click" Enabled="false" />
+            <asp:Button ID="btnExportarPDF" CssClass="btn btn-dark" runat="server" Text="Exportar PDF" OnClick="btnExportarPDF_Click" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'El calendario se ha descargado en PDF correctamente.'); }, 1000);" Enabled="false" />
+            <asp:Button ID="btnExportarExcel" CssClass="btn btn-dark" runat="server" Text="Exportar Excel" OnClick="btnExportarExcel_Click" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'El calendario se ha descargado en EXCEL correctamente.'); }, 1000);" Enabled="false" />
         </div>
 
         <asp:Label ID="lblSinReservas" runat="server" Text="No hay reservas para el mes aún"
