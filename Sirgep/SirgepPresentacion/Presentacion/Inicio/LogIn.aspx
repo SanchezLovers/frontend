@@ -44,7 +44,7 @@
                         <div>
                             <!--<asp:CheckBox ID="chkRemember" runat="server" Text="Recordar" />-->
                         </div>
-                        <a href="#" class="text-decoration-none">Olvidé mi contraseña</a>
+                        <a href="/Presentacion/Inicio/RestaurarCredenciales.aspx" class="text-decoration-none">Olvidé mi contraseña</a>
                     </div>
 
                     <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-dark w-100" OnClick="btnLogin_Click" OnClientClick="mostrarModalCarga('Cargando...', 'Validando credenciales.');"/>
