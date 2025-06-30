@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-9 position-relative">
                 <h1 class="mb-4">
                     <asp:Label ID="lblTitulo" runat="server" Text=""></asp:Label>
@@ -26,14 +26,14 @@
                         </p>
                     </div>
                     <div class="ms-4" style="min-width:280px;">
-                        <asp:Image ID="imgEvento" runat="server" CssClass="img-fluid rounded shadow" Style="max-width:340px; max-height:260px; object-fit:cover;" />
+                        <asp:Image ID="imgEvento" runat="server" CssClass="img-detalle-evento img-fluid shadow" />
                     </div>
                 </div>
             </div>
         </div>
         <asp:HiddenField ID="cantGeneralInvisible" runat="server" />
         <asp:HiddenField ID="cantFuncionInvisible" runat="server" />
-        <div class="row mb-3 align-items-end mt-4">
+        <div class="row mb-3 align-items-end mt-4 justify-content-center">
             <div class="col-md-6">
                 <label for="ddlFunciones" class="form-label">Funciones</label>
                 <asp:DropDownList ID="ddlFunciones" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlFunciones_SelectedIndexChanged">
