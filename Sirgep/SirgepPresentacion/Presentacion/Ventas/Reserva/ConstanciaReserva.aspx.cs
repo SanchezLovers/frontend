@@ -51,6 +51,12 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
+            string tipoUsuario = Session["tipoUsuario"] as string;
+            // si es Administrador, no se pide calificación y, a su vez, la riderección es al PrincipalAdministrador…
+            if (tipoUsuario == "administrador")
+            {
+                Response.Redirect("~/Presentacion/Ventas/Reserva/ListaReservasAdministrador.aspx");
+            }
             // Flujo de compra (muestra modal de feedback)
             if (Session["MostrarFeedback"] != null && (bool)Session["MostrarFeedback"])
             {

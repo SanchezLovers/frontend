@@ -174,6 +174,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 int idEspacio = int.Parse(ddlEspacio.SelectedValue);
                 string fecha = txtFecha.Text;
 
+                
                 var horarios = horarioWS.listarHorariosDelEspacioYDia(idEspacio, fecha);
 
                 if (horarios != null)

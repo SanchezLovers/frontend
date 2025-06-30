@@ -106,7 +106,10 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             string dni = txtDNI.Text.Trim();
             var compradorExistente = compraService.buscarCompradorPorDni(dni);
             int idPersona1;
-            double precio = compraService.buscarEventos(1).precioEntrada;
+            int idFuncion = int.Parse(Request.QueryString["idFuncion"]);
+            var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
+            evento evento = compraService.buscarEventos(funcion.evento.idEvento);
+            double precio = evento.precioEntrada;
             double totalAPagar = precio;
 
             // ---------- Comprobación de saldo ----------
@@ -156,9 +159,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
-            int idFuncion = int.Parse(Request.QueryString["idFuncion"]);
-            var funcion = fWs.buscarFuncionId(idFuncion); // bsuscar función
-            evento evento = compraService.buscarEventos(funcion.evento.idEvento);
+            
             int numE = evento.cantEntradasVendidas + 1;
             evento.cantEntradasVendidas = numE;
 

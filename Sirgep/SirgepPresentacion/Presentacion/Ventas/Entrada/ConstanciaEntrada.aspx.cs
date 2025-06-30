@@ -61,7 +61,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // si es Administrador, no se pide calificación y, a su vez, la riderección es al PrincipalAdministrador…
             if(tipoUsuario == "administrador")
             {
-                Response.Redirect("~/Presentacion/Inicio/PrincipalAdministrador.aspx");
+                Response.Redirect("~/Presentacion/Ventas/Entrada/ListaEntradasAdministrador.aspx");
             }
             Session["tipoServicio"] = "entrada";
             string script = "setTimeout(function(){ mostrarModalFeedback(); }, 300);";
