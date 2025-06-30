@@ -72,23 +72,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal de Error -->
-    <div class="modal fade" id="modalError" tabindex="-1" aria-labelledby="modalErrorLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-header-rojo text-white">
-                    <h5 class="modal-title" id="modalErrorLabel">Resultado de Búsqueda</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body fs-5" id="modalErrorBody">
-                    
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-dark px-4" data-bs-dismiss="modal">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     
     
     <script type="text/javascript">
@@ -101,10 +85,5 @@
             modalEliminar.show();
         }
 
-        function mostrarModalBusquedaSinResultados(mensaje) {
-            document.getElementById('modalErrorBody').textContent = mensaje;
-            var modal = new bootstrap.Modal(document.getElementById('modalError'));
-            modal.show();
-        }
     </script>
 </asp:Content>

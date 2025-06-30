@@ -22,7 +22,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
             set => ViewState["PaginaActual"] = value;
         }
-        
+
         protected void Page_Init(object sender, EventArgs e)
         {
             compradorWS = new CompradorWSClient();
@@ -59,8 +59,9 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
 
             if (listaFiltrada.Count == 0 && !string.IsNullOrEmpty(filtro))
             {
-                MostrarModalBusquedaSinResultados("No se encontraron coincidencias. Se listarán todos los usuarios.");
                 CargarUsuarios(""); // recarga sin filtro
+                string script = "setTimeout(function(){ mostrarModalError('Búsqueda sin resultados.', 'No se encontraron coincidencias. Se mostrarán todos los usuarios.'); }, 300);";
+                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
             MostrarPaginado();
@@ -103,7 +104,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             btnSiguiente.Enabled = inicio + TAMANIO_PAGINA < total;
         }
 
-        
+
         protected void btnAnterior_Click(object sender, EventArgs e)
         {
             if (PaginaActual > 1)
@@ -139,17 +140,7 @@ namespace SirgepPresentacion.Presentacion.Usuarios.Comprador
             return fechaUltimaCompra.Value.AddYears(3) <= DateTime.Now;
         }
 
-        // Evento para el botón de búsqueda (ajusta según tus filtros)
-
-
-        private void MostrarModalBusquedaSinResultados(string mensaje)
-        {
-            string mensajeSeguro = HttpUtility.JavaScriptStringEncode(mensaje);
-            string script = $@"
-            mostrarModalBusquedaSinResultados('{mensajeSeguro}');
-            ";
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarModalBusquedaSinResultados", script, true);
-        }
+        
 
     }
 }

@@ -87,15 +87,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected global::System.Web.UI.WebControls.TextBox txtNombres;
 
         /// <summary>
-        /// Control cvNombres.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvNombres;
-
-        /// <summary>
         /// Control txtApellidoPaterno.
         /// </summary>
         /// <remarks>
@@ -105,15 +96,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected global::System.Web.UI.WebControls.TextBox txtApellidoPaterno;
 
         /// <summary>
-        /// Control cvApellidoPaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvApellidoPaterno;
-
-        /// <summary>
         /// Control txtApellidoMaterno.
         /// </summary>
         /// <remarks>
@@ -121,15 +103,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellidoMaterno;
-
-        /// <summary>
-        /// Control cvApellidoMaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvApellidoMaterno;
 
         /// <summary>
         /// Control ddlTipoDocumento.

@@ -15,69 +15,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
     {
 
         /// <summary>
-        /// Control lblEvento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEvento;
-
-        /// <summary>
-        /// Control lblUbicacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUbicacion;
-
-        /// <summary>
-        /// Control lblReferencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblReferencia;
-
-        /// <summary>
-        /// Control lblHorario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHorario;
-
-        /// <summary>
-        /// Control lblFecha.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFecha;
-
-        /// <summary>
-        /// Control lblCantidad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidad;
-
-        /// <summary>
-        /// Control lblTotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotal;
-
-        /// <summary>
         /// Control LblEspacio.
         /// </summary>
         /// <remarks>
@@ -141,15 +78,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected global::System.Web.UI.WebControls.TextBox txtNombres;
 
         /// <summary>
-        /// Control cvNombres.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvNombres;
-
-        /// <summary>
         /// Control txtApellidoPaterno.
         /// </summary>
         /// <remarks>
@@ -159,15 +87,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         protected global::System.Web.UI.WebControls.TextBox txtApellidoPaterno;
 
         /// <summary>
-        /// Control cvApellidoPaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvApellidoPaterno;
-
-        /// <summary>
         /// Control txtApellidoMaterno.
         /// </summary>
         /// <remarks>
@@ -175,15 +94,6 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApellidoMaterno;
-
-        /// <summary>
-        /// Control cvApellidoMaterno.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvApellidoMaterno;
 
         /// <summary>
         /// Control ddlTipoDocumento.

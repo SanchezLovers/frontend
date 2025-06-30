@@ -131,6 +131,10 @@
     <None Include="Connected Services\ReferenciaDisco\ReporteWS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS1.wsdl" />
+    <None Include="Connected Services\ReferenciaDisco\ReporteWS1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReferenciaDisco\servicios.disco" />
     <None Include="Connected Services\ReferenciaDisco\configuration91.svcinfo" />
     <None Include="Connected Services\ReferenciaDisco\configuration.svcinfo" />
@@ -2856,7 +2860,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.eventosFavoritosDelMesResponse.datasource">
-		<DependentUpon>Reference.svcmap</DependentUpon>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ReferenciaDisco\SirgepPresentacion.ReferenciaDisco.listarEntradasPorCompradorResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

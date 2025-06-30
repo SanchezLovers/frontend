@@ -74,62 +74,14 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 }
             }
         }
-        protected void documentoNoValido(object sender, EventArgs e)
-        {
-            string tipo = ddlTipoDocumento.SelectedValue;
-            string numero = txtDNI.Text.Trim();
-            string script = "";
-            bool v;
-            switch (tipo)
-            {
-                case "DNI":
-                    if (!(numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$")))
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el DNI debe tener exactamente 8 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-
-                case "CARNETEXTRANJERIA":
-                    v = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                case "PASAPORTE":
-                    v = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','El número de pasaporte debe tener entre 8 y 12 dígitos alfanuméricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                default:
-                    script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','Elija un tipo de documento.'); }, 300);";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    break;
-            }
-
-        }
+        
         protected void btnPagar_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid)
             {
                 return;
             }
-            // Validar campos obligatorios
-            if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtDNI.Text) ||
-                 string.IsNullOrWhiteSpace(txtCorreo.Text))
-            {
-                string script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                return;
-
-            }
+            
             //documentoNoValido(sender, e);
 
             // Validar método de pago

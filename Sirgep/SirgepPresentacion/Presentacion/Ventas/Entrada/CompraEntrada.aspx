@@ -17,39 +17,42 @@
             <p><strong>Cantidad:</strong> <asp:Label ID="lblCantidad" runat="server" /></p>
             <p><strong>Total: S/</strong>    <asp:Label ID="lblTotal"    runat="server" /></p>
 
-            <!-- Aqui -->
+            <!-- Datos -->
             <h4>Datos del comprador:</h4>
-                <div class="mb-2">
-            <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" MaxLength="45" placeholder="Nombres" />
-                <asp:CustomValidator ID="cvNombres" runat="server"
-                    ControlToValidate="txtNombres"
-                    Display="Dynamic"
-                    CssClass="text-danger"
-                    ErrorMessage="Solo se permiten letras y espacios."
-                    OnServerValidate="cvNombres_ServerValidate" />
-                <span id="msgNombres" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+           
+
+            <div class="mb-2">
+                <asp:TextBox ID="txtNombres" runat="server" CssClass="form-control" MaxLength="45" placeholder="Nombres" />
+                    <span id="msgNombres" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+                    <asp:RequiredFieldValidator ControlToValidate="txtNombres" runat="server"
+                    ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
+                    <asp:RegularExpressionValidator ControlToValidate="txtNombres" runat="server"
+                    ErrorMessage="Solo se permiten letras en el nombre"
+                    CssClass="text-danger" Display="Dynamic"
+                    ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" />
             </div>
 
             <div class="mb-2">
                 <asp:TextBox ID="txtApellidoPaterno" runat="server" CssClass="form-control" MaxLength="45" placeholder="Apellido paterno" />
-                <asp:CustomValidator ID="cvApellidoPaterno" runat="server"
-                    ControlToValidate="txtApellidoPaterno"
-                    Display="Dynamic"
-                    CssClass="text-danger"
-                    ErrorMessage="Solo se permiten letras y espacios."
-                    OnServerValidate="cvApellidoPaterno_ServerValidate" />
                 <span id="msgApellidoPaterno" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+                <asp:RequiredFieldValidator ControlToValidate="txtApellidoPaterno" runat="server"
+                ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
+                <asp:RegularExpressionValidator ControlToValidate="txtApellidoPaterno" runat="server"
+                ErrorMessage="Solo se permiten letras en el apellido paterno"
+                CssClass="text-danger" Display="Dynamic"
+                ValidationExpression="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$" />  
             </div>
+
+
 
             <div class="mb-2">
             <asp:TextBox ID="txtApellidoMaterno" runat="server" CssClass="form-control" MaxLength="45" placeholder="Apellido materno" />
-            <asp:CustomValidator ID="cvApellidoMaterno" runat="server"
-                ControlToValidate="txtApellidoMaterno"
-                Display="Dynamic"
-                CssClass="text-danger"
-                ErrorMessage="Solo se permiten letras y espacios."
-                OnServerValidate="cvApellidoMaterno_ServerValidate" />
-            <span id="msgApellidoMaterno" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+                <span id="msgApellidoMaterno" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+            <asp:RegularExpressionValidator ControlToValidate="txtApellidoMaterno" runat="server"
+                ErrorMessage="Solo se permiten letras en el apellido materno"
+                CssClass="text-danger" Display="Dynamic"
+                ValidationExpression="^([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*)$" />
+            
         </div>
             <!-- validación de Documento de Identificacion -->
             <div class="mb-2">
@@ -69,6 +72,8 @@
             <div class="mb-2">
                 <asp:TextBox ID="txtCorreo" runat="server" CssClass="form-control" MaxLength="45" placeholder="Correo electrónico" TextMode="Email" />
                 <span id="msgCorreo" class="text-danger" style="display:none;">Máximo 45 caracteres.</span>
+                <asp:RequiredFieldValidator ControlToValidate="txtCorreo" runat="server"
+                 ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
             </div>
             
         </div>
@@ -102,7 +107,7 @@
         </div>
     </div>
     <script type="text/javascript">
-    function seleccionarMetodo(btn) {
+        function seleccionarMetodo(btn) {
         document.querySelectorAll('.btn-metodo').forEach(function (b) {
             b.classList.remove('selected');
         });
@@ -143,8 +148,8 @@
             if (totalSeconds <= 0) {
                 clearInterval(timerInterval);
                 document.getElementById('modalErrorBody').innerText = "El tiempo para completar la reserva ha expirado.";
-                var modal = new bootstrap.Modal(document.getElementById('modalError'));
-                modal.show();
+                
+                mostrarModalCarga('Cargando...', 'El tiempo de compra ha expirado. Redireccionando...');
                 setTimeout(function () {
                     window.location.href = '/Presentacion/Ubicacion/Distrito/EligeDistrito.aspx';
                 }, 2000);
@@ -156,17 +161,28 @@
         });
     </script>
     <script type="text/javascript">
-            // Detener el temporizador al hacer clic en "Pagar"
-            document.addEventListener('DOMContentLoaded', function () {
-                var btnPagar = document.getElementById('<%= btnPagar.ClientID %>');
-                if (btnPagar) {
-                    btnPagar.addEventListener('click', function () {
-                        if (typeof timerInterval !== 'undefined') {
-                            clearInterval(timerInterval);
-                        }
-                    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var btnPagar = document.getElementById('<%= btnPagar.ClientID %>');
+            var form = btnPagar && btnPagar.form;
+            btnPagar.addEventListener('click', function (e) {
+                // Validación de ASP.NET
+                if (typeof(Page_ClientValidate) === "function" && !Page_ClientValidate()) {
+                    // No detener el timer si la validación falla
+                    return;
                 }
+                // Validar método de pago
+                var metodoPago = document.getElementById('<%= hfMetodoPago.ClientID %>').value;
+                if (!metodoPago) {
+                    // No detener el timer si no hay método de pago
+                    return;
+                }
+                // Si todo es válido, detener el timer
+                if (typeof timerInterval !== 'undefined') {
+                    clearInterval(timerInterval);
+                }
+                mostrarModalCarga('Cargando...', 'Procesando pago...');
             });
+        });
     </script>
     <script type="text/javascript">
         function agregarLimiteCaracteres(inputId, mensajeId, limite) {
@@ -182,9 +198,9 @@
         document.addEventListener('DOMContentLoaded', function () {
             const LIMITE = 45;
             agregarLimiteCaracteres('<%= txtNombres.ClientID %>', 'msgNombres', LIMITE);
-        agregarLimiteCaracteres('<%= txtApellidoPaterno.ClientID %>', 'msgApellidoPaterno', LIMITE);
-        agregarLimiteCaracteres('<%= txtApellidoMaterno.ClientID %>', 'msgApellidoMaterno', LIMITE);
-        agregarLimiteCaracteres('<%= txtCorreo.ClientID %>', 'msgCorreo', LIMITE);
-    });
+            agregarLimiteCaracteres('<%= txtApellidoPaterno.ClientID %>', 'msgApellidoPaterno', LIMITE);
+            agregarLimiteCaracteres('<%= txtApellidoMaterno.ClientID %>', 'msgApellidoMaterno', LIMITE);
+            agregarLimiteCaracteres('<%= txtCorreo.ClientID %>', 'msgCorreo', LIMITE);
+        });
     </script>
 </asp:Content>
