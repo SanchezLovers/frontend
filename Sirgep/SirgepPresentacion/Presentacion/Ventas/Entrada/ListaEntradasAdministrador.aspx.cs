@@ -168,9 +168,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
                 // Obtener la fecha
                 fechaConstancia = Convert.ToDateTime(DataBinder.Eval(dataItem, "fechaConstancia"));
+                string estado = Convert.ToString(DataBinder.Eval(dataItem, "Estado"));
+                bool cancelado = estado == "69";
 
                 // Verificar si pasaron 5 años
-                bool habilitado = (DateTime.Now - fechaConstancia).TotalDays >= 5 * 365;
+                bool habilitado = (DateTime.Now - fechaConstancia).TotalDays >= 5 * 365 && !cancelado;
 
                 // Obtener el botón y asignar su estado
                 Button btnEliminar = (Button)e.Item.FindControl("btnEliminar");

@@ -64,30 +64,34 @@
         <table class="table table-bordered text-center align-middle tabla-reservas" style="background: #f7f7f7;">
             <thead class="table-light fw-bold">
                 <tr>
-                    <th>Abrir</th>
+                    <th>Imagen</th>
                     <th>Código</th>
                     <th>Nombre</th>
-                    <th>Ubicación</th>
-                    <th>E. Disponibles</th>
-                    <th>E. Vendidas</th>
-                    <th>Precio S/.</th>
+                    <th>Disponibles</th>
+                    <th>Vendidas</th>
+                    <th>Precio S/</th>
                     <th>Inicio</th>
                     <th>Fin</th>
                     <th>Acciones</th>
+                    <th>¿Activo?</th>
                 </tr>
             </thead>
             <tbody>
-                <asp:Repeater ID="rptEventos" runat="server">
+                <asp:Repeater ID="rptEventos" runat="server" OnItemDataBound="rptEventos_ItemDataBound">
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <a href='<%# Eval("IdEvento") %>'>
-                                    <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
-                                </a>
+                                <asp:LinkButton
+                                    ID="lnkVerImagen"
+                                    runat="server"
+                                    CommandArgument='<%# Eval("archivoImagen") %>'
+                                    OnCommand="lnkVerImagen_Command">
+                                        <i class="bi bi-box-arrow-up-right text-dark"></i>
+                                </asp:LinkButton>
+
                             </td>
                             <td class="columna-peq"><%# Eval("IdEvento") %></td>
                             <td><%# Eval("Nombre") %></td>
-                            <td><%# Eval("Ubicacion") %></td>
                             <td class="columna-peq"><%# Eval("cantEntradasDispo") %></td>
                             <td class="columna-peq"><%# Eval("cantEntradasVendidas") %></td>
                             <td class="columna-peq"><%# Eval("precioEntrada") %></td>
@@ -98,6 +102,7 @@
                                 <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger btn-sm fw-bold"
                                     Text="Eliminar" CommandArgument='<%# Eval("IdEvento") %>' OnClick="btnEliminar_Click" />
                             </td>
+                            <td><%# Eval("Activo").ToString() == "65" ? "Sí" : "No" %></td>
                         </tr>
                     </ItemTemplate>
                     <FooterTemplate>
@@ -105,12 +110,12 @@
                             <td colspan="10" class="text-center pt-3">
 
                                 <asp:Button ID="btnAnteriorFootEvento" runat="server" CssClass="btn btn-outline-secondary btn-sm me-4"
-                                    Text="←" CommandName="Anterior" OnCommand="Paginar_Click" />
+                                    Text="Anterior" CommandName="Anterior" OnCommand="Paginar_Click" />
 
                                 <asp:Label ID="lblPaginaFootEvento" runat="server" CssClass="fw-bold"></asp:Label>
 
                                 <asp:Button ID="btnSiguienteFootEvento" runat="server" CssClass="btn btn-outline-secondary btn-sm ms-4"
-                                    Text="→" CommandName="Siguiente" OnCommand="Paginar_Click" />
+                                    Text="Siguiente" CommandName="Siguiente" OnCommand="Paginar_Click" />
                             </td>
                         </tr>
                     </FooterTemplate>
@@ -221,25 +226,7 @@
 
                         </div>
 
-
-                    <div class="row g-3 my-2">
-
-                        <!-- Foto -->
-                        <div class="col-md-5">
-                            <label class="form-label fw-semibold">Subir foto</label>
-                            <input type="file" id="fuArchivo" title="Añadir un archivo"/>
-                        </div>
-                        <div class="col-md-7 d-flex align-items-end">
-                            <button type="button" class="btn btn-outline-primary w-100" onclick="verFoto()">
-                                Ver Foto
-                            </button>
-                        </div>
-
-                        <img id="previewImg" src="#" alt="Vista previa" style="display: none; max-width: 100%; margin-top: 10px;" />
-
-                    </div>
-
-                    <hr class="my-4" />
+                        <hr class="my-4" />
 
                     <!-- Lista de funciones -->
                     <h6 class="fw-bold mb-3">Funciones del Evento:</h6>
@@ -261,6 +248,21 @@
                             <asp:Button ID="btnAgregarFuncion" runat="server" Text="Añadir" CssClass="btn btn-success" OnClick="btnAgregarFuncion_Click" />
                         </div>
                         <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
+                    </div>
+                </div>
+
+
+                <!-- Foto -->
+                <div class="row g-3 my-2">
+                    <!-- Subir imagen -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Subir foto</label>
+                        <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
+                    </div>
+
+                    <!-- Vista previa -->
+                    <div class="col-md-6 text-center d-flex align-items-end">
+                        <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
                     </div>
                 </div>
 
@@ -405,36 +407,18 @@
                         <!-- Precio Entrada -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Precio Entrada</label>
-                            <asp:TextBox ID="txtPrecioEditar" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtPrecioEditar" TextMode="Number" runat="server" Placeholder="(S/.)" CssClass="form-control"></asp:TextBox>
                         </div>
                         <!-- Disponibles -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Entradas Disponibles</label>
-                            <asp:TextBox ID="txtDispoEditar" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtDispoEditar" TextMode="Number" runat="server" Placeholder="# disponibles" CssClass="form-control"></asp:TextBox>
                         </div>
                         <!-- Vendidas -->
                         <div class="col-4">
                             <label class="form-label fw-semibold">Entradas Vendidas</label>
-                            <asp:TextBox ID="txtVendEditar" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtVendEditar" TextMode="Number" runat="server" Placeholder="# ventas" CssClass="form-control"></asp:TextBox>
                         </div>
-
-                    </div>
-
-
-                    <div class="row g-3 my-2">
-
-                        <!-- Foto -->
-                        <div class="col-md-5">
-                            <label class="form-label fw-semibold">Subir foto</label>
-                            <input type="file" id="fuEditar" title="Añadir un archivo" />
-                        </div>
-                        <div class="col-md-7 d-flex align-items-end">
-                            <button type="button" class="btn btn-outline-primary w-100" onclick="verFoto()">
-                                Ver Foto
-                            </button>
-                        </div>
-
-                        <img id="previewImgEditar" src="#" alt="Vista previa" style="display: none; max-width: 100%; margin-top: 10px;" />
 
                     </div>
 
@@ -461,7 +445,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 mb-3">
+                    <div class="col-md-6 mb-4">
                         <asp:Label ID="lblErrorEditar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
 
@@ -477,31 +461,48 @@
 
     <!-- fin MODAL EDITAR EVENTO -- -->
 
+    <!-- Modal Ver Foto -->
+    <div class="modal fade" id="modalPreview" tabindex="-1" aria-labelledby="modalPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Encabezado completamente rojo -->
+                <div class="modal-header" style="background-color: #f10909; color: white;">
+                    <h5 class="modal-title" id="modalPreviewLabel">Vista previa de imagen</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <!-- Cuerpo del modal -->
+                <div class="modal-body text-center">
+                    <img id="imgPreviewModal" src="#" style="max-width: 100%;" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- SCRIPTS -->
 
     <script type="text/javascript">
+        function mostrarPreview(input, idImg) {
+            const file = input.files[0];
+            const img = document.getElementById(idImg);
 
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                img.src = '#';
+                img.style.display = 'none';
+            }
+        }
         function toggleFechas() {
             var check = document.getElementById('chkFiltroFechas');
             var filtros = document.getElementById('filtrosFechas');
             filtros.style.display = check.checked ? 'block' : 'none';
-        }
-        function verFoto() {
-            const input = document.getElementById('fuArchivo');
-            const preview = document.getElementById('previewImg');
-
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    preview.style.display = 'block'; // Mostrar la imagen
-                };
-
-                reader.readAsDataURL(input.files[0]); // Leer como base64
-            } else {
-                alert("No se ha seleccionado ningún archivo.");
-            }
         }
         function agregarFuncion() {
             const fecha = document.getElementById('fechaFuncion').value;

@@ -29,6 +29,7 @@
                     <th>Hora de Inicio</th>
                     <th>Hora de Fin</th>
                     <th>Acciones</th>
+                    <th>¿Activa?</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +38,7 @@
 
                         <tr>
                             <td>
-                                <a href="ListaEspacios.aspx">
+                                <a href='<%# "ConstanciaEntrada.aspx?idConstancia=" + Eval("idConstancia") %>'>
                                     <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
                                 </a>
                             </td>
@@ -52,6 +53,7 @@
                                     Text="Eliminar" CommandArgument='<%# String.Format("{0:yyyy-MM-dd}", Eval("fechaConstancia")) + "|" + Eval("numEntrada") %>'
                                     OnClick="btnEliminar_Click"/>
                             </td>
+                            <td><%# Eval("Estado").ToString() == "65" ? "Sí" : "No" %></td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -63,14 +65,14 @@
     <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
         <asp:Button ID="btnAnterior" runat="server"
             CssClass="btn btn-outline-secondary btn-sm me-4"
-            Text="←" OnClick="btnAnterior_Click" />
+            Text="Anterior" OnClick="btnAnterior_Click" />
 
         <asp:Label ID="lblPaginaActual" runat="server"
             CssClass="fw-bold text-dark mx-2" />
 
         <asp:Button ID="btnSiguiente" runat="server"
             CssClass="btn btn-outline-secondary btn-sm ms-4"
-            Text="→" OnClick="btnSiguiente_Click" />
+            Text="Siguiente" OnClick="btnSiguiente_Click" />
     </div>
     <div class="mb-3"></div>
     <!-- Modal de Confirmación -->

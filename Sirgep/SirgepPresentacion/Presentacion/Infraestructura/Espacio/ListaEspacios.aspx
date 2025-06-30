@@ -54,10 +54,10 @@
         <table class="tabla-reservas">
             <thead class="table-light fw-bold">
                 <tr>
-                    <th>Abrir</th>
+                    <th>Imagen</th>
                     <th>Código</th>
                     <th>Categoría</th>
-                    <th>Espacio Reservado</th>
+                    <th>Nombre del Espacio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -66,10 +66,14 @@
                     <ItemTemplate>
                         
                         <tr>
-                            <td>            
-                                <a href="ListaEspacios.aspx">
-                                    <img src="/Images/icons/open-link.png" alt="Abrir" style="width: 24px;" />
-                                </a>
+                            <td>
+                                <asp:LinkButton
+                                    ID="lnkVerImagen"
+                                    runat="server"
+                                    CommandArgument='<%# Eval("foto") %>'
+                                    OnCommand="lnkVerImagen_Command">
+                                    <i class="bi bi-box-arrow-up-right text-dark"></i>
+                                </asp:LinkButton>
                             </td>
                             <td><%# Eval("IdEspacio") %></td>
                             <td><%# Eval("TipoEspacio") %></td>
@@ -86,12 +90,12 @@
                         <tr>
                             <td colspan="5" class="text-center pt-3">
                                 <asp:Button ID="btnAnteriorFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm me-2"
-                                    Text="←" CommandName="Anterior" OnCommand="Paginar_Click" />
+                                    Text="Anterior" CommandName="Anterior" OnCommand="Paginar_Click" />
 
                                 <asp:Label ID="lblPaginaFoot" runat="server" CssClass="fw-bold"></asp:Label>
 
                                 <asp:Button ID="btnSiguienteFoot" runat="server" CssClass="btn btn-outline-secondary btn-sm ms-2"
-                                    Text="→" CommandName="Siguiente" OnCommand="Paginar_Click" />
+                                    Text="Siguiente" CommandName="Siguiente" OnCommand="Paginar_Click" />
                             </td>
                         </tr>
                     </FooterTemplate>
@@ -117,7 +121,7 @@
                             <label>Nombre del espacio</label>
                             <asp:TextBox ID="txtNombreEspacioAgregar" runat="server" CssClass="form-control" Placeholder="Inserte nombre del espacio" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Tipo de espacio</label>
                             <asp:DropDownList ID="ddlTipoEspacioAgregar" runat="server" CssClass="form-select">
                             </asp:DropDownList>
@@ -129,7 +133,7 @@
                             <label>Ubicación</label>
                             <asp:TextBox ID="txtUbicacionAgregar" runat="server" CssClass="form-control" Placeholder="Inserte ubicación" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Departamento</label>
                             <asp:DropDownList ID="ddlDepartamentoAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlDepartamentoAgregar_SelectedIndexChanged">
@@ -142,7 +146,7 @@
                             <label>Superficie (m²)</label>
                             <asp:TextBox ID="txtSuperficieAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte la superficie" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Provincia</label>
                             <asp:DropDownList ID="ddlProvinciaAgregar" runat="server" CssClass="form-select" AutoPostBack="true"
                                 OnSelectedIndexChanged="ddlProvinciaAgregar_SelectedIndexChanged">
@@ -156,12 +160,19 @@
                             <label>Precio de reserva por hora</label>
                             <asp:TextBox ID="txtPrecioReservaAgregar" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Inserte el precio de la reserva por hora" />
                         </div>
-                        <div class="mb-3 col-md-4">
+                        <div class="mb-3 col-md-6">
                             <label>Distrito</label>
                             <asp:DropDownList ID="ddlDistritoAgregar" runat="server" CssClass="form-select" OnSelectedIndexChanged="ddlDistritoAgregar_SelectedIndexChanged">
                             </asp:DropDownList>
                         </div>
                     </div>
+                    
+                    <!-- Mensaje de error o éxito -->
+                    <div class="mb-3">
+                        <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger fw-bold" />
+                    </div>
+
+                    <hr class="my-2" />
 
                     <!-- Horarios -->
                     <div>
@@ -235,7 +246,24 @@
                             </div>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+
+                    <hr class="my-4"/>
+
+                    <!-- Foto -->
+                    <div class="row g-3">
+                        <!-- Subir imagen -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Subir foto</label>
+                            <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
+                        </div>
+
+                        <!-- Vista previa -->
+                        <div class="col-md-6 text-center d-flex align-items-end">
+                            <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
+                        </div>
+                    </div>
                 </div>
+
                     <!-- FIN DE Caja de los Días de Atención -->
                 <div class="modal-footer">
                     <input type="hidden" id="diasSeleccionados" name="diasSeleccionados" runat="server" />
@@ -447,6 +475,23 @@
         </div>
     </div>
 
+    <!-- Modal Ver Foto -->
+    <div class="modal fade" id="modalPreview" tabindex="-1" aria-labelledby="modalPreviewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <!-- Encabezado completamente rojo -->
+                <div class="modal-header" style="background-color: #f10909; color: white;">
+                    <h5 class="modal-title" id="modalPreviewLabel">Vista previa de imagen</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <!-- Cuerpo del modal -->
+                <div class="modal-body text-center">
+                    <img id="imgPreviewModal" src="#" style="max-width: 100%;" class="img-fluid" />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         function abrirPaso1() {
             // Oculta el modal actual (paso 2)
@@ -462,6 +507,22 @@
 
     <!-- Abrir modal de Edición -->
     <script type="text/javascript">
+        function mostrarPreview(input, idImg) {
+            const file = input.files[0];
+            const img = document.getElementById(idImg);
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                img.src = '#';
+                img.style.display = 'none';
+            }
+        }
         function abrirModalEdicion() {
             var modalEdicion = bootstrap.Modal.getInstance(document.getElementById('modalEdicionEspacio'));
             modalEdicion.show();

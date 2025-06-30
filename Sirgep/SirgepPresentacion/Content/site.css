@@ -476,3 +476,12 @@ body {
 .evento-btn-wrapper {
     text-align: right;
 }
+
+.img-detalle-evento {
+    width: 340px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    display: block;
+}

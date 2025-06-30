@@ -84,32 +84,7 @@
         <!-- BOTONES -->
         <div class="d-flex justify-content-between mb-3">
             <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-dark" OnClick="btnVolver_Click" />
-            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Constancia" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La constancia de la entrada fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
+            <asp:Button ID="btnDescargarMostrarModal" runat="server" Text="Descargar Constancia" OnClientClick="setTimeout(function() { mostrarModalExito('Descarga exitosa', 'La constancia de la reserva fue descargada correctamente.'); }, 1000);" OnClick="btnDescargar_Click" CssClass="btn btn-dark" />
         </div>
     </div>
-
-    <!-- MODAL -->
-    <!--
-    <div class="modal fade" id="miModal" tabindex="-1" aria-labelledby="miModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header modal-header-rojo text-white">
-                    <h5 class="modal-title" id="miModalLabel">Descarga Completada</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    Descarga completada correctamente.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function mostrarModal() {
-            var modal = new bootstrap.Modal(document.getElementById('miModal'));
-            modal.show();
-        }
-    </script>-->
 </asp:Content>
