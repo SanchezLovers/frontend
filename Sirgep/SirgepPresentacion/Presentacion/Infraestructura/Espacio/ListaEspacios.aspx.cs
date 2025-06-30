@@ -130,7 +130,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             if (ddlDistrito.Items[0].Text != "Seleccione un distrito")
                 ddlDistrito.Items.Insert(0, new ListItem("Seleccione un distrito", ""));
         }
-
         public void realizarPaginado(espacio[] response)
         {
             if (response == null)
@@ -139,22 +138,37 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 CargarEspacios();
                 return;
             }
+
             var todos = response.ToList(); // lo convertimos a lista
+            CalcularTotalPaginas(todos.Count);
 
-            int totalEspacios = todos.Count;
-            TotalPaginas = (int)Math.Ceiling((double)totalEspacios / TAM_PAGINA);
+            AjustarPaginaActual();
 
-            if (PaginaActual < 1) PaginaActual = 1;
-            if (PaginaActual > TotalPaginas) PaginaActual = TotalPaginas;
+            var paginaActual = ObtenerPaginaActual(todos);
 
-            // Datos solo para esta página
-            var paginaActual = todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
-
-            // Cargar al repeater
             rptEspacios.DataSource = paginaActual;
             rptEspacios.DataBind();
 
-            // Footer: actualizar label y botones
+            ActualizarFooter();
+        }
+        private void CalcularTotalPaginas(int totalEspacios)
+        {
+            TotalPaginas = (int)Math.Ceiling((double)totalEspacios / TAM_PAGINA);
+        }
+
+        private void AjustarPaginaActual()
+        {
+            if (PaginaActual < 1) PaginaActual = 1;
+            if (PaginaActual > TotalPaginas) PaginaActual = TotalPaginas;
+        }
+
+        private List<espacio> ObtenerPaginaActual(List<espacio> todos)
+        {
+            return todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
+        }
+
+        private void ActualizarFooter()
+        {
             if (rptEspacios.Controls.Count > 0)
             {
                 var footer = rptEspacios.Controls[rptEspacios.Controls.Count - 1];
@@ -173,6 +187,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                     btnSiguiente.Enabled = PaginaActual < TotalPaginas;
             }
         }
+
         private void CargarEspacios()
         {
             listarEspacioResponse response = espacioWS.listarEspacio(new listarEspacioRequest());
@@ -224,27 +239,40 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            /*CARGAR DATOS*/
             int idEspacio = int.Parse(((Button)sender).CommandArgument.ToString());
             hiddenIdEspacio.Value = idEspacio.ToString();
 
             espacioDTO espDTO = espacioWS.obtenerEspacioDTO(new obtenerEspacioDTORequest(idEspacio)).@return;
             hiddenIdDistrito.Value = espDTO.idDistrito.ToString();
 
-            /* Hardcodeado pq' no lo tenemos en nuestra BD, además hay pocos datos */
+            CargarTipoEspacio(espDTO.tipo.ToString());
+            CargarDatosEspacio(espDTO);
+            CargarUbicacion(espDTO);
+            CargarHorario(espDTO);
+            MarcarDiasCheck(espDTO.dias);
+
+            abrirModalEditarEspacio();
+        }
+        private void CargarTipoEspacio(string tipoSeleccionado)
+        {
             ddlTipoEspacioEdit.Items.Clear();
-            ddlTipoEspacioEdit.Items.Insert(0, new ListItem(espDTO.tipo.ToString(), espDTO.tipo.ToString()));
+            ddlTipoEspacioEdit.Items.Insert(0, new ListItem(tipoSeleccionado, tipoSeleccionado));
             ddlTipoEspacioEdit.Items.Insert(1, new ListItem("Teatros", "TEATRO"));
             ddlTipoEspacioEdit.Items.Insert(2, new ListItem("Canchas", "CANCHA"));
             ddlTipoEspacioEdit.Items.Insert(3, new ListItem("Salones", "SALON"));
             ddlTipoEspacioEdit.Items.Insert(4, new ListItem("Parques", "PARQUE"));
+        }
 
-            // Leer el valor
+        private void CargarDatosEspacio(espacioDTO espDTO)
+        {
             txtNombreEdit.Text = espDTO.nombre;
             txtUbicacionEdit.Text = espDTO.ubicacion;
             txtSuperficieEdit.Text = espDTO.superficie.ToString();
             txtPrecioEdit.Text = espDTO.precioReserva.ToString();
+        }
 
+        private void CargarUbicacion(espacioDTO espDTO)
+        {
             ddlDepartamentoEdit.SelectedValue = espDTO.idDepartamento.ToString();
             ddlDepartamentoEdit.Enabled = false;
 
@@ -259,17 +287,14 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             ddlDistritoEdit.Items.Insert(0, new ListItem(espDTO.nombreDistrito.ToString(), espDTO.idDistrito.ToString()));
             ddlDistritoEdit.SelectedValue = espDTO.idDistrito.ToString();
             ddlDistritoEdit.Enabled = false;
+        }
 
+        private void CargarHorario(espacioDTO espDTO)
+        {
             ddlHoraInicioEdit.Text = espDTO.horaInicio.ToString().Substring(0, 5);
             ddlHoraFinEdit.Text = espDTO.horaFin.ToString().Substring(0, 5);
-
-            // Cargar los días que el Espacio atiende
-            espacioDiaSem[] diasSem = espDTO.dias;
-            MarcarDiasCheck(diasSem);
-
-            // Mostrar el modal usando JavaScript
-            abrirModalEditarEspacio();
         }
+
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             // Text ya es el VALOR y es un string
@@ -386,60 +411,71 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             // Para que el modal siga abierto
             abrirModalAgregarEspacio();
         }
-
         protected void btnActualizarEspacioEdit_Click(object sender, EventArgs e)
         {
-            if (!validarEspacio(txtNombreEdit.Text,
-             txtUbicacionEdit.Text,
-             txtSuperficieEdit.Text,
-             txtPrecioEdit.Text,
-             ddlTipoEspacioEdit.SelectedValue,
-             ddlHoraInicioEdit.Text,
-             ddlHoraFinEdit.Text,
-             ddlDepartamentoEdit.Text,
-             ddlProvinciaEdit.Text,
-             ddlDistritoEdit.Text,
-             diasSeleccionados.Value, EDICION_ESPACIO)) return;
-            // Capturar ID del espacio
+            if (!EsFormularioEspacioValido()) return;
+
             int idEspacio = int.Parse(hiddenIdEspacio.Value);
-            int idDistritoHdn = int.Parse(hiddenIdDistrito.Value);
-            // Leer datos actualizados desde controles del modal
-            string nombre = txtNombreEdit.Text.Trim();
-            string ubicacion = txtUbicacionEdit.Text.Trim();
-            double superficie = double.Parse(txtSuperficieEdit.Text);
-            double precioReserva = double.Parse(txtPrecioEdit.Text);
-            string tipoEspacioInsumo = ddlTipoEspacioEdit.SelectedValue;
-            string horaIni = ddlHoraInicioEdit.Text;
-            string horaFin = ddlHoraFinEdit.Text;
+            int idDistrito = int.Parse(hiddenIdDistrito.Value);
+            espacio espacioActualizar = ConstruirEspacioActualizado(idEspacio, idDistrito);
 
-            if (horaIni.Length == 5) horaIni += ":00";
-            if (horaFin.Length == 5) horaFin += ":00";
+            bool actualizado = espacioWS.actualizarEspacio(new actualizarEspacioRequest(espacioActualizar)).@return;
 
-            eTipoEspacio eTipo;
-            eTipoEspacio.TryParse(tipoEspacioInsumo, false, out eTipo);
+            MostrarResultadoActualizacion(actualizado);
+        }
+        private bool EsFormularioEspacioValido()
+        {
+            return validarEspacio(
+                txtNombreEdit.Text,
+                txtUbicacionEdit.Text,
+                txtSuperficieEdit.Text,
+                txtPrecioEdit.Text,
+                ddlTipoEspacioEdit.SelectedValue,
+                ddlHoraInicioEdit.Text,
+                ddlHoraFinEdit.Text,
+                ddlDepartamentoEdit.Text,
+                ddlProvinciaEdit.Text,
+                ddlDistritoEdit.Text,
+                diasSeleccionados.Value,
+                EDICION_ESPACIO
+            );
+        }
 
-
-            espacio espacioActualizar = new espacio()
+        private espacio ConstruirEspacioActualizado(int idEspacio, int idDistrito)
+        {
+            return new espacio()
             {
                 idEspacio = idEspacio,
-                nombre = nombre,
-                ubicacion = ubicacion,
-                superficie = superficie,
-                precioReserva = precioReserva,
-                tipoEspacio = eTipo,
-                horarioInicioAtencion = horaIni,
-                horarioFinAtencion = horaFin,
-                distrito = new distrito()
-                {
-                    idDistrito = idDistritoHdn
-                }
-                // asignar departamentos, horarios, etc.
+                nombre = txtNombreEdit.Text.Trim(),
+                ubicacion = txtUbicacionEdit.Text.Trim(),
+                superficie = ObtenerDouble(txtSuperficieEdit.Text),
+                precioReserva = ObtenerDouble(txtPrecioEdit.Text),
+                tipoEspacio = ParsearTipoEspacio(ddlTipoEspacioEdit.SelectedValue),
+                tipoEspacioSpecified = true,
+                horarioInicioAtencion = NormalizarHora(ddlHoraInicioEdit.Text),
+                horarioFinAtencion = NormalizarHora(ddlHoraFinEdit.Text),
+                distrito = new distrito { idDistrito = idDistrito }
             };
+        }
 
-            espacioActualizar.tipoEspacioSpecified = true; // Forzar la serialización
+        private double ObtenerDouble(string texto)
+        {
+            return double.TryParse(texto, out double valor) ? valor : 0.0;
+        }
 
-            Boolean actualizado = espacioWS.actualizarEspacio(new actualizarEspacioRequest(espacioActualizar)).@return;
+        private eTipoEspacio ParsearTipoEspacio(string valor)
+        {
+            Enum.TryParse(valor, out eTipoEspacio tipo);
+            return tipo;
+        }
 
+        private string NormalizarHora(string hora)
+        {
+            return hora.Length == 5 ? hora + ":00" : hora;
+        }
+
+        private void MostrarResultadoActualizacion(bool actualizado)
+        {
             if (actualizado)
             {
                 mostrarModalExitoEsp("ACTUALIZACIÓN EXITOSA", "Espacio actualizado exitosamente.");
@@ -451,104 +487,132 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             }
         }
 
-        private bool validarEspacio(string nombreInsert, string ubicacionInsert, string superficieTexto, string precioTexto, string tipoEspacioInsumoInsert,
-         string horaIniInsert, string horaFinInsert, string depa, string prov, string dist, string dias, int current)
+        private bool validarEspacio(string nombreInsert, string ubicacionInsert, string superficieTexto, string precioTexto, 
+            string tipoEspacioInsumoInsert,string horaIniInsert, string horaFinInsert, string depa, string prov, string dist, 
+            string dias, int current)
         {
             string[] diasArray = dias.Split(',');
 
-            // Función local para validar que no sea solo números
-            bool ContieneLetras(string texto) => !string.IsNullOrWhiteSpace(texto) && texto.Any(c => char.IsLetter(c));
+            if (!EsTextoConLetras(nombreInsert, "El nombre debe contener letras.", current)) return false;
+            if (!EsTextoConLetras(ubicacionInsert, "La ubicación debe contener letras.", current)) return false;
 
-            if (!ContieneLetras(nombreInsert))
+            if (!ValidarCamposObligatorios(nombreInsert, ubicacionInsert, tipoEspacioInsumoInsert, current)) return false;
+            if (!ValidarSuperficie(superficieTexto, current)) return false;
+            if (!ValidarPrecio(precioTexto, current)) return false;
+            if (!ValidarHoras(horaIniInsert, horaFinInsert, current)) return false;
+            if (!ValidarUbicacion(depa, prov, dist, current)) return false;
+
+            if (!ValidarDias(diasArray, dias, current)) return false;
+
+            return true;
+        }
+        private bool EsTextoConLetras(string texto, string mensajeError, int pagina)
+        {
+            bool contieneLetras = !string.IsNullOrWhiteSpace(texto) && texto.Any(c => char.IsLetter(c));
+            if (!contieneLetras)
             {
-                MostrarError("El nombre debe contener letras.", current);
+                MostrarError(mensajeError, pagina);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidarCamposObligatorios(string nombre, string ubicacion, string tipoEspacio, int pagina)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+            {
+                MostrarError("Debe ingresar el nombre del espacio.", pagina);
+                return false;
+            }
+            if (nombre.Length > 45)
+            {
+                MostrarError("El nombre superó el máximo de 45 caracteres.", pagina);
                 return false;
             }
 
-            if (!ContieneLetras(ubicacionInsert))
+            if (string.IsNullOrWhiteSpace(ubicacion))
             {
-                MostrarError("La ubicación debe contener letras.", current);
+                MostrarError("Debe ingresar la ubicación del espacio.", pagina);
+                return false;
+            }
+            if (ubicacion.Length > 100)
+            {
+                MostrarError("La ubicación superó el máximo de 100 caracteres.", pagina);
                 return false;
             }
 
-            // Validar campos de texto obligatorios
-            if (string.IsNullOrWhiteSpace(nombreInsert))
+            if (string.IsNullOrWhiteSpace(tipoEspacio) || tipoEspacio == "0")
             {
-                MostrarError("Debe ingresar el nombre del espacio.", current);
+                MostrarError("Debe seleccionar un tipo de espacio.", pagina);
                 return false;
             }
 
-            if (nombreInsert.Length > 45)
-            {
-                MostrarError("El nombre superó el máximo de 45 caracteres.", current);
-                return false;
-            }
+            return true;
+        }
 
-            if (string.IsNullOrWhiteSpace(ubicacionInsert))
-            {
-                MostrarError("Debe ingresar la ubicación del espacio.", current);
-                return false;
-            }
-
-            if (ubicacionInsert.Length > 100)
-            {
-                MostrarError("La ubicación superó el máximo de 100 caracteres.", current);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(tipoEspacioInsumoInsert) || tipoEspacioInsumoInsert == "0")
-            {
-                MostrarError("Debe seleccionar un tipo de espacio.", current);
-                return false;
-            }
-
-            // Validar superficie
+        private bool ValidarSuperficie(string superficieTexto, int pagina)
+        {
             if (!double.TryParse(superficieTexto, out double superficieInsert) || superficieInsert < 10 || superficieInsert > 1000)
             {
-                MostrarError("La superficie debe ser un número positivo menor o igual a 1000 y como mínimo de 10 metros cuadrados.", current);
+                MostrarError("La superficie debe ser un número positivo menor o igual a 1000 y como mínimo de 10 metros cuadrados.", pagina);
                 return false;
             }
+            return true;
+        }
 
-            // Validar precio de reserva
+        private bool ValidarPrecio(string precioTexto, int pagina)
+        {
             if (!double.TryParse(precioTexto, out double precioReservaInsert) || precioReservaInsert <= 0 || precioReservaInsert > 1000)
             {
-                MostrarError("El precio de reserva debe ser un número positivo menor o igual a 1000.", current);
+                MostrarError("El precio de reserva debe ser un número positivo menor o igual a 1000.", pagina);
                 return false;
             }
-            // Validar horas
-            if (string.IsNullOrWhiteSpace(horaIniInsert) || string.IsNullOrWhiteSpace(horaFinInsert))
-            {
-                MostrarError("Debe ingresar la hora de inicio y la hora de fin.", current);
-                return false;
-            }
+            return true;
+        }
 
+        private bool ValidarHoras(string horaIni, string horaFin, int pagina)
+        {
+            if (string.IsNullOrWhiteSpace(horaIni) || string.IsNullOrWhiteSpace(horaFin))
+            {
+                MostrarError("Debe ingresar la hora de inicio y la hora de fin.", pagina);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidarUbicacion(string depa, string prov, string dist, int pagina)
+        {
             if (string.IsNullOrEmpty(depa))
             {
-                MostrarError("Debe elegir un departamento.", current);
+                MostrarError("Debe elegir un departamento.", pagina);
                 return false;
             }
 
             if (string.IsNullOrEmpty(prov))
             {
-                MostrarError("Debe elegir una provincia.", current);
+                MostrarError("Debe elegir una provincia.", pagina);
                 return false;
             }
 
             if (string.IsNullOrEmpty(dist))
             {
-                MostrarError("Debe elegir un distrito.", current);
+                MostrarError("Debe elegir un distrito.", pagina);
                 return false;
             }
 
-            if (!((diasArray.Length > 0) || dias == "") && current == AGREGAR_ESPACIO)
-            {
-                MostrarError("Debe seleccionar al menos 1 día de atención.", current);
-                return false;
-            }
-
-            // Todo validado correctamente
             return true;
         }
+
+        private bool ValidarDias(string[] diasArray, string dias, int pagina)
+        {
+            if (!((diasArray.Length > 0) || dias == "") && pagina == AGREGAR_ESPACIO)
+            {
+                MostrarError("Debe seleccionar al menos 1 día de atención.", pagina);
+                return false;
+            }
+            return true;
+        }
+
 
         public void MostrarError(string mensaje, int current)
         {
@@ -579,217 +643,349 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
 
         protected void btnGuardarInsertado_Click(object sender, EventArgs e)
         {
-            if (!validarEspacio(txtNombreEspacioAgregar.Text,
-             txtUbicacionAgregar.Text,
-             txtSuperficieAgregar.Text,
-             txtPrecioReservaAgregar.Text,
-             ddlTipoEspacioAgregar.SelectedValue,
-             ddlHoraInicioInsert.Text,
-             ddlHoraFinInsert.Text,
-             ddlDepartamentoAgregar.Text,
-             ddlProvinciaAgregar.Text,
-             ddlDistritoAgregar.Text,
-             diasSeleccionados.Value, AGREGAR_ESPACIO)) return;
-            // Capturar ID del espacio
+            if (!ValidarFormularioEspacio()) return;
+
             int idDistritoHdn = int.Parse(hiddenIdDistrito.Value);
-            // Leer datos actualizados desde controles del modal
-            string nombreInsert = txtNombreEspacioAgregar.Text.Trim();
-            string ubicacionInsert = txtUbicacionAgregar.Text.Trim();
-            double superficieInsert = double.Parse(txtSuperficieAgregar.Text);
-            double precioReservaInsert = double.Parse(txtPrecioReservaAgregar.Text);
-            string tipoEspacioInsumoInsert = ddlTipoEspacioAgregar.SelectedValue;
-            string horaIniInsert = ddlHoraInicioInsert.Text;
-            string horaFinInsert = ddlHoraFinInsert.Text;
             string urlParaBd = "";
             guardarImgEspacio(ref urlParaBd);
-            eTipoEspacio eTipo;
-            eTipoEspacio.TryParse(tipoEspacioInsumoInsert, false, out eTipo);
-            espacio espacioInsertar = new espacio()
-            {
-                idEspacio = 0,
-                nombre = nombreInsert,
-                ubicacion = ubicacionInsert,
-                superficie = superficieInsert,
-                precioReserva = precioReservaInsert,
-                tipoEspacio = eTipo,
-                horarioInicioAtencion = horaIniInsert + ":00",
-                horarioFinAtencion = horaFinInsert + ":00",
-                foto = urlParaBd,
-                distrito = new distrito()
-                {
-                    idDistrito = idDistritoHdn
-                }
-            };
 
-            espacioInsertar.tipoEspacioSpecified = true; // Forzar la serialización
-
-            int insertado = espacioWS.insertarEspacio(new insertarEspacioRequest(espacioInsertar)).@return;
+            espacio espacioInsertar = ConstruirEspacioInsertar(idDistritoHdn, urlParaBd);
+            int insertado = InsertarEspacio(espacioInsertar);
 
             if (insertado > 0)
             {
-                // Ahora debemos insertar los días en los que estará funcionando el espacio
-                string dias = diasSeleccionados.Value; // <== Accede directamente al valor del input oculto
+                if (!InsertarDiasFuncionamiento(insertado)) return;
 
-                if (!string.IsNullOrWhiteSpace(dias))
-                {
-                    string[] diasArray = dias.Split(',');
-
-                    foreach (string diaSem in diasArray)
-                    {
-                        eDiaSemana diaSemParsed;
-                        eDiaSemana.TryParse<eDiaSemana>(diaSem, ignoreCase: true, out diaSemParsed);
-                        // Insertamos cada día que se escogió
-                        espacioDiaSem espacioDiaSem = new espacioDiaSem()
-                        {
-                            idEspacio = insertado,
-                            dia = diaSemParsed
-                        };
-                        espacioDiaSem.diaSpecified = true;
-                        Boolean diaInsertado = diaSemWS.insertarDia(new insertarDiaRequest(espacioDiaSem)).@return;
-                        if (!diaInsertado)
-                        {
-                            // Mensaje de fallo
-                            mostrarModalErrorEsp("ERROR AL INSERTAR DIA de SEMANA", "Se produjo un error al insertar el día de la semana del espacio.");
-                            return;
-                        }
-                    }
-                    //mostrarModalExitoEsp("ÉXITO", "Días insertados correctamente.");
-                }
                 CargarEspacios();
-                string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
-                Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
-                thread.Start();
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
-                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
-                        "}, 1000);", true);
+                EnviarCorreosEspacioRegistrado(espacioInsertar);
+                MostrarModalExitoCorreos();
             }
             else
             {
-                // Mensaje de fallo
-                mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
+                MostrarErrorInsercionEspacio();
             }
         }
+        private bool ValidarFormularioEspacio()
+        {
+            return validarEspacio(
+                txtNombreEspacioAgregar.Text,
+                txtUbicacionAgregar.Text,
+                txtSuperficieAgregar.Text,
+                txtPrecioReservaAgregar.Text,
+                ddlTipoEspacioAgregar.SelectedValue,
+                ddlHoraInicioInsert.Text,
+                ddlHoraFinInsert.Text,
+                ddlDepartamentoAgregar.Text,
+                ddlProvinciaAgregar.Text,
+                ddlDistritoAgregar.Text,
+                diasSeleccionados.Value,
+                AGREGAR_ESPACIO
+            );
+        }
+
+        private espacio ConstruirEspacioInsertar(int idDistrito, string urlParaBd)
+        {
+            eTipoEspacio tipo;
+            eTipoEspacio.TryParse(ddlTipoEspacioAgregar.SelectedValue, false, out tipo);
+
+            return new espacio
+            {
+                idEspacio = 0,
+                nombre = txtNombreEspacioAgregar.Text.Trim(),
+                ubicacion = txtUbicacionAgregar.Text.Trim(),
+                superficie = double.Parse(txtSuperficieAgregar.Text),
+                precioReserva = double.Parse(txtPrecioReservaAgregar.Text),
+                tipoEspacio = tipo,
+                tipoEspacioSpecified = true,
+                horarioInicioAtencion = ddlHoraInicioInsert.Text + ":00",
+                horarioFinAtencion = ddlHoraFinInsert.Text + ":00",
+                foto = urlParaBd,
+                distrito = new distrito { idDistrito = idDistrito }
+            };
+        }
+
+        private int InsertarEspacio(espacio espacioInsertar)
+        {
+            return espacioWS.insertarEspacio(new insertarEspacioRequest(espacioInsertar)).@return;
+        }
+
+        private bool InsertarDiasFuncionamiento(int idEspacioInsertado)
+        {
+            string dias = diasSeleccionados.Value;
+            if (string.IsNullOrWhiteSpace(dias)) return true;
+
+            foreach (string diaSem in dias.Split(','))
+            {
+                eDiaSemana diaParsed;
+                eDiaSemana.TryParse<eDiaSemana>(diaSem, ignoreCase: true, out diaParsed);
+
+                espacioDiaSem espacioDia = new espacioDiaSem
+                {
+                    idEspacio = idEspacioInsertado,
+                    dia = diaParsed,
+                    diaSpecified = true
+                };
+
+                bool insertado = diaSemWS.insertarDia(new insertarDiaRequest(espacioDia)).@return;
+                if (!insertado)
+                {
+                    mostrarModalErrorEsp("ERROR AL INSERTAR DIA de SEMANA", "Se produjo un error al insertar el día de la semana del espacio.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void EnviarCorreosEspacioRegistrado(espacio espacioInsertar)
+        {
+            string nombreDistrito = distritoWS.buscarDistPorId(
+                new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)
+            ).@return.nombre;
+
+            Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
+            thread.Start();
+        }
+
+        private void MostrarModalExitoCorreos()
+        {
+            ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", @"
+        setTimeout(function() {
+            mostrarModalExito('Correos enviados exitosamente',
+            'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.');
+        }, 1000);", true);
+        }
+
+        private void MostrarErrorInsercionEspacio()
+        {
+            mostrarModalErrorEsp("ERROR AL INSERTAR ESPACIO", "Se produjo un error al insertar el espacio.");
+        }
+
         protected void enviarCorreosEspacio(string nombreDistrito, espacio espacioInsertar)
         {
-            string asunto = $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
-            string contenido = $@"
-                    <html>
-                    <head>
-                      <style>
-                        body {{
-                          font-family: 'Segoe UI', sans-serif;
-                          background-color: #f8f9fa;
-                          margin: 0;
-                          padding: 0;
-                        }}
-                        .container {{
-                          max-width: 600px;
-                          margin: 20px auto;
-                          background-color: #fff;
-                          border: 1px solid #dee2e6;
-                          border-radius: 8px;
-                          padding: 30px;
-                          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                        }}
-                        .header {{
-                          background-color: #f10909;
-                          color: white;
-                          padding: 15px;
-                          border-radius: 6px 6px 0 0;
-                          text-align: center;
-                        }}
-                        .header h2 {{
-                          margin: 0;
-                          font-size: 22px;
-                          color: white;
-                        }}
-                        .body {{
-                          color: #212529;
-                          padding: 20px 0;
-                          font-size: 16px;
-                        }}
-                        .details {{
-                          background-color: #f1f3f5;
-                          border-radius: 6px;
-                          padding: 15px;
-                          margin-bottom: 20px;
-                          list-style: none;
-                        }}
-                        .details li {{
-                          margin-bottom: 10px;
-                          font-size: 15px;
-                        }}
-                        .details li strong {{
-                          color: #000;
-                          font-weight: bold;
-                        }}
-                        .cta {{
-                          display: inline-block;
-                          background-color: #f10909;
-                          color: #fff !important;
-                          padding: 10px 20px;
-                          border-radius: 5px;
-                          text-decoration: none;
-                          font-weight: bold;
-                          margin-top: 10px;
-                        }}
-                        .cta:hover {{
-                          background-color: #c40808;
-                        }}
-                        .logo {{
-                          text-align: center;
-                          margin-top: 20px;
-                        }}
-                        .logo img {{
-                          width: 100px;
-                        }}
-                        .footer {{
-                          text-align: center;
-                          font-size: 12px;
-                          color: #6c757d;
-                          margin-top: 20px;
-                        }}
-                      </style>
-                    </head>
-                    <body>
-                      <div class='container'>
-                        <div class='header'>
-                          <h2>¡Nuevo espacio en tu distrito favorito {nombreDistrito}!</h2>
-                        </div>
-                        <div class='body'>
-                          <p>Estimado usuario,</p>
-                          <p>Nos complace informarte que se ha registrado un nuevo espacio disponible en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
-                          <ul class='details'>
-                            <li><strong>📌 Nombre:</strong> {espacioInsertar.nombre}</li>
-                            <li><strong>🏷 Tipo:</strong> {espacioInsertar.tipoEspacio}</li>
-                            <li><strong>📍 Ubicación:</strong> {espacioInsertar.ubicacion}</li>
-                            <li><strong>📐 Superficie:</strong> {espacioInsertar.superficie} m²</li>
-                            <li><strong>💵 Precio de Reserva:</strong> S/ {espacioInsertar.precioReserva}</li>
-                            <li><strong>⏰ Horario de Atención:</strong> {espacioInsertar.horarioInicioAtencion} - {espacioInsertar.horarioFinAtencion}</li>
-                          </ul>
-                          <p>Si estás interesado, te invitamos a revisar más detalles o reservar tu espacio.</p>
-                          <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
-                        </div>
-                        <div class='logo'>
-                          <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
-                        </div>
-                        <div class='footer'>
-                          Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
-                          © 2025 Gobierno Regional de Lima
-                        </div>
-                      </div>
-                    </body>
-                    </html>";
-            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)).@return;
+            string asunto = ConstruirAsuntoCorreoEspacio(nombreDistrito, espacioInsertar);
+            string contenido = ConstruirContenidoCorreoEspacio(nombreDistrito, espacioInsertar);
+
+            bool resultado = espacioWS.enviarCorreosCompradoresPorDistritoDeEspacio(
+                new enviarCorreosCompradoresPorDistritoDeEspacioRequest(asunto, contenido, espacioInsertar.distrito.idDistrito)
+            ).@return;
+
             if (resultado)
             {
-                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se ha guardado el espacio satisfactoriamente y se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.");
+                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO",
+                    "Se ha guardado el espacio satisfactoriamente y se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.");
             }
             else
             {
-                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO", "Se insertó el espacio correctamente, pero no se encontró compradores cuyo distrito favorito coincida para enviar el correo.");
+                mostrarModalExitoEsp("ESPACIO INSERTADO CON ÉXITO",
+                    "Se insertó el espacio correctamente, pero no se encontró compradores cuyo distrito favorito coincida para enviar el correo.");
             }
         }
+        private string ConstruirAsuntoCorreoEspacio(string nombreDistrito, espacio espacioInsertar)
+        {
+            return $"¡Nuevo espacio disponible en tu distrito favorito {nombreDistrito}: {espacioInsertar.nombre}!";
+        }
+        private string ConstruirContenidoCorreoEspacio(string nombreDistrito, espacio espacioInsertar)
+        {
+            string estilos = ObtenerEstilosCorreo();
+
+            return $@"
+        <html>
+        <head>
+          <style>
+            {estilos}
+          </style>
+        </head>
+        <body>
+          <div class='container'>
+            {ConstruirHeaderCorreo(nombreDistrito)}
+            {ConstruirBodyCorreo(nombreDistrito, espacioInsertar)}
+            {ConstruirLogoCorreo()}
+            {ConstruirFooterCorreo()}
+          </div>
+        </body>
+        </html>";
+        }
+        private string ObtenerEstilosCorreo()
+        {
+            return string.Join(Environment.NewLine, new[]
+            {
+        ObtenerEstiloBase(),
+        ObtenerEstiloContainer(),
+        ObtenerEstiloHeader(),
+        ObtenerEstiloBody(),
+        ObtenerEstiloDetails(),
+        ObtenerEstiloCTA(),
+        ObtenerEstiloLogo(),
+        ObtenerEstiloFooter()
+    });
+        }
+
+        private string ObtenerEstiloBase()
+        {
+            return @"
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }";
+        }
+
+        private string ObtenerEstiloContainer()
+        {
+            return @"
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }";
+        }
+
+        private string ObtenerEstiloHeader()
+        {
+            return @"
+        .header {
+            background-color: #f10909;
+            color: white;
+            padding: 15px;
+            border-radius: 6px 6px 0 0;
+            text-align: center;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 22px;
+            color: white;
+        }";
+        }
+
+        private string ObtenerEstiloBody()
+        {
+            return @"
+        .body {
+            color: #212529;
+            padding: 20px 0;
+            font-size: 16px;
+        }";
+        }
+
+        private string ObtenerEstiloDetails()
+        {
+            return @"
+        .details {
+            background-color: #f1f3f5;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        .details li {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .details li strong {
+            color: #000;
+            font-weight: bold;
+        }";
+        }
+
+        private string ObtenerEstiloCTA()
+        {
+            return @"
+        .cta {
+            display: inline-block;
+            background-color: #f10909;
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .cta:hover {
+            background-color: #c40808;
+        }";
+        }
+
+        private string ObtenerEstiloLogo()
+        {
+            return @"
+        .logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo img {
+            width: 100px;
+        }";
+        }
+
+        private string ObtenerEstiloFooter()
+        {
+            return @"
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 20px;
+        }";
+        }
+
+
+        private string ConstruirHeaderCorreo(string nombreDistrito)
+        {
+            return $@"
+        <div class='header'>
+          <h2>¡Nuevo espacio en tu distrito favorito {nombreDistrito}!</h2>
+        </div>";
+        }
+
+        private string ConstruirBodyCorreo(string nombreDistrito, espacio espacioInsertar)
+        {
+            return $@"
+        <div class='body'>
+          <p>Estimado usuario,</p>
+          <p>Nos complace informarte que se ha registrado un nuevo espacio disponible en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
+          {ConstruirListaDetallesEspacio(espacioInsertar)}
+          <p>Si estás interesado, te invitamos a revisar más detalles o reservar tu espacio.</p>
+          <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+        </div>";
+        }
+
+        private string ConstruirListaDetallesEspacio(espacio espacioInsertar)
+        {
+            return $@"
+        <ul class='details'>
+            <li><strong>📌 Nombre:</strong> {espacioInsertar.nombre}</li>
+            <li><strong>🏷 Tipo:</strong> {espacioInsertar.tipoEspacio}</li>
+            <li><strong>📍 Ubicación:</strong> {espacioInsertar.ubicacion}</li>
+            <li><strong>📐 Superficie:</strong> {espacioInsertar.superficie} m²</li>
+            <li><strong>💵 Precio de Reserva:</strong> S/ {espacioInsertar.precioReserva}</li>
+            <li><strong>⏰ Horario de Atención:</strong> {espacioInsertar.horarioInicioAtencion} - {espacioInsertar.horarioFinAtencion}</li>
+        </ul>";
+        }
+
+        private string ConstruirLogoCorreo()
+        {
+            return @"
+        <div class='logo'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
+        </div>";
+        }
+
+        private string ConstruirFooterCorreo()
+        {
+            return @"
+        <div class='footer'>
+            Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
+            © 2025 Gobierno Regional de Lima
+        </div>";
+        }
+
+
         public void LimpiarDatosAgregados()
         {
             txtUbicacionAgregar.Text = "";
@@ -812,53 +1008,65 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
             string horaInicioStr = ddlHoraInicioInsert.Text.Trim();
             string horaFinStr = ddlHoraFinInsert.Text.Trim();
 
-            // Verificar que ambas no estén vacías
-            if (string.IsNullOrEmpty(horaInicioStr) || string.IsNullOrEmpty(horaFinStr))
+            if (!ValidarHorasNoVacias(horaInicioStr, horaFinStr)) return;
+            if (!ValidarHorasEnPunto(horaInicioStr, horaFinStr)) return;
+            if (!ValidarFormatoHoras(horaInicioStr, horaFinStr, out TimeSpan horaInicio, out TimeSpan horaFin)) return;
+            if (!ValidarOrdenHoras(horaInicio, horaFin)) return;
+
+            lblError.Text = "";
+            abrirModalAgregarEspacio();
+        }
+        private bool ValidarHorasNoVacias(string horaInicio, string horaFin)
+        {
+            if (string.IsNullOrEmpty(horaInicio) || string.IsNullOrEmpty(horaFin))
             {
                 lblError.Text = "Las horas no pueden estar vacías.";
-                // Para que el modal siga abierto
                 abrirModalAgregarEspacio();
-                return;
+                return false;
             }
+            return true;
+        }
 
-            TimeSpan horaInicio = TimeSpan.Parse(ddlHoraInicioInsert.Text);
-            TimeSpan horaFin = TimeSpan.Parse(ddlHoraFinInsert.Text);
+        private bool ValidarHorasEnPunto(string horaInicio, string horaFin)
+        {
+            TimeSpan ini = TimeSpan.Parse(horaInicio);
+            TimeSpan fin = TimeSpan.Parse(horaFin);
 
-            if (horaInicio.Minutes != 0 || horaFin.Minutes != 0)
+            if (ini.Minutes != 0 || fin.Minutes != 0)
             {
                 lblError.Text = "Las horas deben finalizar en :00";
-                // Para que el modal siga abierto
                 abrirModalAgregarEspacio();
-                return;
+                return false;
             }
+            return true;
+        }
 
-            // Parsear a TimeSpan
-
+        private bool ValidarFormatoHoras(string horaInicioStr, string horaFinStr, out TimeSpan horaInicio, out TimeSpan horaFin)
+        {
             bool inicioOk = TimeSpan.TryParse(horaInicioStr, out horaInicio);
             bool finOk = TimeSpan.TryParse(horaFinStr, out horaFin);
 
             if (!inicioOk || !finOk)
             {
                 lblError.Text = "Formato de hora no válido.";
-                // Para que el modal siga abierto
                 abrirModalAgregarEspacio();
-                return;
+                return false;
             }
+            return true;
+        }
 
-            // Validar que hora inicio < hora fin
+        private bool ValidarOrdenHoras(TimeSpan horaInicio, TimeSpan horaFin)
+        {
             if (horaInicio >= horaFin)
             {
                 lblError.Text = "La hora de inicio debe ser menor que la hora de fin.";
-                // Para que el modal siga abierto
                 abrirModalAgregarEspacio();
-                return;
+                return false;
             }
-
-            // Si todo está bien, borrar el error
-            lblError.Text = "";
-            // Para que el modal siga abierto
-            abrirModalAgregarEspacio();
+            return true;
         }
+
+
         public void abrirModalAgregarEspacio()
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalPaso1",
