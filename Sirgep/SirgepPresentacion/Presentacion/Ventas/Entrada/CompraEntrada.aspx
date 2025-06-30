@@ -52,8 +52,7 @@
                 ErrorMessage="Solo se permiten letras en el apellido materno"
                 CssClass="text-danger" Display="Dynamic"
                 ValidationExpression="^([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*)$" />
-            
-        </div>
+            </div>
             <!-- validación de Documento de Identificacion -->
             <div class="mb-2">
                 <asp:DropDownList ID="ddlTipoDocumento" runat="server" CssClass="form-select">
