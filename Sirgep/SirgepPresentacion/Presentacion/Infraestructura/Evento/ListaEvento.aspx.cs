@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI.WebControls;
 using SirgepPresentacion.ReferenciaDisco;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 {
@@ -38,6 +41,59 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             }
         }
 
+        //Método auxiliar para crear miniaturas si no existen
+        private void GenerarThumbnailSiNoExiste(string rutaRelativaOriginal)
+        {
+            string rutaOriginal = Server.MapPath(rutaRelativaOriginal);
+
+            if (!File.Exists(rutaOriginal)) return;
+
+            string nombreArchivo = Path.GetFileNameWithoutExtension(rutaOriginal) + ".jpg"; // Siempre JPEG
+            string rutaThumbRelativa = "~/Images/img/eventosThumbs/" + nombreArchivo;
+            string rutaThumb = Server.MapPath(rutaThumbRelativa);
+
+            if (File.Exists(rutaThumb)) return;
+
+            try
+            {
+                using (System.Drawing.Image imagenOriginal = System.Drawing.Image.FromFile(rutaOriginal))
+                {
+                    int ancho = 600;
+                    int alto = (imagenOriginal.Height * ancho) / imagenOriginal.Width;
+
+                    using (System.Drawing.Bitmap thumbnail = new System.Drawing.Bitmap(ancho, alto))
+                    {
+                        using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(thumbnail))
+                        {
+                            // Rellena fondo blanco para evitar transparencia negra
+                            g.Clear(System.Drawing.Color.White);
+
+                            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                            g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                            g.DrawImage(imagenOriginal, 0, 0, ancho, alto);
+                        }
+
+                        System.IO.Directory.CreateDirectory(Server.MapPath("~/Images/img/eventosThumbs/"));
+
+                        System.Drawing.Imaging.ImageCodecInfo jpegCodec = System.Drawing.Imaging.ImageCodecInfo
+                            .GetImageEncoders()
+                            .First(c => c.MimeType == "image/jpeg");
+
+                        System.Drawing.Imaging.EncoderParameters parametros = new System.Drawing.Imaging.EncoderParameters(1);
+                        parametros.Param[0] = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, 80L);
+
+                        thumbnail.Save(rutaThumb, jpegCodec, parametros);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Error generando thumbnail: " + ex.Message);
+            }
+        }
+
+
         // Carga los eventos en el Repeater con paginación
         private void CargarEventos()
         {
@@ -53,6 +109,16 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             .Skip((paginaActual - 1) * EventosPorPagina)
             .Take(EventosPorPagina)
             .ToList();
+
+            // Generar thumbnails para las imágenes del listado si no existen
+            foreach (var evento in eventosPagina)
+            {
+                if (!string.IsNullOrEmpty(evento.archivoImagen))
+                {
+                    string rutaRelativaOriginal = "~/" + evento.archivoImagen;
+                    GenerarThumbnailSiNoExiste(rutaRelativaOriginal);
+                }
+            }
 
             rptEventos.DataSource = eventosPagina;
             rptEventos.DataBind();

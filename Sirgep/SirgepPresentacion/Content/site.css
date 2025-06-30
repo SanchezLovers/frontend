@@ -425,3 +425,63 @@ body {
 .image-button:hover {
     filter: brightness(0.7);
 }
+
+/* Estilo para la card de evento */
+.evento-card {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #333;
+    border-radius: 12px;
+    background: #fff;
+    padding: 18px 24px;
+    margin: 12px 0;
+    min-height: 180px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.evento-img img {
+    width: 140px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 24px;
+}
+
+.evento-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.evento-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.evento-ubicacion {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.evento-descripcion {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.evento-btn-wrapper {
+    text-align: right;
+}
+
+.img-detalle-evento {
+    width: 340px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    display: block;
+}

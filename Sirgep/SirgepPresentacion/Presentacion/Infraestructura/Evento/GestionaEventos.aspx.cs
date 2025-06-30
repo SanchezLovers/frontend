@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -21,6 +22,20 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         private const int MODAL_AGREGAR = 0;
         private const int MODAL_EDITAR = 1;
+
+        public List<funcion> funcionesEditar
+        {
+            get
+            {
+                if (ViewState["funcionesEditar"] == null)
+                    ViewState["funcionesEditar"] = new List<funcion>();
+                return (List<funcion>)ViewState["funcionesEditar"];
+            }
+            set
+            {
+                ViewState["funcionesEditar"] = value;
+            }
+        }
         private int PaginaActual
         {
             get => ViewState["PaginaActual"] != null ? (int)ViewState["PaginaActual"] : 1;
@@ -32,6 +47,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void Page_Init(object sender, EventArgs e)
         {
+            funcionesEditar = new List<funcion>();
             eventoWS = new EventoWSClient();
             funcionWS = new FuncionWSClient();
             depaWS = new DepartamentoWSClient();
@@ -42,6 +58,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         {
             if (!IsPostBack)
             {
+                txtFechaFuncion.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
                 PaginaActual = 1;
                 CargarEventos();
             }
@@ -148,12 +165,39 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             lblError.Text = "";
         }
         private bool ValidarDatosEvento(string txtNombre, string txtDesc, string txtUbi, string txtPrecio,
-                string txtDispo, string txtVend, string txtRef, string ddlDepas, string ddlDist, string ddlProv, int pagina)
+                string txtDispo, string txtVend, string txtRef, string ddlDepas, string ddlDist, string ddlProv, bool fileUpdate, int pagina)
         {
             // Validación de existencia de fecha mínima
             if (Session["fechaMinima"] == null)
             {
                 MostrarError("Debe agregar al menos 1 función.", pagina);
+                return false;
+            }
+
+            // Función local para validar que no sea solo números
+            bool ContieneLetras(string texto) => !string.IsNullOrWhiteSpace(texto) && texto.Any(c => char.IsLetter(c));
+
+            if (!ContieneLetras(txtNombre))
+            {
+                MostrarError("El nombre debe contener letras.", pagina);
+                return false;
+            }
+
+            if (!ContieneLetras(txtDesc))
+            {
+                MostrarError("La descripción debe contener letras.", pagina);
+                return false;
+            }
+
+            if (!ContieneLetras(txtUbi))
+            {
+                MostrarError("La ubicación debe contener letras.", pagina);
+                return false;
+            }
+
+            if (!ContieneLetras(txtRef))
+            {
+                MostrarError("La referencia debe contener letras.", pagina);
                 return false;
             }
 
@@ -250,8 +294,30 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return false;
             }
 
+            if (!fileUpdate)
+            {
+                MostrarError("Debe seleccionar una imagen obligatoriamente",pagina);
+                return false;
+            }
+
             // Si todo es válido, retornar true
             return true;
+        }
+
+        public void guardarImgEvento(ref string urlParaBD)
+        {
+            // 1. Obtener nombre original y asegurar que sea único
+            string nombreArchivo = Path.GetFileName(fuAgregar.FileName);
+            string nombreUnico = Guid.NewGuid().ToString() + Path.GetExtension(nombreArchivo); // evita sobrescribir
+
+            // 2. Ruta física en el servidor
+            string rutaRelativa = "~/Images/img/eventos/" + nombreUnico;
+            string rutaFisica = Server.MapPath(rutaRelativa); // obtiene la ruta absoluta
+
+            // 3. Guardar archivo
+            fuAgregar.SaveAs(rutaFisica);
+            // 4. URL relativa para la base de datos
+            urlParaBD = "Images/img/eventos/" + nombreUnico;
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -259,7 +325,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             if (!ValidarDatosEvento(txtNomEvent.Text, txtDescAgregar.Text,
                 txtUbicacionAgregar.Text, txtPrecioEntrada.Text, txtDisponibles.Text,
                 txtVendidas.Text, txtReferencia.Text, ddlDepaAgregar.Text, ddlDistAgregar.Text,
-                ddlProvAgregar.Text, MODAL_AGREGAR)) return;
+                ddlProvAgregar.Text, fuAgregar.HasFile, MODAL_AGREGAR)) return;
 
             string fechaInicioEvento = Session["fechaMinima"].ToString();
             string fechaFinEvento = Session["fechaMaxima"].ToString();
@@ -271,7 +337,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string cantDisponibles = txtDisponibles.Text;
             string cantVendidas = txtVendidas.Text;
             string referenciaEvento = txtReferencia.Text;
-
+            string urlParaBd = "";
+            guardarImgEvento(ref urlParaBd);
             evento eventoAgregar = new evento
             {
                 fecha_inicio = fechaInicioEvento.Split(' ')[0],
@@ -286,7 +353,8 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 precioEntrada = double.Parse(precioEntradaEvento),
                 cantEntradasVendidas = int.Parse(cantVendidas),
                 cantEntradasDispo = int.Parse(cantDisponibles),
-                referencia = referenciaEvento
+                referencia = referenciaEvento,
+                archivoImagen = urlParaBd // añadimos la imagen a la query
             };
 
             int id = eventoWS.insertarEvento(new insertarEventoRequest(eventoAgregar)).@return;
@@ -294,7 +362,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             if (id >= 1)
             {
                 // se insertó correctamente
-
+                
                 // agregar todas las funciones del evento a la base de datos
                 foreach (ListItem item in ddlFuncionesAgregar.Items)
                 {
@@ -789,6 +857,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string id = btn.CommandArgument;
             int idEvento = int.Parse(id);
             hdnIdEvento.Value = idEvento.ToString();
+            funcionesEditar.Clear();
             eventoDTO eventoEditar = eventoWS.buscarEventoDTOporID(new buscarEventoDTOporIDRequest(idEvento)).@return;
 
             // llenar los campos con la información del evento traído
@@ -851,10 +920,22 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             string valor = $"{fecha}_{horaInicio}_{horaFin}";
             string texto = $"{fecha} - {horaInicio} a {horaFin}";
 
-            const int MODAL_EDITAR = 2;
             // 2 hace referencia al Modal Editar
             if (!ValidaFuncion(fecha, horaInicio, horaFin, valor, MODAL_EDITAR)) return;
             DateTime.TryParse(fecha, out DateTime fechaSeleccionada);
+
+            funcion nuevaFuncion = new funcion
+            {
+                fecha = fecha,
+                horaInicio = horaInicio,
+                horaFin = horaFin,
+                evento = new evento { idEvento = int.Parse(hdnIdEvento.Value) }
+            };
+
+            // Obtener la lista del ViewState
+            var listaActual = funcionesEditar;
+            listaActual.Add(nuevaFuncion);
+            funcionesEditar = listaActual; // guardar de nuevo en ViewState
 
             ddlFuncEditar.Items.Add(new ListItem(texto, valor));
             ActualizarFechasMinMax(fechaSeleccionada);
@@ -898,7 +979,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             ActualizarFechasMinMaxEditar();
 
             if (!ValidarDatosEvento(txtNombreEditar.Text, txtDescEditar.Text, txtUbiEditar.Text, txtPrecioEditar.Text,
-                txtDispoEditar.Text, txtVendEditar.Text, txtRefEditar.Text, ddlDepasEditar.Text, ddlDistEditar.Text, ddlProvEditar.Text, MODAL_EDITAR)) return;
+                txtDispoEditar.Text, txtVendEditar.Text, txtRefEditar.Text, ddlDepasEditar.Text, ddlDistEditar.Text, ddlProvEditar.Text,true, MODAL_EDITAR)) return;
 
             string nombreEvento = txtNombreEditar.Text;
             string descripcionEvento = txtDescEditar.Text;
@@ -934,6 +1015,17 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
             if (actualizado)
             {
+                // insertar las funciones añadidas
+                foreach(funcion f in funcionesEditar)
+                {
+                    int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(f)).@return;
+
+                    if (idFuncion < 1)
+                    {
+                        mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función");
+                        return;
+                    }
+                }
                 mostrarModalExitoEvento("VENTANA DE ÉXITO", "EVENTO actualizado exitosamente");
                 CargarEventos();
             }
@@ -969,6 +1061,59 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             ddlDepasEditar.DataBind();
             ddlDepasEditar.Items.Insert(0, new ListItem("Seleccione un departamento", ""));
             abrirModalEdicion();
+        }
+
+        public void mostrarModalFoto(string dataUrl)
+        {
+            // script para cambiar src del <img> y mostrar el modal
+            string script = $@"
+            Sys.Application.add_load(function () {{
+                document.getElementById('imgPreviewModal').src = '{dataUrl}';
+                var myModal = new bootstrap.Modal(document.getElementById('modalPreview'));
+                myModal.show();
+            }});";
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "mostrarPreview", script, true);
+        }
+
+        protected void lnkVerImagen_Command(object sender, CommandEventArgs e)
+        {
+            string ruta = e.CommandArgument as string;
+
+            // Si no hay ruta o es una cadena vacía, no hacemos nada
+            if (string.IsNullOrWhiteSpace(ruta) || ruta == "null")
+                return;
+
+            mostrarModalFoto("/" + ruta); // Asegúrate de que comience con "/"
+        }
+
+        protected void rptEventos_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                var dataItem = e.Item.DataItem;
+
+                // Obtener la fecha
+                string estado = Convert.ToString(DataBinder.Eval(dataItem, "Activo"));
+                bool eliminado = estado == "69";
+
+                // Verificar si pasaron 5 años
+                bool habilitado = !eliminado;
+
+                // Obtener el botón y asignar su estado
+                Button btnEliminar = (Button)e.Item.FindControl("btnEliminar");
+                if (btnEliminar != null)
+                {
+                    btnEliminar.ToolTip = habilitado ?
+                        "Puedes eliminar este evento"
+                        : "Este evento ya fue eliminado.";
+                }
+                if (!habilitado)
+                {
+                    btnEliminar.Attributes["onclick"] = "return false;"; // Evita que haga postback
+                    btnEliminar.CssClass += " disabled-button"; // Agrega estilo visual
+                }
+            }
         }
     }
 }
