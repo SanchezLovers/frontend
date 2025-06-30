@@ -499,7 +499,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 <li><strong>💵 Precio por entrada:</strong> S/ {eventoAgregar.precioEntrada}</li>
             </ul>
             <p>Si deseas más información o comprar entradas, haz clic en el botón de abajo:</p>
-            <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+            <a href='http://54.91.139.38/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
         </div>";
         }
         private string GenerarLogoCorreo()
