@@ -33,7 +33,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             {
                 // Aseguramos que el session para el feedback esté en false al cargar la página
                 Session["MostrarFeedback"] = false;
-                int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
+                int idFuncion = int.Parse(Request.QueryString["idFuncion"]);
                 var funcion = fWs.buscarFuncionId(idFuncion); // Simular ID de función
                 evento evento = compraService.buscarEventos(funcion.evento.idEvento);
 
@@ -46,6 +46,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 string horaFin = funcion.horaFin.ToString();
                 string cantidad = "1"; //siempre se compra 1 entrada
 
+                if (!string.IsNullOrEmpty(evento.archivoImagen))
+                {
+                    imgEvento.ImageUrl = "~/" + evento.archivoImagen;
+                    imgEvento.Visible = true;
+                }
+                else
+                {
+                    imgEvento.Visible = false;
+                }
 
                 lblHorario.Text = $"{horaIni} - {horaFin}";
                 lblFecha.Text = DateTime.Parse(fecha).ToString("dd/MM/yyyy");
@@ -74,59 +83,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 }
             }
         }
-        protected void documentoNoValido(object sender, EventArgs e)
-        {
-            string tipo = ddlTipoDocumento.SelectedValue;
-            string numero = txtDNI.Text.Trim();
-            string script = "";
-            bool v;
-            switch (tipo)
-            {
-                case "DNI":
-                    if (!(numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$")))
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el DNI debe tener exactamente 8 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
 
-                case "CARNETEXTRANJERIA":
-                    v = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                case "PASAPORTE":
-                    v = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','El número de pasaporte debe tener entre 8 y 12 dígitos alfanuméricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                default:
-                    script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','Elija un tipo de documento.'); }, 300);";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    break;
-            }
-
-        }
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-            // Validar campos obligatorios
-            if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtDNI.Text) ||
-                 string.IsNullOrWhiteSpace(txtCorreo.Text))
+            if (!Page.IsValid)
             {
-                string script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
-
             }
-            documentoNoValido(sender, e);
+
+            //documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -155,14 +120,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
             // ---------- Insertar / actualizar comprador ----------
             if (compradorExistente == null)
             {
+                eTipoDocumento tdoc = (eTipoDocumento)Enum.Parse(typeof(eTipoDocumento), ddlTipoDocumento.SelectedValue, true);
                 comprador nuevo = new comprador
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(), //no obligatorio
+                    segundoApellido = " ", //no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
-                    tipoDocumento = eTipoDocumento.DNI,
+                    tipoDocumento = tdoc,
                     tipoDocumentoSpecified = true,
                     registrado = 0, //se guarda un comprador no registrado
                 };
@@ -190,11 +156,11 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
                 return;
             }
-            int idFuncion= int.Parse(Request.QueryString["idFuncion"]);
+            int idFuncion = int.Parse(Request.QueryString["idFuncion"]);
             var funcion = fWs.buscarFuncionId(idFuncion); // bsuscar función
             evento evento = compraService.buscarEventos(funcion.evento.idEvento);
-            int numE = evento.cantEntradasVendidas+1;
-            evento.cantEntradasVendidas= numE;
+            int numE = evento.cantEntradasVendidas + 1;
+            evento.cantEntradasVendidas = numE;
 
             // Actualizar el evento con la nueva cantidad de entradas vendidas
             eventoWS.actualizarEvento(evento);
@@ -209,7 +175,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
                 fechaSpecified = true,
                 metodoPago = mp,
                 metodoPagoSpecified = true,
-                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",//aqui
+                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con {ddlTipoDocumento.SelectedValue.ToString()} {txtDNI.Text}",
                 total = totalAPagar,
                 igv = 0.18,
                 persona = new persona
@@ -225,7 +191,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
 
             //int idConstancia=compraService.insertarConstancia(nueva);
             int idConstancia = entradaWS.insertarEntrada(nEntrada);
-            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);"+
+            string scriptExito = "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);" +
                                  "setTimeout(function() {" +
                                  "  window.location.href = '/Presentacion/Ventas/Entrada/ConstanciaEntrada.aspx?idConstancia=" + idConstancia + "';" +
                                  "}, 1500);"; // 1.5 segundos para que el usuario vea el modal;

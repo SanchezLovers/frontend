@@ -31,19 +31,28 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 string fechaR = Request.QueryString["fecha"];
                 string horaIni = Request.QueryString["horaIni"];
                 string horaFin = Request.QueryString["horaFin"];
-                int cantidadHoras = int.Parse(Request.QueryString["cant"]); // Simular cantidad elegida
+                int cantidadHoras = int.Parse(Request.QueryString["cant"]);
                 espacio espacio = espacioService.buscarEspacio(idEspacio);
+
+                if (!string.IsNullOrEmpty(espacio.foto))
+                {
+                    imgEvento.ImageUrl = "~/" + espacio.foto;
+                    imgEvento.Visible = true;
+                }
+                else
+                {
+                    imgEvento.Visible = false;
+                }
+
                 LblEspacio.Text = espacio.nombre;
                 LblUbicacionReserva.Text = espacio.ubicacion;
                 TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
-
-
                 LblHorarioReserva.Text = $"{horaIni} - {tFin.ToString()}";
                 LblFechaReserva.Text = DateTime.Parse(fechaR).ToString("dd/MM/yyyy");
-
                 lblPrecioHora.Text = espacio.precioReserva.ToString();
                 LblTotalReserva.Text = (espacio.precioReserva * cantidadHoras).ToString("F2");
 
+                //Si el usuario esta logueado, llena los campos y los pone en lectura
                 if (Session["idUsuario"] != null)
                 {
                     int idPersona = (int)Session["idUsuario"];
@@ -68,68 +77,23 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
 
             }
         }
-        protected void documentoNoValido(object sender, EventArgs e)
-        {
-            string tipo = ddlTipoDocumento.SelectedValue;
-            string numero = txtDNI.Text.Trim();
-            string script = "";
-            bool v;
-            switch (tipo)
-            {
-                case "DNI":
-                    if (!(numero.Length == 8 && Regex.IsMatch(numero, @"^\d{8}$")))
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el DNI debe tener exactamente 8 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
 
-                case "CARNETEXTRANJERIA":
-                    v = numero.Length == 12 && Regex.IsMatch(numero, @"^\d{12}$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','el Carnet de Extranjería debe tener exactamente 12 dígitos numéricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                case "PASAPORTE":
-                    v = numero.Length >= 8 && numero.Length <= 12 && Regex.IsMatch(numero, @"^[a-zA-Z0-9]+$");
-                    if (!v)
-                    {
-                        script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','El número de pasaporte debe tener entre 8 y 12 dígitos alfanuméricos.'); }, 300);";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    }
-                    break;
-                default:
-                    script = "setTimeout(function(){ mostrarModalError('Documento de Identidad Inválido.','Elija un tipo de documento.'); }, 300);";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
-                    break;
-            }
-
-        }
 
         protected void btnPagar_Click(object sender, EventArgs e)
 
         {
+            if (!Page.IsValid)
+            {
+                return;
+            }
+
             string fechaR = Request.QueryString["fecha"];
             string horaIni = Request.QueryString["horaIni"];
             string horaFin = Request.QueryString["horaFin"];
             TimeSpan tIni = TimeSpan.Parse(horaIni);
             TimeSpan tFin = TimeSpan.Parse(horaFin).Add(TimeSpan.FromHours(1));
-            
-            if (string.IsNullOrWhiteSpace(txtNombres.Text) ||
-                string.IsNullOrWhiteSpace(txtApellidoPaterno.Text) ||
-                string.IsNullOrWhiteSpace(txtDNI.Text) ||
-                 string.IsNullOrWhiteSpace(txtCorreo.Text))
-            {
-                string script = "setTimeout(function(){ mostrarModalError('Campos faltantes.','Por favor, complete todos los campos obligatorios.'); }, 300);";
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModalError", script, true);
 
-                return;
 
-            }
-
-            documentoNoValido(sender, e);
 
             // Validar método de pago
             if (string.IsNullOrEmpty(hfMetodoPago.Value))
@@ -159,14 +123,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
             int identificadorPersona;
             if (compradorExistente == null)
             {
+                eTipoDocumento tdoc = (eTipoDocumento)Enum.Parse(typeof(eTipoDocumento), ddlTipoDocumento.SelectedValue, true);
                 comprador nuevo = new comprador
                 {
                     nombres = txtNombres.Text.Trim(),
                     primerApellido = txtApellidoPaterno.Text.Trim(),
-                    segundoApellido = txtApellidoMaterno.Text.Trim(),  //no obligatorio
+                    //segundoApellido = txtApellidoMaterno.Text.Trim(),  //no obligatorio
                     numDocumento = txtDNI.Text.Trim(),
                     correo = txtCorreo.Text.Trim(),
-                    tipoDocumento = eTipoDocumento.DNI,
+                    tipoDocumento = tdoc,
                     tipoDocumentoSpecified = true,
                     registrado = 0,
                 };
@@ -207,7 +172,7 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                 metodoPago = mp,
                 metodoPagoSpecified = true,
                 igv = 0.18,
-                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con DNI {dni}",
+                detallePago = $"Pago realizado por {txtNombres.Text.Trim()} {txtApellidoPaterno.Text.Trim()} con {ddlTipoDocumento.SelectedValue.ToString()} {txtDNI.Text}",
                 total = totalAPagar,
 
                 // Campos propios de reserva
@@ -222,17 +187,17 @@ namespace SirgepPresentacion.Presentacion.Ventas.Reserva
                     idPersona = idPersonaSession > 0 ? idPersonaSession : identificadorPersona, // Si hay sesión, usar su ID, si no, usar el nuevo ID
 
                 }, // el objeto comprador
-                espacio = espacioService.buscarEspacio(idEspacio)        // el objeto espacio
+                espacio = espacioService.buscarEspacio(idEspacio) // el objeto espacio
             };
 
             int idConstancia = reservaService.insertarReserva(nuevaReserva);
 
 
             string scriptExito =
-           "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);" +
-           "setTimeout(function() {" +
-           "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia + "';" +
-           "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
+            "setTimeout(function(){ mostrarModalExito('Pago exitoso.','El pago se ha realizado con éxito.'); }, 300);" +
+            "setTimeout(function() {" +
+            "  window.location.href = '/Presentacion/Ventas/Reserva/ConstanciaReserva.aspx?idConstancia=" + idConstancia + "';" +
+            "}, 1500);"; // 1.5 segundos para que el usuario vea el modal
             // Justo antes de redirigir a ConstanciaReserva.aspx
             Session["MostrarFeedback"] = true; //Solo muestra el feedback si el flujo fue por un pago
 

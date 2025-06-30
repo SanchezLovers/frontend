@@ -141,13 +141,13 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         protected global::System.Web.UI.WebControls.TextBox txtCorreo;
 
         /// <summary>
-        /// Control rblPago.
+        /// Control imgEvento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblPago;
+        protected global::System.Web.UI.WebControls.Image imgEvento;
 
         /// <summary>
         /// Control hfMetodoPago.
@@ -157,6 +157,15 @@ namespace SirgepPresentacion.Presentacion.Ventas.Entrada
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfMetodoPago;
+
+        /// <summary>
+        /// Control hfTiempoRestante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfTiempoRestante;
 
         /// <summary>
         /// Control btnPagar.
