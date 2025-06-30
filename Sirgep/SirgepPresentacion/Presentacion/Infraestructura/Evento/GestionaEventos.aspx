@@ -249,24 +249,28 @@
                         </div>
                         <asp:Label ID="lblErrorAgregar" runat="server" CssClass="text-danger fw-semibold"></asp:Label>
                     </div>
-                </div>
+
+                        <hr class="my-2"/>
 
 
-                <!-- Foto -->
-                <div class="row g-3 my-2">
-                    <!-- Subir imagen -->
-                    <div class="col-md-6">
-                        <label class="form-label fw-semibold">Subir foto</label>
-                        <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
+
+                        <!-- Foto -->
+                        <div class="row g-3">
+                            <!-- Subir imagen -->
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Subir foto</label>
+                                <asp:FileUpload ID="fuAgregar" runat="server" CssClass="form-control" onchange="mostrarPreview(this, 'imgPreviewAgregar')" />
+                            </div>
+
+                            <!-- Vista previa -->
+                            <div class="col-md-6 text-center d-flex align-items-end">
+                                <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
+                            </div>
+                        </div>
+
                     </div>
 
-                    <!-- Vista previa -->
-                    <div class="col-md-6 text-center d-flex align-items-end">
-                        <img id="imgPreviewAgregar" src="#" alt="Vista previa" style="display: none; max-height: 180px;" class="img-thumbnail w-100" />
-                    </div>
-                </div>
-
-                <div class="modal-footer">
+                    <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <asp:Button ID="btnAgregar" CssClass="btn btn-secondary" runat="server" Text="Aceptar" OnClick="btnAgregar_Click"/>
                 </div>
