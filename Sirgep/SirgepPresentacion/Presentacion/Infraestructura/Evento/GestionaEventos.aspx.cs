@@ -70,49 +70,74 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
             CargarEventos();
         }
-
         public void realizarPaginado(evento[] response)
+        {
+            if (!ValidarRespuesta(response)) return;
+
+            var todos = response.ToList();
+            CalcularPaginacion(todos.Count);
+            AjustarPaginaActual();
+
+            var paginaActual = ObtenerPaginaActual(todos);
+            CargarRepeater(paginaActual);
+            ActualizarFooterPaginacion();
+        }
+        private bool ValidarRespuesta(evento[] response)
         {
             if (response == null)
             {
                 mostrarModalErrorEvento("RESULTADO DE BUSQUEDA", "No se encontraron eventos con los parámetros actuales; se listarán todos los eventos...");
                 CargarEventos();
-                return;
+                return false;
             }
-            var todos = response.ToList(); // lo convertimos a lista
-
-            int totalEspacios = todos.Count;
-            TotalPaginas = (int)Math.Ceiling((double)totalEspacios / TAM_PAGINA);
-
-            if (PaginaActual < 1) PaginaActual = 1;
-            if (PaginaActual > TotalPaginas) PaginaActual = TotalPaginas;
-
-            // Datos solo para esta página
-            var paginaActual = todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
-
-            // Cargar al repeater
-            rptEventos.DataSource = paginaActual;
-            rptEventos.DataBind();
-
-            // Footer: actualizar label y botones
-            if (rptEventos.Controls.Count > 0)
-            {
-                var footer = rptEventos.Controls[rptEventos.Controls.Count - 1];
-
-                var lblPagina = footer.FindControl("lblPaginaFootEvento") as Label;
-                if (lblPagina != null)
-                    lblPagina.Text = $"Página {PaginaActual} / {TotalPaginas}";
-
-                var btnAnterior = footer.FindControl("btnAnteriorFootEvento") as Button;
-                var btnSiguiente = footer.FindControl("btnSiguienteFootEvento") as Button;
-
-                if (btnAnterior != null)
-                    btnAnterior.Enabled = PaginaActual > 1;
-
-                if (btnSiguiente != null)
-                    btnSiguiente.Enabled = PaginaActual < TotalPaginas;
-            }
+            return true;
         }
+
+        private void CalcularPaginacion(int totalItems)
+        {
+            TotalPaginas = (int)Math.Ceiling((double)totalItems / TAM_PAGINA);
+        }
+
+        private void AjustarPaginaActual()
+        {
+            if (PaginaActual < 1)
+                PaginaActual = 1;
+            if (PaginaActual > TotalPaginas)
+                PaginaActual = TotalPaginas;
+        }
+
+        private List<evento> ObtenerPaginaActual(List<evento> todos)
+        {
+            return todos.Skip((PaginaActual - 1) * TAM_PAGINA).Take(TAM_PAGINA).ToList();
+        }
+
+        private void CargarRepeater(List<evento> eventosPagina)
+        {
+            rptEventos.DataSource = eventosPagina;
+            rptEventos.DataBind();
+        }
+
+        private void ActualizarFooterPaginacion()
+        {
+            if (rptEventos.Controls.Count == 0)
+                return;
+
+            var footer = rptEventos.Controls[rptEventos.Controls.Count - 1];
+
+            var lblPagina = footer.FindControl("lblPaginaFootEvento") as Label;
+            if (lblPagina != null)
+                lblPagina.Text = $"Página {PaginaActual} / {TotalPaginas}";
+
+            var btnAnterior = footer.FindControl("btnAnteriorFootEvento") as Button;
+            var btnSiguiente = footer.FindControl("btnSiguienteFootEvento") as Button;
+
+            if (btnAnterior != null)
+                btnAnterior.Enabled = PaginaActual > 1;
+
+            if (btnSiguiente != null)
+                btnSiguiente.Enabled = PaginaActual < TotalPaginas;
+        }
+
 
         protected void CargarEventos()
         {
@@ -164,145 +189,149 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtReferencia.Text = "";
             lblError.Text = "";
         }
-        private bool ValidarDatosEvento(string txtNombre, string txtDesc, string txtUbi, string txtPrecio,
-                string txtDispo, string txtVend, string txtRef, string ddlDepas, string ddlDist, string ddlProv, bool fileUpdate, int pagina)
+
+        private bool ValidarDatosEvento(string txtNombre, string txtDesc, string txtUbi, string txtPrecio, string txtDispo, 
+            string txtVend, string txtRef, string ddlDepas, string ddlDist, string ddlProv, bool fileUpdate, int pagina)
         {
-            // Validación de existencia de fecha mínima
+            if (!ValidarFechaMinima(pagina)) return false;
+            if (!ValidarCamposConLetras(txtNombre, txtDesc, txtUbi, txtRef, pagina)) return false;
+            if (!ValidarLongitudesYObligatorios(txtNombre, txtDesc, txtUbi, txtRef, pagina)) return false;
+            if (!ValidarUbicacion(ddlDepas, ddlProv, ddlDist, pagina)) return false;
+            if (!ValidarNumericos(txtPrecio, txtDispo, txtVend, pagina)) return false;
+            if (!ValidarImagen(fileUpdate, pagina)) return false;
+
+            return true;
+        }
+        private bool ValidarFechaMinima(int pagina)
+        {
             if (Session["fechaMinima"] == null)
             {
                 MostrarError("Debe agregar al menos 1 función.", pagina);
                 return false;
             }
+            return true;
+        }
 
-            // Función local para validar que no sea solo números
+        private bool ValidarCamposConLetras(string nombre, string desc, string ubi, string refEvento, int pagina)
+        {
             bool ContieneLetras(string texto) => !string.IsNullOrWhiteSpace(texto) && texto.Any(c => char.IsLetter(c));
 
-            if (!ContieneLetras(txtNombre))
+            if (!ContieneLetras(nombre))
             {
                 MostrarError("El nombre debe contener letras.", pagina);
                 return false;
             }
 
-            if (!ContieneLetras(txtDesc))
+            if (!ContieneLetras(desc))
             {
                 MostrarError("La descripción debe contener letras.", pagina);
                 return false;
             }
 
-            if (!ContieneLetras(txtUbi))
+            if (!ContieneLetras(ubi))
             {
                 MostrarError("La ubicación debe contener letras.", pagina);
                 return false;
             }
 
-            if (!ContieneLetras(txtRef))
+            if (!ContieneLetras(refEvento))
             {
                 MostrarError("La referencia debe contener letras.", pagina);
                 return false;
             }
 
-            // Validar campos obligatorios de texto
-            if (string.IsNullOrWhiteSpace(txtNombre))
+            return true;
+        }
+        private bool ValidarLongitudesYObligatorios(string nombre, string desc, string ubi, string refEvento, int pagina)
+        {
+            if (!ValidarCampo(nombre, 45, "nombre del evento", pagina)) return false;
+            if (!ValidarCampo(desc, 350, "descripción del evento", pagina)) return false;
+            if (!ValidarCampo(ubi, 45, "ubicación del evento", pagina)) return false;
+            if (!ValidarCampo(refEvento, 45, "referencia del evento", pagina)) return false;
+
+            return true;
+        }
+        private bool ValidarCampo(string valor, int maxLength, string nombreCampo, int pagina)
+        {
+            if (string.IsNullOrWhiteSpace(valor))
             {
-                MostrarError("Debe ingresar el nombre del evento.", pagina);
-                return false;
-            }
-            
-            if(txtNombre.Length > 45)
-            {
-                MostrarError("La longitud del nombre ha superado los 45 caracteres.", pagina);
+                MostrarError($"Debe ingresar {nombreCampo}.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtDesc))
+            if (valor.Length > maxLength)
             {
-                MostrarError("Debe ingresar la descripción del evento.", pagina);
+                MostrarError($"La longitud de {nombreCampo} ha superado los {maxLength} caracteres.", pagina);
                 return false;
             }
 
-            if (txtDesc.Length > 350)
-            {
-                MostrarError("La longitud de la descripción ha superado los 350 caracteres.", pagina);
-                return false;
-            }
+            return true;
+        }
 
-            if (string.IsNullOrWhiteSpace(txtUbi))
-            {
-                MostrarError("Debe ingresar la ubicación del evento.", pagina);
-                return false;
-            }
 
-            if (txtUbi.Length > 45)
-            {
-                MostrarError("La longitud de la ubicación ha superado los 45 caracteres.", pagina);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(ddlDepas) || ddlDepas == "0")
+        private bool ValidarUbicacion(string depa, string prov, string dist, int pagina)
+        {
+            if (string.IsNullOrWhiteSpace(depa) || depa == "0")
             {
                 MostrarError("Debe seleccionar un departamento.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ddlProv) || ddlProv == "0")
+            if (string.IsNullOrWhiteSpace(prov) || prov == "0")
             {
                 MostrarError("Debe seleccionar una provincia.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(ddlDist) || ddlDist == "0")
+            if (string.IsNullOrWhiteSpace(dist) || dist == "0")
             {
                 MostrarError("Debe seleccionar un distrito.", pagina);
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(txtRef))
-            {
-                MostrarError("Debe ingresar la referencia del evento.", pagina);
-                return false;
-            }
+            return true;
+        }
 
-            if (txtRef.Length > 45)
-            {
-                MostrarError("La longitud de la referencia ha superado los 45 caracteres.", pagina);
-                return false;
-            }
-
-            // Validar números: Precio, Disponibles, Vendidas
-            if (!int.TryParse(txtPrecio, out int precio) || precio < 0 || precio > 1000)
+        private bool ValidarNumericos(string precioTxt, string dispoTxt, string vendTxt, int pagina)
+        {
+            if (!int.TryParse(precioTxt, out int precio) || precio < 0 || precio > 1000)
             {
                 MostrarError("El precio de la entrada debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
-            if (!int.TryParse(txtDispo, out int disponibles) || disponibles < 0 || disponibles > 1000)
+            if (!int.TryParse(dispoTxt, out int disponibles) || disponibles < 0 || disponibles > 1000)
             {
                 MostrarError("La cantidad de entradas disponibles debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
-            int.TryParse(txtVend, out int vendidas);
+            int.TryParse(vendTxt, out int vendidas);
             if (vendidas < 0 || vendidas > 1000)
             {
                 MostrarError("La cantidad de entradas vendidas debe ser un número entre 0 y 1000.", pagina);
                 return false;
             }
 
-            if(vendidas > disponibles)
+            if (vendidas > disponibles)
             {
                 MostrarError("La cantidad de entradas vendidas debe ser menor que la cantidad disponible (total de entradas).", pagina);
                 return false;
             }
 
-            if (!fileUpdate)
-            {
-                MostrarError("Debe seleccionar una imagen obligatoriamente",pagina);
-                return false;
-            }
-
-            // Si todo es válido, retornar true
             return true;
         }
+
+        private bool ValidarImagen(bool fileUpdate, int pagina)
+        {
+            if (!fileUpdate)
+            {
+                MostrarError("Debe seleccionar una imagen obligatoriamente", pagina);
+                return false;
+            }
+            return true;
+        }
+
 
         public void guardarImgEvento(ref string urlParaBD)
         {
@@ -322,210 +351,298 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (!ValidarDatosEvento(txtNomEvent.Text, txtDescAgregar.Text,
-                txtUbicacionAgregar.Text, txtPrecioEntrada.Text, txtDisponibles.Text,
-                txtVendidas.Text, txtReferencia.Text, ddlDepaAgregar.Text, ddlDistAgregar.Text,
-                ddlProvAgregar.Text, fuAgregar.HasFile, MODAL_AGREGAR)) return;
+            if (!ValidarDatosAgregar()) return;
 
-            string fechaInicioEvento = Session["fechaMinima"].ToString();
-            string fechaFinEvento = Session["fechaMaxima"].ToString();
-            string nombreEvento = txtNomEvent.Text;
-            string descripcionEvento = txtDescAgregar.Text;
-            string ubicacionEvento = txtUbicacionAgregar.Text;
-            string idDistritoEvento = ddlDistAgregar.SelectedValue; // obteniendo ID de distrito seleccionado
-            string precioEntradaEvento = txtPrecioEntrada.Text;
-            string cantDisponibles = txtDisponibles.Text;
-            string cantVendidas = txtVendidas.Text;
-            string referenciaEvento = txtReferencia.Text;
             string urlParaBd = "";
             guardarImgEvento(ref urlParaBd);
-            evento eventoAgregar = new evento
+
+            evento eventoAgregar = CrearEventoParaAgregar(urlParaBd);
+            int idEventoInsertado = eventoWS.insertarEvento(new insertarEventoRequest(eventoAgregar)).@return;
+
+            if (idEventoInsertado >= 1)
             {
-                fecha_inicio = fechaInicioEvento.Split(' ')[0],
-                fecha_fin = fechaFinEvento.Split(' ')[0],
-                nombre = nombreEvento,
-                descripcion = descripcionEvento,
-                ubicacion = ubicacionEvento,
-                distrito = new distrito
-                {
-                    idDistrito = int.Parse(idDistritoEvento)
-                },
-                precioEntrada = double.Parse(precioEntradaEvento),
-                cantEntradasVendidas = int.Parse(cantVendidas),
-                cantEntradasDispo = int.Parse(cantDisponibles),
-                referencia = referenciaEvento,
-                archivoImagen = urlParaBd // añadimos la imagen a la query
-            };
-
-            int id = eventoWS.insertarEvento(new insertarEventoRequest(eventoAgregar)).@return;
-
-            if (id >= 1)
-            {
-                // se insertó correctamente
-                
-                // agregar todas las funciones del evento a la base de datos
-                foreach (ListItem item in ddlFuncionesAgregar.Items)
-                {
-                    if (item.Text[0] == 'P') continue;
-                    string valorDdl = item.Text; // "2025-06-17 - 20:00 a 17:59"
-
-                    // Separar por " - "
-                    string[] partes = valorDdl.Split(new[] { " - " }, StringSplitOptions.None);
-
-                    string fechaFuncion = partes[0];                   // "2025-06-17"
-                    string horas = partes.Length > 1 ? partes[1] : ""; // "20:00 a 17:59"
-
-                    // Separar por " a "
-                    string[] rangoHoras = horas.Split(new[] { " a " }, StringSplitOptions.None);
-
-                    string horaIniFuncion = rangoHoras.Length > 0 ? rangoHoras[0] : "";
-                    string horaFinFuncion = rangoHoras.Length > 1 ? rangoHoras[1] : "";
-
-                    funcion funcionAgregar = new funcion()
-                    {
-                        fecha = fechaFuncion,
-                        horaInicio = horaIniFuncion,
-                        horaFin = horaFinFuncion,
-                        evento = new evento
-                        {
-                            idEvento = id
-                        }
-                    };
-                    int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(funcionAgregar)).@return;
-
-                    if (idFuncion < 1)
-                    {
-                        Console.WriteLine();
-                        mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función con ID: " + idFuncion);
-                        return;
-                    }
-                }
-
-                string nombreDistrito = distWS.buscarDistPorId(new buscarDistPorIdRequest(eventoAgregar.distrito.idDistrito)).@return.nombre;
-                Thread thread = new Thread(() => enviarCorreosEvento(nombreDistrito, eventoAgregar));
-                thread.Start();
+                if (!AgregarFuncionesEvento(idEventoInsertado)) return;
+                EnviarCorreosEventoNuevo(eventoAgregar.distrito.idDistrito, eventoAgregar);
                 mostrarModalExitoEvento("VENTANA DE ÉXITO", "Se insertó el EVENTO correctamente y se enviarán correos a los compradores cuyo distrito favorito coincide con el distrito del evento registrado.");
-                //CargarEventos();
             }
             else
             {
-                // error al insertar
                 mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar el evento");
             }
 
             LimpiarDatosAgregados();
         }
+        private bool ValidarDatosAgregar()
+        {
+            return ValidarDatosEvento(txtNomEvent.Text, txtDescAgregar.Text,
+                txtUbicacionAgregar.Text, txtPrecioEntrada.Text, txtDisponibles.Text,
+                txtVendidas.Text, txtReferencia.Text, ddlDepaAgregar.Text, ddlDistAgregar.Text,
+                ddlProvAgregar.Text, fuAgregar.HasFile, MODAL_AGREGAR);
+        }
+        private evento CrearEventoParaAgregar(string urlParaBd)
+        {
+            string fechaInicioEvento = Session["fechaMinima"].ToString();
+            string fechaFinEvento = Session["fechaMaxima"].ToString();
+
+            return new evento
+            {
+                fecha_inicio = fechaInicioEvento.Split(' ')[0],
+                fecha_fin = fechaFinEvento.Split(' ')[0],
+                nombre = txtNomEvent.Text,
+                descripcion = txtDescAgregar.Text,
+                ubicacion = txtUbicacionAgregar.Text,
+                distrito = new distrito
+                {
+                    idDistrito = int.Parse(ddlDistAgregar.SelectedValue)
+                },
+                precioEntrada = double.Parse(txtPrecioEntrada.Text),
+                cantEntradasDispo = int.Parse(txtDisponibles.Text),
+                cantEntradasVendidas = int.Parse(txtVendidas.Text),
+                referencia = txtReferencia.Text,
+                archivoImagen = urlParaBd
+            };
+        }
+        private bool AgregarFuncionesEvento(int idEvento)
+        {
+            foreach (ListItem item in ddlFuncionesAgregar.Items)
+            {
+                if (item.Text.StartsWith("P")) continue;
+
+                string[] partes = item.Text.Split(new[] { " - " }, StringSplitOptions.None);
+                string fechaFuncion = partes[0];
+                string[] horas = partes.Length > 1 ? partes[1].Split(new[] { " a " }, StringSplitOptions.None) : new string[0];
+
+                string horaIniFuncion = horas.Length > 0 ? horas[0] : "";
+                string horaFinFuncion = horas.Length > 1 ? horas[1] : "";
+
+                funcion funcionAgregar = new funcion
+                {
+                    fecha = fechaFuncion,
+                    horaInicio = horaIniFuncion,
+                    horaFin = horaFinFuncion,
+                    evento = new evento { idEvento = idEvento }
+                };
+
+                int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(funcionAgregar)).@return;
+                if (idFuncion < 1)
+                {
+                    mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función con ID: " + idFuncion);
+                    return false;
+                }
+            }
+            return true;
+        }
+        private void EnviarCorreosEventoNuevo(int idDistrito, evento eventoInsertado)
+        {
+            string nombreDistrito = distWS.buscarDistPorId(
+                new buscarDistPorIdRequest(idDistrito)
+            ).@return.nombre;
+
+            Thread thread = new Thread(() => enviarCorreosEvento(nombreDistrito, eventoInsertado));
+            thread.Start();
+        }
+
         protected void enviarCorreosEvento(string nombreDistrito, evento eventoAgregar)
         {
-            string asunto = $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {eventoAgregar.nombre}!";
-            string contenido = $@"
-                    <html>
-                    <head>
-                      <style>
-                        body {{
-                          font-family: 'Segoe UI', sans-serif;
-                          background-color: #f8f9fa;
-                          margin: 0;
-                          padding: 0;
-                        }}
-                        .container {{
-                          max-width: 600px;
-                          margin: 20px auto;
-                          background-color: #fff;
-                          border: 1px solid #dee2e6;
-                          border-radius: 8px;
-                          padding: 30px;
-                          box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                        }}
-                        .header {{
-                          background-color: #f10909;
-                          color: white;
-                          padding: 15px;
-                          border-radius: 6px 6px 0 0;
-                          text-align: center;
-                        }}
-                        .header h2 {{
-                          margin: 0;
-                          font-size: 22px;
-                          color: white;
-                        }}
-                        .body {{
-                          color: #212529;
-                          padding: 20px 0;
-                          font-size: 16px;
-                        }}
-                        .details {{
-                          background-color: #f1f3f5;
-                          border-radius: 6px;
-                          padding: 15px;
-                          margin-bottom: 20px;
-                          list-style: none;
-                        }}
-                        .details li {{
-                          margin-bottom: 10px;
-                          font-size: 15px;
-                        }}
-                        .details li strong {{
-                          color: #000;
-                          font-weight: bold;
-                        }}
-                        .cta {{
-                          display: inline-block;
-                          background-color: #f10909;
-                          color: #fff !important;
-                          padding: 10px 20px;
-                          border-radius: 5px;
-                          text-decoration: none;
-                          font-weight: bold;
-                          margin-top: 10px;
-                        }}
-                        .cta:hover {{
-                          background-color: #c40808;
-                        }}
-                        .logo {{
-                          text-align: center;
-                          margin-top: 20px;
-                        }}
-                        .logo img {{
-                          width: 100px;
-                        }}
-                        .footer {{
-                          text-align: center;
-                          font-size: 12px;
-                          color: #6c757d;
-                          margin-top: 20px;
-                        }}
-                      </style>
-                    </head>
-                    <body>
-                      <div class='container'>
-                        <div class='header'>
-                          <h2>¡No te pierdas este evento en tu distrito favorito {nombreDistrito}!</h2>
-                        </div>
-                        <div class='body'>
-                          <p>Nos alegra informarte que se ha registrado un nuevo evento en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
-                          <ul class='details'>
-                            <li><strong>🎉 Nombre del evento:</strong> {eventoAgregar.nombre}</li>
-                            <li><strong>📅 Fecha:</strong> {eventoAgregar.fecha_inicio} al {eventoAgregar.fecha_fin}</li>
-                            <li><strong>📍 Ubicación:</strong> {eventoAgregar.ubicacion}</li>
-                            <li><strong>🗺 Referencia:</strong> {eventoAgregar.referencia}</li>
-                            <li><strong>🎟 Entradas disponibles:</strong> {eventoAgregar.cantEntradasDispo}</li>
-                            <li><strong>💵 Precio por entrada:</strong> S/ {eventoAgregar.precioEntrada}</li>
-                          </ul>
-                          <p>Si deseas más información o comprar entradas, haz clic en el botón de abajo:</p>
-                          <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
-                        </div>
-                        <div class='logo'>
-                          <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
-                        </div>
-                        <div class='footer'>
-                          Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
-                          © 2025 Gobierno Regional de Lima
-                        </div>
-                      </div>
-                    </body>
-                    </html>";
-            bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)).@return;
+            string asunto = GenerarAsuntoCorreo(nombreDistrito, eventoAgregar.nombre);
+            string contenido = GenerarContenidoCorreo(nombreDistrito, eventoAgregar);
+
+            bool resultado = eventoWS.enviarCorreosCompradoresPorDistritoDeEvento(
+                new enviarCorreosCompradoresPorDistritoDeEventoRequest(asunto, contenido, eventoAgregar.distrito.idDistrito)
+            ).@return;
+        }
+        private string GenerarAsuntoCorreo(string nombreDistrito, string nombreEvento)
+        {
+            return $"¡Nuevo evento en tu distrito favorito {nombreDistrito}: {nombreEvento}!";
+        }
+        private string GenerarContenidoCorreo(string nombreDistrito, evento eventoAgregar)
+        {
+            string estilos = ObtenerEstilosCorreo();
+            string header = GenerarHeaderCorreo(nombreDistrito);
+            string cuerpo = GenerarCuerpoCorreo(nombreDistrito, eventoAgregar);
+            string logo = GenerarLogoCorreo();
+            string footer = GenerarFooterCorreo();
+
+            return $@"
+        <html>
+        <head>
+            <style>{estilos}</style>
+        </head>
+        <body>
+            <div class='container'>
+                {header}
+                {cuerpo}
+                {logo}
+                {footer}
+            </div>
+        </body>
+        </html>";
+        }
+        private string GenerarHeaderCorreo(string nombreDistrito)
+        {
+            return $@"
+        <div class='header'>
+            <h2>¡No te pierdas este evento en tu distrito favorito {nombreDistrito}!</h2>
+        </div>";
+        }
+        private string GenerarCuerpoCorreo(string nombreDistrito, evento eventoAgregar)
+        {
+            return $@"
+        <div class='body'>
+            <p>Nos alegra informarte que se ha registrado un nuevo evento en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
+            <ul class='details'>
+                <li><strong>🎉 Nombre del evento:</strong> {eventoAgregar.nombre}</li>
+                <li><strong>📅 Fecha:</strong> {eventoAgregar.fecha_inicio} al {eventoAgregar.fecha_fin}</li>
+                <li><strong>📍 Ubicación:</strong> {eventoAgregar.ubicacion}</li>
+                <li><strong>🗺 Referencia:</strong> {eventoAgregar.referencia}</li>
+                <li><strong>🎟 Entradas disponibles:</strong> {eventoAgregar.cantEntradasDispo}</li>
+                <li><strong>💵 Precio por entrada:</strong> S/ {eventoAgregar.precioEntrada}</li>
+            </ul>
+            <p>Si deseas más información o comprar entradas, haz clic en el botón de abajo:</p>
+            <a href='https://localhost:44360/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+        </div>";
+        }
+        private string GenerarLogoCorreo()
+        {
+            return @"
+        <div class='logo'>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/4/43/Escudo_Regi%C3%B3n_Lima.png' alt='Logo Región Lima' />
+        </div>";
+        }
+        private string GenerarFooterCorreo()
+        {
+            return @"
+        <div class='footer'>
+            Este mensaje fue enviado automáticamente por el sistema SIRGEP.<br>
+            © 2025 Gobierno Regional de Lima
+        </div>";
+        }
+
+        private string ObtenerEstilosCorreo()
+        {
+            return string.Join(Environment.NewLine, new[]
+            {
+                EstiloGlobal(),
+                EstiloContainer(),
+                EstiloHeader(),
+                EstiloBody(),
+                EstiloDetails(),
+                EstiloCTA(),
+                EstiloLogo(),
+                EstiloFooter()
+            });
+        }
+        private string EstiloGlobal()
+        {
+            return @"
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }";
+        }
+
+        private string EstiloContainer()
+        {
+            return @"
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }";
+        }
+
+        private string EstiloHeader()
+        {
+            return @"
+    .header {
+        background-color: #f10909;
+        color: white;
+        padding: 15px;
+        border-radius: 6px 6px 0 0;
+        text-align: center;
+    }
+    .header h2 {
+        margin: 0;
+        font-size: 22px;
+        color: white;
+    }";
+        }
+
+        private string EstiloBody()
+        {
+            return @"
+    .body {
+        color: #212529;
+        padding: 20px 0;
+        font-size: 16px;
+    }";
+        }
+
+        private string EstiloDetails()
+        {
+            return @"
+    .details {
+        background-color: #f1f3f5;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 20px;
+        list-style: none;
+    }
+    .details li {
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+    .details li strong {
+        color: #000;
+        font-weight: bold;
+    }";
+        }
+
+        private string EstiloCTA()
+        {
+            return @"
+    .cta {
+        display: inline-block;
+        background-color: #f10909;
+        color: #fff !important;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    .cta:hover {
+        background-color: #c40808;
+    }";
+        }
+
+        private string EstiloLogo()
+        {
+            return @"
+    .logo {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .logo img {
+        width: 100px;
+    }";
+        }
+
+        private string EstiloFooter()
+        {
+            return @"
+    .footer {
+        text-align: center;
+        font-size: 12px;
+        color: #6c757d;
+        margin-top: 20px;
+    }";
         }
 
         protected void ddlProvAgregar_SelectedIndexChanged(object sender, EventArgs e)
@@ -618,21 +735,36 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
         }
         private bool ValidaFuncion(string fecha, string horaInicio, string horaFin, string valor, int pagina)
         {
-            // Validación: campos vacíos
+            if (!ValidarCamposCompletos(fecha, horaInicio, horaFin, pagina)) return false;
+            if (!ValidarFecha(fecha, pagina, out DateTime fechaSeleccionada)) return false;
+            if (!ValidarHoras(horaInicio, horaFin, pagina, out TimeSpan tsInicio, out TimeSpan tsFin)) return false;
+            if (!ValidarFormatoHora(tsInicio, tsFin, pagina)) return false;
+            if (!ValidarFuncionDuplicada(valor, pagina)) return false;
+
+            return true;
+        }
+        private bool ValidarCamposCompletos(string fecha, string horaInicio, string horaFin, int pagina)
+        {
             if (string.IsNullOrWhiteSpace(fecha) || string.IsNullOrWhiteSpace(horaInicio) || string.IsNullOrWhiteSpace(horaFin))
             {
                 MostrarError("Por favor complete todos los campos de la función.", pagina);
                 return false;
             }
+            return true;
+        }
 
-            // Validación: fecha en el mismo año y no pasada
-            if (!DateTime.TryParse(fecha, out DateTime fechaSeleccionada))
+        private bool ValidarFecha(string fecha, int pagina, out DateTime fechaSeleccionada)
+        {
+            fechaSeleccionada = default;
+
+            if (!DateTime.TryParse(fecha, out fechaSeleccionada))
             {
                 MostrarError("La fecha no tiene un formato válido.", pagina);
                 return false;
             }
 
             DateTime hoy = DateTime.Today;
+
             if (fechaSeleccionada.Year != hoy.Year)
             {
                 MostrarError("La fecha debe estar en el año actual.", pagina);
@@ -645,8 +777,14 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return false;
             }
 
-            // Validación: hora inicio < hora fin
-            if (!TimeSpan.TryParse(horaInicio, out TimeSpan tsInicio) || !TimeSpan.TryParse(horaFin, out TimeSpan tsFin))
+            return true;
+        }
+
+        private bool ValidarHoras(string horaInicio, string horaFin, int pagina, out TimeSpan tsInicio, out TimeSpan tsFin)
+        {
+            tsInicio = tsFin = default;
+
+            if (!TimeSpan.TryParse(horaInicio, out tsInicio) || !TimeSpan.TryParse(horaFin, out tsFin))
             {
                 MostrarError("Las horas no tienen un formato válido.", pagina);
                 return false;
@@ -658,21 +796,29 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidarFormatoHora(TimeSpan tsInicio, TimeSpan tsFin, int pagina)
+        {
             if (!validaFormatoHora(tsInicio, tsFin))
             {
                 MostrarError("La horas deben terminar en algún múltiplo de 15 (00,15,30,45).", pagina);
                 return false;
             }
+            return true;
+        }
 
-            // validación de duplicados
+        private bool ValidarFuncionDuplicada(string valor, int pagina)
+        {
             if (ddlFuncionesAgregar.Items.Cast<ListItem>().Any(i => i.Value == valor))
             {
                 MostrarError("Esa función ya ha sido agregada.", pagina);
                 return false;
             }
-
             return true;
         }
+
 
         public void LimpiarFunciones()
         {
@@ -852,15 +998,20 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
 
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            // ahora tengo que popular el modal con los datos!
             Button btn = (Button)sender;
-            string id = btn.CommandArgument;
-            int idEvento = int.Parse(id);
+            int idEvento = int.Parse(btn.CommandArgument);
             hdnIdEvento.Value = idEvento.ToString();
             funcionesEditar.Clear();
-            eventoDTO eventoEditar = eventoWS.buscarEventoDTOporID(new buscarEventoDTOporIDRequest(idEvento)).@return;
 
-            // llenar los campos con la información del evento traído
+            eventoDTO eventoEditar = eventoWS.buscarEventoDTOporID(new buscarEventoDTOporIDRequest(idEvento)).@return;
+            CargarDatosEventoEnFormulario(eventoEditar);
+            CargarUbicacionEventoEnFormulario(eventoEditar);
+            CargarFuncionesEventoEnFormulario(idEvento);
+
+            abrirModalEdicion();
+        }
+        private void CargarDatosEventoEnFormulario(eventoDTO eventoEditar)
+        {
             txtNombreEditar.Text = eventoEditar.nombre;
             txtDescEditar.Text = eventoEditar.descripcion;
             txtUbiEditar.Text = eventoEditar.ubicacion;
@@ -868,7 +1019,10 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             txtPrecioEditar.Text = eventoEditar.precioEntrada.ToString();
             txtDispoEditar.Text = eventoEditar.cantEntradasDispo.ToString();
             txtVendEditar.Text = eventoEditar.cantEntradasVendidas.ToString();
+        }
 
+        private void CargarUbicacionEventoEnFormulario(eventoDTO eventoEditar)
+        {
             ddlDepasEditar.DataTextField = "Nombre";
             ddlDepasEditar.DataValueField = "IdDepartamento";
             ddlDepasEditar.Items.Insert(0, new ListItem(eventoEditar.nombreProv.ToString(), eventoEditar.idDepa.ToString()));
@@ -886,15 +1040,15 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             ddlDistEditar.Items.Insert(0, new ListItem(eventoEditar.nombreDist.ToString(), eventoEditar.idDist.ToString()));
             ddlDistEditar.SelectedValue = eventoEditar.idDist.ToString();
             ddlDistEditar.Enabled = false;
+        }
 
-            // llenar las funciones
-            ddlFuncEditar.DataSource = funcionWS.listarFuncionesPorIdEvento(new listarFuncionesPorIdEventoRequest(idEvento)).@return;
-            var listaFunciones = funcionWS.listarFuncionesPorIdEvento(
-                new listarFuncionesPorIdEventoRequest(idEvento)
-            ).@return;
+        private void CargarFuncionesEventoEnFormulario(int idEvento)
+        {
+            var listaFunciones = funcionWS.listarFuncionesPorIdEvento(new listarFuncionesPorIdEventoRequest(idEvento)).@return;
 
-            var listaFormateada = listaFunciones.Select(f => new {
-                Texto = $"{f.fecha:yyyy-MM-dd} - {f.horaInicio.Substring(0,5)} a {f.horaFin.Substring(0,5)}",
+            var listaFormateada = listaFunciones.Select(f => new
+            {
+                Texto = $"{f.fecha:yyyy-MM-dd} - {f.horaInicio.Substring(0, 5)} a {f.horaFin.Substring(0, 5)}",
                 Valor = f.idFuncion
             }).ToList();
 
@@ -903,8 +1057,9 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             ddlFuncEditar.DataValueField = "Valor";
             ddlFuncEditar.DataBind();
             ddlFuncEditar.Items.Insert(0, new ListItem("Presione para ver las funciones del evento", ""));
-            abrirModalEdicion();
         }
+
+
         public void abrirModalEdicion()
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEditar",
@@ -974,58 +1129,24 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
             if (fechaMax != DateTime.MinValue)
                 Session["fechaMaxima"] = fechaMax;
         }
+
         protected void btnAceptarEditar_Click(object sender, EventArgs e)
         {
             ActualizarFechasMinMaxEditar();
 
-            if (!ValidarDatosEvento(txtNombreEditar.Text, txtDescEditar.Text, txtUbiEditar.Text, txtPrecioEditar.Text,
-                txtDispoEditar.Text, txtVendEditar.Text, txtRefEditar.Text, ddlDepasEditar.Text, ddlDistEditar.Text, ddlProvEditar.Text,true, MODAL_EDITAR)) return;
+            if (!ValidarEdicionEvento()) return;
 
-            string nombreEvento = txtNombreEditar.Text;
-            string descripcionEvento = txtDescEditar.Text;
-            string ubicacionEvento = txtUbiEditar.Text;
-            string idDistritoEvento = ddlDistEditar.SelectedValue; // obteniendo ID de distrito seleccionado
-            string precioEntradaEvento = txtPrecioEditar.Text;
-            string cantDisponibles = txtDispoEditar.Text;
-            string cantVendidas = txtVendEditar.Text;
-            string referenciaEvento = txtRefEditar.Text;
-            
-            string fechaInicioEvento = Session["fechaMinima"].ToString();
-            string fechaFinEvento = Session["fechaMaxima"].ToString();
-
-            evento eventoActualizar = new evento
-            {
-                idEvento = int.Parse(hdnIdEvento.Value),
-                fecha_inicio = fechaInicioEvento.Split(' ')[0],
-                fecha_fin = fechaFinEvento.Split(' ')[0],
-                nombre = nombreEvento,
-                descripcion = descripcionEvento,
-                ubicacion = ubicacionEvento,
-                distrito = new distrito
-                {
-                    idDistrito = int.Parse(idDistritoEvento)
-                },
-                precioEntrada = double.Parse(precioEntradaEvento),
-                cantEntradasVendidas = int.Parse(cantVendidas),
-                cantEntradasDispo = int.Parse(cantDisponibles),
-                referencia = referenciaEvento
-            };
-
-            Boolean actualizado = eventoWS.actualizarEvento(new actualizarEventoRequest(eventoActualizar)).@return;
+            evento eventoActualizar = ConstruirEventoDesdeFormulario();
+            bool actualizado = eventoWS.actualizarEvento(new actualizarEventoRequest(eventoActualizar)).@return;
 
             if (actualizado)
             {
-                // insertar las funciones añadidas
-                foreach(funcion f in funcionesEditar)
+                if (!InsertarFuncionesEditar())
                 {
-                    int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(f)).@return;
-
-                    if (idFuncion < 1)
-                    {
-                        mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función");
-                        return;
-                    }
+                    mostrarModalErrorEvento("VENTANA DE ERROR", "Error al insertar la función");
+                    return;
                 }
+
                 mostrarModalExitoEvento("VENTANA DE ÉXITO", "EVENTO actualizado exitosamente");
                 CargarEventos();
             }
@@ -1034,6 +1155,61 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Evento
                 mostrarModalErrorEvento("VENTANA DE ERROR", "Ocurrió un problema al actualizar el EVENTO");
             }
         }
+        private bool ValidarEdicionEvento()
+        {
+            return ValidarDatosEvento(
+                txtNombreEditar.Text,
+                txtDescEditar.Text,
+                txtUbiEditar.Text,
+                txtPrecioEditar.Text,
+                txtDispoEditar.Text,
+                txtVendEditar.Text,
+                txtRefEditar.Text,
+                ddlDepasEditar.Text,
+                ddlDistEditar.Text,
+                ddlProvEditar.Text,
+                true,
+                MODAL_EDITAR
+            );
+        }
+
+        private evento ConstruirEventoDesdeFormulario()
+        {
+            string fechaInicioEvento = Session["fechaMinima"].ToString();
+            string fechaFinEvento = Session["fechaMaxima"].ToString();
+
+            return new evento
+            {
+                idEvento = int.Parse(hdnIdEvento.Value),
+                fecha_inicio = fechaInicioEvento.Split(' ')[0],
+                fecha_fin = fechaFinEvento.Split(' ')[0],
+                nombre = txtNombreEditar.Text,
+                descripcion = txtDescEditar.Text,
+                ubicacion = txtUbiEditar.Text,
+                distrito = new distrito
+                {
+                    idDistrito = int.Parse(ddlDistEditar.SelectedValue)
+                },
+                precioEntrada = double.Parse(txtPrecioEditar.Text),
+                cantEntradasVendidas = int.Parse(txtVendEditar.Text),
+                cantEntradasDispo = int.Parse(txtDispoEditar.Text),
+                referencia = txtRefEditar.Text
+            };
+        }
+
+        private bool InsertarFuncionesEditar()
+        {
+            foreach (funcion f in funcionesEditar)
+            {
+                int idFuncion = funcionWS.insertarFuncion(new insertarFuncionRequest(f)).@return;
+                if (idFuncion < 1)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void mostrarModalExitoEvento(string titulo, string mensaje)
         {
             string script = $@"
