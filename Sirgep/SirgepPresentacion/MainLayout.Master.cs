@@ -89,10 +89,8 @@ namespace SirgepPresentacion
                     break;
 
                 case "invitado":
-                    Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
-                    break;
                 default:
-                    Console.WriteLine("Tipo de usuario no reconocido: " + tipoUsuario);
+                    Response.Redirect("/Presentacion/Inicio/PrincipalInvitado.aspx");
                     break;
             }
         }
@@ -106,18 +104,11 @@ namespace SirgepPresentacion
                 tipoUsuario = "invitado";
                 Session["tipoUsuario"] = "invitado"; // puedes asignarlo si deseas
             }
-            switch (tipoUsuario.ToLower())
-            {
-                case "administrador":
-                    break;
-                case "comprador":
-                    Response.Redirect("/Presentacion/Usuarios/Comprador/PerfilComprador.aspx");
-                    break;
-                case "invitado":
-                    break;
-                default:
-                    break;
-            }
+            //Solo el comprador puede acceder a su perfil
+            if (tipoUsuario.ToLower()== "comprador")
+                Response.Redirect("/Presentacion/Usuarios/Comprador/PerfilComprador.aspx");
+            //No debería pasar el caso contrario, pero es una validación que puede servir
+            //si se quiere escalar a que el admin pueda ver su perfil
         }
 
         protected void lnkReservasComprador_Click(object sender, EventArgs e)
