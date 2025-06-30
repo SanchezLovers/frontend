@@ -951,7 +951,7 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
           <p>Nos complace informarte que se ha registrado un nuevo espacio disponible en tu distrito favorito: <strong>{nombreDistrito}</strong>.</p>
           {ConstruirListaDetallesEspacio(espacioInsertar)}
           <p>Si estás interesado, te invitamos a revisar más detalles o reservar tu espacio.</p>
-          <a href='http://54.91.139.38/SirgepWA/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
+          <a href='http://54.91.139.38/Presentacion/Inicio/PrincipalInvitado.aspx' class='cta'>Ver más</a>
         </div>";
         }
 
