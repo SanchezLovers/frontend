@@ -659,9 +659,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
                 string nombreDistrito = distritoWS.buscarDistPorId(new buscarDistPorIdRequest(espacioInsertar.distrito.idDistrito)).@return.nombre;
                 Thread thread = new Thread(() => enviarCorreosEspacio(nombreDistrito, espacioInsertar));
                 thread.Start();
-                ScriptManager.RegisterStartupScript(this, GetType(), "mostrarModal", "setTimeout(function() { " +
-                        "mostrarModalExito('Correos enviados exitosamente', 'Se enviaron correos a los compradores cuyo distrito favorito coincide con el distrito del espacio registrado.'); " +
-                        "}, 1000);", true);
             }
             else
             {
@@ -960,11 +957,6 @@ namespace SirgepPresentacion.Presentacion.Infraestructura.Espacio
         {
             ddlDepartamentoEdit.Enabled = true;
             abrirModalEditarEspacio();
-        }
-
-        protected void btnGuardarEdicion_Click(object sender, EventArgs e)
-        {
-
         }
         public void mostrarModalFoto(string dataUrl)
         {
