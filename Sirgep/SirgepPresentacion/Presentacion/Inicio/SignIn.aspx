@@ -130,9 +130,9 @@
                                     ErrorMessage="*Campo obligatorio" CssClass="text-danger" Display="Dynamic" />
 
                                 <!-- Validación de formato -->
-                                <asp:RegularExpressionValidator ControlToValidate="txtCorreo" runat="server"
-                                    ErrorMessage="*Correo inválido" CssClass="text-danger" Display="Dynamic"
-                                    ValidationExpression="\w+([-+.']\w+)@\w+([-.]\w+)\.\w+([-.]\w+)*" />
+                                 <asp:RegularExpressionValidator ControlToValidate="txtCorreo" runat="server"
+                                     ErrorMessage="*Correo inválido" CssClass="text-danger" Display="Dynamic"
+                                     ValidationExpression="^[\w\.\-]+@[\w\-]+(\.[\w\-]+)+$" />
 
                                 <!-- Validación de existencia (custom) -->
                                 <asp:CustomValidator ID="cvCorreo" runat="server"
